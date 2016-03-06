@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Publicacion\SumitempEmp</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/AjaxMin.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>05/09/2014 10:15:34</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>05/09/2014 10:15:34</publishTime>
+    </File>
+    <File Include="bin/ar/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/cs/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/de/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>06/24/2014 13:24:20</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>06/24/2014 13:24:20</publishTime>
+    </File>
+    <File Include="bin/es/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.QualityTools.Testing.Fakes.resources.dll">
+      <publishTime>10/05/2013 04:09:56</publishTime>
+    </File>
+    <File Include="bin/Excel.4.5.dll">
+      <publishTime>01/30/2014 07:10:44</publishTime>
+    </File>
+    <File Include="bin/fr/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/he/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/hi/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>05/08/2014 18:13:02</publishTime>
+    </File>
+    <File Include="bin/ICSharpCode.SharpZipLib.dll">
+      <publishTime>01/02/2014 08:05:23</publishTime>
+    </File>
+    <File Include="bin/it/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>05/15/2014 17:07:30</publishTime>
+    </File>
+    <File Include="bin/ja/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/ko/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.QualityTools.Testing.Fakes.dll">
+      <publishTime>10/05/2013 02:38:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.WindowsAzure.Storage.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>04/20/2014 21:03:00</publishTime>
+    </File>
+    <File Include="bin/MySqlBulkCopy.dll">
+      <publishTime>06/24/2014 16:08:20</publishTime>
+    </File>
+    <File Include="bin/nl/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/pl/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/PortalTrabajadores.dll">
+      <publishTime>04/27/2015 22:33:20</publishTime>
+    </File>
+    <File Include="bin/pt/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/ru/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/tr-TR/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="CSS/cerlaboral.css">
+      <publishTime>05/21/2014 00:13:34</publishTime>
+    </File>
+    <File Include="CSS/CSSCallapsePanel.css">
+      <publishTime>04/29/2014 00:23:10</publishTime>
+    </File>
+    <File Include="CSS/CSSConCliente.css">
+      <publishTime>04/29/2014 00:23:10</publishTime>
+    </File>
+    <File Include="CSS/CSSLogin.css">
+      <publishTime>04/03/2014 16:26:08</publishTime>
+    </File>
+    <File Include="CSS/CSSPrincipal.css">
+      <publishTime>04/29/2014 00:23:09</publishTime>
+    </File>
+    <File Include="CSS/font.css">
+      <publishTime>04/29/2014 00:23:10</publishTime>
+    </File>
+    <File Include="CSS/Loading.css">
+      <publishTime>05/21/2014 00:13:34</publishTime>
+    </File>
+    <File Include="CSS/login.css">
+      <publishTime>05/04/2014 22:29:20</publishTime>
+    </File>
+    <File Include="CSS/main_style.css">
+      <publishTime>04/07/2015 00:00:31</publishTime>
+    </File>
+    <File Include="CSS/normalize.css">
+      <publishTime>04/29/2014 00:23:10</publishTime>
+    </File>
+    <File Include="CSS/VentanaModal.css">
+      <publishTime>05/04/2014 22:01:08</publishTime>
+    </File>
+    <File Include="DataSet1.xsc">
+      <publishTime>03/26/2015 00:14:05</publishTime>
+    </File>
+    <File Include="DataSet1.xss">
+      <publishTime>03/26/2015 00:14:06</publishTime>
+    </File>
+    <File Include="DataSet2.xsc">
+      <publishTime>04/06/2015 23:06:19</publishTime>
+    </File>
+    <File Include="DataSet2.xss">
+      <publishTime>04/06/2015 23:06:19</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/CSS/login_style.css">
+      <publishTime>04/29/2014 00:22:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/CSS/main_style.css">
+      <publishTime>04/29/2014 00:22:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/images/fondo_body.jpg">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/images/Logo.jpg">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/images/Logo.png">
+      <publishTime>04/29/2014 00:22:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/images/Nombre.png">
+      <publishTime>04/29/2014 00:22:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/images/Thumbs.db">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/CSS/login_style.css">
+      <publishTime>04/29/2014 00:22:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/CSS/main_style.css">
+      <publishTime>04/29/2014 00:22:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/images/fondo_body.jpg">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/images/Logo.jpg">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/images/Logo.png">
+      <publishTime>04/29/2014 00:22:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/images/Nombre.png">
+      <publishTime>04/29/2014 00:22:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/images/Thumbs.db">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="fonts/icomoon.eot">
+      <publishTime>04/21/2014 21:05:26</publishTime>
+    </File>
+    <File Include="fonts/icomoon.svg">
+      <publishTime>04/21/2014 21:05:26</publishTime>
+    </File>
+    <File Include="fonts/icomoon.ttf">
+      <publishTime>04/21/2014 21:05:26</publishTime>
+    </File>
+    <File Include="fonts/icomoon.woff">
+      <publishTime>04/21/2014 21:05:26</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/03/2014 16:21:38</publishTime>
+    </File>
+    <File Include="Html/SumiTemp.html">
+      <publishTime>06/10/2014 09:20:36</publishTime>
+    </File>
+    <File Include="Img/Bienvenido SURA Sumitemp.JPG">
+      <publishTime>06/30/2014 09:38:14</publishTime>
+    </File>
+    <File Include="Img/excel.gif">
+      <publishTime>12/01/2014 14:19:12</publishTime>
+    </File>
+    <File Include="Img/Firma.png">
+      <publishTime>05/21/2014 00:25:32</publishTime>
+    </File>
+    <File Include="Img/fondo_body.jpg">
+      <publishTime>04/29/2014 00:22:44</publishTime>
+    </File>
+    <File Include="Img/Footer.png">
+      <publishTime>05/22/2014 22:07:50</publishTime>
+    </File>
+    <File Include="Img/loader.gif">
+      <publishTime>05/21/2014 00:13:04</publishTime>
+    </File>
+    <File Include="Img/loader_Red.gif">
+      <publishTime>05/21/2014 00:13:04</publishTime>
+    </File>
+    <File Include="Img/Logo.png">
+      <publishTime>04/10/2015 22:43:31</publishTime>
+    </File>
+    <File Include="Img/Logo_SumiTemp.jpg">
+      <publishTime>05/08/2014 23:34:50</publishTime>
+    </File>
+    <File Include="Img/Nombre.png">
+      <publishTime>05/04/2014 20:35:54</publishTime>
+    </File>
+    <File Include="Img/pdf.gif">
+      <publishTime>04/29/2014 00:22:44</publishTime>
+    </File>
+    <File Include="Img/printButton.png">
+      <publishTime>05/09/2014 00:35:32</publishTime>
+    </File>
+    <File Include="Img/Sumitemp.jpg">
+      <publishTime>05/22/2014 22:08:12</publishTime>
+    </File>
+    <File Include="Js/funciones.js">
+      <publishTime>04/13/2015 22:03:20</publishTime>
+    </File>
+    <File Include="login.aspx">
+      <publishTime>04/13/2015 22:08:12</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>06/24/2014 17:20:42</publishTime>
+    </File>
+    <File Include="Portal/Actualizadatos.aspx">
+      <publishTime>09/22/2014 23:05:16</publishTime>
+    </File>
+    <File Include="Portal/BusquedaRetencion.aspx">
+      <publishTime>04/13/2015 22:02:32</publishTime>
+    </File>
+    <File Include="Portal/CambioContrasena.aspx">
+      <publishTime>04/13/2015 22:02:32</publishTime>
+    </File>
+    <File Include="Portal/CargueArchivos.aspx">
+      <publishTime>05/21/2014 05:25:04</publishTime>
+    </File>
+    <File Include="Portal/CargueEmpleados.aspx">
+      <publishTime>09/16/2014 20:53:36</publishTime>
+    </File>
+    <File Include="Portal/CargueNomina.aspx">
+      <publishTime>09/16/2014 20:53:54</publishTime>
+    </File>
+    <File Include="Portal/Certificado.aspx">
+      <publishTime>05/20/2014 23:58:02</publishTime>
+    </File>
+    <File Include="Portal/Cesantias.aspx">
+      <publishTime>04/13/2015 22:02:32</publishTime>
+    </File>
+    <File Include="Portal/ComprobanteNomina.aspx">
+      <publishTime>04/13/2015 22:02:32</publishTime>
+    </File>
+    <File Include="Portal/Comprobantes.aspx">
+      <publishTime>05/13/2014 13:55:14</publishTime>
+    </File>
+    <File Include="Portal/Contactenos.aspx">
+      <publishTime>10/01/2014 23:07:36</publishTime>
+    </File>
+    <File Include="Portal/default.aspx">
+      <publishTime>04/25/2014 08:28:24</publishTime>
+    </File>
+    <File Include="Portal/EmpleadosActivos.aspx">
+      <publishTime>03/30/2015 22:14:12</publishTime>
+    </File>
+    <File Include="Portal/EmpleadosInactivos.aspx">
+      <publishTime>01/06/2015 10:30:16</publishTime>
+    </File>
+    <File Include="Portal/EstadoFondo.aspx">
+      <publishTime>04/13/2015 22:02:32</publishTime>
+    </File>
+    <File Include="Portal/index.aspx">
+      <publishTime>11/24/2014 21:37:32</publishTime>
+    </File>
+    <File Include="Portal/IngresoRetencion.aspx">
+      <publishTime>12/22/2014 15:59:22</publishTime>
+    </File>
+    <File Include="Portal/Laboral.aspx">
+      <publishTime>04/13/2015 22:02:32</publishTime>
+    </File>
+    <File Include="Portal/login.aspx">
+      <publishTime>04/25/2014 11:12:59</publishTime>
+    </File>
+    <File Include="Portal/ModificarDatos.aspx">
+      <publishTime>04/13/2015 22:02:33</publishTime>
+    </File>
+    <File Include="Portal/ModificarTercero.aspx">
+      <publishTime>04/27/2015 21:22:39</publishTime>
+    </File>
+    <File Include="Portal/Nomina.aspx">
+      <publishTime>12/29/2014 17:05:12</publishTime>
+    </File>
+    <File Include="Portal/PaginaMaestra.Master">
+      <publishTime>04/07/2015 00:00:50</publishTime>
+    </File>
+    <File Include="Portal/PrimeraContrasena.aspx">
+      <publishTime>05/15/2014 16:38:02</publishTime>
+    </File>
+    <File Include="Portal/Principal.aspx">
+      <publishTime>11/24/2014 21:42:30</publishTime>
+    </File>
+    <File Include="Portal/prueba.aspx">
+      <publishTime>04/29/2014 12:18:36</publishTime>
+    </File>
+    <File Include="Portal/Retefuente.aspx">
+      <publishTime>12/05/2014 12:06:38</publishTime>
+    </File>
+    <File Include="Portal/Retenciones.aspx">
+      <publishTime>03/29/2015 11:44:15</publishTime>
+    </File>
+    <File Include="Portal/Segsocial.aspx">
+      <publishTime>04/13/2015 22:02:41</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>05/09/2014 10:15:32</publishTime>
+    </File>
+    <File Include="prueba.aspx">
+      <publishTime>04/29/2014 14:13:00</publishTime>
+    </File>
+    <File Include="RecuperarContrasena.aspx">
+      <publishTime>04/14/2015 23:27:34</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Aliados/Cesantias/123.pdf">
+      <publishTime>04/30/2014 16:01:05</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Aliados/IngRet/123.pdf">
+      <publishTime>04/30/2014 16:01:14</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Aliados/SegSocial/123.pdf">
+      <publishTime>04/30/2014 16:01:20</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Cesantias/123.pdf">
+      <publishTime>05/01/2014 09:47:46</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Cesantias/37899866.pdf">
+      <publishTime>05/01/2014 09:47:46</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Fondo/123.pdf">
+      <publishTime>05/09/2014 11:21:20</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Fondo/37899866.pdf">
+      <publishTime>05/13/2014 14:24:44</publishTime>
+    </File>
+    <File Include="RepositorioPDF/IngRet/123.pdf">
+      <publishTime>05/09/2014 11:21:23</publishTime>
+    </File>
+    <File Include="RepositorioPDF/IngRet/37899866.pdf">
+      <publishTime>05/13/2014 14:24:48</publishTime>
+    </File>
+    <File Include="RepositorioPDF/SegSocial/123.pdf">
+      <publishTime>05/09/2014 11:21:30</publishTime>
+    </File>
+    <File Include="RepositorioPDF/SegSocial/37899866.pdf">
+      <publishTime>05/13/2014 14:24:52</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Sumiservis/Cesantias/123.pdf">
+      <publishTime>05/01/2014 09:47:45</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Sumiservis/Cesantias/StyleSheet1.css">
+      <publishTime>04/30/2014 15:28:53</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Sumiservis/IngRet/123.pdf">
+      <publishTime>05/01/2014 09:47:45</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Sumiservis/SegSocial/123.pdf">
+      <publishTime>05/01/2014 09:47:45</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Sumitemp/Cesantias/123.pdf">
+      <publishTime>04/30/2014 16:00:39</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Sumitemp/IngRet/123.pdf">
+      <publishTime>04/30/2014 16:00:46</publishTime>
+    </File>
+    <File Include="RepositorioPDF/Sumitemp/SegSocial/123.pdf">
+      <publishTime>04/30/2014 16:00:54</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/14/2015 23:33:50</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

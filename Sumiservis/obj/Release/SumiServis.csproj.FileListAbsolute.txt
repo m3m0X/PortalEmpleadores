@@ -1,0 +1,128 @@
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\HtmlAgilityPack.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\itextsharp.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\HtmlAgilityPack.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\HtmlAgilityPack.xml
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\itextsharp.xml
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\obj\Release\RdlCompile.cache
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\obj\Release\RdlCompile.compiled
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\obj\Release\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Sumiservis\obj\Release\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\PortalTrabajadores.dll.config
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\HtmlAgilityPack.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\itextsharp.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\HtmlAgilityPack.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\HtmlAgilityPack.xml
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\itextsharp.xml
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\obj\Release\SumiServis.csprojResolveAssemblyReference.cache
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\obj\Release\RdlCompile.cache
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\obj\Release\RdlCompile.compiled
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\obj\Release\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Sumiservis\obj\Release\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\HtmlAgilityPack.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\itextsharp.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\HtmlAgilityPack.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\HtmlAgilityPack.xml
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\itextsharp.xml
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\obj\Release\SumiServis.csprojResolveAssemblyReference.cache
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\obj\Release\RdlCompile.cache
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\obj\Release\RdlCompile.compiled
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\obj\Release\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Sumiservis\obj\Release\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\PortalTrabajadores.dll.config
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\HtmlAgilityPack.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\itextsharp.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\HtmlAgilityPack.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\HtmlAgilityPack.xml
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\itextsharp.xml
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\obj\Release\SumiServis.csprojResolveAssemblyReference.cache
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\obj\Release\RdlCompile.cache
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\obj\Release\RdlCompile.compiled
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\obj\Release\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Last Version\Sumiservis\obj\Release\PortalTrabajadores.pdb
+D:\Proyectos\SUMI\Sumiservis\bin\PortalTrabajadores.dll.config
+D:\Proyectos\SUMI\Sumiservis\bin\PortalTrabajadores.dll
+D:\Proyectos\SUMI\Sumiservis\bin\PortalTrabajadores.pdb
+D:\Proyectos\SUMI\Sumiservis\bin\Excel.4.5.dll
+D:\Proyectos\SUMI\Sumiservis\bin\HtmlAgilityPack.dll
+D:\Proyectos\SUMI\Sumiservis\bin\ICSharpCode.SharpZipLib.dll
+D:\Proyectos\SUMI\Sumiservis\bin\itextsharp.dll
+D:\Proyectos\SUMI\Sumiservis\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Proyectos\SUMI\Sumiservis\bin\Excel.4.5.pdb
+D:\Proyectos\SUMI\Sumiservis\bin\HtmlAgilityPack.pdb
+D:\Proyectos\SUMI\Sumiservis\bin\HtmlAgilityPack.xml
+D:\Proyectos\SUMI\Sumiservis\bin\itextsharp.xml
+D:\Proyectos\SUMI\Sumiservis\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Proyectos\SUMI\Sumiservis\obj\Release\SumiServis.csprojResolveAssemblyReference.cache
+D:\Proyectos\SUMI\Sumiservis\obj\Release\RdlCompile.cache
+D:\Proyectos\SUMI\Sumiservis\obj\Release\RdlCompile.compiled
+D:\Proyectos\SUMI\Sumiservis\obj\Release\PortalTrabajadores.dll
+D:\Proyectos\SUMI\Sumiservis\obj\Release\PortalTrabajadores.pdb
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\PortalTrabajadores.dll.config
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\PortalTrabajadores.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\PortalTrabajadores.pdb
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\HtmlAgilityPack.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\itextsharp.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\HtmlAgilityPack.pdb
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\HtmlAgilityPack.xml
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\itextsharp.xml
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\obj\Release\SumiServis.csprojResolveAssemblyReference.cache
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\obj\Release\RdlCompile.cache
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\obj\Release\RdlCompile.compiled
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\obj\Release\PortalTrabajadores.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Sumiservis\obj\Release\PortalTrabajadores.pdb
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\PortalTrabajadores.dll.config
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\PortalTrabajadores.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\PortalTrabajadores.pdb
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\Excel.4.5.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\HtmlAgilityPack.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\ICSharpCode.SharpZipLib.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\itextsharp.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\Excel.4.5.pdb
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\HtmlAgilityPack.pdb
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\HtmlAgilityPack.xml
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\itextsharp.xml
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\obj\Release\SumiServis.csprojResolveAssemblyReference.cache
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\obj\Release\RdlCompile.cache
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\obj\Release\RdlCompile.compiled
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\obj\Release\PortalTrabajadores.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Sumiservis\obj\Release\PortalTrabajadores.pdb
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\PortalTrabajadores.dll.config
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\PortalTrabajadores.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\PortalTrabajadores.pdb
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\Excel.4.5.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\HtmlAgilityPack.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\ICSharpCode.SharpZipLib.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\itextsharp.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\Excel.4.5.pdb
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\HtmlAgilityPack.pdb
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\HtmlAgilityPack.xml
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\itextsharp.xml
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\obj\Release\SumiServis.csprojResolveAssemblyReference.cache
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\obj\Release\RdlCompile.cache
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\obj\Release\RdlCompile.compiled
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\obj\Release\PortalTrabajadores.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Sumiservis\obj\Release\PortalTrabajadores.pdb

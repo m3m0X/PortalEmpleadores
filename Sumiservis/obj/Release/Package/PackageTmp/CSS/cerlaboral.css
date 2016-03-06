@@ -1,0 +1,12 @@
+.ContenidoPpal{
+	margin: 0 auto;
+	width:700px; 
+	text-align:justify;
+}
+.Centrado{
+	text-align:center
+}
+hr{ 
+	float:left;
+	width: 250px;
+}

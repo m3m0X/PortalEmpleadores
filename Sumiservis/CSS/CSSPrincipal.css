@@ -1,0 +1,23 @@
+﻿.footer{
+            position:fixed;
+            bottom: 0px;
+            margin:0 auto 0 auto;
+            padding: 10px 10px 10px 10px;
+            text-align:center;
+            width:100%;
+            display:block;
+        }
+body.CssBody{
+    font-size: 12px;
+    font-family: Calibri;
+}
+#Barralogin{
+     background-color:#b0c4de;
+     width:100%;   
+     height:30px;  
+     line-height:30px;
+}
+#BarraMenu{
+    background-color:#F7F6F3;
+    width:100%;
+}

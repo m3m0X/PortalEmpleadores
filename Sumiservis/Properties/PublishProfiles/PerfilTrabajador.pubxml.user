@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAWBmxKMVwpUCL5477C392jwAAAAACAAAAAAAQZgAAAAEAACAAAAAT6xNVxvBI/5Eag0PWDVGGxIDo8kw1ThSrnumgTSOLigAAAAAOgAAAAAIAACAAAAA1w8DIGROS1dIqbeGj5lswylEbZTcFnLj76WdBhRTArSAAAACFoV5Wlro1gES5vRnASDFszFwN/TmtdXDhsGolp1Ihw0AAAABCOm6rjaFUdcbs70+18H9SY08rEKh6+pGGOmdNU0FibWrvZReUhEuTyBazmDYZXeEEPRRZQNX1MBhvn+YAmHnQ</EncryptedPassword>
+    <_PublishTargetUrl>ftp://online.sumitemp.com/</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/AjaxControlToolkit.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/AjaxMin.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/ar/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/cs/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/de/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/es/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/es/Microsoft.QualityTools.Testing.Fakes.resources.dll">
+      <publishTime>10/05/2013 04:09:56</publishTime>
+    </File>
+    <File Include="bin/fr/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/he/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/hi/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/HtmlAgilityPack.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/it/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/ja/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/ko/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/Microsoft.QualityTools.Testing.Fakes.dll">
+      <publishTime>10/05/2013 02:38:22</publishTime>
+    </File>
+    <File Include="bin/Microsoft.WindowsAzure.Storage.dll">
+      <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/nl/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/pl/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/PortalTrabajadores.dll">
+      <publishTime>04/28/2014 21:32:42</publishTime>
+    </File>
+    <File Include="bin/pt/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/ru/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/tr-TR/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/zh-CHS/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="bin/zh-CHT/AjaxControlToolkit.resources.dll">
+      <publishTime>02/17/2014 13:47:36</publishTime>
+    </File>
+    <File Include="CSS/CSSCallapsePanel.css">
+      <publishTime>03/04/2014 16:26:08</publishTime>
+    </File>
+    <File Include="CSS/CSSConCliente.css">
+      <publishTime>03/04/2014 16:26:08</publishTime>
+    </File>
+    <File Include="CSS/CSSLogin.css">
+      <publishTime>04/03/2014 16:26:08</publishTime>
+    </File>
+    <File Include="CSS/CSSPrincipal.css">
+      <publishTime>03/04/2014 16:26:08</publishTime>
+    </File>
+    <File Include="CSS/font.css">
+      <publishTime>04/21/2014 21:04:58</publishTime>
+    </File>
+    <File Include="CSS/normalize.css">
+      <publishTime>04/21/2014 21:04:58</publishTime>
+    </File>
+    <File Include="CSS/VentanaModal.css">
+      <publishTime>04/26/2014 11:46:24</publishTime>
+    </File>
+    <File Include="default.aspx">
+      <publishTime>04/25/2014 13:55:55</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/CSS/main_style.css">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/images/fondo_body.jpg">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/images/Logo.jpg">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiServis/images/Thumbs.db">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/CSS/main_style.css">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/images/fondo_body.jpg">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/images/Logo.jpg">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Estilos/SumiTemp/images/Thumbs.db">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="fonts/icomoon.eot">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="fonts/icomoon.svg">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="fonts/icomoon.ttf">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="fonts/icomoon.woff">
+      <publishTime>04/21/2014 21:05:24</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>04/03/2014 16:21:36</publishTime>
+    </File>
+    <File Include="Img/pdf.gif">
+      <publishTime>04/21/2014 20:17:42</publishTime>
+    </File>
+    <File Include="Js/funciones.js">
+      <publishTime>04/27/2014 19:52:06</publishTime>
+    </File>
+    <File Include="Login.aspx">
+      <publishTime>04/27/2014 21:23:11</publishTime>
+    </File>
+    <File Include="Portal/Actualizadatos.aspx">
+      <publishTime>04/28/2014 12:31:39</publishTime>
+    </File>
+    <File Include="Portal/CargueArchivos.aspx">
+      <publishTime>04/28/2014 16:06:50</publishTime>
+    </File>
+    <File Include="Portal/Cesantias.aspx">
+      <publishTime>04/28/2014 11:58:41</publishTime>
+    </File>
+    <File Include="Portal/Contactenos.aspx">
+      <publishTime>04/27/2014 21:47:17</publishTime>
+    </File>
+    <File Include="Portal/default.aspx">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Portal/EstadoFondo.aspx">
+      <publishTime>04/28/2014 11:59:06</publishTime>
+    </File>
+    <File Include="Portal/index.aspx">
+      <publishTime>04/23/2014 20:58:43</publishTime>
+    </File>
+    <File Include="Portal/Nomina.aspx">
+      <publishTime>04/28/2014 10:06:38</publishTime>
+    </File>
+    <File Include="Portal/PaginaMaestra.Master">
+      <publishTime>04/28/2014 12:33:43</publishTime>
+    </File>
+    <File Include="Portal/prueba.aspx">
+      <publishTime>04/27/2014 19:23:01</publishTime>
+    </File>
+    <File Include="Portal/Retefuente.aspx">
+      <publishTime>04/28/2014 10:07:20</publishTime>
+    </File>
+    <File Include="Portal/Segsocial.aspx">
+      <publishTime>04/28/2014 11:59:06</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>04/28/2014 21:35:49</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

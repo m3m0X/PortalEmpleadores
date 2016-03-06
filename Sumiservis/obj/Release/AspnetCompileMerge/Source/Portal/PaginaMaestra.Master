@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="PaginaMaestra.master.cs" Inherits="PortalTrabajadores.Portal.PaginaMaestra" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+    <meta charset="utf-8" />
+    <title>Portal de Trabajadores</title>
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+    <!-- Hoja de estilos para normalizar los estilos -->
+	<link type='text/css' rel='stylesheet' href='../CSS/normalize.css'>
+
+    <!-- Hoja de estilos fuentes -->
+	<link type='text/css' rel='stylesheet' href='../CSS/font.css'>
+    
+	<!-- Hoja de estilos propia -->
+	<link type='text/css' rel='stylesheet' href='../CSS/main_style.css'>
+
+    <!-- Libreria jQuery -->
+    <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+    <form id="form1" runat="server">
+         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
+        <header>
+			<h1>Portal de Trabajadores</h1>
+			<figure id="logo"></figure>
+            <div id="Bienvenida">
+			    <div id="usSesion"><span class="icon-user"></span> Bienvenido, <asp:Label ID="lbluserlogon" runat="server" Text="Label" Style="text-align: left;"></asp:Label></div>
+                <div id="fechaSistema"><asp:Label ID="lbldate" runat="server" Text="Label"></asp:Label></div>
+            </div>
+		</header>
+        <nav>
+            <asp:Menu ID="MenuPrincipal" runat="server" DynamicHorizontalOffset="2" 
+                OnMenuItemClick="Navigation_MenuItemClick" 
+                Orientation="Horizontal" OnMenuItemDataBound="Navigation_MenuItemClick">
+            </asp:Menu>
+        </nav>
+        <Section>
+            <h2><asp:ContentPlaceHolder ID="ContainerTitulo" runat="server"/></h2>
+            <asp:ContentPlaceHolder ID="Container" runat="server">
+            </asp:ContentPlaceHolder>
+            <br />
+            <div class="MensajeError">
+                <asp:Label ID="LblMsj" runat="server" Text="LabelMsjError" Visible="False"></asp:Label>
+            </div>
+        </Section>
+        <script type="text/javascript">
+            now = new Date();
+            year = now.getFullYear();
+        </script>
+        <footer class="footer">
+            <p>&copy; Copyright <script type="text/javascript">document.write(year);</script></p>
+            <p>Todos los derechos reservados.</p>
+        </footer>
+    </form>
+</body>
+</html>

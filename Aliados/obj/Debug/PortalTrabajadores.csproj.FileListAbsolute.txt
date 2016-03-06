@@ -1,0 +1,95 @@
+C:\Users\Desarrollo\Downloads\Sumi\V5\PortalTrabajadores\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V5\PortalTrabajadores\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V5\PortalTrabajadores\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V5\PortalTrabajadores\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V5\PortalTrabajadores\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V5\PortalTrabajadores\obj\Debug\PortalTrabajadores.csprojResolveAssemblyReference.cache
+C:\Users\Desarrollo\Downloads\Sumi\V5\PortalTrabajadores\obj\Debug\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V5\PortalTrabajadores\obj\Debug\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\SolWebPersonal\PortalTrabajadores\bin\PortalTrabajadores.dll.config
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\SolWebPersonal\PortalTrabajadores\bin\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\SolWebPersonal\PortalTrabajadores\bin\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\SolWebPersonal\PortalTrabajadores\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\SolWebPersonal\PortalTrabajadores\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\SolWebPersonal\PortalTrabajadores\obj\Debug\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\SolWebPersonal\PortalTrabajadores\obj\Debug\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\SolWebPersonal\PortalTrabajadores\obj\Debug\PortalTrabajadores.csprojResolveAssemblyReference.cache
+C:\Users\Desarrollo\Downloads\Sumi\V7\PortalTrabajadores\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V7\PortalTrabajadores\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V7\PortalTrabajadores\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V7\PortalTrabajadores\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V7\PortalTrabajadores\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V7\PortalTrabajadores\obj\Debug\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V7\PortalTrabajadores\obj\Debug\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V7\PortalTrabajadores\obj\Debug\PortalTrabajadores.csprojResolveAssemblyReference.cache
+C:\HostingSpaces\sumitemp\online.sumitemp.com\wwwroot\bin\PortalTrabajadores.dll.config
+C:\HostingSpaces\sumitemp\online.sumitemp.com\wwwroot\bin\PortalTrabajadores.dll
+C:\HostingSpaces\sumitemp\online.sumitemp.com\wwwroot\bin\PortalTrabajadores.pdb
+C:\HostingSpaces\sumitemp\online.sumitemp.com\wwwroot\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\HostingSpaces\sumitemp\online.sumitemp.com\wwwroot\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\HostingSpaces\sumitemp\online.sumitemp.com\wwwroot\obj\Debug\PortalTrabajadores.csprojResolveAssemblyReference.cache
+C:\HostingSpaces\sumitemp\online.sumitemp.com\wwwroot\obj\Debug\PortalTrabajadores.dll
+C:\HostingSpaces\sumitemp\online.sumitemp.com\wwwroot\obj\Debug\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V8\Aliados\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V8\Aliados\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V8\Aliados\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V8\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V8\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V8\Aliados\obj\Debug\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V8\Aliados\obj\Debug\PortalTrabajadores.pdb
+E:\VisualStudio\Aliados\bin\PortalTrabajadores.dll.config
+E:\VisualStudio\Aliados\bin\PortalTrabajadores.dll
+E:\VisualStudio\Aliados\bin\PortalTrabajadores.pdb
+E:\VisualStudio\Aliados\bin\HtmlAgilityPack.dll
+E:\VisualStudio\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+E:\VisualStudio\Aliados\bin\HtmlAgilityPack.pdb
+E:\VisualStudio\Aliados\bin\HtmlAgilityPack.xml
+E:\VisualStudio\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+E:\VisualStudio\Aliados\obj\Debug\PortalTrabajadores.csprojResolveAssemblyReference.cache
+E:\VisualStudio\Aliados\obj\Debug\RdlCompile.cache
+E:\VisualStudio\Aliados\obj\Debug\RdlCompile.compiled
+E:\VisualStudio\Aliados\obj\Debug\PortalTrabajadores.dll
+E:\VisualStudio\Aliados\obj\Debug\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\bin\HtmlAgilityPack.dll
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\bin\HtmlAgilityPack.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\bin\HtmlAgilityPack.xml
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\obj\Debug\PortalTrabajadores.csprojResolveAssemblyReference.cache
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\obj\Debug\RdlCompile.cache
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\obj\Debug\RdlCompile.compiled
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\obj\Debug\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V9\Aliados\obj\Debug\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\HtmlAgilityPack.dll
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\itextsharp.dll
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\HtmlAgilityPack.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\HtmlAgilityPack.xml
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\itextsharp.xml
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\obj\Debug\PortalTrabajadores.csprojResolveAssemblyReference.cache
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\obj\Debug\RdlCompile.cache
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\obj\Debug\RdlCompile.compiled
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\obj\Debug\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V10\Aliados\obj\Debug\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\HtmlAgilityPack.dll
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\itextsharp.dll
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\HtmlAgilityPack.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\HtmlAgilityPack.xml
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\itextsharp.xml
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\obj\Debug\RdlCompile.cache
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\obj\Debug\RdlCompile.compiled
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\obj\Debug\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\obj\Debug\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V11\Aliados\obj\Debug\PortalTrabajadores.csprojResolveAssemblyReference.cache

@@ -1,0 +1,194 @@
+/*Estos estilos son los pricipales y pertenecen a la Master Page del sitio SumiServis*/
+
+body{
+	font-family: Arial;
+	font-size: 12px;
+}
+
+header{
+	background: #3052a1;
+	color: #FFFFFF;
+    height: 6.2em;
+}
+
+header h1{
+	font-size: 1.6em;
+	display: none;
+}
+
+#Bienvenida{
+    float: right;
+    font-size: 1.2em;
+    position: relative;
+    right: 1em;
+    text-align: right;
+    top: 2em;
+}
+
+#logo{
+	background-image: url("../Img/Logo.png");
+	width: 273px;
+	height: 100px;
+	margin: 0;
+	position: relative;
+	top: 28px;
+	float: left;
+}
+
+#usSesion{
+	margin: 0.2em 0;
+}
+
+#fechaSistema{
+	margin: 0.2em 0;
+}
+
+nav{
+	background: #00b0f0;
+    border-bottom: 1px solid #3052a1;
+}
+
+#MenuPrincipal {
+    background: #00b0f0;
+    font-size: 1.1em;
+}
+
+#MenuPrincipal li.static{
+	border-right: 1px dotted #fff;
+}
+
+#MenuPrincipal li.static:last-child{
+	border-right: none;
+}
+
+#MenuPrincipal li.dynamic{
+	border-bottom: 1px dotted #fff;
+}
+
+#MenuPrincipal li.dynamic:first-child{
+	border-top: 1px solid #3052a1;
+}
+
+#MenuPrincipal li.dynamic:last-child{
+	border-bottom: none;
+}
+
+#MenuPrincipal a{
+    color: #FFFFFF;
+    display: block;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#MenuPrincipal a.static, a.dynamic {
+    padding: 6px 10px !important;
+    background: #00b0f0;
+}
+
+#MenuPrincipal a.static:hover, a.dynamic:hover {
+    background: #3052a1;
+    color: #FFFFFF;
+}
+
+section{
+	background: url("../Img/fondo_body.jpg") repeat-x;
+	min-height: 12em;
+    padding: 5em 2em 2em;
+}
+
+.MensajeError {
+    color: #CC3300;
+    font-weight: bold;
+    padding-bottom: 5em;
+    text-align: center;
+}
+
+footer{
+	background: #c0c0c0;
+	text-align: right;
+	padding: 1em 0;
+    bottom: 0;
+    position: fixed;
+    width: 100%
+}
+
+footer p{
+	margin: 0.2em 0;
+	padding-right: 2em;
+}
+
+/*Estos estilos son de páginas internas*/
+h2 {
+    color: #3052a1;
+    font-size: 2em;
+    margin-top: 0;
+}
+
+#Container_UpdatePanel1 {
+    padding-bottom: 2em;
+    text-align: center;
+}
+
+#Container_LblfechaNomina, #Container_DateTextBox{
+    margin-right: 0.5em;
+}
+
+.TextoFiltros {
+    font-size: 1.2em;
+}
+
+#Container_DateTextBox {
+    width: 80px;
+}
+
+#Container_UpdatePanel1 table{
+    margin: 0 auto;
+    text-align: left;
+    border: 1px solid #000000;
+}
+
+#Container_UpdatePanel1 td, th{
+    padding: 0.3em;
+}
+
+#Container_UpdatePanel1 th{
+    background: #00b0f0;
+    font-weight: bold;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+#Container_UpdatePanel1 tr.ColorOscuro{
+    background: #f4fcff;
+}
+
+#TablaDatos td input{
+    width: 15em;
+}
+
+.CeldaTablaDatos{
+    width: 15em;
+}
+
+.BotonTablaDatos{
+    text-align: center;
+}
+
+#Container_LblTextoCampo {
+    color: #3052a1;
+}
+
+/*Estos estilos son de la página index*/
+
+.PaginaInicio {
+    bottom: 0;
+    font-size: 1.3em;
+    padding: 5em;
+    position: fixed
+}
+
+.PaginaInicio h2{
+    color: #3052a1;
+    font-size: 2em;
+}

@@ -1,0 +1,111 @@
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\HtmlAgilityPack.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\itextsharp.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\HtmlAgilityPack.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\HtmlAgilityPack.xml
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\itextsharp.xml
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\obj\Debug\Aliados.csprojResolveAssemblyReference.cache
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\obj\Debug\RdlCompile.cache
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\obj\Debug\RdlCompile.compiled
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\obj\Debug\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V12\Aliados\obj\Debug\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\PortalTrabajadores.dll.config
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\PortalTrabajadores.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\HtmlAgilityPack.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\itextsharp.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\HtmlAgilityPack.pdb
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\HtmlAgilityPack.xml
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\itextsharp.xml
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\obj\Debug\Aliados.csprojResolveAssemblyReference.cache
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\obj\Debug\RdlCompile.cache
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\obj\Debug\RdlCompile.compiled
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\obj\Debug\PortalTrabajadores.dll
+C:\Users\jonforero\Documents\Visual Studio 2013\Projects\PortalTrabajadores\Aliados\obj\Debug\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\PortalTrabajadores.dll.config
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\PortalTrabajadores.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\HtmlAgilityPack.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\itextsharp.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\HtmlAgilityPack.pdb
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\HtmlAgilityPack.xml
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\itextsharp.xml
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\obj\Debug\RdlCompile.cache
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\obj\Debug\RdlCompile.compiled
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\obj\Debug\PortalTrabajadores.dll
+C:\Users\Desarrollo\Downloads\Sumi\V15\Aliados\obj\Debug\PortalTrabajadores.pdb
+D:\Proyectos\SUMI\Aliados\bin\PortalTrabajadores.dll.config
+D:\Proyectos\SUMI\Aliados\bin\PortalTrabajadores.dll
+D:\Proyectos\SUMI\Aliados\bin\PortalTrabajadores.pdb
+D:\Proyectos\SUMI\Aliados\bin\Excel.4.5.dll
+D:\Proyectos\SUMI\Aliados\bin\HtmlAgilityPack.dll
+D:\Proyectos\SUMI\Aliados\bin\ICSharpCode.SharpZipLib.dll
+D:\Proyectos\SUMI\Aliados\bin\itextsharp.dll
+D:\Proyectos\SUMI\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Proyectos\SUMI\Aliados\bin\Excel.4.5.pdb
+D:\Proyectos\SUMI\Aliados\bin\HtmlAgilityPack.pdb
+D:\Proyectos\SUMI\Aliados\bin\HtmlAgilityPack.xml
+D:\Proyectos\SUMI\Aliados\bin\itextsharp.xml
+D:\Proyectos\SUMI\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Proyectos\SUMI\Aliados\obj\Debug\Aliados.csprojResolveAssemblyReference.cache
+D:\Proyectos\SUMI\Aliados\obj\Debug\RdlCompile.cache
+D:\Proyectos\SUMI\Aliados\obj\Debug\RdlCompile.compiled
+D:\Proyectos\SUMI\Aliados\obj\Debug\PortalTrabajadores.dll
+D:\Proyectos\SUMI\Aliados\obj\Debug\PortalTrabajadores.pdb
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\PortalTrabajadores.dll.config
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\PortalTrabajadores.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\PortalTrabajadores.pdb
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\Excel.4.5.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\ICSharpCode.SharpZipLib.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\itextsharp.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\Excel.4.5.pdb
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.pdb
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.xml
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\itextsharp.xml
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\obj\Debug\RdlCompile.cache
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\obj\Debug\RdlCompile.compiled
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\obj\Debug\PortalTrabajadores.dll
+D:\Proyectos\Sumi Nuevos\PortalEmpleadores\PortalEmpleadores\Aliados\obj\Debug\PortalTrabajadores.pdb
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\PortalTrabajadores.dll.config
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\PortalTrabajadores.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\PortalTrabajadores.pdb
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\itextsharp.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.pdb
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.xml
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\itextsharp.xml
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\obj\Debug\RdlCompile.cache
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\obj\Debug\RdlCompile.compiled
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\obj\Debug\PortalTrabajadores.dll
+C:\Users\m3m0X\Documents\Visual Studio 2013\Projects\PortalEmpleadores\Aliados\obj\Debug\PortalTrabajadores.pdb
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\PortalTrabajadores.dll.config
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\PortalTrabajadores.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\PortalTrabajadores.pdb
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\Excel.4.5.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\ICSharpCode.SharpZipLib.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\itextsharp.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\Excel.4.5.pdb
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.pdb
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.xml
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\itextsharp.xml
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\obj\Debug\Aliados.csprojResolveAssemblyReference.cache
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\obj\Debug\RdlCompile.cache
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\obj\Debug\RdlCompile.compiled
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\obj\Debug\PortalTrabajadores.dll
+D:\Proyectos\Sumi\PortalEmpleadores\Aliados\obj\Debug\PortalTrabajadores.pdb

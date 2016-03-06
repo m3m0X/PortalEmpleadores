@@ -1,0 +1,100 @@
+﻿body{
+	background: url("../Img/fondo_body.jpg") repeat-x;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+header h1{
+    display: none;
+}
+
+.MarcaAgua {
+    background-color: #fefcf5;
+    color: Gray;
+}
+
+.Capa1 {
+    background-color: #f0f0f0;
+    position: absolute;
+    border-radius: 15px;
+    color: white;
+    width: 401px;
+    height: 339px;
+    padding: 0;
+    -moz-box-shadow: 0 0 5px 5px #888;
+    -webkit-box-shadow: 0 0 5px 5px#888;
+    box-shadow: 0 0 5px 5px #888;
+    /*nos posicionamos en el centro del navegador*/
+    top: 50%;
+    left: 50%;
+    /* Restamos la mitad de la altura del objeto con un margin-top */
+    margin-top: -169.5px;
+    margin-left: -200.5px;
+    margin-right: auto;
+    margin-bottom: 0;
+}
+
+#titulologin {
+    background-color: #929292;
+    font-weight: bold;
+    font-size: 3em;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: center;
+    height: 39px;
+    line-height: 39px;
+    border-radius: 14px 14px 0 0;
+}
+
+#texto {
+    color: #929292;
+    padding: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#Capa2 {
+    margin: 0 auto;
+    width: 227px;
+    height: 131px;
+}
+
+#Capa2 input{
+    font-size: 15px;
+    height: 27px;
+    width: 218px;
+}
+
+#BotonPantalla {
+    margin: 0 auto;
+    width: 143px;
+}
+
+.botonimagen{
+    font-weight: bold;
+    height: 30px !important;
+    width: 144px !important;
+    border-radius: 5px; 
+}
+
+.MenuVinculos {
+    text-align:center;
+}
+
+.MensajesPantalla{
+    color: #CC3300;
+    float: left;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+
+#logo{
+    background: url("../Img/Nombre.png") no-repeat;
+	width: 107px;
+    height: 23px;
+    margin: 0;
+    position: relative;
+    left: 200px;
+    top: 20px;
+}

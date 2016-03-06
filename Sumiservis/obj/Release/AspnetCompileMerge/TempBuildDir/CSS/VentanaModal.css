@@ -1,0 +1,25 @@
+﻿.modalbackground 
+{
+    background-color:Gray;
+    opacity: 0.5;
+    filter:Alpha(opacity=50);
+}
+ 
+#Container_pnl{
+	border-color: activeborder;
+    border-style: solid;
+    border-width: 2px;
+    left: 524px;
+    position: fixed;
+    top: 260.5px;
+    z-index: 100001;
+}
+
+.modalpopup {
+    background-color: #FFFFFF;
+    padding: 2em;
+}
+
+#Container_lblMdlPop{
+	font-size: 1.1em;
+}
