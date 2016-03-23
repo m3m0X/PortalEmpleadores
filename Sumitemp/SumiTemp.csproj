@@ -46,6 +46,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\AjaxMin.dll</HintPath>
     </Reference>
+    <Reference Include="ClosedXML, Version=0.76.0.0, Culture=neutral, PublicKeyToken=fd1eb21b62ae805b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>dll\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="Excel.4.5">
       <HintPath>C:\Users\Mono\Downloads\output\Excel.4.5.dll</HintPath>
     </Reference>
@@ -91,6 +99,9 @@
     <Content Include="CSS\normalize.css" />
     <Content Include="CSS\VentanaModal.css" />
     <Content Include="CSS\main_style.css" />
+    <Content Include="dll\ClosedXML.dll" />
+    <Content Include="dll\ClosedXML.XML" />
+    <Content Include="dll\DocumentFormat.OpenXml.dll" />
     <Content Include="Html\SumiTemp.html" />
     <Content Include="Img\excel.gif" />
     <Content Include="Img\Firma.png" />
