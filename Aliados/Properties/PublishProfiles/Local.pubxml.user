@@ -10,10 +10,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AjaxControlToolkit.dll">
-      <publishTime>02/17/2014 13:47:36</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="bin/AjaxMin.dll">
-      <publishTime>02/17/2014 13:47:36</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
       <publishTime>05/09/2014 06:13:22</publishTime>
@@ -23,6 +23,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="bin/ar/AjaxControlToolkit.resources.dll">
       <publishTime>02/17/2014 13:47:35</publishTime>
+    </File>
+    <File Include="bin/ClosedXML.dll">
+      <publishTime>03/22/2016 20:08:44</publishTime>
     </File>
     <File Include="bin/cs/AjaxControlToolkit.resources.dll">
       <publishTime>02/17/2014 13:47:35</publishTime>
@@ -37,7 +40,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>10/05/2013 04:09:56</publishTime>
     </File>
     <File Include="bin/Excel.4.5.dll">
-      <publishTime>01/30/2014 07:10:44</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="bin/fr/AjaxControlToolkit.resources.dll">
       <publishTime>02/17/2014 13:47:36</publishTime>
@@ -49,16 +52,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/17/2014 13:47:36</publishTime>
     </File>
     <File Include="bin/HtmlAgilityPack.dll">
-      <publishTime>05/09/2014 01:40:30</publishTime>
+      <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
     <File Include="bin/ICSharpCode.SharpZipLib.dll">
-      <publishTime>01/02/2014 08:05:23</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="bin/it/AjaxControlToolkit.resources.dll">
       <publishTime>02/17/2014 13:47:36</publishTime>
     </File>
     <File Include="bin/itextsharp.dll">
-      <publishTime>05/15/2014 18:39:54</publishTime>
+      <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
     <File Include="bin/ja/AjaxControlToolkit.resources.dll">
       <publishTime>02/17/2014 13:47:36</publishTime>
@@ -73,7 +76,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/17/2014 13:47:35</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
-      <publishTime>04/20/2014 21:03:00</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="bin/nl/AjaxControlToolkit.resources.dll">
       <publishTime>02/17/2014 13:47:36</publishTime>
@@ -82,7 +85,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/17/2014 13:47:36</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>04/27/2015 22:21:36</publishTime>
+      <publishTime>03/22/2016 20:12:03</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>02/17/2014 13:47:36</publishTime>
@@ -100,10 +103,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/17/2014 13:47:36</publishTime>
     </File>
     <File Include="CSS/cerlaboral.css">
-      <publishTime>05/21/2014 17:59:28</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="CSS/CSSCallapsePanel.css">
-      <publishTime>04/29/2014 00:23:10</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="CSS/CSSConCliente.css">
       <publishTime>04/29/2014 00:23:10</publishTime>
@@ -112,37 +115,37 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/03/2014 16:26:08</publishTime>
     </File>
     <File Include="CSS/CSSPrincipal.css">
-      <publishTime>04/29/2014 00:23:10</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="CSS/font.css">
-      <publishTime>04/29/2014 00:23:10</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="CSS/Loading.css">
-      <publishTime>05/21/2014 17:59:28</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="CSS/login.css">
-      <publishTime>05/05/2014 00:45:46</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="CSS/main_style.css">
-      <publishTime>04/07/2015 00:07:23</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="CSS/normalize.css">
-      <publishTime>04/29/2014 00:23:10</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="CSS/VentanaModal.css">
-      <publishTime>05/04/2014 22:01:08</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="DataSet1.xsc">
-      <publishTime>03/26/2015 00:38:12</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="DataSet1.xss">
-      <publishTime>03/26/2015 00:38:13</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="DataSet2.xsc">
-      <publishTime>04/06/2015 22:57:06</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="DataSet2.xss">
-      <publishTime>04/06/2015 22:57:06</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Estilos/SumiServis/CSS/login_style.css">
       <publishTime>04/29/2014 00:22:24</publishTime>
@@ -187,79 +190,85 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/21/2014 21:05:24</publishTime>
     </File>
     <File Include="fonts/icomoon.eot">
-      <publishTime>04/21/2014 21:05:26</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="fonts/icomoon.svg">
-      <publishTime>04/21/2014 21:05:26</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="fonts/icomoon.ttf">
-      <publishTime>04/21/2014 21:05:26</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="fonts/icomoon.woff">
-      <publishTime>04/21/2014 21:05:26</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Global.asax">
-      <publishTime>04/03/2014 16:21:38</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Html/Aliados.html">
-      <publishTime>12/30/2014 16:05:02</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/Aliados.jpg">
-      <publishTime>05/21/2014 17:59:46</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/Bienvenido SURA Aliados.JPG">
       <publishTime>06/30/2014 09:38:12</publishTime>
     </File>
     <File Include="Img/excel.gif">
-      <publishTime>12/01/2014 14:19:12</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/Firma.png">
-      <publishTime>05/21/2014 18:08:40</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/fondo_body.jpg">
-      <publishTime>04/29/2014 00:22:44</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/Footer.png">
       <publishTime>05/21/2014 18:35:47</publishTime>
     </File>
     <File Include="Img/loader.gif">
-      <publishTime>05/21/2014 00:13:04</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/loader_Red.gif">
-      <publishTime>05/21/2014 00:13:04</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/Logo.png">
-      <publishTime>04/10/2015 23:16:40</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/Logo_Aliados.jpg">
-      <publishTime>05/09/2014 06:03:38</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/Nombre.png">
-      <publishTime>05/04/2014 20:35:04</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/pdf.gif">
-      <publishTime>04/29/2014 00:22:44</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Img/printButton.png">
-      <publishTime>05/09/2014 00:35:32</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Js/funciones.js">
-      <publishTime>04/13/2015 22:28:19</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
+    </File>
+    <File Include="lib/ClosedXML.dll">
+      <publishTime>03/22/2016 20:08:44</publishTime>
+    </File>
+    <File Include="lib/DocumentFormat.OpenXml.dll">
+      <publishTime>03/22/2016 20:08:44</publishTime>
     </File>
     <File Include="login.aspx">
-      <publishTime>04/13/2015 22:29:31</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>05/15/2014 18:39:56</publishTime>
+      <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
     <File Include="Portal/Actualizadatos.aspx">
-      <publishTime>09/22/2014 23:05:16</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/BusquedaRetencion.aspx">
-      <publishTime>04/13/2015 22:28:55</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/CambioContrasena.aspx">
-      <publishTime>04/13/2015 22:28:55</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/CargueArchivos.aspx">
       <publishTime>05/21/2014 05:25:04</publishTime>
@@ -271,61 +280,61 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/16/2014 20:53:54</publishTime>
     </File>
     <File Include="Portal/Certificado.aspx">
-      <publishTime>05/20/2014 23:58:02</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/Cesantias.aspx">
-      <publishTime>04/13/2015 22:28:55</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/ComprobanteNomina.aspx">
-      <publishTime>04/13/2015 22:28:55</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/Comprobantes.aspx">
-      <publishTime>05/13/2014 13:55:14</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/Contactenos.aspx">
-      <publishTime>10/01/2014 23:07:36</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/default.aspx">
       <publishTime>04/25/2014 08:28:24</publishTime>
     </File>
     <File Include="Portal/EmpleadosActivos.aspx">
-      <publishTime>03/30/2015 22:17:51</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/EmpleadosInactivos.aspx">
-      <publishTime>01/06/2015 10:33:18</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/EstadoFondo.aspx">
-      <publishTime>04/13/2015 22:28:55</publishTime>
+      <publishTime>03/06/2016 14:56:40</publishTime>
     </File>
     <File Include="Portal/index.aspx">
-      <publishTime>11/24/2014 21:37:32</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Portal/IngresoRetencion.aspx">
       <publishTime>12/22/2014 15:59:22</publishTime>
     </File>
     <File Include="Portal/Laboral.aspx">
-      <publishTime>04/13/2015 22:28:55</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Portal/login.aspx">
       <publishTime>04/25/2014 11:12:59</publishTime>
     </File>
     <File Include="Portal/ModificarDatos.aspx">
-      <publishTime>04/13/2015 22:28:55</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Portal/ModificarTercero.aspx">
-      <publishTime>04/27/2015 21:28:57</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Portal/Nomina.aspx">
-      <publishTime>12/29/2014 16:57:04</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Portal/PaginaMaestra.Master">
-      <publishTime>04/07/2015 00:09:00</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Portal/PrimeraContrasena.aspx">
-      <publishTime>05/15/2014 16:38:02</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Portal/Principal.aspx">
-      <publishTime>11/24/2014 21:42:30</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Portal/prueba.aspx">
       <publishTime>04/29/2014 12:18:36</publishTime>
@@ -334,10 +343,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/05/2014 12:06:38</publishTime>
     </File>
     <File Include="Portal/Retenciones.aspx">
-      <publishTime>03/23/2015 20:40:40</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="Portal/Segsocial.aspx">
-      <publishTime>04/13/2015 22:28:56</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
       <publishTime>05/09/2014 06:13:19</publishTime>
@@ -346,7 +355,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/29/2014 14:13:00</publishTime>
     </File>
     <File Include="RecuperarContrasena.aspx">
-      <publishTime>04/14/2015 23:13:57</publishTime>
+      <publishTime>03/06/2016 14:56:41</publishTime>
     </File>
     <File Include="RepositorioPDF/Aliados/Cesantias/123.pdf">
       <publishTime>04/30/2014 16:01:05</publishTime>
@@ -394,7 +403,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/30/2014 16:00:54</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/14/2015 23:22:54</publishTime>
+      <publishTime>03/22/2016 20:12:04</publishTime>
     </File>
   </ItemGroup>
 </Project>
