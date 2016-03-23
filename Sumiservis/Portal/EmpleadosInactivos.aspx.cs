@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ClosedXML.Excel;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -109,32 +110,31 @@ namespace PortalTrabajadores.Portal
                             filename = "IngresosyRetiros.xls";
                         }
                         
-                        System.IO.StringWriter tw = new System.IO.StringWriter();
-                        System.Web.UI.HtmlTextWriter hw = new System.Web.UI.HtmlTextWriter(tw);
-                        DataGrid dgGrid = new DataGrid();
-                        dgGrid.DataSource = dtDataTable;
-                        dgGrid.DataBind();
+                        // Create the workbook
+                        XLWorkbook workbook = new XLWorkbook();
+                        workbook.Worksheets.Add(dtDataTable, "Nomina");
 
-                        //Get the HTML for the control.
-                        dgGrid.RenderControl(hw);
-                        //Write the HTML back to the browser.
-                        //Response.ContentType = application/vnd.ms-excel;
-                        Response.ContentType = "application/vnd.ms-excel";
-                        Response.AppendHeader("Content-Disposition", "attachment; filename=" + filename + "");
-                        this.EnableViewState = false;
-                        Response.Write(tw.ToString());
-                        Response.Flush();
-                        Response.Close();
+                        // Prepare the response
+                        HttpResponse httpResponse = Response;
+                        httpResponse.Clear();
+                        httpResponse.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                        httpResponse.AddHeader("content-disposition", "attachment;filename=" + filename + "");
+
+                        // Flush the workbook to the Response.OutputStream
+                        using (MemoryStream memoryStream = new MemoryStream())
+                        {
+                            workbook.SaveAs(memoryStream);
+                            memoryStream.WriteTo(httpResponse.OutputStream);
+                            memoryStream.Close();
+                        }
+
+                        httpResponse.End();
                     }
                 }
             }
             catch (Exception E)
             {
                 MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
-            }
-            finally
-            {
-                Response.ClearContent();
             }
         }
         #endregion
