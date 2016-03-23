@@ -117,12 +117,10 @@ D:\Sumi\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.dll
 D:\Sumi\PortalEmpleadores\Aliados\bin\itextsharp.dll
 D:\Sumi\PortalEmpleadores\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll
 D:\Sumi\PortalEmpleadores\Aliados\bin\ClosedXML.xml
-D:\Sumi\PortalEmpleadores\Aliados\bin\Excel.4.5.pdb
 D:\Sumi\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.pdb
 D:\Sumi\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.xml
 D:\Sumi\PortalEmpleadores\Aliados\bin\itextsharp.xml
 D:\Sumi\PortalEmpleadores\Aliados\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
-D:\Sumi\PortalEmpleadores\Aliados\obj\Debug\Aliados.csprojResolveAssemblyReference.cache
 D:\Sumi\PortalEmpleadores\Aliados\obj\Debug\RdlCompile.cache
 D:\Sumi\PortalEmpleadores\Aliados\obj\Debug\RdlCompile.compiled
 D:\Sumi\PortalEmpleadores\Aliados\obj\Debug\PortalTrabajadores.dll

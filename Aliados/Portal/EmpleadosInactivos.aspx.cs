@@ -100,20 +100,20 @@ namespace PortalTrabajadores.Portal
 
                         if (ddlEstado.SelectedValue == "1")
                         {
-                            filename = "Ingresos.xls";
+                            filename = "Ingresos.xlsx";
                         }
                         else if (ddlEstado.SelectedValue == "2")
                         {
-                            filename = "Retiros.xls";
+                            filename = "Retiros.xlsx";
                         }
                         else if (ddlEstado.SelectedValue == "3")
                         {
-                            filename = "IngresosyRetiros.xls";
+                            filename = "IngresosyRetiros.xlsx";
                         }
                         
                         // Create the workbook
                         XLWorkbook workbook = new XLWorkbook();
-                        workbook.Worksheets.Add(dtDataTable, "Nomina");
+                        workbook.Worksheets.Add(dtDataTable, "Sheet 1");
 
                         // Prepare the response
                         HttpResponse httpResponse = Response;

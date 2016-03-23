@@ -92,7 +92,7 @@ namespace PortalTrabajadores.Portal
                     {
                         // Create the workbook
                         XLWorkbook workbook = new XLWorkbook();
-                        workbook.Worksheets.Add(dtDataTable, "Nomina");
+                        workbook.Worksheets.Add(dtDataTable, "EmpleadosActivos");
 
                         // Prepare the response
                         HttpResponse httpResponse = Response;
