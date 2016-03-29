@@ -13,6 +13,7 @@ namespace PortalTrabajadores.Portal
     public partial class login : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         MySqlConnection MySqlCn;
 
         #region Definicion de los Metodos de la Clase
@@ -37,7 +38,7 @@ namespace PortalTrabajadores.Portal
             Page.Validate();
             try
             {
-                MySqlCommand scSqlCommand = new MySqlCommand("SELECT Nit_Tercero, Id_Rol, Razon_social FROM trabajadores.terceros JOIN trabajadores.companias as a ON Nit_Tercero = a.Terceros_Nit_Tercero where Nit_Tercero = '" + this.txtuser.Text + "' and Contrasena_tercero = '" + this.txtPass.Text + "' and activo_tercero = '1' and Activo_Compania = 1 and Empresas_idEmpresa = 'SS' limit 1", MySqlCn);
+                MySqlCommand scSqlCommand = new MySqlCommand("SELECT Nit_Tercero, Id_Rol, Razon_social FROM " + bd2 + ".terceros JOIN " + bd2 + ".companias as a ON Nit_Tercero = a.Terceros_Nit_Tercero where Nit_Tercero = '" + this.txtuser.Text + "' and Contrasena_tercero = '" + this.txtPass.Text + "' and activo_tercero = '1' and Activo_Compania = 1 and Empresas_idEmpresa = 'SS' limit 1", MySqlCn);
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                 DataSet dsDataSet = new DataSet();
                 DataTable dtDataTable = null;

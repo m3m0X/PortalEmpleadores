@@ -14,6 +14,7 @@ namespace PortalTrabajadores.Portal
     public partial class Estadocesantias : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         string ruta = ConfigurationManager.AppSettings["RepositorioPDF"].ToString();
         MySqlConnection MySqlCn;
 
@@ -83,16 +84,16 @@ namespace PortalTrabajadores.Portal
         {
             SqlDataSource1.SelectCommand =  "SELECT idCesantia, anio_cesantia, Mes_Cesantia, ruta_archivo_cesantia as ruta, " +
                                             "nombre_archivo_cesantia as nombre " +
-                                            "FROM trabajadores.cesantias, " +
-                                            "trabajadores.empleados, " +
-                                            "trabajadores.companias " +
+                                            "FROM " + bd2 + ".cesantias, " +
+                                            bd2 + ".empleados, " +
+                                            bd2 + ".companias " +
                                             "where Empleados_Id_Empleado = " + Session["cedula"].ToString() + " and " +
-                                            "trabajadores.companias.idcompania = '" + Session["proyecto"].ToString() + "' and " +
+                                            bd2 + ".companias.idcompania = '" + Session["proyecto"].ToString() + "' and " +
                                             "Empleados_idEmpresa = 'SS' and " +
-                                            "trabajadores.companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " and " +
-                                            "trabajadores.cesantias.empleados_Id_Empleado = trabajadores.empleados.id_Empleado and " +
-                                            "trabajadores.companias.idcompania = trabajadores.empleados.companias_idcompania and " +
-                                            "trabajadores.companias.Empresas_idEmpresa = trabajadores.cesantias.Empleados_idEmpresa LIMIT 1"; 
+                                            bd2 + ".companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " and " +
+                                            bd2 + ".cesantias.empleados_Id_Empleado = " + bd2 + ".empleados.id_Empleado and " +
+                                            bd2 + ".companias.idcompania = " + bd2 + ".empleados.companias_idcompania and " +
+                                            bd2 + ".companias.Empresas_idEmpresa = " + bd2 + ".cesantias.Empleados_idEmpresa LIMIT 1"; 
 
             try
             {
@@ -162,16 +163,16 @@ namespace PortalTrabajadores.Portal
                 MySqlCn = new MySqlConnection(Cn);
                 string consulta = "SELECT idCesantia, anio_cesantia, Mes_Cesantia, ruta_archivo_cesantia as ruta, " +
                                                             "nombre_archivo_cesantia as nombre " +
-                                                            "FROM trabajadores.cesantias, " +
-                                                            "trabajadores.empleados, " +
-                                                            "trabajadores.companias " +
+                                                            "FROM " + bd2 + ".cesantias, " +
+                                                            bd2 + ".empleados, " +
+                                                            bd2 + ".companias " +
                                                             "where Empleados_Id_Empleado = " + Session["cedula"].ToString() + " and " +
-                                                            "trabajadores.companias.idcompania = '" + Session["proyecto"].ToString() + "' and " +
+                                                            "" + bd2 + ".companias.idcompania = '" + Session["proyecto"].ToString() + "' and " +
                                                             "Empleados_idEmpresa = 'SS' and " +
-                                                            "trabajadores.companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " and " +
-                                                            "trabajadores.cesantias.empleados_Id_Empleado = trabajadores.empleados.id_Empleado and " +
-                                                            "trabajadores.companias.idcompania = trabajadores.empleados.companias_idcompania and " +
-                                                            "trabajadores.companias.Empresas_idEmpresa = trabajadores.cesantias.Empleados_idEmpresa LIMIT 1;";
+                                                            bd2 + ".companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " and " +
+                                                            bd2 + ".cesantias.empleados_Id_Empleado = " + bd2 + ".empleados.id_Empleado and " +
+                                                            bd2 + ".companias.idcompania = " + bd2 + ".empleados.companias_idcompania and " +
+                                                            bd2 + ".companias.Empresas_idEmpresa = " + bd2 + ".cesantias.Empleados_idEmpresa LIMIT 1;";
 
                 MySqlCommand scSqlCommand = new MySqlCommand(consulta, MySqlCn);
 
