@@ -15,6 +15,7 @@ namespace PortalTrabajadores.Portal
     public partial class EmpleadosActivos : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         MySqlConnection MySqlCn;
 
         #region Definicion de los Metodos de la Clase
@@ -64,22 +65,22 @@ namespace PortalTrabajadores.Portal
                     string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
 
                     MySqlCn = new MySqlConnection(Cn);
-                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT trabajadores.empleados.Id_Empleado AS Cedula, " +
-                                                                    "trabajadores.empleados.Nombres_Completos_Empleado As Nombre, " +
-                                                                    "trabajadores.empleados.Sexo_Empleado As Sexo, " +
-                                                                    "trabajadores.empleados.Nombre_Cargo_Empleado As Cargo, " +
-                                                                    "trabajadores.empleados.Fecha_nacimiento_Empleado AS 'Fecha de Nacimiento', " +
-                                                                    "trabajadores.empleados.Correo_Empleado As Correo, " +
-                                                                    "trabajadores.empleados.Fecha_Ingreso_Empleado As Ingreso, " +
-                                                                    "trabajadores.empleados.Fecha_terminacion_Empleado As Terminacion, " +
-                                                                    "trabajadores.empleados.Outsourcing As 'Centro de costos' " +
-                                                                    "FROM trabajadores.empleados " +
-                                                                    "JOIN trabajadores.companias ON " +
-                                                                    "trabajadores.empleados.companias_idcompania = trabajadores.companias.idCompania AND " +
-                                                                    "trabajadores.empleados.Companias_idEmpresa = trabajadores.companias.Empresas_idEmpresa " +
+                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT " + bd2 + ".empleados.Id_Empleado AS Cedula, " +
+                                                                    bd2 + ".empleados.Nombres_Completos_Empleado As Nombre, " +
+                                                                    bd2 + ".empleados.Sexo_Empleado As Sexo, " +
+                                                                    bd2 + ".empleados.Nombre_Cargo_Empleado As Cargo, " +
+                                                                    bd2 + ".empleados.Fecha_nacimiento_Empleado AS 'Fecha de Nacimiento', " +
+                                                                    bd2 + ".empleados.Correo_Empleado As Correo, " +
+                                                                    bd2 + ".empleados.Fecha_Ingreso_Empleado As Ingreso, " +
+                                                                    bd2 + ".empleados.Fecha_terminacion_Empleado As Terminacion, " +
+                                                                    bd2 + ".empleados.Outsourcing As 'Centro de costos' " +
+                                                                    "FROM " + bd2 + ".empleados " +
+                                                                    "JOIN " + bd2 + ".companias ON " +
+                                                                    bd2 + ".empleados.companias_idcompania = " + bd2 + ".companias.idCompania AND " +
+                                                                    bd2 + ".empleados.Companias_idEmpresa = " + bd2 + ".companias.Empresas_idEmpresa " +
                                                                     "where Companias_idEmpresa = 'AE' AND  " +
-                                                                    "trabajadores.companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
-                                                                    "trabajadores.companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " +
+                                                                    bd2 + ".companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
+                                                                    bd2 + ".companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " +
                                                                     "(DATE_FORMAT(fecha_terminacion_Empleado,'%Y%m%d') > DATE_FORMAT('" + DateTime.Now.ToShortDateString() +
                                                                     "','%Y%m%d') OR Estado_Contrato_Empleado = 'A')", MySqlCn);
 

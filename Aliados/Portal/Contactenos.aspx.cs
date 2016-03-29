@@ -15,6 +15,7 @@ namespace PortalTrabajadores.Portal
     public partial class Contactenos : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
         MySqlConnection MySqlCn;
 
         #region Definicion de los Metodos de la Clase
@@ -35,7 +36,7 @@ namespace PortalTrabajadores.Portal
                 if (!IsPostBack)
                 {
                     LlenadoDropBox utilLlenar = new LlenadoDropBox();
-                    string command = "SELECT idTiposolicitud, Nombre_TipoSolicitud FROM basica_trabajador.TipoSolicitudes where TipoPortal = 'E' and Activo = 1 order by orden";
+                    string command = "SELECT idTiposolicitud, Nombre_TipoSolicitud FROM " + bd1 + ".TipoSolicitudes where TipoPortal = 'E' and Activo = 1 order by orden";
                     DropListTipoSol.Items.Clear();
                     DropListTipoSol.DataSource = utilLlenar.LoadTipoID(command);
                     DropListTipoSol.DataTextField = "Nombre_TipoSolicitud";

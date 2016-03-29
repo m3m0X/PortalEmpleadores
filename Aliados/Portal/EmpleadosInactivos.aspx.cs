@@ -15,6 +15,7 @@ namespace PortalTrabajadores.Portal
     public partial class EmpleadosInactivos : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         MySqlConnection MySqlCn;
 
         #region Definicion de los Metodos de la Clase
@@ -150,63 +151,63 @@ namespace PortalTrabajadores.Portal
                 if (ddlEstado.SelectedValue == "1") 
                 { 
                     /*Ingresos*/
-                    Session["ConsultaInactivos"] = "SELECT trabajadores.empleados.Id_Empleado AS Cedula, " +
-                                                   "trabajadores.empleados.Nombres_Completos_Empleado As Nombre, " +
-                                                   "trabajadores.empleados.Sexo_Empleado As Sexo, " +
-                                                   "trabajadores.empleados.Nombre_Cargo_Empleado As Cargo, " +
-                                                   "trabajadores.empleados.Correo_Empleado As Correo, " +
-                                                   "trabajadores.empleados.Fecha_Ingreso_Empleado As Ingreso, " +
-                                                   "trabajadores.empleados.Fecha_terminacion_Empleado As Terminacion, " +
-                                                   "trabajadores.empleados.Outsourcing As 'Centro de costos' " +
-                                                   "FROM trabajadores.empleados " + 
-                                                   "JOIN trabajadores.companias ON " +
-                                                   "trabajadores.empleados.companias_idcompania = trabajadores.companias.idCompania AND " +
-                                                   "trabajadores.empleados.Companias_idEmpresa = trabajadores.companias.Empresas_idEmpresa " +
+                    Session["ConsultaInactivos"] = "SELECT " + bd2 + ".empleados.Id_Empleado AS Cedula, " +
+                                                   bd2 + ".empleados.Nombres_Completos_Empleado As Nombre, " +
+                                                   bd2 + ".empleados.Sexo_Empleado As Sexo, " +
+                                                   bd2 + ".empleados.Nombre_Cargo_Empleado As Cargo, " +
+                                                   bd2 + ".empleados.Correo_Empleado As Correo, " +
+                                                   bd2 + ".empleados.Fecha_Ingreso_Empleado As Ingreso, " +
+                                                   bd2 + ".empleados.Fecha_terminacion_Empleado As Terminacion, " +
+                                                   bd2 + ".empleados.Outsourcing As 'Centro de costos' " +
+                                                   "FROM " + bd2 + ".empleados " +
+                                                   "JOIN " + bd2 + ".companias ON " +
+                                                   bd2 + ".empleados.companias_idcompania = " + bd2 + ".companias.idCompania AND " +
+                                                   bd2 + ".empleados.Companias_idEmpresa = " + bd2 + ".companias.Empresas_idEmpresa " +
                                                    "where Companias_idEmpresa = 'AE' AND  " +
-                                                   "trabajadores.companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
-												   "trabajadores.companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " + 
+                                                   bd2 + ".companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
+                                                   bd2 + ".companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " + 
                                                    "year(Fecha_Ingreso_Empleado) = " + txtAnio.Text + " and " +
                                                    "month(Fecha_Ingreso_Empleado) = " + ddlMes.SelectedValue;
                 }
                 else if (ddlEstado.SelectedValue == "2")
                 {
                     /*Retiros*/
-                    Session["ConsultaInactivos"] = "SELECT trabajadores.empleados.Id_Empleado AS Cedula, " +
-                                                   "trabajadores.empleados.Nombres_Completos_Empleado As Nombre, " +
-                                                   "trabajadores.empleados.Sexo_Empleado As Sexo, " +
-                                                   "trabajadores.empleados.Nombre_Cargo_Empleado As Cargo, " +
-                                                   "trabajadores.empleados.Correo_Empleado As Correo, " +
-                                                   "trabajadores.empleados.Fecha_Ingreso_Empleado As Ingreso, " +
-                                                   "trabajadores.empleados.Fecha_terminacion_Empleado As Terminacion, " +
-                                                   "trabajadores.empleados.Outsourcing As 'Centro de costos' " +
-                                                   "FROM trabajadores.empleados " + 
-                                                   "JOIN trabajadores.companias ON " +
-                                                   "trabajadores.empleados.companias_idcompania = trabajadores.companias.idCompania AND " +
-                                                   "trabajadores.empleados.Companias_idEmpresa = trabajadores.companias.Empresas_idEmpresa " +
+                    Session["ConsultaInactivos"] = "SELECT " + bd2 + ".empleados.Id_Empleado AS Cedula, " +
+                                                   bd2 + ".empleados.Nombres_Completos_Empleado As Nombre, " +
+                                                   bd2 + ".empleados.Sexo_Empleado As Sexo, " +
+                                                   bd2 + ".empleados.Nombre_Cargo_Empleado As Cargo, " +
+                                                   bd2 + ".empleados.Correo_Empleado As Correo, " +
+                                                   bd2 + ".empleados.Fecha_Ingreso_Empleado As Ingreso, " +
+                                                   bd2 + ".empleados.Fecha_terminacion_Empleado As Terminacion, " +
+                                                   bd2 + ".empleados.Outsourcing As 'Centro de costos' " +
+                                                   "FROM " + bd2 + ".empleados " +
+                                                   "JOIN " + bd2 + ".companias ON " +
+                                                   bd2 + ".empleados.companias_idcompania = " + bd2 + ".companias.idCompania AND " +
+                                                   bd2 + ".empleados.Companias_idEmpresa = " + bd2 + ".companias.Empresas_idEmpresa " +
                                                    "where Companias_idEmpresa = 'AE' AND  " +
-                                                   "trabajadores.companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
-												   "trabajadores.companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " + 
+                                                   bd2 + ".companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
+                                                   bd2 + ".companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " + 
                                                    "year(Fecha_terminacion_Empleado) = " + txtAnio.Text + " and " +
                                                    "month(Fecha_terminacion_Empleado) = " + ddlMes.SelectedValue;
                 }
                 if (ddlEstado.SelectedValue == "3")
                 {
                     /*Ingresos y Retiros*/
-                    Session["ConsultaInactivos"] = "SELECT trabajadores.empleados.Id_Empleado AS Cedula, " +
-                                                   "trabajadores.empleados.Nombres_Completos_Empleado As Nombre, " +
-                                                   "trabajadores.empleados.Sexo_Empleado As Sexo, " +
-                                                   "trabajadores.empleados.Nombre_Cargo_Empleado As Cargo, " +
-                                                   "trabajadores.empleados.Correo_Empleado As Correo, " +
-                                                   "trabajadores.empleados.Fecha_Ingreso_Empleado As Ingreso, " +
-                                                   "trabajadores.empleados.Fecha_terminacion_Empleado As Terminacion, " +
-                                                   "trabajadores.empleados.Outsourcing As 'Centro de costos' " +
-                                                   "FROM trabajadores.empleados " + 
-                                                   "JOIN trabajadores.companias ON " +
-                                                   "trabajadores.empleados.companias_idcompania = trabajadores.companias.idCompania AND " +
-                                                   "trabajadores.empleados.Companias_idEmpresa = trabajadores.companias.Empresas_idEmpresa " +
+                    Session["ConsultaInactivos"] = "SELECT " + bd2 + ".empleados.Id_Empleado AS Cedula, " +
+                                                   bd2 + ".empleados.Nombres_Completos_Empleado As Nombre, " +
+                                                   bd2 + ".empleados.Sexo_Empleado As Sexo, " +
+                                                   bd2 + ".empleados.Nombre_Cargo_Empleado As Cargo, " +
+                                                   bd2 + ".empleados.Correo_Empleado As Correo, " +
+                                                   bd2 + ".empleados.Fecha_Ingreso_Empleado As Ingreso, " +
+                                                   bd2 + ".empleados.Fecha_terminacion_Empleado As Terminacion, " +
+                                                   bd2 + ".empleados.Outsourcing As 'Centro de costos' " +
+                                                   "FROM " + bd2 + ".empleados " +
+                                                   "JOIN " + bd2 + ".companias ON " +
+                                                   bd2 + ".empleados.companias_idcompania = " + bd2 + ".companias.idCompania AND " +
+                                                   bd2 + ".empleados.Companias_idEmpresa = " + bd2 + ".companias.Empresas_idEmpresa " +
                                                    "where Companias_idEmpresa = 'AE' AND  " +
-                                                   "trabajadores.companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
-												   "trabajadores.companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " + 
+                                                   bd2 + ".companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
+                                                   bd2 + ".companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " + 
                                                    "(year(Fecha_Ingreso_Empleado) = " + txtAnio.Text + " OR " +
                                                    "year(Fecha_terminacion_Empleado) = " + txtAnio.Text + " ) AND" +
                                                    "(month(Fecha_Ingreso_Empleado) = " + ddlMes.SelectedValue + " OR " +

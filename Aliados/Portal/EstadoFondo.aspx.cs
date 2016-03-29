@@ -13,6 +13,7 @@ namespace PortalTrabajadores.Portal
     public partial class EstadoFondo : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         string ruta = ConfigurationManager.AppSettings["RepositorioPDF"].ToString();
         MySqlConnection MySqlCn;
 
@@ -67,10 +68,10 @@ namespace PortalTrabajadores.Portal
         {
             SqlDataSource1.SelectCommand =  "SELECT idfondo, anio_fondo, Mes_fondo, " +
                                             "ruta_archivo_fondo as ruta, nombre_archivo_fondo as nombre " +
-                                            "FROM trabajadores.fondo, trabajadores.empleados " +
+                                            "FROM " + bd2 + ".fondo, " + bd2 + ".empleados " +
                                             "where Empleados_Id_Empleado = " + Session["cedula"].ToString() + " and " +
-                                            "trabajadores.empleados.Companias_idCompania = '" + Session["proyecto"].ToString() + "' and " +
-                                            "trabajadores.fondo.Empleados_Id_Empleado = trabajadores.empleados.Id_Empleado LIMIT 1";
+                                            bd2 + ".empleados.Companias_idCompania = '" + Session["proyecto"].ToString() + "' and " +
+                                            bd2 + ".fondo.Empleados_Id_Empleado = " + bd2 + ".empleados.Id_Empleado LIMIT 1";
 
             try
             {
@@ -145,10 +146,10 @@ namespace PortalTrabajadores.Portal
                 MySqlCn = new MySqlConnection(Cn);
                 string consulta = "SELECT idfondo, anio_fondo, Mes_fondo, " +
                                                              "ruta_archivo_fondo as ruta, nombre_archivo_fondo as nombre " +
-                                                             "FROM trabajadores.fondo, trabajadores.empleados " +
+                                                             "FROM " + bd2 + ".fondo, " + bd2 + ".empleados " +
                                                              "where Empleados_Id_Empleado = " + Session["cedula"].ToString() + " and " +
-                                                             "trabajadores.empleados.Companias_idCompania = '" + Session["proyecto"].ToString() + "' and " +
-                                                             "trabajadores.fondo.Empleados_Id_Empleado = trabajadores.empleados.Id_Empleado LIMIT 1";
+                                                             bd2 + ".empleados.Companias_idCompania = '" + Session["proyecto"].ToString() + "' and " +
+                                                             bd2 + ".fondo.Empleados_Id_Empleado = " + bd2 + ".empleados.Id_Empleado LIMIT 1";
 
                 MySqlCommand scSqlCommand = new MySqlCommand(consulta, MySqlCn);
 

@@ -14,6 +14,8 @@ namespace PortalTrabajadores.Portal
     public partial class ModificarDatos : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         MySqlConnection MySqlCn;
 
         #region Definicion de los Metodos de la Clase
@@ -165,7 +167,7 @@ namespace PortalTrabajadores.Portal
             try
             {
                 MySqlCn = new MySqlConnection(Cn);
-                MySqlCommand comando = new MySqlCommand("SELECT idCiudades, Descripcion_Ciudades FROM basica_trabajador.ciudades ORDER BY Descripcion_Ciudades", MySqlCn);
+                MySqlCommand comando = new MySqlCommand("SELECT idCiudades, Descripcion_Ciudades FROM " + bd1 + ".ciudades ORDER BY Descripcion_Ciudades", MySqlCn);
                 MySqlDataAdapter da = new MySqlDataAdapter(comando);
                 DataSet dsDataSet = new DataSet();
                 DataTable dtDataTable = null;
@@ -274,7 +276,7 @@ namespace PortalTrabajadores.Portal
                 try
                 {
                     MySqlCn = new MySqlConnection(Cn);
-                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_Empleado FROM trabajadores.empleados where Id_Empleado = '" + Session["usuario"].ToString() + "'", MySqlCn);
+                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_Empleado FROM " + bd2 + ".empleados where Id_Empleado = '" + Session["usuario"].ToString() + "'", MySqlCn);
                     MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                     DataSet dsDataSet = new DataSet();
                     DataTable dtDataTable = null;

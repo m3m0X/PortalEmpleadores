@@ -13,6 +13,7 @@ namespace PortalTrabajadores.Portal
     public partial class index1 : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         MySqlConnection MySqlCn;
 
         #region Definicion de los Metodos de la Clase
@@ -34,7 +35,7 @@ namespace PortalTrabajadores.Portal
             {
                 if (!IsPostBack)
                 {
-                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_Activo FROM trabajadores.terceros where nit_tercero = '" + this.Session["usuario"].ToString() + "'", MySqlCn);
+                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_Activo FROM " + bd2 + ".terceros where nit_tercero = '" + this.Session["usuario"].ToString() + "'", MySqlCn);
                     MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                     DataSet dsDataSet = new DataSet();
                     DataTable dtDataTable = null;
@@ -54,7 +55,7 @@ namespace PortalTrabajadores.Portal
                             else
                             {
                                 LlenadoDropBox utilLlenar = new LlenadoDropBox();
-                                string command = "SELECT idCompania, Descripcion_compania FROM trabajadores.companias where Empresas_idEmpresa = 'AE' and activo_compania = 1 and Terceros_Nit_Tercero =" + Session["usuario"];
+                                string command = "SELECT idCompania, Descripcion_compania FROM " + bd2 + ".companias where Empresas_idEmpresa = 'AE' and activo_compania = 1 and Terceros_Nit_Tercero =" + Session["usuario"];
                                 DropListProyecto.Items.Clear();
                                 DropListProyecto.DataSource = utilLlenar.LoadTipoID(command);
                                 DropListProyecto.DataTextField = "Descripcion_compania";
