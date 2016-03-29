@@ -16,6 +16,7 @@ namespace PortalTrabajadores.Portal
     public partial class PaginaMaestra : System.Web.UI.MasterPage
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
+        string bd1 = ConfigurationManager.AppSettings["BD1"].ToString();
         MySqlConnection MySqlCn;
 
         #region Definicion de los Metodos de la Clase
@@ -121,7 +122,7 @@ namespace PortalTrabajadores.Portal
             if (valor)
             {
                 MySqlCn = new MySqlConnection(Cn);
-                MySqlCommand scSqlCommand = new MySqlCommand("SELECT idOption_Menu, descripcion, idparent_option_Menu, url FROM basica_trabajador.Options_Menu WHERE idEmpresa = 'ST' and TipoPortal = 'E'", MySqlCn);
+                MySqlCommand scSqlCommand = new MySqlCommand("SELECT idOption_Menu, descripcion, idparent_option_Menu, url FROM " + bd1 + ".Options_Menu WHERE idEmpresa = 'ST' and TipoPortal = 'E'", MySqlCn);
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                 DataSet dsDataSet = new DataSet();
                 DataTable dtDataTable = null;
@@ -136,7 +137,7 @@ namespace PortalTrabajadores.Portal
                         {
                             if (Convert.ToInt32(drDataRow[0]) == Convert.ToInt32(drDataRow[2]))
                             {
-                                MySqlCommand rolCommand = new MySqlCommand("SELECT Id_Menu FROM basica_trabajador.roles_menu WHERE Id_Rol = " + this.Session["rol"].ToString() + " AND Id_Menu = " + drDataRow[2], MySqlCn);
+                                MySqlCommand rolCommand = new MySqlCommand("SELECT Id_Menu FROM " + bd1 + ".roles_menu WHERE Id_Rol = " + this.Session["rol"].ToString() + " AND Id_Menu = " + drDataRow[2], MySqlCn);
                                 MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);
                                 DataSet rolDataSet = new DataSet();
                                 DataTable rolDataTable = null;
@@ -226,7 +227,7 @@ namespace PortalTrabajadores.Portal
         protected void bindMenuControl2()
         {
                 MySqlCn = new MySqlConnection(Cn);
-                MySqlCommand scSqlCommand = new MySqlCommand("SELECT idOption_Menu, descripcion, idparent_option_Menu, url FROM basica_trabajador.Options_Menu WHERE idEmpresa = 'ST' and TipoPortal = 'E' and idOption_Menu=104", MySqlCn);
+                MySqlCommand scSqlCommand = new MySqlCommand("SELECT idOption_Menu, descripcion, idparent_option_Menu, url FROM " + bd1 + ".Options_Menu WHERE idEmpresa = 'ST' and TipoPortal = 'E' and idOption_Menu=104", MySqlCn);
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                 DataSet dsDataSet = new DataSet();
                 DataTable dtDataTable = null;
@@ -241,7 +242,7 @@ namespace PortalTrabajadores.Portal
                         {
                             if (Convert.ToInt32(drDataRow[0]) == Convert.ToInt32(drDataRow[2]))
                             {
-                                MySqlCommand rolCommand = new MySqlCommand("SELECT Id_Menu FROM basica_trabajador.roles_menu WHERE Id_Rol = " + this.Session["rol"].ToString() + " AND Id_Menu = " + drDataRow[2], MySqlCn);
+                                MySqlCommand rolCommand = new MySqlCommand("SELECT Id_Menu FROM " + bd1 + ".roles_menu WHERE Id_Rol = " + this.Session["rol"].ToString() + " AND Id_Menu = " + drDataRow[2], MySqlCn);
                                 MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);
                                 DataSet rolDataSet = new DataSet();
                                 DataTable rolDataTable = null;

@@ -144,3 +144,17 @@ D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.cache
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.compiled
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.dll
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.pdb
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\bin\PortalTrabajadores.dll.config
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\bin\PortalTrabajadores.dll
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\bin\PortalTrabajadores.pdb
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\bin\ClosedXML.dll
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\bin\itextsharp.dll
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\bin\Microsoft.QualityTools.Testing.Fakes.dll
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\bin\ClosedXML.xml
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\bin\itextsharp.xml
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\obj\Debug\SumiTemp.csprojResolveAssemblyReference.cache
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.cache
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.compiled
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.dll
+D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.pdb

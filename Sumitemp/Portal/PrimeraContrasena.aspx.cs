@@ -13,6 +13,7 @@ namespace PortalTrabajadores.Portal
     public partial class PrimeraContrasena : System.Web.UI.Page
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         MySqlConnection MySqlCn;
 
         #region Definicion de los Metodos de la Clase
@@ -33,7 +34,7 @@ namespace PortalTrabajadores.Portal
         /* ****************************************************************************/
         protected void btnlogin_Click(object sender, EventArgs e)
         {
-            MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_tercero FROM trabajadores.terceros where Nit_Tercero = '" + Session["usuario"].ToString() + "'", MySqlCn);
+            MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_tercero FROM " + bd2 + ".terceros where Nit_Tercero = '" + Session["usuario"].ToString() + "'", MySqlCn);
             MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
             DataSet dsDataSet = new DataSet();
             DataTable dtDataTable = null;
@@ -48,7 +49,7 @@ namespace PortalTrabajadores.Portal
                 {
                     if (Contrasena != this.txtPass1.Text)
                     {
-                        MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE trabajadores.terceros SET Contrasena_Activo = 0, Contrasena_tercero = '" + this.txtPass1.Text + "' WHERE Nit_Tercero = '" + Session["usuario"].ToString() + "'", MySqlCn);
+                        MySqlCommand sqlCommand2 = new MySqlCommand("UPDATE " + bd2 + ".terceros SET Contrasena_Activo = 0, Contrasena_tercero = '" + this.txtPass1.Text + "' WHERE Nit_Tercero = '" + Session["usuario"].ToString() + "'", MySqlCn);
                         sqlCommand2.ExecuteNonQuery();
 
                         //redirecciona al usuario a la pagina principal de la encuesta si no la ha contestado

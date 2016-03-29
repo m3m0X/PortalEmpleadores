@@ -14,6 +14,7 @@ namespace PortalTrabajadores.Portal
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
         string ruta = ConfigurationManager.AppSettings["RepositorioPDF"].ToString();
+        string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         MySqlConnection MySqlCn;
 
         #region Definicion de los Metodos de la Clase
@@ -70,10 +71,10 @@ namespace PortalTrabajadores.Portal
         {
             SqlDataSource1.SelectCommand = "SELECT idParafiscal, Anio_Parafiscal, Mes_Parafiscal, Ruta_archivo_Parafiscal as ruta, " +
                                         "Nombre_archivo_parafiscal as nombre " +
-                                        "FROM trabajadores.parafiscales, trabajadores.empleados " +
+                                        "FROM " + bd2 + ".parafiscales, " + bd2 + ".empleados " +
                                         "where empleados_Id_Empleado =" + Session["cedula"].ToString() + " and " +
-                                        "trabajadores.empleados.Companias_idCompania = '" + Session["proyecto"].ToString() + "' and " +
-                                        "trabajadores.parafiscales.Empleados_Id_Empleado = trabajadores.empleados.Id_Empleado and " +
+                                        bd2 + ".empleados.Companias_idCompania = '" + Session["proyecto"].ToString() + "' and " +
+                                        bd2 + ".parafiscales.Empleados_Id_Empleado = " + bd2 + ".empleados.Id_Empleado and " +
                                         "Empleados_idEmpresa = 'ST' LIMIT 1;";
             try
             {
@@ -150,10 +151,10 @@ namespace PortalTrabajadores.Portal
                 MySqlCommand scSqlCommand;
                 string consulta = "SELECT idParafiscal, Anio_Parafiscal, Mes_Parafiscal, Ruta_archivo_Parafiscal as ruta, " +
                                                     "Nombre_archivo_parafiscal as nombre " +
-                                                    "FROM trabajadores.parafiscales, trabajadores.empleados " +
+                                                    "FROM " + bd2 + ".parafiscales, " + bd2 + ".empleados " +
                                                     "where empleados_Id_Empleado =" + Session["cedula"].ToString() + " and " +
-                                                    "trabajadores.empleados.Companias_idCompania = '" + Session["proyecto"].ToString() + "' and " +
-                                                    "trabajadores.parafiscales.Empleados_Id_Empleado = trabajadores.empleados.Id_Empleado and " +
+                                                    bd2 + ".empleados.Companias_idCompania = '" + Session["proyecto"].ToString() + "' and " +
+                                                    bd2 + ".parafiscales.Empleados_Id_Empleado = " + bd2 + ".empleados.Id_Empleado and " +
                                                     "Empleados_idEmpresa = 'ST' LIMIT 1";
 
                 scSqlCommand = new MySqlCommand(consulta, MySqlCn);
