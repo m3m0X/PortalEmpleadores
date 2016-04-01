@@ -103,6 +103,7 @@
     <Content Include="dll\ClosedXML.XML" />
     <Content Include="dll\DocumentFormat.OpenXml.dll" />
     <Content Include="Html\SumiTemp.html" />
+    <Content Include="Img\edit.gif" />
     <Content Include="Img\excel.gif" />
     <Content Include="Img\Firma.png" />
     <Content Include="Img\Footer.png" />
@@ -113,18 +114,23 @@
     <Content Include="Img\Nombre.png" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Img\fondo_body.jpg" />
+    <Content Include="Img\off.png" />
+    <Content Include="Img\on.png" />
     <Content Include="Img\pdf.gif" />
     <Content Include="Img\printButton.png" />
     <Content Include="Img\Sumitemp.jpg" />
     <Content Include="Js\funciones.js" />
     <Content Include="Portal\Actualizadatos.aspx" />
+    <Content Include="Portal\Areas.aspx" />
     <Content Include="Portal\BusquedaRetencion.aspx" />
     <Content Include="Portal\CambioContrasena.aspx" />
+    <Content Include="Portal\Cargos.aspx" />
     <Content Include="Portal\Certificado.aspx" />
     <Content Include="Portal\ComprobanteNomina.aspx" />
     <Content Include="Portal\Comprobantes.aspx" />
     <Content Include="Portal\Contactenos.aspx" />
     <Content Include="Portal\Cesantias.aspx" />
+    <Content Include="Portal\CrearEmpleado.aspx" />
     <Content Include="Portal\EmpleadosActivos.aspx" />
     <Content Include="Portal\EmpleadosInactivos.aspx" />
     <Content Include="Portal\EstadoFondo.aspx" />
@@ -213,6 +219,13 @@
     <Compile Include="Portal\Actualizadatos.aspx.designer.cs">
       <DependentUpon>Actualizadatos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Portal\Areas.aspx.cs">
+      <DependentUpon>Areas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Areas.aspx.designer.cs">
+      <DependentUpon>Areas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Portal\BusquedaRetencion.aspx.cs">
       <DependentUpon>BusquedaRetencion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -226,6 +239,13 @@
     </Compile>
     <Compile Include="Portal\CambioContrasena.aspx.designer.cs">
       <DependentUpon>CambioContrasena.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\Cargos.aspx.cs">
+      <DependentUpon>Cargos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Cargos.aspx.designer.cs">
+      <DependentUpon>Cargos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\Certificado.aspx.cs">
       <DependentUpon>Certificado.aspx</DependentUpon>
@@ -261,6 +281,13 @@
     </Compile>
     <Compile Include="Portal\Cesantias.aspx.designer.cs">
       <DependentUpon>Cesantias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\CrearEmpleado.aspx.cs">
+      <DependentUpon>CrearEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\CrearEmpleado.aspx.designer.cs">
+      <DependentUpon>CrearEmpleado.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\EmpleadosActivos.aspx.cs">
       <DependentUpon>EmpleadosActivos.aspx</DependentUpon>
