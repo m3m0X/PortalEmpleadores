@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -111,6 +112,15 @@ namespace PortalTrabajadores.Portal
 
                     if (datos.Rows.Count > 0)
                     {
+                        foreach (DataRow row in datos.Rows)
+                        {
+                            for (int i = 0; i < datos.Columns.Count; i++)
+                            {
+                                if (datos.Columns[i].DataType == typeof(string))
+                                    row[i] = ReplaceHexadecimalSymbols((string)row[i]);
+                            }
+                        }
+
                         // Create the workbook
                         XLWorkbook workbook = new XLWorkbook();
                         workbook.Worksheets.Add(datos, "Nomina");
@@ -196,6 +206,12 @@ namespace PortalTrabajadores.Portal
         private static string QuoteValue(string value)
         {
             return String.Concat("\"", value.Replace("\"", "\"\""), "\"");
+        }
+
+        public static string ReplaceHexadecimalSymbols(string txt)
+        {
+            string r = "[\x00-\x08\x0B\x0C\x0E-\x1F\x26]";
+            return Regex.Replace(txt, r, "", RegexOptions.Compiled);
         }
 
         #endregion

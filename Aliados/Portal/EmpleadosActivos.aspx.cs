@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -91,6 +92,15 @@ namespace PortalTrabajadores.Portal
 
                     if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                     {
+                        foreach (DataRow row in dtDataTable.Rows)
+                        {
+                            for (int i = 0; i < dtDataTable.Columns.Count; i++)
+                            {
+                                if (dtDataTable.Columns[i].DataType == typeof(string))
+                                    row[i] = ReplaceHexadecimalSymbols((string)row[i]);
+                            }
+                        }
+
                         // Create the workbook
                         XLWorkbook workbook = new XLWorkbook();
                         workbook.Worksheets.Add(dtDataTable, "EmpleadosActivos");
@@ -139,7 +149,13 @@ namespace PortalTrabajadores.Portal
             }
         }
         #endregion
-                
+
+        public static string ReplaceHexadecimalSymbols(string txt)
+        {
+            string r = "[\x00-\x08\x0B\x0C\x0E-\x1F\x26]";
+            return Regex.Replace(txt, r, "", RegexOptions.Compiled);
+        }
+
         #endregion
     }
 }
