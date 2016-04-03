@@ -1,4 +1,17 @@
-﻿//Oculta los mensajes de error cuando clic en cajas de texto
+﻿// A $( document ).ready() block.
+function CargarCalendario() {
+    $(".jqCalendar").datepicker({
+        showOn: "button",
+        buttonImage: "../js/images/calendar.gif",
+        buttonImageOnly: true,
+        buttonText: "Seleccione la fecha",
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: "yy/mm/dd"
+    });
+}
+
+//Oculta los mensajes de error cuando clic en cajas de texto
 function hideOnKeyPress() {
     document.getElementById('LblMsj').style.display = 'none';
 }

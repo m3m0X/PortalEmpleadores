@@ -43,7 +43,7 @@ namespace PortalTrabajadores.Portal
                     {
                         MySqlCn = new MySqlConnection(Cn);
 
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'Cargos.aspx' AND idEmpresa = 'ST'", MySqlCn);
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'Cargos.aspx' AND idEmpresa = '" + Session["idEmpresa"].ToString() + "'", MySqlCn);
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;
@@ -124,7 +124,7 @@ namespace PortalTrabajadores.Portal
                     cmd = new MySqlCommand("sp_CrearCargo", Conexion.ObtenerCnMysql());
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@nitTercero", Session["usuario"]);
-                    cmd.Parameters.AddWithValue("@idEmpresa", "ST");
+                    cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
                     cmd.Parameters.AddWithValue("@id_Compania", Session["proyecto"]);
                     cmd.Parameters.AddWithValue("@cargo", TxtCargo.Text);
                     cmd.Parameters.AddWithValue("@estado", true);
@@ -298,7 +298,7 @@ namespace PortalTrabajadores.Portal
                 dtDataTable = MysqlCn.ConsultarRegistros("SELECT IdCargos, Cargo, Estado FROM " + bd2 + ".cargos"
                                                          + " where nittercero = " + Session["usuario"]
                                                          + " and idCompania = '" + Session["proyecto"]
-                                                         + "' and Empresas_idEmpresa = 'ST';");
+                                                         + "' and Empresas_idEmpresa = '" + Session["idEmpresa"] + "';");
 
                 Session.Add("DataCargos", dtDataTable);
 

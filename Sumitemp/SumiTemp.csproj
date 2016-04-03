@@ -120,6 +120,16 @@
     <Content Include="Img\printButton.png" />
     <Content Include="Img\Sumitemp.jpg" />
     <Content Include="Js\funciones.js" />
+    <Content Include="Js\images\calendar.gif" />
+    <Content Include="Js\images\ui-icons_444444_256x240.png" />
+    <Content Include="Js\images\ui-icons_555555_256x240.png" />
+    <Content Include="Js\images\ui-icons_777620_256x240.png" />
+    <Content Include="Js\images\ui-icons_777777_256x240.png" />
+    <Content Include="Js\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Js\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Js\jquery-1.10.2.js" />
+    <Content Include="Js\jquery-ui.css" />
+    <Content Include="Js\jquery-ui.js" />
     <Content Include="Portal\Actualizadatos.aspx" />
     <Content Include="Portal\Areas.aspx" />
     <Content Include="Portal\BusquedaRetencion.aspx" />

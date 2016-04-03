@@ -43,7 +43,7 @@ namespace PortalTrabajadores.Portal
                     {
                         MySqlCn = new MySqlConnection(Cn);
 
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'Areas.aspx' AND idEmpresa = 'ST'", MySqlCn);
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'Areas.aspx' AND idEmpresa = '" + Session["idEmpresa"] + "'", MySqlCn);
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;
@@ -125,7 +125,7 @@ namespace PortalTrabajadores.Portal
                     cmd = new MySqlCommand("sp_CrearArea", Conexion.ObtenerCnMysql());
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@nitTercero", Session["usuario"]);
-                    cmd.Parameters.AddWithValue("@idEmpresa", "ST");
+                    cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
                     cmd.Parameters.AddWithValue("@id_Compania", Session["proyecto"]);
                     cmd.Parameters.AddWithValue("@area", TxtArea.Text);
                     cmd.Parameters.AddWithValue("@subArea", TxtSubArea.Text);
@@ -324,7 +324,7 @@ namespace PortalTrabajadores.Portal
                 MysqlCn.AbrirCnMysql();
                 dtDataTable = MysqlCn.ConsultarRegistros("SELECT IdAreas, Area, SubArea, Estado FROM " + bd2 + ".areas"
                                                          + " where nittercero = " + Session["usuario"]
-                                                         + " and Empresas_idEmpresa = 'ST';");
+                                                         + " and Empresas_idEmpresa = '" + Session["idEmpresa"] + "';");
 
                 Session.Add("DataAreas", dtDataTable);
 
