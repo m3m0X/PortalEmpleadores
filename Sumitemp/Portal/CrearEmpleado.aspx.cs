@@ -129,10 +129,10 @@ namespace PortalTrabajadores.Portal
                 else
                 {
                     BtnEditar.Text = "Guardar Información";
-                    txtUser2.Text = txtUser.Text;
-                    ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarCalendario(); ", true);
+                    txtUser2.Text = txtUser.Text;                    
                 }
 
+                ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarCalendario(); ", true);
                 Container_UpdatePanel2.Visible = true;
                 UpdatePanel1.Update();
             }
