@@ -41,7 +41,6 @@
                 </table>
             </div>
             <div id="Container_UpdatePanel2" runat="server" visible="false">
-                hello
                 <table id="TablaDatos2">
                     <tr>
                         <th colspan="2">Parametros Objetivos</th>
