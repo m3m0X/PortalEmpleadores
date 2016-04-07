@@ -34,7 +34,7 @@ namespace PortalTrabajadores.Portal
                     {
                         MySqlCn = new MySqlConnection(Cn);
 
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'CrearEmpleado.aspx' AND idEmpresa = 'ST'", MySqlCn);
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'CrearEmpleado.aspx' AND idEmpresa = '" + Session["idEmpresa"] + "'", MySqlCn);
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;
@@ -191,11 +191,9 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@Fecha_nacimiento_Empleado", txtFechaNacimiento.Text.Replace("/", string.Empty));
                     cmd.Parameters.AddWithValue("@Contrasena_Empleado", txtUser2.Text);
                     cmd.Parameters.AddWithValue("@Contrasena_Activo", 1);
-                    cmd.Parameters.AddWithValue("@Id_Rol", "2");
                     cmd.Parameters.AddWithValue("@Externo", true);
-                    cmd.Parameters.AddWithValue("@Jefe", cbJefe.Checked);
                     cmd.Parameters.AddWithValue("@IdAreas", ddlArea.SelectedValue);
-                    cmd.Parameters.AddWithValue("@IdCargos", ddlCargo.SelectedValue);
+                    cmd.Parameters.AddWithValue("@IdCargos", ddlCargo.SelectedValue);                    
                 }
                 else
                 {
@@ -219,10 +217,18 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@EPS_Empleado", txtEPS.Text);
                     cmd.Parameters.AddWithValue("@AFP_Empleado", txtAFP.Text);
                     cmd.Parameters.AddWithValue("@Cesantias_Empleado", txtCesantias.Text);
-                    cmd.Parameters.AddWithValue("@Fecha_nacimiento_Empleado", txtFechaNacimiento.Text.Replace("/", string.Empty));
-                    cmd.Parameters.AddWithValue("@Jefe", cbJefe.Checked);
+                    cmd.Parameters.AddWithValue("@Fecha_nacimiento_Empleado", txtFechaNacimiento.Text.Replace("/", string.Empty));                    
                     cmd.Parameters.AddWithValue("@IdAreas", ddlArea.SelectedValue);
                     cmd.Parameters.AddWithValue("@IdCargos", ddlCargo.SelectedValue);
+                }
+
+                if (cbJefe.Checked)
+                {
+                    cmd.Parameters.AddWithValue("@Id_Rol", "6");
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Id_Rol", "2");
                 }
 
                 // Crea un parametro de salida para el SP
@@ -289,6 +295,9 @@ namespace PortalTrabajadores.Portal
                 cbJefe.Checked = false;
                 ddlArea.SelectedValue = "0";
                 ddlCargo.SelectedValue = "0";
+
+                Container_UpdatePanel2.Visible = false;
+                UpdatePanel1.Update();
             }
             catch (Exception ex)
             {
@@ -334,9 +343,9 @@ namespace PortalTrabajadores.Portal
                     txtCesantias.Text = rd["Cesantias_Empleado"].ToString();
                     txtFechaNacimiento.Text = rd["Fecha_nacimiento_Empleado"].ToString();
 
-                    if (rd["Jefe"] != null)
+                    if (rd["Id_Rol"] != null)
                     {
-                        cbJefe.Checked = rd["Jefe"].ToString().Equals("1");
+                        cbJefe.Checked = rd["Id_Rol"].ToString().Equals("6");
                     }
 
                     if (rd["IdAreas"] != null)

@@ -148,6 +148,8 @@
     <Content Include="Portal\Laboral.aspx" />
     <Content Include="Portal\ModificarDatos.aspx" />
     <Content Include="Portal\ModificarTercero.aspx" />
+    <Content Include="Portal\ParametrosEtapas.aspx" />
+    <Content Include="Portal\ParametrosObjetivos.aspx" />
     <Content Include="Portal\PrimeraContrasena.aspx" />
     <Content Include="Portal\Principal.aspx" />
     <Content Include="Portal\Nomina.aspx" />
@@ -354,6 +356,20 @@
     </Compile>
     <Compile Include="Portal\PaginaMaestra.Master.designer.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\ParametrosEtapas.aspx.cs">
+      <DependentUpon>ParametrosEtapas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\ParametrosEtapas.aspx.designer.cs">
+      <DependentUpon>ParametrosEtapas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\ParametrosObjetivos.aspx.cs">
+      <DependentUpon>ParametrosObjetivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\ParametrosObjetivos.aspx.designer.cs">
+      <DependentUpon>ParametrosObjetivos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\PrimeraContrasena.aspx.cs">
       <DependentUpon>PrimeraContrasena.aspx</DependentUpon>
