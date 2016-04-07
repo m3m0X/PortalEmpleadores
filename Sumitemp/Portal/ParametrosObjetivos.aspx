@@ -48,7 +48,7 @@
                     </tr>
                     <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos">
-                            <asp:Label ID="lblMin" runat="server" Text="Cantidad Mminima de Objetivos" />
+                            <asp:Label ID="lblMin" runat="server" Text="Cantidad Minima de Objetivos" />
                         </td>
                         <td class="CeldaTablaDatos">
                             <asp:TextBox ID="txtMin" runat="server" MaxLength="1" onkeypress="return ValidaSoloNumeros(event)"/>
