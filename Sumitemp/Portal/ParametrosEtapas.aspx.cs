@@ -138,8 +138,6 @@ namespace PortalTrabajadores.Portal
             }
         }
 
-
-
         /// <summary>
         /// Carga el año actual y el pasado
         /// </summary>

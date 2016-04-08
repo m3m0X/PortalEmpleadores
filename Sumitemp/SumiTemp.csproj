@@ -120,6 +120,7 @@
     <Content Include="Img\printButton.png" />
     <Content Include="Img\Sumitemp.jpg" />
     <Content Include="Js\funciones.js" />
+    <Content Include="Img\calendar.gif" />
     <Content Include="Js\images\calendar.gif" />
     <Content Include="Js\images\ui-icons_444444_256x240.png" />
     <Content Include="Js\images\ui-icons_555555_256x240.png" />
@@ -150,6 +151,7 @@
     <Content Include="Portal\ModificarTercero.aspx" />
     <Content Include="Portal\ParametrosEtapas.aspx" />
     <Content Include="Portal\ParametrosObjetivos.aspx" />
+    <Content Include="Portal\PeriodoExtra.aspx" />
     <Content Include="Portal\PrimeraContrasena.aspx" />
     <Content Include="Portal\Principal.aspx" />
     <Content Include="Portal\Nomina.aspx" />
@@ -370,6 +372,13 @@
     </Compile>
     <Compile Include="Portal\ParametrosObjetivos.aspx.designer.cs">
       <DependentUpon>ParametrosObjetivos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PeriodoExtra.aspx.cs">
+      <DependentUpon>PeriodoExtra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\PeriodoExtra.aspx.designer.cs">
+      <DependentUpon>PeriodoExtra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\PrimeraContrasena.aspx.cs">
       <DependentUpon>PrimeraContrasena.aspx</DependentUpon>
