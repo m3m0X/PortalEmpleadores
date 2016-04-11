@@ -112,6 +112,24 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.WebControls.TextBox txtMax;
         
         /// <summary>
+        /// Control lblActivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblActivo;
+        
+        /// <summary>
+        /// Control cbActivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbActivo;
+        
+        /// <summary>
         /// Control BtnEditar.
         /// </summary>
         /// <remarks>

@@ -168,7 +168,8 @@ namespace PortalTrabajadores.Portal
                 if (BtnEditar.Text == "Guardar")
                 {
                     cmd = new MySqlCommand("sp_CrearParametrosGenerales", Conexion.ObtenerCnMysql());
-                    cmd.CommandType = CommandType.StoredProcedure;                    
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Empresas_idEmpresa", Session["idEmpresa"]);
                 }
                 else
                 {
@@ -180,6 +181,7 @@ namespace PortalTrabajadores.Portal
                 cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
                 cmd.Parameters.AddWithValue("@Max_Objetivos", txtMax.Text);
                 cmd.Parameters.AddWithValue("@Min_Objetivos", txtMin.Text);
+                cmd.Parameters.AddWithValue("@Activo", cbActivo.Checked);
                 cmd.Parameters.AddWithValue("@Ano", ddlAnio.SelectedValue);
 
                 // Crea un parametro de salida para el SP

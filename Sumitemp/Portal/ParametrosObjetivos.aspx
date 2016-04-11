@@ -62,6 +62,14 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblActivo" runat="server" Text="Activo" />
+                        </td>                         
+                        <td class="CeldaTablaDatos">
+                            <asp:CheckBox ID="cbActivo" runat="server" />
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="BotonTablaDatos">
                             <asp:Button ID="BtnEditar" runat="server" Text="Guardar" OnClick="BtnEditar_Click"/></td>
                         <td class="BotonTablaDatos">
