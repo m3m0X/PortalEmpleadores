@@ -108,6 +108,7 @@ namespace PortalTrabajadores.Portal
                     {
                         txtMin.Text = rd["Min_Objetivos"].ToString();
                         txtMax.Text = rd["Max_Objetivos"].ToString();
+                        cbActivo.Checked = rd["Activo"].ToString().Equals("1");
                     }
 
                     BtnEditar.Text = "Actualizar";
