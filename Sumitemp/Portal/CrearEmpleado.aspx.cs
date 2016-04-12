@@ -161,7 +161,7 @@ namespace PortalTrabajadores.Portal
                 Conexion.AbrirCnMysql();
                 MySqlCommand cmd;
 
-                if (BtnEditar.Text == "Guardar")
+                if (BtnEditar.Text == "Guardar Información")
                 {
                     cmd = new MySqlCommand("sp_CrearEmpleadoExt", Conexion.ObtenerCnMysql());
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -201,7 +201,8 @@ namespace PortalTrabajadores.Portal
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@TipoId_empleado", ddlTipoDocumento.SelectedValue);
                     cmd.Parameters.AddWithValue("@Id_Empleado", txtUser2.Text);
-                    cmd.Parameters.AddWithValue("@idContrato", txtUser2.Text + "_EXT");
+                    cmd.Parameters.AddWithValue("@Companias_idEmpresa", Session["idEmpresa"]);
+                    cmd.Parameters.AddWithValue("@Companias_idCompania", Session["proyecto"]);
                     cmd.Parameters.AddWithValue("@Nombres_Empleado", txtNombres.Text);
                     cmd.Parameters.AddWithValue("@Primer_Apellido_empleado", txtPrimerApellido.Text);
                     cmd.Parameters.AddWithValue("@Segundo_Apellido_Empleado", txtSegundoApellido.Text);
@@ -248,7 +249,7 @@ namespace PortalTrabajadores.Portal
                     Container_UpdatePanel2.Visible = false;
                     UpdatePanel1.Update();
 
-                    if (BtnEditar.Text == "Guardar")
+                    if (BtnEditar.Text == "Guardar Información")
                     {
                         MensajeError("Usuario creado correctamente");
                     }
@@ -343,17 +344,17 @@ namespace PortalTrabajadores.Portal
                     txtCesantias.Text = rd["Cesantias_Empleado"].ToString();
                     txtFechaNacimiento.Text = rd["Fecha_nacimiento_Empleado"].ToString();
 
-                    if (rd["Id_Rol"] != null)
+                    if (rd["Id_Rol"].ToString() != "")
                     {
                         cbJefe.Checked = rd["Id_Rol"].ToString().Equals("6");
                     }
 
-                    if (rd["IdAreas"] != null)
+                    if (rd["IdAreas"].ToString() != "")
                     {
                         ddlArea.SelectedValue = rd["IdAreas"].ToString();
                     }
 
-                    if (rd["IdCargos"] != null)
+                    if (rd["IdCargos"].ToString() != "")
                     {
                         ddlCargo.SelectedValue = rd["IdCargos"].ToString();
                     }
