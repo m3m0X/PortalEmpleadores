@@ -163,7 +163,7 @@ namespace PortalTrabajadores.Portal
 
                 if (BtnEditar.Text == "Guardar")
                 {
-                    cmd = new MySqlCommand("sp_CrearEmpleado", Conexion.ObtenerCnMysql());
+                    cmd = new MySqlCommand("sp_CrearEmpleadoExt", Conexion.ObtenerCnMysql());
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@TipoId_empleado", ddlTipoDocumento.SelectedValue);
                     cmd.Parameters.AddWithValue("@Id_Empleado", txtUser2.Text);
