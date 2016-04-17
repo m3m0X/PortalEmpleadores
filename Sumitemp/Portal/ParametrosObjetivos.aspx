@@ -6,7 +6,7 @@
     <!-- Css para la fecha -->
     <link href="../CSS/CSSCallapsePanel.css" rel="stylesheet" type="text/css" />
     <!-- Js De Los campos de Textos -->
-    <script src="../Js/funciones.js" type="text/javascript"></script>    
+    <script src="../Js/funciones.js" type="text/javascript"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContainerTitulo" runat="server">
@@ -18,6 +18,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Container" runat="server">
+    <asp:UpdateProgress ID="upProgress" DynamicLayout="true" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <ProgressTemplate>
+            <div class="loader">
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div id="Container_UpdatePanel1">
@@ -28,14 +34,14 @@
                     <tr>
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblAnio" runat="server" Text="Año:" />
-                        </td>                        
+                        </td>
                         <td class="BotonTablaDatos">
                             <asp:DropDownList ID="ddlAnio" runat="server"></asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="BotonTablaDatos">
-                                <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
                         </td>
                     </tr>
                 </table>
@@ -50,7 +56,16 @@
                             <asp:Label ID="lblMin" runat="server" Text="Cantidad Minima de Objetivos" />
                         </td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtMin" runat="server" MaxLength="1" onkeypress="return ValidaSoloNumeros(event)"/>
+                            <asp:TextBox ID="txtMin" runat="server" MaxLength="1" onkeypress="return ValidaSoloNumeros(event)" />
+                        </td>
+                    </tr>
+                    <tr class="ColorOscuro">
+                        <td class="CeldaTablaDatos"></td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvMin" ControlToValidate="txtMin"
+                                CssClass="MensajeError" Display="Dynamic"
+                                ValidationGroup="objForm" runat="server"
+                                ErrorMessage="Digite Mínimo de objetivos"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr class="ColorOscuro">
@@ -58,36 +73,45 @@
                             <asp:Label ID="lblMax" runat="server" Text="Cantidad Máxima de Objetivos" />
                         </td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtMax" runat="server" MaxLength="1" onkeypress="return ValidaSoloNumeros(event)"/>
+                            <asp:TextBox ID="txtMax" runat="server" MaxLength="1" onkeypress="return ValidaSoloNumeros(event)" />
+                        </td>
+                    </tr>
+                    <tr class="ColorOscuro">
+                        <td class="CeldaTablaDatos"></td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvMax" ControlToValidate="txtMax"
+                                CssClass="MensajeError" Display="Dynamic"
+                                ValidationGroup="objForm" runat="server"
+                                ErrorMessage="Digite Máximo de objetivos"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblActivo" runat="server" Text="Activo" />
-                        </td>                         
+                        </td>
                         <td class="CeldaTablaDatos">
                             <asp:CheckBox ID="cbActivo" runat="server" />
                         </td>
                     </tr>
                     <tr>
                         <td class="BotonTablaDatos">
-                            <asp:Button ID="BtnEditar" runat="server" Text="Guardar" OnClick="BtnEditar_Click"/></td>
+                            <asp:Button ID="BtnEditar" runat="server" Text="Guardar" ValidationGroup="objForm" OnClick="BtnEditar_Click" /></td>
                         <td class="BotonTablaDatos">
-                            <asp:Button ID="BtnCancel" runat="server" Text="Cancelar" OnClick="BtnCancel_Click"/></td>
+                            <asp:Button ID="BtnCancel" runat="server" Text="Cancelar" OnClick="BtnCancel_Click" /></td>
                     </tr>
                 </table>
             </div>
         </ContentTemplate>
         <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="BtnBuscar"/>
-        </Triggers>         
+            <asp:AsyncPostBackTrigger ControlID="BtnBuscar" />
+        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Errores" runat="server">
     <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-             <asp:Label ID="LblMsj" runat="server" Text="LabelMsjError" Visible="False"></asp:Label>
+            <asp:Label ID="LblMsj" runat="server" Text="LabelMsjError" Visible="False"></asp:Label>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

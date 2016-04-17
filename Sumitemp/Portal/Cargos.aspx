@@ -8,7 +8,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContainerTitulo" runat="server">
-        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
         <ContentTemplate>
             <asp:Label ID="lblTitulo" runat="server" />
         </ContentTemplate>
@@ -16,6 +16,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Container" runat="server">
+    <asp:UpdateProgress ID="upProgress" DynamicLayout="true" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <ProgressTemplate>
+            <div class="loader">
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div id="Container_UpdatePanel1">
@@ -44,10 +50,13 @@
                     </tr>
                     <tr>
                         <td class="CeldaTablaDatos"><asp:Label ID="LblCargo" runat="server" Text="Cargo:" /></td>
-                        <td class="CeldaTablaDatos"><asp:TextBox ID="TxtCargo" runat="server"/></td>
+                        <td class="CeldaTablaDatos">
+                            <asp:TextBox ID="TxtCargo" runat="server"/>
+                            <asp:RequiredFieldValidator ID="rfvCargo" ControlToValidate="TxtCargo" CssClass="MensajeError" Display="Dynamic" ValidationGroup="cargoForm" runat="server" ErrorMessage="Digite Cargo"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>                    
                     <tr class="ColorOscuro">
-                        <td class="BotonTablaDatos"><asp:Button ID="BtnGuardar" runat="server" Text="Guardar" ValidationGroup="form" OnClick="BtnGuardar_Click" /></td>
+                        <td class="BotonTablaDatos"><asp:Button ID="BtnGuardar" runat="server" Text="Guardar" ValidationGroup="cargoForm" OnClick="BtnGuardar_Click" /></td>
                         <td class="BotonTablaDatos"><asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" /></td>
                     </tr>
                 </table>

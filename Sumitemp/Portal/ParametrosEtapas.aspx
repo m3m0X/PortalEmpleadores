@@ -6,7 +6,7 @@
     <!-- Css para la fecha -->
     <link href="../CSS/CSSCallapsePanel.css" rel="stylesheet" type="text/css" />
     <!-- Js De Los campos de Textos -->
-    <script src="../Js/funciones.js" type="text/javascript"></script>  
+    <script src="../Js/funciones.js" type="text/javascript"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContainerTitulo" runat="server">
@@ -18,6 +18,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Container" runat="server">
+    <asp:UpdateProgress ID="upProgress" DynamicLayout="true" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <ProgressTemplate>
+            <div class="loader">
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div id="Container_UpdatePanel1">
@@ -28,7 +34,7 @@
                     <tr>
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblAnio" runat="server" Text="Año:" />
-                        </td>                        
+                        </td>
                         <td class="BotonTablaDatos">
                             <asp:DropDownList ID="ddlAnio" runat="server"></asp:DropDownList>
                         </td>
@@ -36,7 +42,7 @@
                     <tr>
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblEtapasDdl" runat="server" Text="Etapas:" />
-                        </td>                        
+                        </td>
                         <td class="BotonTablaDatos">
                             <asp:DropDownList ID="ddlEtapas" runat="server" DataSourceID="sqlEtapas" DataTextField="Etapa" DataValueField="idEtapas"></asp:DropDownList>
                             <asp:SqlDataSource ID="sqlEtapas" runat="server" ConnectionString='<%$ ConnectionStrings:CadenaConexioMySql3 %>' ProviderName='<%$ ConnectionStrings:CadenaConexioMySql3.ProviderName %>' SelectCommand="SELECT idEtapas, Etapa FROM etapas"></asp:SqlDataSource>
@@ -44,7 +50,7 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="BotonTablaDatos">
-                                <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
                         </td>
                     </tr>
                 </table>
@@ -76,37 +82,80 @@
                             <asp:Label ID="lblEtapa" runat="server" />
                         </td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtFechaInicio" runat="server" CssClass="jqCalendar"></asp:TextBox>
+                            <asp:TextBox ID="txtFechaInicio" runat="server" CssClass="jqCalendar" onkeypress="return ValidaSoloNumerosFecha(event)"></asp:TextBox>
                         </td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtFechaFin" runat="server" CssClass="jqCalendar"></asp:TextBox>
+                            <asp:TextBox ID="txtFechaFin" runat="server" CssClass="jqCalendar" onkeypress="return ValidaSoloNumerosFecha(event)"></asp:TextBox>
                         </td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtCorteInicio" runat="server" CssClass="jqCalendar"></asp:TextBox>
+                            <asp:TextBox ID="txtCorteInicio" runat="server" CssClass="jqCalendar" onkeypress="return ValidaSoloNumerosFecha(event)"></asp:TextBox>
                         </td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtCorteFin" runat="server" CssClass="jqCalendar"></asp:TextBox>
+                            <asp:TextBox ID="txtCorteFin" runat="server" CssClass="jqCalendar" onkeypress="return ValidaSoloNumerosFecha(event)"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos"></td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvFecha1" ControlToValidate="txtFechaInicio"
+                                CssClass="MensajeError" Display="Dynamic"
+                                ValidationGroup="objForm" runat="server"
+                                ErrorMessage="Ingrese una fecha"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtFechaInicio"
+                                ValidationExpression="\d{4}(?:/\d{1,2}){2}" Display="Dynamic"
+                                CssClass="MensajeError" ErrorMessage="Formato Invalido." 
+                                ValidationGroup="objForm" />
+                        </td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvFecha2" ControlToValidate="txtFechaFin"
+                                CssClass="MensajeError" Display="Dynamic"
+                                ValidationGroup="objForm" runat="server"
+                                ErrorMessage="Ingrese una fecha"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtFechaFin"
+                                ValidationExpression="\d{4}(?:/\d{1,2}){2}" Display="Dynamic"
+                                CssClass="MensajeError" ErrorMessage="Formato Invalido." 
+                                ValidationGroup="objForm" />
+                        </td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvFecha3" ControlToValidate="txtCorteInicio"
+                                CssClass="MensajeError" Display="Dynamic"
+                                ValidationGroup="objForm" runat="server"
+                                ErrorMessage="Ingrese una fecha"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtCorteInicio"
+                                ValidationExpression="\d{4}(?:/\d{1,2}){2}" Display="Dynamic"
+                                CssClass="MensajeError" ErrorMessage="Formato Invalido." 
+                                ValidationGroup="objForm" />
+                        </td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvFecha4" ControlToValidate="txtCorteFin"
+                                CssClass="MensajeError" Display="Dynamic"
+                                ValidationGroup="objForm" runat="server"
+                                ErrorMessage="Ingrese una fecha"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtCorteFin"
+                                ValidationExpression="\d{4}(?:/\d{1,2}){2}" Display="Dynamic"
+                                CssClass="MensajeError" ErrorMessage="Formato Invalido." 
+                                ValidationGroup="objForm" />
                         </td>
                     </tr>
                     <tr>
                         <td class="BotonTablaDatos" colspan="4"></td>
                         <td class="BotonTablaDatos">
-                            <asp:Button ID="BtnEditar" runat="server" Text="Guardar" OnClick="BtnEditar_Click"/>
-                            <asp:Button ID="BtnCancel" runat="server" Text="Cancelar" OnClick="BtnCancel_Click"/></td>
+                            <asp:Button ID="BtnEditar" runat="server" Text="Guardar" ValidationGroup="objForm" OnClick="BtnEditar_Click" />
+                            <asp:Button ID="BtnCancel" runat="server" Text="Cancelar" OnClick="BtnCancel_Click" /></td>
                     </tr>
                 </table>
             </div>
         </ContentTemplate>
         <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="BtnBuscar"/>
-        </Triggers>         
+            <asp:AsyncPostBackTrigger ControlID="BtnBuscar" />
+        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Errores" runat="server">
     <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-             <asp:Label ID="LblMsj" runat="server" Text="LabelMsjError" Visible="False"></asp:Label>
+            <asp:Label ID="LblMsj" runat="server" Text="LabelMsjError" Visible="False"></asp:Label>
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>

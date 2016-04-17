@@ -94,7 +94,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>03/22/2016 19:29:15</publishTime>
+      <publishTime>04/16/2016 20:54:09</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -130,7 +130,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 17:34:49</publishTime>
     </File>
     <File Include="CSS/Loading.css">
-      <publishTime>03/06/2016 14:56:45</publishTime>
+      <publishTime>04/16/2016 15:21:06</publishTime>
     </File>
     <File Include="CSS/login.css">
       <publishTime>03/06/2016 14:56:45</publishTime>
@@ -222,8 +222,20 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Html/SumiTemp.html">
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
+    <File Include="Img/add.gif">
+      <publishTime>04/16/2016 10:21:44</publishTime>
+    </File>
     <File Include="Img/Bienvenido SURA Sumitemp.JPG">
       <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Img/calendar.gif">
+      <publishTime>04/02/2016 18:55:34</publishTime>
+    </File>
+    <File Include="Img/delete.gif">
+      <publishTime>04/16/2016 10:58:19</publishTime>
+    </File>
+    <File Include="Img/edit.gif">
+      <publishTime>03/31/2016 23:29:09</publishTime>
     </File>
     <File Include="Img/excel.gif">
       <publishTime>03/06/2016 14:56:45</publishTime>
@@ -252,6 +264,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Img/Nombre.png">
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
+    <File Include="Img/off.png">
+      <publishTime>03/31/2016 23:29:09</publishTime>
+    </File>
+    <File Include="Img/on.png">
+      <publishTime>03/31/2016 23:29:09</publishTime>
+    </File>
     <File Include="Img/pdf.gif">
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
@@ -262,7 +280,37 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
     <File Include="Js/funciones.js">
-      <publishTime>03/06/2016 14:56:45</publishTime>
+      <publishTime>04/16/2016 17:13:59</publishTime>
+    </File>
+    <File Include="Js/images/calendar.gif">
+      <publishTime>04/08/2016 08:40:24</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_444444_256x240.png">
+      <publishTime>04/02/2016 18:41:19</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_555555_256x240.png">
+      <publishTime>04/02/2016 18:41:19</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_777620_256x240.png">
+      <publishTime>04/02/2016 18:41:19</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_777777_256x240.png">
+      <publishTime>04/02/2016 18:41:19</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_cc0000_256x240.png">
+      <publishTime>04/02/2016 18:41:19</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_ffffff_256x240.png">
+      <publishTime>04/02/2016 18:41:19</publishTime>
+    </File>
+    <File Include="Js/jquery-1.10.2.js">
+      <publishTime>04/02/2016 17:51:31</publishTime>
+    </File>
+    <File Include="Js/jquery-ui.css">
+      <publishTime>04/02/2016 18:48:21</publishTime>
+    </File>
+    <File Include="Js/jquery-ui.js">
+      <publishTime>04/02/2016 18:48:41</publishTime>
     </File>
     <File Include="login.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
@@ -273,11 +321,17 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Portal/Actualizadatos.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
+    <File Include="Portal/Areas.aspx">
+      <publishTime>04/16/2016 15:23:27</publishTime>
+    </File>
     <File Include="Portal/BusquedaRetencion.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
     <File Include="Portal/CambioContrasena.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
+    </File>
+    <File Include="Portal/Cargos.aspx">
+      <publishTime>04/16/2016 15:27:50</publishTime>
     </File>
     <File Include="Portal/CargueArchivos.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -305,6 +359,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Portal/Contactenos.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
+    </File>
+    <File Include="Portal/CrearEmpleado.aspx">
+      <publishTime>04/16/2016 19:05:41</publishTime>
     </File>
     <File Include="Portal/default.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -340,7 +397,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
     <File Include="Portal/PaginaMaestra.Master">
-      <publishTime>03/06/2016 14:56:45</publishTime>
+      <publishTime>04/16/2016 14:26:17</publishTime>
+    </File>
+    <File Include="Portal/ParametrosEtapas.aspx">
+      <publishTime>04/16/2016 18:38:04</publishTime>
+    </File>
+    <File Include="Portal/ParametrosObjetivos.aspx">
+      <publishTime>04/16/2016 17:08:45</publishTime>
+    </File>
+    <File Include="Portal/PeriodoExtra.aspx">
+      <publishTime>04/16/2016 18:37:10</publishTime>
     </File>
     <File Include="Portal/PrimeraContrasena.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
@@ -424,7 +490,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/22/2016 19:29:16</publishTime>
+      <publishTime>04/10/2016 19:24:54</publishTime>
     </File>
   </ItemGroup>
 </Project>

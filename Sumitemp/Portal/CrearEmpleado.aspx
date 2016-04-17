@@ -19,6 +19,12 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="Container" runat="server">
+    <asp:UpdateProgress ID="upProgress" DynamicLayout="true" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+        <ProgressTemplate>
+            <div class="loader">
+            </div>
+        </ProgressTemplate>
+    </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div id="Container_UpdatePanel1">
@@ -33,11 +39,14 @@
                         <td class="BotonTablaDatos">
                             <asp:TextBox ID="txtUser" runat="server" MaxLength="20" CssClass="MarcaAgua"
                                 ToolTip="Usuario" placeholder="Identificación"  onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="rfvCargo" ControlToValidate="txtUser" 
+                                CssClass="MensajeError" Display="Dynamic" 
+                                ValidationGroup="busquedaForm" runat="server" ErrorMessage="Digite una cedula"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="BotonTablaDatos">
-                                <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+                                <asp:Button ID="BtnBuscar" runat="server" ValidationGroup="busquedaForm" Text="Buscar" OnClick="BtnBuscar_Click" />
                         </td>
                     </tr>
                 </table>
@@ -62,7 +71,7 @@
                             <asp:TextBox ID="txtUser2" runat="server" MaxLength="100" 
                                 onkeypress="return ValidaSoloNumeros(event)"
                                 CssClass="MarcaAgua"
-                                placeholder="Número"/>
+                                placeholder="Número" Enabled="false"/>
                         </td>
                     </tr>
                     <tr>
@@ -77,6 +86,15 @@
                             <asp:TextBox ID="txtNombres" runat="server" MaxLength="100" onkeypress="return ValidaSoloLetras(event)" Style="text-transform: uppercase" />
                         </td>
                     </tr>
+                    <tr class="ColorOscuro">
+                        <td class="CeldaTablaDatos"></td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvNombres" 
+                                ControlToValidate="txtNombres" CssClass="MensajeError" 
+                                Display="Dynamic" ValidationGroup="userForm" 
+                                runat="server" ErrorMessage="Digite Nombre"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>                    
                     <tr>
                         <td class="CeldaTablaDatos"><asp:Label ID="lblApellidos" runat="server" Text="Apellidos:" /></td>
                         <td class="CeldaTablaDatos">
@@ -88,6 +106,15 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="CeldaTablaDatos"></td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvPrimerApellido" 
+                                ControlToValidate="txtPrimerApellido" CssClass="MensajeError" 
+                                Display="Dynamic" ValidationGroup="userForm" 
+                                runat="server" ErrorMessage="Digite Primer Apellido"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr> 
+                    <tr>
                         <td></td>
                         <td class="CeldaTablaDatos">
                             <asp:TextBox ID="txtSegundoApellido" runat="server" MaxLength="100" 
@@ -97,6 +124,15 @@
                                 placeholder="Segundo Apellido"/>
                         </td>
                     </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos"></td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvSegundoApellido" 
+                                ControlToValidate="txtPrimerApellido" CssClass="MensajeError" 
+                                Display="Dynamic" ValidationGroup="userForm" 
+                                runat="server" ErrorMessage="Digite Segundo Apellido"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr> 
                     <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblSexo" runat="server" Text="Sexo:" /></td>
@@ -111,9 +147,18 @@
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblFechaNacimiento" runat="server" Text="Fecha de nacimiento:" /></td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="jqCalendar"></asp:TextBox>
+                            <asp:TextBox ID="txtFechaNacimiento" runat="server" CssClass="jqCalendar" onkeypress="return ValidaSoloNumerosFecha(event)"></asp:TextBox>                            
                         </td>
                     </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos"></td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtFechaNacimiento"
+                                ValidationExpression="\d{4}(?:/\d{1,2}){2}" Display="Dynamic"
+                                CssClass="MensajeError" ErrorMessage="Formato Invalido." 
+                                ValidationGroup="userForm" />
+                        </td>
+                    </tr> 
                     <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos"><asp:Label ID="lblDireccion" runat="server" Text="Dirección:" /></td>
                         <td class="CeldaTablaDatos">
@@ -152,8 +197,18 @@
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblCorreo" runat="server" Text="Correo:" /></td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtCorreo" runat="server" MaxLength="100" Style="text-transform: uppercase" /></td>
+                            <asp:TextBox ID="txtCorreo" runat="server" MaxLength="100" Style="text-transform: uppercase" />                            
+                        </td>
                     </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos"></td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtCorreo"
+                                ValidationExpression="^[a-z0-9][-a-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([-a-z0-9]+\.)+[a-z]{2,5}$" 
+                                Display="Dynamic" CssClass="MensajeError" 
+                                ErrorMessage="Formato Invalido." ValidationGroup="userForm" />
+                        </td>
+                    </tr> 
                     <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos"><asp:Label ID="lblEstadoCivil" runat="server" Text="Estado Civil:" /></td>
                         <td class="CeldaTablaDatos">
@@ -206,7 +261,7 @@
                     </tr>
                     <tr>
                         <td class="BotonTablaDatos">
-                            <asp:Button ID="BtnEditar" runat="server" Text="Guardar Información" OnClick="BtnEditar_Click"/></td>
+                            <asp:Button ID="BtnEditar" runat="server" Text="Guardar Información" ValidationGroup="userForm" OnClick="BtnEditar_Click"/></td>
                         <td class="BotonTablaDatos">
                             <asp:Button ID="BtnCancel" runat="server" Text="Cancelar" OnClick="BtnCancel_Click" /></td>
                     </tr>

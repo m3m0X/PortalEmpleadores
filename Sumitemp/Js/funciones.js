@@ -11,6 +11,15 @@ function CargarCalendario() {
     });
 }
 
+// mensaje de alerta
+function CargarMensaje(data) {
+    alert(data);
+}
+
+function Cargando(e) {
+    $(".loader").fadeOut("slow");
+}
+
 //Oculta los mensajes de error cuando clic en cajas de texto
 function hideOnKeyPress() {
     document.getElementById('LblMsj').style.display = 'none';
@@ -19,6 +28,15 @@ function hideOnKeyPress() {
 //Función que permite solo Números
 function ValidaSoloNumeros(evt) {
     var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}
+
+//Función que permite solo Números
+function ValidaSoloNumerosFecha(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (e.keyCode == 47) return true; // tab
     if (charCode > 31 && (charCode < 48 || charCode > 57))
         return false;
     return true;
@@ -34,6 +52,7 @@ function txNombres() {
 function ValidaSoloLetras(e) {
         tecla = (document.all) ? e.keyCode : e.which;
         if (tecla == 8) return true; // backspace
+        if (e.keyCode == 9) return true; // tab
         if (tecla == 32) return true; // espacio
         if (e.ctrlKey && tecla == 86) { return true; } //Ctrl v
         if (e.ctrlKey && tecla == 67) { return true; } //Ctrl c

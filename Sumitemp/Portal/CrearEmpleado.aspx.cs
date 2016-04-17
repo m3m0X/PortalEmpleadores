@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -76,6 +77,15 @@ namespace PortalTrabajadores.Portal
             UpdatePanel3.Update();
         }
 
+        /// <summary>
+        /// Limpia los mensajes
+        /// </summary>
+        private void LimpiarMensajes()
+        {
+            LblMsj.Visible = false;
+            UpdatePanel3.Update();
+        }
+
         #endregion
 
         /// <summary>
@@ -85,19 +95,16 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">evento e</param>
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
-            LblMsj.Text = string.Empty;
-            LblMsj.Visible = false;
-            UpdatePanel3.Update();
-
+            this.LimpiarMensajes();
             Session["cedula"] = txtUser.Text;
 
             try
             {
-                this.ActivarCampos();
+                this.LimpiarActivarCampos();
 
                 MySqlCn = new MySqlConnection(CnMysql);
                 MySqlCommand scSqlCommand;
-                string consulta = "SELECT * FROM " + bd2 + ".empleados where Id_Empleado = " + txtUser.Text + ";";
+                string consulta = "SELECT * FROM " + bd2 + ".empleados where Id_Empleado = " + Session["cedula"] + ";";
 
                 scSqlCommand = new MySqlCommand(consulta, MySqlCn);
 
@@ -114,22 +121,22 @@ namespace PortalTrabajadores.Portal
                     {
                         if (dtDataTable.Rows[0]["Externo"].ToString() == "1")
                         {
-                            this.CargarInfoCliente(txtUser.Text, true);
+                            this.CargarInfoCliente(Session["cedula"].ToString(), true);
                         }
                         else
                         {
-                            this.CargarInfoCliente(txtUser.Text, false);
+                            this.CargarInfoCliente(Session["cedula"].ToString(), false);
                         }
                     }
                     else
                     {
-                        this.CargarInfoCliente(txtUser.Text, false);
+                        this.CargarInfoCliente(Session["cedula"].ToString(), false);
                     }
                 }
                 else
                 {
                     BtnEditar.Text = "Guardar Información";
-                    txtUser2.Text = txtUser.Text;                    
+                    txtUser2.Text = Session["cedula"].ToString();                    
                 }
 
                 ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarCalendario(); ", true);
@@ -153,6 +160,7 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">evento e</param>
         protected void BtnEditar_Click(object sender, EventArgs e)
         {
+            this.LimpiarMensajes();
             CnMysql Conexion = new CnMysql(CnMysql);
             int res = 0;
 
@@ -278,27 +286,7 @@ namespace PortalTrabajadores.Portal
         {
             try
             {
-                txtUser.Text = string.Empty;
-                txtUser2.Text = string.Empty;
-                txtExpedicion.Text = string.Empty;
-                txtNombres.Text = string.Empty;
-                txtPrimerApellido.Text = string.Empty;
-                txtSegundoApellido.Text = string.Empty;
-                txtCorreo.Text = string.Empty;
-                txtDireccion.Text = string.Empty;
-                txtBarrio.Text = string.Empty;
-                txtCelular.Text = string.Empty;
-                txtTelefono.Text = string.Empty;
-                txtEPS.Text = string.Empty;
-                txtAFP.Text = string.Empty;
-                txtCesantias.Text = string.Empty;
-                txtFechaNacimiento.Text = string.Empty;
-                cbJefe.Checked = false;
-                ddlArea.SelectedValue = "0";
-                ddlCargo.SelectedValue = "0";
-
-                Container_UpdatePanel2.Visible = false;
-                UpdatePanel1.Update();
+                
             }
             catch (Exception ex)
             {
@@ -312,6 +300,7 @@ namespace PortalTrabajadores.Portal
         /// <param name="externo">Indica si es un usuario externo</param>
         public void CargarInfoCliente(string idUsuario, bool externo)
         {
+            this.LimpiarMensajes();
             CnMysql Conexion = new CnMysql(Cn);
 
             try
@@ -327,7 +316,7 @@ namespace PortalTrabajadores.Portal
                 if (rd.Read())
                 {
                     ddlTipoDocumento.SelectedValue = rd["TipoId_empleado"].ToString();
-                    txtUser2.Text = txtUser.Text;
+                    txtUser2.Text = Session["cedula"].ToString();
                     txtExpedicion.Text = rd["Lugar_expediccion_IdEmpleado"].ToString();
                     txtNombres.Text = rd["Nombres_Empleado"].ToString();
                     txtPrimerApellido.Text = rd["Primer_Apellido_empleado"].ToString();
@@ -342,7 +331,9 @@ namespace PortalTrabajadores.Portal
                     txtEPS.Text = rd["EPS_Empleado"].ToString();
                     txtAFP.Text = rd["AFP_Empleado"].ToString();
                     txtCesantias.Text = rd["Cesantias_Empleado"].ToString();
-                    txtFechaNacimiento.Text = rd["Fecha_nacimiento_Empleado"].ToString();
+
+                    DateTime d = DateTime.ParseExact(rd["Fecha_nacimiento_Empleado"].ToString(), "yyyyMMdd", CultureInfo.InvariantCulture);
+                    txtFechaNacimiento.Text = d.ToString("yyyy/MM/dd");
 
                     if (rd["Id_Rol"].ToString() != "")
                     {
@@ -371,13 +362,11 @@ namespace PortalTrabajadores.Portal
                 if (externo)
                 {
                     ddlTipoDocumento.Enabled = false;
-                    txtUser2.Enabled = false;
                     txtExpedicion.Enabled = false;
                 }
                 else
                 {
                     ddlTipoDocumento.Enabled = false;
-                    txtUser2.Enabled = false;
                     txtExpedicion.Enabled = false;
                     txtNombres.Enabled = false;
                     txtPrimerApellido.Enabled = false;
@@ -410,6 +399,7 @@ namespace PortalTrabajadores.Portal
         /// </summary>
         public void CargarAreasCargos()
         {
+            this.LimpiarMensajes();
             CnMysql Conexion = new CnMysql(CnMysql);
 
             try
@@ -475,10 +465,11 @@ namespace PortalTrabajadores.Portal
         /// <summary>
         /// Activa los campos
         /// </summary>
-        public void ActivarCampos() 
+        public void LimpiarActivarCampos() 
         {
+            this.LimpiarMensajes();
+
             ddlTipoDocumento.Enabled = true;
-            txtUser2.Enabled = true;
             txtExpedicion.Enabled = true;
             txtNombres.Enabled = true;
             txtPrimerApellido.Enabled = true;
@@ -493,7 +484,29 @@ namespace PortalTrabajadores.Portal
             txtEPS.Enabled = true;
             txtAFP.Enabled = true;
             txtCesantias.Enabled = true;
-            txtFechaNacimiento.Enabled = true; 
+            txtFechaNacimiento.Enabled = true;
+
+            txtUser.Text = string.Empty;
+            txtUser2.Text = string.Empty;
+            txtExpedicion.Text = string.Empty;
+            txtNombres.Text = string.Empty;
+            txtPrimerApellido.Text = string.Empty;
+            txtSegundoApellido.Text = string.Empty;
+            txtCorreo.Text = string.Empty;
+            txtDireccion.Text = string.Empty;
+            txtBarrio.Text = string.Empty;
+            txtCelular.Text = string.Empty;
+            txtTelefono.Text = string.Empty;
+            txtEPS.Text = string.Empty;
+            txtAFP.Text = string.Empty;
+            txtCesantias.Text = string.Empty;
+            txtFechaNacimiento.Text = string.Empty;
+            cbJefe.Checked = false;
+            ddlArea.SelectedValue = "0";
+            ddlCargo.SelectedValue = "0";
+
+            Container_UpdatePanel2.Visible = false;
+            UpdatePanel1.Update();
         }
     }
 }

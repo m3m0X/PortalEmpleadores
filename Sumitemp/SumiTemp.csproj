@@ -103,6 +103,8 @@
     <Content Include="dll\ClosedXML.XML" />
     <Content Include="dll\DocumentFormat.OpenXml.dll" />
     <Content Include="Html\SumiTemp.html" />
+    <Content Include="Img\add.gif" />
+    <Content Include="Img\delete.gif" />
     <Content Include="Img\edit.gif" />
     <Content Include="Img\excel.gif" />
     <Content Include="Img\Firma.png" />

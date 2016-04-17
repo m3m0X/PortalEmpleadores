@@ -83,6 +83,15 @@ namespace PortalTrabajadores.Portal
             UpdatePanel3.Update();
         }
 
+        /// <summary>
+        /// Limpia los mensajes
+        /// </summary>
+        private void LimpiarMensajes()
+        {
+            LblMsj.Visible = false;
+            UpdatePanel3.Update();
+        }
+
         #endregion
 
         /// <summary>
@@ -94,8 +103,8 @@ namespace PortalTrabajadores.Portal
         {
             try
             {
+                this.LimpiarMensajes();
                 TxtArea.Text = string.Empty;
-                TxtSubArea.Text = string.Empty;
                 BtnGuardar.Text = "Guardar";
                 Container_UpdatePanel2.Visible = true;
                 UpdatePanel1.Update();
@@ -112,6 +121,7 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">Evento e</param>
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
+            this.LimpiarMensajes();
             CnMysql Conexion = new CnMysql(CnMysql);
             int res = 0;
 
@@ -128,7 +138,6 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
                     cmd.Parameters.AddWithValue("@id_Compania", Session["proyecto"]);
                     cmd.Parameters.AddWithValue("@area", TxtArea.Text);
-                    cmd.Parameters.AddWithValue("@subArea", TxtSubArea.Text);
                     cmd.Parameters.AddWithValue("@estado", true);
                 }
                 else
@@ -137,7 +146,6 @@ namespace PortalTrabajadores.Portal
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@idAreas", Convert.ToInt32(Session["idAreas"]));
                     cmd.Parameters.AddWithValue("@area", TxtArea.Text);
-                    cmd.Parameters.AddWithValue("@subArea", TxtSubArea.Text);
                 }
 
                 // Crea un parametro de salida para el SP
@@ -155,6 +163,15 @@ namespace PortalTrabajadores.Portal
                 if (res == 1)
                 {
                     this.CargarGrid();
+
+                    if (BtnGuardar.Text == "Guardar")
+                    {
+                        MensajeError("Área creada correctamente");
+                    }
+                    else
+                    {
+                        MensajeError("Área actualizada");
+                    }
                 }
             }
             catch (Exception E)
@@ -174,8 +191,72 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">Evento e</param>
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
+            this.LimpiarMensajes();
             TxtArea.Text = string.Empty;
-            TxtSubArea.Text = string.Empty;
+            this.CargarGrid();
+        }
+
+        /// <summary>
+        /// Oculta y restablece el formulario de area
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Evento e</param>
+        protected void BtnGuardarSA_Click(object sender, EventArgs e)
+        {
+            this.LimpiarMensajes();
+            CnMysql Conexion = new CnMysql(CnMysql);
+            int res = 0;
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                MySqlCommand cmd;
+
+                cmd = new MySqlCommand("sp_CrearSubArea", Conexion.ObtenerCnMysql());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IdAreas", Session["idAreas"]);
+                cmd.Parameters.AddWithValue("@Subarea", txtSubarea.Text);
+
+                // Crea un parametro de salida para el SP
+                MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+
+                cmd.Parameters.Add(outputIdParam);
+                cmd.ExecuteNonQuery();
+
+                //Almacena la respuesta de la variable de retorno del SP
+                res = int.Parse(outputIdParam.Value.ToString());
+
+                if (res == 1)
+                {
+                    this.CargarGrid();
+                    this.CargarGridSubArea();
+                    MensajeError("Sub-Área creado Correctamente");
+                }
+            }
+            catch (Exception E)
+            {
+                MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
+
+        /// <summary>
+        /// Oculta y restablece el formulario de area
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Evento e</param>
+        protected void BtnCancelarSA_Click(object sender, EventArgs e)
+        {
+            this.LimpiarMensajes();
+            txtSubarea.Text = string.Empty;
+            Container_UpdatePanel3.Visible = false;
+            UpdatePanel1.Update();
             this.CargarGrid();
         }
 
@@ -186,7 +267,10 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">Evento e</param>
         protected void gvAreasCreadas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            this.LimpiarMensajes();
             int res = 0;
+            Container_UpdatePanel2.Visible = false;
+            Container_UpdatePanel3.Visible = false;
 
             CnMysql Conexion = new CnMysql(CnMysql);
             Conexion.AbrirCnMysql();
@@ -199,17 +283,19 @@ namespace PortalTrabajadores.Portal
                     int RowIndex = gvr.RowIndex;
 
                     TxtArea.Text = gvAreasCreadas.Rows[RowIndex].Cells[0].Text;
-                    TxtSubArea.Text = gvAreasCreadas.Rows[RowIndex].Cells[1].Text;
-
-                    if (TxtSubArea.Text == "&nbsp;")
-                    {
-                        TxtSubArea.Text = string.Empty;
-                    }
 
                     BtnGuardar.Text = "Editar";
                     Container_UpdatePanel2.Visible = true;
                     UpdatePanel1.Update();
                     Session.Add("idAreas", e.CommandArgument);
+                }
+                else if (e.CommandName == "Agregar")
+                {
+                    Container_UpdatePanel3.Visible = true;
+                    UpdatePanel1.Update();
+                    Session.Add("idAreas", e.CommandArgument);
+
+                    this.CargarGridSubArea();
                 }
                 else if (e.CommandName == "On")
                 {
@@ -234,6 +320,10 @@ namespace PortalTrabajadores.Portal
                     {
                         this.CargarGrid();
                     }
+                    else if (res == 2) 
+                    {
+                        ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarMensaje('No se puede desactivar porque esta asociado a uno o más empleados.'); ", true);
+                    }                    
                 }
                 else if (e.CommandName == "Off")
                 {
@@ -273,6 +363,8 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">evento e</param>
         protected void gvAreasCreadas_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            this.LimpiarMensajes();
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 ImageButton imgbtnON = (ImageButton)e.Row.FindControl("btnON");
@@ -300,6 +392,8 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">evento e</param>
         protected void gvAreasCreadas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            this.LimpiarMensajes();
+
             DataTable datos = (DataTable)Session["DataAreas"];
             GridView gv = (GridView)sender;
             gv.PageIndex = e.NewPageIndex;
@@ -312,29 +406,126 @@ namespace PortalTrabajadores.Portal
         }
 
         /// <summary>
+        /// Acciones que ejecuta la grilla
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Evento e</param>
+        protected void gvSubAreasCreadas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            this.LimpiarMensajes();
+
+            int res = 0;
+
+            CnMysql Conexion = new CnMysql(CnMysql);
+            Conexion.AbrirCnMysql();
+
+            try
+            {
+                if (e.CommandName == "Eliminar")
+                {
+                    MySqlCommand cmd = new MySqlCommand("sp_EliminarSubArea", Conexion.ObtenerCnMysql());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@IdSubarea", Convert.ToInt32(e.CommandArgument));
+
+                    // Crea un parametro de salida para el SP
+                    MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+
+                    cmd.Parameters.Add(outputIdParam);
+                    cmd.ExecuteNonQuery();
+
+                    //Almacena la respuesta de la variable de retorno del SP
+                    res = int.Parse(outputIdParam.Value.ToString());
+
+                    if (res == 1)
+                    {
+                        this.CargarGrid();
+                        this.CargarGridSubArea();
+                        MensajeError("Eliminado Correctamente");
+                    }
+                }
+            }
+            catch (Exception E)
+            {
+                MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        /// <summary>
         /// Carga la grilla actualizada
         /// </summary>
         private void CargarGrid()
         {
+            this.LimpiarMensajes();
+
             CnMysql MysqlCn = new CnMysql(CnMysql);
 
             try
             {
                 DataTable dtDataTable = null;
                 MysqlCn.AbrirCnMysql();
-                dtDataTable = MysqlCn.ConsultarRegistros("SELECT IdAreas, Area, SubArea, Estado FROM " + bd2 + ".areas"
-                                                         + " where nittercero = " + Session["usuario"]
-                                                         + " and Empresas_idEmpresa = '" + Session["idEmpresa"] + "';");
+                dtDataTable = MysqlCn.ConsultarRegistros("SELECT areas.IdAreas, areas.IdAreas AS IdArea, " +
+                    "IF((SELECT COUNT(subareas.Subarea) FROM subareas WHERE subareas.IdAreas = IdArea), " +
+                    "(SELECT COUNT(subareas.Subarea) FROM subareas WHERE subareas.IdAreas = IdArea), 0) AS SubAreas, " +
+                    "areas.Area, areas.Estado FROM " + bd2 +".areas " +
+                    "WHERE nittercero = " + Session["usuario"] + " AND Empresas_idEmpresa = '" + Session["idEmpresa"] + "'");
+
 
                 Session.Add("DataAreas", dtDataTable);
 
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
                     gvAreasCreadas.DataSource = dtDataTable;
-                    gvAreasCreadas.DataBind();
-                    Container_UpdatePanel2.Visible = false;
-                    UpdatePanel1.Update();
+                    
                 }
+                else
+                {
+                    gvAreasCreadas.DataSource = null;
+                }
+
+                gvAreasCreadas.DataBind();
+                Container_UpdatePanel2.Visible = false;
+                UpdatePanel1.Update();
+            }
+            catch (Exception E)
+            {
+                MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name + " Sin RED");
+            }
+            finally
+            {
+                MysqlCn.CerrarCnMysql();
+            }
+        }
+
+        /// <summary>
+        /// Carga las subareas
+        /// </summary>
+        private void CargarGridSubArea()
+        {
+            txtSubarea.Text = string.Empty;
+            this.LimpiarMensajes();
+            CnMysql MysqlCn = new CnMysql(CnMysql);
+
+            try
+            {
+                DataTable dtDataTable = null;
+                MysqlCn.AbrirCnMysql();
+                dtDataTable = MysqlCn.ConsultarRegistros("SELECT IdSubarea, SubArea FROM " + bd2 + ".subareas"
+                                                         + " where IdAreas = " + Session["idAreas"] + ";");
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    gvSubAreasCreadas.DataSource = dtDataTable;
+                }
+                else 
+                {
+                    gvSubAreasCreadas.DataSource = null;
+                }
+
+                gvSubAreasCreadas.DataBind();
+                UpdatePanel1.Update();
             }
             catch (Exception E)
             {

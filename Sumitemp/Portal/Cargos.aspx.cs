@@ -83,6 +83,15 @@ namespace PortalTrabajadores.Portal
             UpdatePanel3.Update();
         }
 
+        /// <summary>
+        /// Limpia los mensajes
+        /// </summary>
+        private void LimpiarMensajes()
+        {
+            LblMsj.Visible = false;
+            UpdatePanel3.Update();
+        }
+
         #endregion
 
         /// <summary>
@@ -94,6 +103,7 @@ namespace PortalTrabajadores.Portal
         {
             try
             {
+                this.LimpiarMensajes();
                 TxtCargo.Text = string.Empty;
                 BtnGuardar.Text = "Guardar";
                 Container_UpdatePanel2.Visible = true;
@@ -111,6 +121,7 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">Evento e</param>
         protected void BtnGuardar_Click(object sender, EventArgs e)
         {
+            this.LimpiarMensajes();
             CnMysql Conexion = new CnMysql(CnMysql);
             int res = 0;
 
@@ -171,6 +182,7 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">Evento e</param>
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
+            this.LimpiarMensajes();
             TxtCargo.Text = string.Empty;
             this.CargarGrid();
         }
@@ -182,6 +194,7 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">Evento e</param>
         protected void gvCargosCreados_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            this.LimpiarMensajes();
             int res = 0;
 
             CnMysql Conexion = new CnMysql(CnMysql);
@@ -231,6 +244,10 @@ namespace PortalTrabajadores.Portal
                     {
                         this.CargarGrid();
                     }
+                    else if (res == 2)
+                    {
+                        ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarMensaje('No se puede desactivar porque esta asociado a uno o más empleados.'); ", true);
+                    }
                 }
             }
             catch (Exception E)
@@ -246,6 +263,8 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">evento e</param>
         protected void gvCargosCreados_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            this.LimpiarMensajes();
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 ImageButton imgbtnON = (ImageButton)e.Row.FindControl("btnON");
@@ -273,6 +292,7 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">evento e</param>
         protected void gvCargosCreados_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            this.LimpiarMensajes();
             DataTable datos = (DataTable)Session["DataCargos"];
             GridView gv = (GridView)sender;
             gv.PageIndex = e.NewPageIndex;
@@ -289,6 +309,7 @@ namespace PortalTrabajadores.Portal
         /// </summary>
         private void CargarGrid()
         {
+            this.LimpiarMensajes();
             CnMysql MysqlCn = new CnMysql(CnMysql);
 
             try

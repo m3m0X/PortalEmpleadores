@@ -1,25 +1,34 @@
-﻿.overlay  
-        {
-          position: fixed;
-          z-index: 98;
-          top: 0px;
-          left: 0px;
-          right: 0px;
-          bottom: 0px;
-            background-color: #aaa; 
-            filter: alpha(opacity=80); 
-            opacity: 0.8; 
-        }
-        .overlayContent
-        {
-          z-index: 99;
-          margin: 250px auto;
-          width: 80px;
-          height: 80px;
-        }
-        .overlayContent h2
-        {
-            font-size: 18px;
-            font-weight: bold;
-            color: #000;
-        }
+﻿.overlay {
+    position: fixed;
+    z-index: 98;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: #aaa;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+}
+
+.overlayContent {
+    z-index: 99;
+    margin: 250px auto;
+    width: 80px;
+    height: 80px;
+}
+
+    .overlayContent h2 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #000;
+    }
+
+.loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.80) url("../Img/loader.gif") no-repeat scroll 50% 50%;
+}
