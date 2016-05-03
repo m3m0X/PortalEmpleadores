@@ -186,6 +186,9 @@
     </Content>
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\PerfilTrabajador.pubxml" />
+    <Content Include="Portal\RepEmpleadosSinJefe.aspx" />
+    <Content Include="Portal\RepEmpXEtapa.aspx" />
+    <Content Include="Portal\RepJefeXEtapa.aspx" />
     <Content Include="Portal\Retenciones.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -409,6 +412,27 @@
     </Compile>
     <Compile Include="Portal\Nomina.aspx.designer.cs">
       <DependentUpon>Nomina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\RepEmpleadosSinJefe.aspx.cs">
+      <DependentUpon>RepEmpleadosSinJefe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\RepEmpleadosSinJefe.aspx.designer.cs">
+      <DependentUpon>RepEmpleadosSinJefe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\RepEmpXEtapa.aspx.cs">
+      <DependentUpon>RepEmpXEtapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\RepEmpXEtapa.aspx.designer.cs">
+      <DependentUpon>RepEmpXEtapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\RepJefeXEtapa.aspx.cs">
+      <DependentUpon>RepJefeXEtapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\RepJefeXEtapa.aspx.designer.cs">
+      <DependentUpon>RepJefeXEtapa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\Retenciones.aspx.cs">
       <DependentUpon>Retenciones.aspx</DependentUpon>
