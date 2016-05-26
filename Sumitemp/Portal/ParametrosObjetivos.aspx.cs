@@ -93,9 +93,10 @@ namespace PortalTrabajadores.Portal
             {
                 MySqlCn = new MySqlConnection(CnMysql);
                 MySqlCommand scSqlCommand;
-                string consulta = "SELECT * FROM " + bd3 + ".parametrosgenerales where ano = " + ddlAnio.SelectedValue
-                                                                               + " AND idTercero = '" + Session["usuario"]
-                                                                               + "' AND idCompania = '" + Session["proyecto"] + "';";
+                string consulta = "SELECT * FROM " + bd3 + 
+                                   ".parametrosgenerales where ano = " + ddlAnio.SelectedValue + 
+                                   " AND idTercero = '" + Session["usuario"] + 
+                                   "' AND idCompania = '" + Session["proyecto"] + "';";
 
                 scSqlCommand = new MySqlCommand(consulta, MySqlCn);
 
@@ -106,8 +107,9 @@ namespace PortalTrabajadores.Portal
                 {
                     if (rd.Read())
                     {
-                        txtMin.Text = rd["Min_Objetivos"].ToString();
-                        txtMax.Text = rd["Max_Objetivos"].ToString();
+                        ddlMin.SelectedValue = rd["Min_Objetivos"].ToString();
+                        ddlMax.SelectedValue = rd["Max_Objetivos"].ToString();
+                        ddlSeguimiento.SelectedValue = rd["Periodo_Seguimiento"].ToString();
                         cbActivo.Checked = rd["Activo"].ToString().Equals("1");
                     }
 
@@ -115,8 +117,9 @@ namespace PortalTrabajadores.Portal
                 }
                 else 
                 {
-                    txtMin.Text = string.Empty;
-                    txtMax.Text = string.Empty;
+                    ddlMin.SelectedValue = "1";
+                    ddlMax.SelectedValue = "1";
+                    ddlSeguimiento.SelectedValue = "0";
                     BtnEditar.Text = "Guardar";
                 }
 
@@ -180,8 +183,9 @@ namespace PortalTrabajadores.Portal
 
                 cmd.Parameters.AddWithValue("@idTercero", Session["usuario"]);
                 cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
-                cmd.Parameters.AddWithValue("@Max_Objetivos", txtMax.Text);
-                cmd.Parameters.AddWithValue("@Min_Objetivos", txtMin.Text);
+                cmd.Parameters.AddWithValue("@Max_Objetivos", ddlMax.SelectedValue);
+                cmd.Parameters.AddWithValue("@Min_Objetivos", ddlMin.SelectedValue);
+                cmd.Parameters.AddWithValue("@Periodo_Seguimiento", ddlSeguimiento.SelectedValue);
                 cmd.Parameters.AddWithValue("@Activo", cbActivo.Checked);
                 cmd.Parameters.AddWithValue("@Ano", ddlAnio.SelectedValue);
 
@@ -229,8 +233,9 @@ namespace PortalTrabajadores.Portal
         /// <param name="e">evento e</param>
         protected void BtnCancel_Click(object sender, EventArgs e)
         {
-            txtMin.Text = string.Empty;
-            txtMax.Text = string.Empty;
+            ddlMin.SelectedValue = "1";
+            ddlMax.SelectedValue = "1";
+            ddlSeguimiento.SelectedValue = "0";
 
             Container_UpdatePanel2.Visible = false;
             UpdatePanel1.Update();

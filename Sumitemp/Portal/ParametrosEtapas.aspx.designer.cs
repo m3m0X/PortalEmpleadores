@@ -157,6 +157,15 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.WebControls.Label lblCorteFin;
         
         /// <summary>
+        /// Control lblLimite.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblLimite;
+        
+        /// <summary>
         /// Control lblEtapa.
         /// </summary>
         /// <remarks>
@@ -202,6 +211,15 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.WebControls.TextBox txtCorteFin;
         
         /// <summary>
+        /// Control txtLimite.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLimite;
+        
+        /// <summary>
         /// Control rfvFecha1.
         /// </summary>
         /// <remarks>
@@ -236,6 +254,15 @@ namespace PortalTrabajadores.Portal {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFecha4;
+        
+        /// <summary>
+        /// Control rfvFecha5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFecha5;
         
         /// <summary>
         /// Control BtnEditar.

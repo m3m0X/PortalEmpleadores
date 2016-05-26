@@ -58,7 +58,7 @@
             <div id="Container_UpdatePanel2" runat="server" visible="false">
                 <table id="TablaDatos2">
                     <tr>
-                        <th colspan="5">Parametros Fecha Etapas</th>
+                        <th colspan="6">Parametros Fecha Etapas</th>
                     </tr>
                     <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos">
@@ -76,6 +76,9 @@
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblCorteFin" runat="server" Text="Corte Fin" />
                         </td>
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblLimite" runat="server" Text="Limite Asignación" />
+                        </td>
                     </tr>
                     <tr>
                         <td class="CeldaTablaDatos">
@@ -92,6 +95,9 @@
                         </td>
                         <td class="CeldaTablaDatos">
                             <asp:TextBox ID="txtCorteFin" runat="server" CssClass="jqCalendar" onkeypress="return ValidaSoloNumerosFecha(event)"></asp:TextBox>
+                        </td>
+                        <td class="CeldaTablaDatos">
+                            <asp:TextBox ID="txtLimite" runat="server" CssClass="jqCalendar" onkeypress="return ValidaSoloNumerosFecha(event)"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -136,9 +142,19 @@
                                 CssClass="MensajeError" ErrorMessage="Formato Invalido." 
                                 ValidationGroup="objForm" />
                         </td>
+                        <td class="CeldaTablaDatos">
+                            <asp:RequiredFieldValidator ID="rfvFecha5" ControlToValidate="txtLimite"
+                                CssClass="MensajeError" Display="Dynamic"
+                                ValidationGroup="objForm" runat="server"
+                                ErrorMessage="Ingrese una fecha"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtLimite"
+                                ValidationExpression="\d{4}(?:/\d{1,2}){2}" Display="Dynamic"
+                                CssClass="MensajeError" ErrorMessage="Formato Invalido." 
+                                ValidationGroup="objForm" />
+                        </td>
                     </tr>
                     <tr>
-                        <td class="BotonTablaDatos" colspan="4"></td>
+                        <td class="BotonTablaDatos" colspan="5"></td>
                         <td class="BotonTablaDatos">
                             <asp:Button ID="BtnEditar" runat="server" Text="Guardar" ValidationGroup="objForm" OnClick="BtnEditar_Click" />
                             <asp:Button ID="BtnCancel" runat="server" Text="Cancelar" OnClick="BtnCancel_Click" /></td>

@@ -94,22 +94,13 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.WebControls.Label lblMin;
         
         /// <summary>
-        /// Control txtMin.
+        /// Control ddlMin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMin;
-        
-        /// <summary>
-        /// Control rfvMin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMin;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMin;
         
         /// <summary>
         /// Control lblMax.
@@ -121,22 +112,31 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.WebControls.Label lblMax;
         
         /// <summary>
-        /// Control txtMax.
+        /// Control ddlMax.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMax;
+        protected global::System.Web.UI.WebControls.DropDownList ddlMax;
         
         /// <summary>
-        /// Control rfvMax.
+        /// Control lblSeguimiento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvMax;
+        protected global::System.Web.UI.WebControls.Label lblSeguimiento;
+        
+        /// <summary>
+        /// Control ddlSeguimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSeguimiento;
         
         /// <summary>
         /// Control lblActivo.
@@ -155,6 +155,15 @@ namespace PortalTrabajadores.Portal {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbActivo;
+        
+        /// <summary>
+        /// Control cValidator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator cValidator;
         
         /// <summary>
         /// Control BtnEditar.

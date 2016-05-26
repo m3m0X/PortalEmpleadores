@@ -211,30 +211,54 @@ namespace PortalTrabajadores.Portal
             try
             {
                 Conexion.AbrirCnMysql();
-                MySqlCommand cmd;
 
-                cmd = new MySqlCommand("sp_CrearPeriodoExtra", Conexion.ObtenerCnMysql());
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@Etapas_idEtapas", ddlEtapas.SelectedValue);
-                cmd.Parameters.AddWithValue("@JefeEmpleado_idJefeEmpleado", Session["idJefeEmpleado"]);
-                cmd.Parameters.AddWithValue("@Fecha_Inicio", DateTime.Parse(txtFechaInicio.Text));
-                cmd.Parameters.AddWithValue("@Fecha_Fin", DateTime.Parse(txtFechaFin.Text));
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
 
-                // Crea un parametro de salida para el SP
-                MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                MySqlCn = new MySqlConnection(Cn);
+                MySqlCommand scSqlCommand;
+                string consulta = "SELECT * FROM pru_modobjetivos.fechasetapas" + 
+                                  " where ('" + txtFechaInicio.Text + "' > fechasetapas.Fecha_Limite" +
+                                  " or '" + txtFechaFin.Text + "' > fechasetapas.Fecha_Limite)" +
+                                  " and fechasetapas.Etapas_idEtapas = " + ddlEtapas.SelectedValue + 
+                                  " and Ano = " + DateTime.Now.Year + ";";
+
+                scSqlCommand = new MySqlCommand(consulta, MySqlCn);
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
-                    Direction = ParameterDirection.Output
-                };
-
-                cmd.Parameters.Add(outputIdParam);
-                cmd.ExecuteNonQuery();
-
-                //Almacena la respuesta de la variable de retorno del SP
-                res = int.Parse(outputIdParam.Value.ToString());
-
-                if (res == 1)
+                    MensajeError("No puede agregar el periodo ya que sobrepasa la fecha limite para la etapa seleccionada");
+                }
+                else 
                 {
-                    MensajeError("Parametros creados correctamente");
+                    MySqlCommand cmd;
+
+                    cmd = new MySqlCommand("sp_CrearPeriodoExtra", Conexion.ObtenerCnMysql());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Etapas_idEtapas", ddlEtapas.SelectedValue);
+                    cmd.Parameters.AddWithValue("@JefeEmpleado_idJefeEmpleado", Session["idJefeEmpleado"]);
+                    cmd.Parameters.AddWithValue("@Fecha_Inicio", DateTime.Parse(txtFechaInicio.Text));
+                    cmd.Parameters.AddWithValue("@Fecha_Fin", DateTime.Parse(txtFechaFin.Text));
+
+                    // Crea un parametro de salida para el SP
+                    MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+
+                    cmd.Parameters.Add(outputIdParam);
+                    cmd.ExecuteNonQuery();
+
+                    //Almacena la respuesta de la variable de retorno del SP
+                    res = int.Parse(outputIdParam.Value.ToString());
+
+                    if (res == 1)
+                    {
+                        MensajeError("Parametros creados correctamente");
+                    }
                 }
             }
             catch (Exception E)

@@ -111,6 +111,7 @@ namespace PortalTrabajadores.Portal
                         txtFechaFin.Text = DateTime.Parse(rd["Fecha_Fin"].ToString()).ToString("yyyy/MM/dd");
                         txtCorteInicio.Text = DateTime.Parse(rd["Corte_Inicio"].ToString()).ToString("yyyy/MM/dd");
                         txtCorteFin.Text = DateTime.Parse(rd["Corte_Fin"].ToString()).ToString("yyyy/MM/dd");
+                        txtLimite.Text = DateTime.Parse(rd["Fecha_Limite"].ToString()).ToString("yyyy/MM/dd");
                     }
 
                     BtnEditar.Text = "Actualizar";
@@ -121,6 +122,7 @@ namespace PortalTrabajadores.Portal
                     txtFechaFin.Text = string.Empty;
                     txtCorteInicio.Text = string.Empty;
                     txtCorteFin.Text = string.Empty;
+                    txtLimite.Text = string.Empty;
                     BtnEditar.Text = "Guardar";
                 }
 
@@ -187,6 +189,7 @@ namespace PortalTrabajadores.Portal
                 cmd.Parameters.AddWithValue("@Fecha_Fin", DateTime.Parse(txtFechaFin.Text));
                 cmd.Parameters.AddWithValue("@Corte_Inicio", DateTime.Parse(txtCorteInicio.Text));
                 cmd.Parameters.AddWithValue("@Corte_Fin", DateTime.Parse(txtCorteFin.Text));
+                cmd.Parameters.AddWithValue("@Fecha_Limite", DateTime.Parse(txtLimite.Text));
                 cmd.Parameters.AddWithValue("@Ano", ddlAnio.SelectedValue);
 
                 // Crea un parametro de salida para el SP
@@ -237,6 +240,7 @@ namespace PortalTrabajadores.Portal
             txtFechaFin.Text = string.Empty;
             txtCorteInicio.Text = string.Empty;
             txtCorteFin.Text = string.Empty;
+            txtLimite.Text = string.Empty;
 
             Container_UpdatePanel2.Visible = false;
             UpdatePanel1.Update();

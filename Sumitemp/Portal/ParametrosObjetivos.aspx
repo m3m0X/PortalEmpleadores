@@ -56,16 +56,18 @@
                             <asp:Label ID="lblMin" runat="server" Text="Cantidad Minima de Objetivos" />
                         </td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtMin" runat="server" MaxLength="1" onkeypress="return ValidaSoloNumeros(event)" />
-                        </td>
-                    </tr>
-                    <tr class="ColorOscuro">
-                        <td class="CeldaTablaDatos"></td>
-                        <td class="CeldaTablaDatos">
-                            <asp:RequiredFieldValidator ID="rfvMin" ControlToValidate="txtMin"
-                                CssClass="MensajeError" Display="Dynamic"
-                                ValidationGroup="objForm" runat="server"
-                                ErrorMessage="Digite Mínimo de objetivos"></asp:RequiredFieldValidator>
+                            <asp:DropDownList ID="ddlMin" runat="server">
+                                <asp:ListItem>1</asp:ListItem>
+                                <asp:ListItem>2</asp:ListItem>
+                                <asp:ListItem>3</asp:ListItem>
+                                <asp:ListItem>4</asp:ListItem>
+                                <asp:ListItem>5</asp:ListItem>
+                                <asp:ListItem>6</asp:ListItem>
+                                <asp:ListItem>7</asp:ListItem>
+                                <asp:ListItem>8</asp:ListItem>
+                                <asp:ListItem>9</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr class="ColorOscuro">
@@ -73,19 +75,34 @@
                             <asp:Label ID="lblMax" runat="server" Text="Cantidad Máxima de Objetivos" />
                         </td>
                         <td class="CeldaTablaDatos">
-                            <asp:TextBox ID="txtMax" runat="server" MaxLength="1" onkeypress="return ValidaSoloNumeros(event)" />
-                        </td>
-                    </tr>
-                    <tr class="ColorOscuro">
-                        <td class="CeldaTablaDatos"></td>
-                        <td class="CeldaTablaDatos">
-                            <asp:RequiredFieldValidator ID="rfvMax" ControlToValidate="txtMax"
-                                CssClass="MensajeError" Display="Dynamic"
-                                ValidationGroup="objForm" runat="server"
-                                ErrorMessage="Digite Máximo de objetivos"></asp:RequiredFieldValidator>
+                            <asp:DropDownList ID="ddlMax" runat="server">
+                                <asp:ListItem>1</asp:ListItem>
+                                <asp:ListItem>2</asp:ListItem>
+                                <asp:ListItem>3</asp:ListItem>
+                                <asp:ListItem>4</asp:ListItem>
+                                <asp:ListItem>5</asp:ListItem>
+                                <asp:ListItem>6</asp:ListItem>
+                                <asp:ListItem>7</asp:ListItem>
+                                <asp:ListItem>8</asp:ListItem>
+                                <asp:ListItem>9</asp:ListItem>
+                                <asp:ListItem>10</asp:ListItem>
+                            </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblSeguimiento" runat="server" Text="Periodo" />
+                        </td>
+                        <td class="CeldaTablaDatos">
+                            <asp:DropDownList ID="ddlSeguimiento" runat="server">
+                                <asp:ListItem Value="0" Selected="True">---Seleccione una opción---</asp:ListItem>
+                                <asp:ListItem Value="1">Anual</asp:ListItem>
+                                <asp:ListItem Value="2">Semestral</asp:ListItem>
+                                <asp:ListItem Value="3">Trimestral</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                    </tr>             
+                    <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblActivo" runat="server" Text="Activo" />
                         </td>
@@ -94,6 +111,22 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="CeldaTablaDatos" colspan="2">
+                            <asp:CompareValidator ID="cValidator" 
+                                runat="server" 
+                                ErrorMessage="CompareValidator"
+                                ControlToValidate="ddlMin"
+                                ControlToCompare="ddlMax"
+                                CssClass="MensajeError" 
+                                Display="Dynamic"
+                                Operator="LessThanEqual"
+                                Type="Integer"
+                                Text="Error: El objetivo min no puede ser mayor a max"
+                                ValidationGroup="objForm">
+                            </asp:CompareValidator>
+                        </td>
+                    </tr>
+                    <tr class="ColorOscuro">
                         <td class="BotonTablaDatos">
                             <asp:Button ID="BtnEditar" runat="server" Text="Guardar" ValidationGroup="objForm" OnClick="BtnEditar_Click" /></td>
                         <td class="BotonTablaDatos">
