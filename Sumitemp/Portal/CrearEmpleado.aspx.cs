@@ -200,8 +200,6 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@Contrasena_Empleado", txtUser2.Text);
                     cmd.Parameters.AddWithValue("@Contrasena_Activo", 1);
                     cmd.Parameters.AddWithValue("@Externo", true);
-                    cmd.Parameters.AddWithValue("@IdAreas", ddlArea.SelectedValue);
-                    cmd.Parameters.AddWithValue("@IdCargos", ddlCargo.SelectedValue);                    
                 }
                 else
                 {
@@ -227,7 +225,23 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@AFP_Empleado", txtAFP.Text);
                     cmd.Parameters.AddWithValue("@Cesantias_Empleado", txtCesantias.Text);
                     cmd.Parameters.AddWithValue("@Fecha_nacimiento_Empleado", txtFechaNacimiento.Text.Replace("/", string.Empty));                    
+                }
+
+                if (ddlArea.SelectedValue == "0")
+                {
+                    cmd.Parameters.AddWithValue("@IdAreas", null);
+                }
+                else
+                {
                     cmd.Parameters.AddWithValue("@IdAreas", ddlArea.SelectedValue);
+                }
+
+                if (ddlCargo.SelectedValue == "0")
+                {
+                    cmd.Parameters.AddWithValue("@IdCargos", null);
+                }
+                else 
+                {
                     cmd.Parameters.AddWithValue("@IdCargos", ddlCargo.SelectedValue);
                 }
 
