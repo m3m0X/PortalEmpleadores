@@ -26,7 +26,7 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <div id="Container_UpdatePanel1">
+            <div id="Container_UpdatePanel1" runat="server">
                 <table id="TablaDatos">
                     <tr>
                         <th colspan="2">Seleccione el año a parametrizar</th>
@@ -36,7 +36,7 @@
                             <asp:Label ID="lblAnio" runat="server" Text="Año:" />
                         </td>
                         <td class="BotonTablaDatos">
-                            <asp:DropDownList ID="ddlAnio" runat="server"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlAnio" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAnio_SelectedIndexChanged"></asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
@@ -44,8 +44,7 @@
                             <asp:Label ID="lblEtapasDdl" runat="server" Text="Etapas:" />
                         </td>
                         <td class="BotonTablaDatos">
-                            <asp:DropDownList ID="ddlEtapas" runat="server" DataSourceID="sqlEtapas" DataTextField="Etapa" DataValueField="idEtapas"></asp:DropDownList>
-                            <asp:SqlDataSource ID="sqlEtapas" runat="server" ConnectionString='<%$ ConnectionStrings:CadenaConexioMySql3 %>' ProviderName='<%$ ConnectionStrings:CadenaConexioMySql3.ProviderName %>' SelectCommand="SELECT idEtapas, Etapa FROM etapas"></asp:SqlDataSource>
+                            <asp:DropDownList ID="ddlEtapas" runat="server"></asp:DropDownList>                            
                         </td>
                     </tr>
                     <tr>
@@ -56,6 +55,7 @@
                 </table>
             </div>
             <div id="Container_UpdatePanel2" runat="server" visible="false">
+                <p></p>
                 <table id="TablaDatos2">
                     <tr>
                         <th colspan="6">Parametros Fecha Etapas</th>
@@ -164,6 +164,7 @@
         </ContentTemplate>
         <Triggers>
             <asp:AsyncPostBackTrigger ControlID="BtnBuscar" />
+            <asp:AsyncPostBackTrigger ControlID="ddlAnio" EventName="selectedindexchanged" />            
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

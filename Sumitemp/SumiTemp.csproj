@@ -209,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\CnMysql.cs" />
+    <Compile Include="Class\ConsultasGenerales.cs" />
     <Compile Include="Class\LlenadoDropBox.cs" />
     <Compile Include="Class\ManejoLog.cs">
       <SubType>ASPXCodeBehind</SubType>

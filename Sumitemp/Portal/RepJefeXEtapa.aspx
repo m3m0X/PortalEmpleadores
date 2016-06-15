@@ -19,11 +19,18 @@
                     </tr>
                     <tr>
                         <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblAnio" runat="server" Text="Año:" />
+                        </td>
+                        <td class="BotonTablaDatos">
+                            <asp:DropDownList ID="ddlAnio" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlAnio_SelectedIndexChanged"></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos">
                             <asp:Label ID="lblEtapasDdl" runat="server" Text="Etapas:" />
                         </td>                        
                         <td class="BotonTablaDatos">
-                            <asp:DropDownList ID="ddlEtapas" runat="server" DataSourceID="sqlEtapas" DataTextField="Etapa" DataValueField="idEtapas"></asp:DropDownList>
-                            <asp:SqlDataSource ID="sqlEtapas" runat="server" ConnectionString='<%$ ConnectionStrings:CadenaConexioMySql3 %>' ProviderName='<%$ ConnectionStrings:CadenaConexioMySql3.ProviderName %>' SelectCommand="SELECT idEtapas, Etapa FROM etapas"></asp:SqlDataSource>
+                            <asp:DropDownList ID="ddlEtapas" runat="server"></asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
@@ -36,6 +43,7 @@
         </ContentTemplate>
         <Triggers>
             <asp:PostBackTrigger ControlID="btnConsultar"/>
+            <asp:AsyncPostBackTrigger ControlID="ddlAnio" EventName="selectedindexchanged" /> 
         </Triggers>
     </asp:UpdatePanel>
     <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdatePanel1">

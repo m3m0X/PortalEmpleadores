@@ -79,12 +79,47 @@ namespace PortalTrabajadores.Portal
         #endregion
 
         /// <summary>
+        /// Carga el año actual y el pasado
+        /// </summary>
+        public void CargarAnio()
+        {
+            try
+            {
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                DataTable datos = consultas.ConsultarAnos(Session["proyecto"].ToString(),
+                                                          Session["idEmpresa"].ToString());
+
+                if (datos != null) 
+                {
+                    ddlAnio.DataTextField = "Ano";
+                    ddlAnio.DataValueField = "Ano";
+                    ddlAnio.DataSource = datos;
+                    ddlAnio.DataBind();
+                }
+                else 
+                {
+                    DateTime fechaAnioActual = DateTime.Now;
+                    ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeError(ex.Message);
+            }
+        }
+
+        /// <summary>
         /// Busca los datos del usuario
         /// </summary>
         /// <param name="sender">objeto sender</param>
         /// <param name="e">evento e</param>
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
+            ddlMin.Enabled = true;
+            ddlMax.Enabled = true;
+            ddlSeguimiento.Enabled = true;
+            BtnEditar.Text = "Guardar";
+
             LblMsj.Text = string.Empty;
             LblMsj.Visible = false;
             UpdatePanel3.Update();
@@ -111,9 +146,13 @@ namespace PortalTrabajadores.Portal
                         ddlMax.SelectedValue = rd["Max_Objetivos"].ToString();
                         ddlSeguimiento.SelectedValue = rd["Periodo_Seguimiento"].ToString();
                         cbActivo.Checked = rd["Activo"].ToString().Equals("1");
-                    }
 
-                    BtnEditar.Text = "Actualizar";
+                        ddlMin.Enabled = false;
+                        ddlMax.Enabled = false;
+                        ddlSeguimiento.Enabled = false;
+
+                        BtnEditar.Text = "Editar";
+                    }                    
                 }
                 else 
                 {
@@ -135,25 +174,7 @@ namespace PortalTrabajadores.Portal
                 MySqlCn.Close();
             }
         }
-
-        /// <summary>
-        /// Carga el año actual y el pasado
-        /// </summary>
-        public void CargarAnio() 
-        {
-            try 
-            {
-                DateTime fechaAnioActual = DateTime.Now;
-                int fechaAnioPasado = fechaAnioActual.Year - 1;
-
-                ddlAnio.Items.Add(new ListItem(fechaAnioPasado.ToString(), fechaAnioPasado.ToString()));
-                ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
-            }
-            catch(Exception ex)
-            {
-            }
-        }
-
+        
         /// <summary>
         /// Edita o guarda la informacion del formulario
         /// </summary>
@@ -236,6 +257,9 @@ namespace PortalTrabajadores.Portal
             ddlMin.SelectedValue = "1";
             ddlMax.SelectedValue = "1";
             ddlSeguimiento.SelectedValue = "0";
+            ddlMin.Enabled = true;
+            ddlMax.Enabled = true;
+            ddlSeguimiento.Enabled = true;
 
             Container_UpdatePanel2.Visible = false;
             UpdatePanel1.Update();

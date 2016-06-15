@@ -20,8 +20,6 @@ namespace PortalTrabajadores.Portal
         string bd3 = ConfigurationManager.AppSettings["BD3"].ToString();
         MySqlConnection MySqlCn;
 
-        #region Definicion de los Metodos de la Clase
-
         #region Metodo Page Load
         /* ****************************************************************************/
         /* Metodo que se ejecuta al momento de la carga de la Pagina
@@ -51,6 +49,9 @@ namespace PortalTrabajadores.Portal
                         {
                             this.lblTitulo.Text = dtDataTable.Rows[0].ItemArray[0].ToString();
                         }
+
+                        this.CargarEtapas(DateTime.Now.Year);
+                        this.CargarAnio();
                     }
                     catch (Exception ex)
                     {
@@ -85,14 +86,90 @@ namespace PortalTrabajadores.Portal
         }
         #endregion
 
+        #region funciones
+
+        /// <summary>
+        /// Reemplaza los simbolos hexa
+        /// </summary>
+        /// <param name="txt">texto enviado</param>
+        /// <returns>texto organizado</returns>
         public static string ReplaceHexadecimalSymbols(string txt)
         {
             string r = "[\x00-\x08\x0B\x0C\x0E-\x1F\x26]";
             return Regex.Replace(txt, r, "", RegexOptions.Compiled);
         }
 
+        /// <summary>
+        /// Carga el año actual y el pasado
+        /// </summary>
+        public void CargarAnio()
+        {
+            try
+            {
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                DataTable datos = consultas.ConsultarAnos(Session["proyecto"].ToString(),
+                                                          Session["idEmpresa"].ToString());
+
+                if (datos != null)
+                {
+                    ddlAnio.DataTextField = "Ano";
+                    ddlAnio.DataValueField = "Ano";
+                    ddlAnio.DataSource = datos;
+                    ddlAnio.DataBind();
+                }
+                else
+                {
+                    DateTime fechaAnioActual = DateTime.Now;
+                    ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeError(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el resultado de las etapas dependiendo del año
+        /// </summary>
+        /// <param name="anio">Año Seleccionado</param>
+        public void CargarEtapas(int anio)
+        {
+            try
+            {
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                Session.Add("sesionPeriodo", consultas.ConsultarPeriodoSeguimiento(Session["proyecto"].ToString(),
+                                                                                   Session["idEmpresa"].ToString(),
+                                                                                   anio));
+
+                if (Session["sesionPeriodo"].ToString() == "0")
+                {
+                    ddlEtapas.DataSource = null;
+                }
+                else
+                {
+                    ddlEtapas.DataTextField = "Etapa";
+                    ddlEtapas.DataValueField = "idEtapas";
+                    ddlEtapas.DataSource = consultas.ConsultarEtapasActivas(Session["sesionPeriodo"].ToString());
+                }
+
+                ddlEtapas.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         #endregion
 
+        #region eventos
+
+        /// <summary>
+        /// Consultar Reporte
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Evento e</param>
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
             try
@@ -104,6 +181,7 @@ namespace PortalTrabajadores.Portal
                 scSqlCommand.CommandType = CommandType.StoredProcedure;
                 scSqlCommand.Parameters.AddWithValue("@etapa", ddlEtapas.SelectedValue);
                 scSqlCommand.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
+                scSqlCommand.Parameters.AddWithValue("@ano", ddlAnio.SelectedValue);
 
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                 DataTable dtDataTable = new DataTable();
@@ -147,5 +225,24 @@ namespace PortalTrabajadores.Portal
                 MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
         }
+
+        /// <summary>
+        /// Evento cuando se modifica el ddl
+        /// </summary>
+        /// <param name="sender">Objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void ddlAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.CargarEtapas(Convert.ToInt32(ddlAnio.SelectedValue));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
     }
 }

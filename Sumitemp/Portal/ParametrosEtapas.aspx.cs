@@ -32,6 +32,7 @@ namespace PortalTrabajadores.Portal
                 {
                     try
                     {
+                        
                         MySqlCn = new MySqlConnection(Cn);
 
                         MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'ParametrosEtapas.aspx' AND idEmpresa = '" + Session["idEmpresa"] + "'", MySqlCn);
@@ -48,6 +49,7 @@ namespace PortalTrabajadores.Portal
                         }
 
                         this.CargarAnio();
+                        this.CargarEtapas(DateTime.Now.Year);
                     }
                     catch (Exception E)
                     {
@@ -78,6 +80,77 @@ namespace PortalTrabajadores.Portal
 
         #endregion
 
+        #region funciones
+
+        /// <summary>
+        /// Carga el año actual y el pasado
+        /// </summary>
+        public void CargarAnio()
+        {
+            try
+            {
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                DataTable datos = consultas.ConsultarAnos(Session["proyecto"].ToString(),
+                                                          Session["idEmpresa"].ToString());
+
+                if (datos != null)
+                {
+                    ddlAnio.DataTextField = "Ano";
+                    ddlAnio.DataValueField = "Ano";
+                    ddlAnio.DataSource = datos;
+                    ddlAnio.DataBind();
+                }
+                else
+                {
+                    DateTime fechaAnioActual = DateTime.Now;
+                    ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeError(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Devuelve el resultado de las etapas dependiendo del año
+        /// </summary>
+        /// <param name="anio">Año Seleccionado</param>
+        public void CargarEtapas(int anio)
+        {
+            try
+            {
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                Session.Add("sesionPeriodo", consultas.ConsultarPeriodoSeguimiento(Session["proyecto"].ToString(),
+                                                                                   Session["idEmpresa"].ToString(),
+                                                                                   anio));
+
+                if (Session["sesionPeriodo"].ToString() == "0")
+                {
+                    this.MensajeError("No se han establecido los parametros generales para el año actual. Por favor definalos antes de continuar");
+                    ddlEtapas.DataSource = null;
+                    Container_UpdatePanel1.Visible = false;
+                    UpdatePanel1.Update();
+                }
+                else
+                {
+                    ddlEtapas.DataTextField = "Etapa";
+                    ddlEtapas.DataValueField = "idEtapas";
+                    ddlEtapas.DataSource = consultas.ConsultarEtapasActivas(Session["sesionPeriodo"].ToString());
+                }
+
+                ddlEtapas.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
+
+        #region eventos
+
         /// <summary>
         /// Busca los datos del usuario
         /// </summary>
@@ -93,7 +166,7 @@ namespace PortalTrabajadores.Portal
             {
                 MySqlCn = new MySqlConnection(CnMysql);
                 MySqlCommand scSqlCommand;
-                string consulta = "SELECT * FROM " + bd3 + ".fechasetapas where Ano = '" + ddlAnio.SelectedValue 
+                string consulta = "SELECT * FROM " + bd3 + ".fechasetapas where Ano = '" + ddlAnio.SelectedValue
                                 + "' AND Etapas_idEtapas = " + ddlEtapas.SelectedValue + ";";
 
                 scSqlCommand = new MySqlCommand(consulta, MySqlCn);
@@ -129,6 +202,7 @@ namespace PortalTrabajadores.Portal
                 ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarCalendario(); ", true);
                 Container_UpdatePanel2.Visible = true;
                 UpdatePanel1.Update();
+                
             }
             catch (Exception ex)
             {
@@ -139,25 +213,7 @@ namespace PortalTrabajadores.Portal
                 MySqlCn.Close();
             }
         }
-
-        /// <summary>
-        /// Carga el año actual y el pasado
-        /// </summary>
-        public void CargarAnio()
-        {
-            try
-            {
-                DateTime fechaAnioActual = DateTime.Now;
-                int fechaAnioPasado = fechaAnioActual.Year - 1;
-
-                ddlAnio.Items.Add(new ListItem(fechaAnioPasado.ToString(), fechaAnioPasado.ToString()));
-                ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-
+        
         /// <summary>
         /// Edita o guarda la informacion del formulario
         /// </summary>
@@ -245,5 +301,24 @@ namespace PortalTrabajadores.Portal
             Container_UpdatePanel2.Visible = false;
             UpdatePanel1.Update();
         }
+
+        /// <summary>
+        /// Evento cuando se modifica el ddl
+        /// </summary>
+        /// <param name="sender">Objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void ddlAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                this.CargarEtapas(Convert.ToInt32(ddlAnio.SelectedValue));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
     }
 }

@@ -85,16 +85,28 @@ namespace PortalTrabajadores.Portal
         /// </summary>
         public void CargarAnio() 
         {
-            try 
+            try
             {
-                DateTime fechaAnioActual = DateTime.Now;
-                int fechaAnioPasado = fechaAnioActual.Year - 1;
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                DataTable datos = consultas.ConsultarAnos(Session["proyecto"].ToString(),
+                                                          Session["idEmpresa"].ToString());
 
-                ddlAnio.Items.Add(new ListItem(fechaAnioPasado.ToString(), fechaAnioPasado.ToString()));
-                ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
+                if (datos != null)
+                {
+                    ddlAnio.DataTextField = "Ano";
+                    ddlAnio.DataValueField = "Ano";
+                    ddlAnio.DataSource = datos;
+                    ddlAnio.DataBind();
+                }
+                else
+                {
+                    DateTime fechaAnioActual = DateTime.Now;
+                    ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
+                MensajeError(ex.Message);
             }
         }
 
@@ -107,6 +119,41 @@ namespace PortalTrabajadores.Portal
             txtFechaFin.Text = string.Empty;
             gvJefeEmpleado.DataSource = null;
             gvJefeEmpleado.DataBind();
+        }
+
+        /// <summary>
+        /// Devuelve el resultado de las etapas dependiendo del año
+        /// </summary>
+        /// <param name="anio">Año Seleccionado</param>
+        public void CargarEtapas(int anio)
+        {
+            try
+            {
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                Session.Add("sesionPeriodo", consultas.ConsultarPeriodoSeguimiento(Session["proyecto"].ToString(),
+                                                                                   Session["idEmpresa"].ToString(),
+                                                                                   anio));
+
+                if (Session["sesionPeriodo"].ToString() == "0")
+                {
+                    this.MensajeError("No se han establecido los parametros generales para el año actual. Por favor definalos antes de continuar");
+                    ddlEtapas.DataSource = null;
+                    Container_UpdatePanel1.Visible = false;
+                    UpdatePanel1.Update();
+                }
+                else
+                {
+                    ddlEtapas.DataTextField = "Etapa";
+                    ddlEtapas.DataValueField = "idEtapas";
+                    ddlEtapas.DataSource = consultas.ConsultarEtapasActivas(Session["sesionPeriodo"].ToString());
+                }
+
+                ddlEtapas.DataBind();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         #endregion
@@ -151,6 +198,7 @@ namespace PortalTrabajadores.Portal
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
                     gvJefeEmpleado.DataSource = dtDataTable;
+                    Session.Add("anioSeleccionado", ddlAnio.SelectedValue);
                 }
                 else
                 {
@@ -188,6 +236,7 @@ namespace PortalTrabajadores.Portal
                     ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarCalendario(); ", true);
                     Container_UpdatePanel1.Visible = false;
                     Container_UpdatePanel2.Visible = true;
+                    this.CargarEtapas(Convert.ToInt32(Session["anioSeleccionado"].ToString()));
                     UpdatePanel1.Update();
                     Session.Add("idJefeEmpleado", e.CommandArgument);
                 }

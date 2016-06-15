@@ -157,4 +157,3 @@ D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.cache
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.compiled
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.dll
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.pdb
-D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\SumiTemp.csprojResolveAssemblyReference.cache

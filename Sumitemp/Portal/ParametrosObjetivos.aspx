@@ -130,7 +130,7 @@
                         <td class="BotonTablaDatos">
                             <asp:Button ID="BtnEditar" runat="server" Text="Guardar" ValidationGroup="objForm" OnClick="BtnEditar_Click" /></td>
                         <td class="BotonTablaDatos">
-                            <asp:Button ID="BtnCancel" runat="server" Text="Cancelar" OnClick="BtnCancel_Click" /></td>
+                            <asp:Button ID="BtnCancel" runat="server" Text="Regresar" OnClick="BtnCancel_Click" /></td>
                     </tr>
                 </table>
             </div>

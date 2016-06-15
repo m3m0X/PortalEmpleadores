@@ -16,22 +16,32 @@
             <div id="Container_UpdatePanel1">
                 <table id="TablaDatos">
                     <tr>
-                        <th colspan="2">Reporte Estado Empleados/Jefe</th>
+                        <th colspan="2">Reporte Empleados Sin Jefes</th>
                     </tr>
                     <tr>
                         <td class="CeldaTablaDatos">
-                            <asp:Label ID="lblCambio" runat="server" Text="No hay empleados activos" />
+                            <asp:Label ID="lblAnio" runat="server" Text="Año:" />
                         </td>
                         <td class="BotonTablaDatos">
+                            <asp:DropDownList ID="ddlAnio" runat="server"></asp:DropDownList>
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <td colspan="2" class="BotonTablaDatos">
+                            <asp:Button ID="btnConsultar" runat="server" Text="Consultar" OnClick="btnConsultar_Click" />
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="BotonTablaDatos">
+                        <td colspan="2" class="CeldaTablaDatos">
+                            <asp:Label ID="lblCambio" runat="server" Text="" />
                         </td>
                     </tr>
                 </table>           
             </div>
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID="btnConsultar"/>
+        </Triggers>
     </asp:UpdatePanel>
     <asp:UpdateProgress ID="UpdateProgress1" runat="server" DisplayAfter="0" AssociatedUpdatePanelID="UpdatePanel1">
         <ProgressTemplate>

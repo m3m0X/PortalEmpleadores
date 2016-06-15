@@ -146,8 +146,7 @@
                             <asp:Label ID="lblEtapasDdl" runat="server" Text="Etapas:" />
                         </td>                        
                         <td class="BotonTablaDatos">
-                            <asp:DropDownList ID="ddlEtapas" runat="server" DataSourceID="sqlEtapas" DataTextField="Etapa" DataValueField="idEtapas"></asp:DropDownList>
-                            <asp:SqlDataSource ID="sqlEtapas" runat="server" ConnectionString='<%$ ConnectionStrings:CadenaConexioMySql3 %>' ProviderName='<%$ ConnectionStrings:CadenaConexioMySql3.ProviderName %>' SelectCommand="SELECT idEtapas, Etapa FROM etapas"></asp:SqlDataSource>
+                            <asp:DropDownList ID="ddlEtapas" runat="server"></asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
