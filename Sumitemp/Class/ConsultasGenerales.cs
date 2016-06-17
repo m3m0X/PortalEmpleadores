@@ -33,9 +33,53 @@ namespace PortalTrabajadores.Portal
 
             try
             {
-                MySqlCommand rolCommand = new MySqlCommand("SELECT * FROM " + 
-                                                            bdBasica + ".matriz_modulostercero where idCompania = '" + 
+                MySqlCommand rolCommand = new MySqlCommand("SELECT * FROM " +
+                                                            bdBasica + ".matriz_modulostercero where idModulo = 1 and idCompania = '" + 
                                                             idCompania + "' and idEmpresa = '" + 
+                                                            idEmpresa + "'", Conexion.ObtenerCnMysql());
+
+                MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);
+                DataSet rolDataSet = new DataSet();
+                DataTable rolDataTable = null;
+
+                rolDataAdapter.Fill(rolDataSet);
+                rolDataTable = rolDataSet.Tables[0];
+
+                if (rolDataTable != null && rolDataTable.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (Conexion.EstadoConexion() == ConnectionState.Open)
+                {
+                    Conexion.CerrarCnMysql();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Comprueba si la compania tiene el modulo de competencias activos
+        /// </summary>
+        /// <returns>True si esta activo</returns>
+        public bool ComprobarModuloCompetencias(string idCompania, string idEmpresa)
+        {
+            CnMysql Conexion = new CnMysql(CnTrabajadores);
+
+            try
+            {
+                MySqlCommand rolCommand = new MySqlCommand("SELECT * FROM " +
+                                                            bdBasica + ".matriz_modulostercero where idModulo = 2 and idCompania = '" +
+                                                            idCompania + "' and idEmpresa = '" +
                                                             idEmpresa + "'", Conexion.ObtenerCnMysql());
 
                 MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);

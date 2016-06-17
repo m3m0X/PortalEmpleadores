@@ -139,6 +139,7 @@
     <Content Include="Portal\CambioContrasena.aspx" />
     <Content Include="Portal\Cargos.aspx" />
     <Content Include="Portal\Certificado.aspx" />
+    <Content Include="Portal\Competencias.aspx" />
     <Content Include="Portal\ComprobanteNomina.aspx" />
     <Content Include="Portal\Comprobantes.aspx" />
     <Content Include="Portal\Contactenos.aspx" />
@@ -151,6 +152,7 @@
     <Content Include="Portal\Laboral.aspx" />
     <Content Include="Portal\ModificarDatos.aspx" />
     <Content Include="Portal\ModificarTercero.aspx" />
+    <Content Include="Portal\NivelCompetencias.aspx" />
     <Content Include="Portal\ParametrosEtapas.aspx" />
     <Content Include="Portal\ParametrosObjetivos.aspx" />
     <Content Include="Portal\PeriodoExtra.aspx" />
@@ -274,6 +276,13 @@
     <Compile Include="Portal\Certificado.aspx.designer.cs">
       <DependentUpon>Certificado.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Portal\Competencias.aspx.cs">
+      <DependentUpon>Competencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Competencias.aspx.designer.cs">
+      <DependentUpon>Competencias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Portal\ComprobanteNomina.aspx.cs">
       <DependentUpon>ComprobanteNomina.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -357,6 +366,13 @@
     </Compile>
     <Compile Include="Portal\ModificarTercero.aspx.designer.cs">
       <DependentUpon>ModificarTercero.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\NivelCompetencias.aspx.cs">
+      <DependentUpon>NivelCompetencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\NivelCompetencias.aspx.designer.cs">
+      <DependentUpon>NivelCompetencias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>

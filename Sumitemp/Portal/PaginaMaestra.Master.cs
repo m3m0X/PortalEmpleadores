@@ -119,6 +119,8 @@ namespace PortalTrabajadores.Portal
         /* ****************************************************************************/
         protected void bindMenuControl(Boolean valor)
         {
+            ConsultasGenerales consultaGeneral = new ConsultasGenerales();            
+            
             if (valor)
             {
                 MySqlCn = new MySqlConnection(Cn);
@@ -174,6 +176,9 @@ namespace PortalTrabajadores.Portal
             }
             else
             {
+                bool objetivos = consultaGeneral.ComprobarModuloObjetivos(Session["proyecto"].ToString(), Session["idEmpresa"].ToString());
+                bool competencias = consultaGeneral.ComprobarModuloCompetencias(Session["proyecto"].ToString(), Session["idEmpresa"].ToString());
+
                 DataSet dsDataSet = new DataSet();
                 DataTable dtDataTable = null;
                 try
@@ -198,10 +203,36 @@ namespace PortalTrabajadores.Portal
 
                                 if (rolDataTable != null && rolDataTable.Rows.Count > 0)
                                 {
-                                    /*Se eliminan todos los items del menu porque se esstan sumando */                                    
-                                    MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
-                                    this.MenuPrincipal.Items.Add(miMenuItem);
-                                    AddChildItem(ref miMenuItem, dtDataTable);
+                                    if (drDataRow[1].ToString().Contains("Parametros Objetivos") ||
+                                        drDataRow[1].ToString().Contains("Reportes") ||
+                                        drDataRow[1].ToString().Contains("Areas") ||
+                                        drDataRow[1].ToString().Contains("Cargos"))
+                                    {
+                                        if (objetivos)
+                                        {
+                                            /*Se eliminan todos los items del menu porque se esstan sumando */
+                                            MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
+                                            this.MenuPrincipal.Items.Add(miMenuItem);
+                                            AddChildItem(ref miMenuItem, dtDataTable);
+                                        }                                        
+                                    }
+                                    else if (drDataRow[1].ToString().Contains("Parametros Competencias")) 
+                                    {
+                                        if (competencias)
+                                        {
+                                            /*Se eliminan todos los items del menu porque se esstan sumando */
+                                            MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
+                                            this.MenuPrincipal.Items.Add(miMenuItem);
+                                            AddChildItem(ref miMenuItem, dtDataTable);
+                                        }   
+                                    }
+                                    else 
+                                    {
+                                        /*Se eliminan todos los items del menu porque se esstan sumando */
+                                        MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
+                                        this.MenuPrincipal.Items.Add(miMenuItem);
+                                        AddChildItem(ref miMenuItem, dtDataTable);
+                                    }
                                 }
                             }
                         }
@@ -226,55 +257,55 @@ namespace PortalTrabajadores.Portal
         /* ****************************************************************************/
         protected void bindMenuControl2()
         {
-                MySqlCn = new MySqlConnection(Cn);
-                MySqlCommand scSqlCommand = new MySqlCommand("SELECT idOption_Menu, descripcion, idparent_option_Menu, url FROM " + bd1 + ".Options_Menu WHERE idEmpresa = 'ST' and TipoPortal = 'E' and idOption_Menu=104", MySqlCn);
-                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
-                DataSet dsDataSet = new DataSet();
-                DataTable dtDataTable = null;
-                try
+            MySqlCn = new MySqlConnection(Cn);
+            MySqlCommand scSqlCommand = new MySqlCommand("SELECT idOption_Menu, descripcion, idparent_option_Menu, url FROM " + bd1 + ".Options_Menu WHERE idEmpresa = 'ST' and TipoPortal = 'E' and idOption_Menu=104", MySqlCn);
+            MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
+            DataSet dsDataSet = new DataSet();
+            DataTable dtDataTable = null;
+            try
+            {
+                MySqlCn.Open();
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
-                    MySqlCn.Open();
-                    sdaSqlDataAdapter.Fill(dsDataSet);
-                    dtDataTable = dsDataSet.Tables[0];
-                    if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                    foreach (DataRow drDataRow in dtDataTable.Rows)
                     {
-                        foreach (DataRow drDataRow in dtDataTable.Rows)
+                        if (Convert.ToInt32(drDataRow[0]) == Convert.ToInt32(drDataRow[2]))
                         {
-                            if (Convert.ToInt32(drDataRow[0]) == Convert.ToInt32(drDataRow[2]))
+                            MySqlCommand rolCommand = new MySqlCommand("SELECT Id_Menu FROM " + bd1 + ".roles_menu WHERE Id_Rol = " + this.Session["rol"].ToString() + " AND Id_Menu = " + drDataRow[2], MySqlCn);
+                            MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);
+                            DataSet rolDataSet = new DataSet();
+                            DataTable rolDataTable = null;
+
+                            rolDataAdapter.Fill(rolDataSet);
+                            rolDataTable = rolDataSet.Tables[0];
+
+                            if (rolDataTable != null && rolDataTable.Rows.Count > 0)
                             {
-                                MySqlCommand rolCommand = new MySqlCommand("SELECT Id_Menu FROM " + bd1 + ".roles_menu WHERE Id_Rol = " + this.Session["rol"].ToString() + " AND Id_Menu = " + drDataRow[2], MySqlCn);
-                                MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);
-                                DataSet rolDataSet = new DataSet();
-                                DataTable rolDataTable = null;
-
-                                rolDataAdapter.Fill(rolDataSet);
-                                rolDataTable = rolDataSet.Tables[0];
-
-                                if (rolDataTable != null && rolDataTable.Rows.Count > 0)
-                                {
-                                    MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
-                                    this.MenuPrincipal.Items.Add(miMenuItem);
-                                    AddChildItem(ref miMenuItem, dtDataTable);
-                                }
+                                MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
+                                this.MenuPrincipal.Items.Add(miMenuItem);
+                                AddChildItem(ref miMenuItem, dtDataTable);
                             }
                         }
                     }
+                }
+                MySqlCn.Close();
+            }
+            catch (Exception E)
+            {
+                MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            finally
+            {
+                if (MySqlCn.State == ConnectionState.Open)
+                {
                     MySqlCn.Close();
+                    dtDataTable.Dispose();
+                    dsDataSet.Dispose();
+                    sdaSqlDataAdapter.Dispose();
                 }
-                catch (Exception E)
-                {
-                    MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
-                }
-                finally
-                {
-                    if (MySqlCn.State == ConnectionState.Open)
-                    {
-                        MySqlCn.Close();
-                        dtDataTable.Dispose();
-                        dsDataSet.Dispose();
-                        sdaSqlDataAdapter.Dispose();
-                    }
-                }
+            }
         }
         #endregion
 
