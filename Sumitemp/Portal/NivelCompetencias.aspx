@@ -41,7 +41,7 @@
                     </Columns>
                 </asp:GridView>
                 <br />
-                <asp:Button ID="btnNivel" runat="server" Text="Crear Cargo" OnClick="btnNivel_Click"  />
+                <asp:Button ID="btnNivel" runat="server" Text="Crear Nivel" OnClick="btnNivel_Click"  />
             </div>
             <div id="Container_UpdatePanel2" runat="server" visible="false">
                 <table id="TablaDatos2">

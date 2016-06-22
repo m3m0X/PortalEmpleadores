@@ -94,7 +94,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>06/14/2016 20:39:09</publishTime>
+      <publishTime>06/21/2016 21:46:09</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -267,6 +267,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Img/off.png">
       <publishTime>03/31/2016 23:29:09</publishTime>
     </File>
+    <File Include="Img/ok.gif">
+      <publishTime>06/21/2016 00:14:58</publishTime>
+    </File>
     <File Include="Img/on.png">
       <publishTime>03/31/2016 23:29:09</publishTime>
     </File>
@@ -324,6 +327,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Portal/Areas.aspx">
       <publishTime>04/16/2016 15:23:27</publishTime>
     </File>
+    <File Include="Portal/AsignarCompetencias.aspx">
+      <publishTime>06/21/2016 21:29:24</publishTime>
+    </File>
     <File Include="Portal/BusquedaRetencion.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
@@ -350,6 +356,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Portal/Cesantias.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
+    </File>
+    <File Include="Portal/Competencias.aspx">
+      <publishTime>06/21/2016 20:47:25</publishTime>
     </File>
     <File Include="Portal/ComprobanteNomina.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
@@ -393,6 +402,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Portal/ModificarTercero.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
+    <File Include="Portal/NivelCompetencias.aspx">
+      <publishTime>06/18/2016 17:07:01</publishTime>
+    </File>
     <File Include="Portal/Nomina.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
@@ -403,7 +415,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/13/2016 23:33:37</publishTime>
     </File>
     <File Include="Portal/ParametrosObjetivos.aspx">
-      <publishTime>06/13/2016 22:20:30</publishTime>
+      <publishTime>06/18/2016 20:53:07</publishTime>
     </File>
     <File Include="Portal/PeriodoExtra.aspx">
       <publishTime>06/13/2016 23:47:32</publishTime>
@@ -499,7 +511,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/10/2016 19:24:54</publishTime>
+      <publishTime>06/21/2016 21:46:10</publishTime>
     </File>
   </ItemGroup>
 </Project>

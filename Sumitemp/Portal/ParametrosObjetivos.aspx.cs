@@ -16,11 +16,14 @@ namespace PortalTrabajadores.Portal
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
         string bd3 = ConfigurationManager.AppSettings["BD3"].ToString();
         MySqlConnection MySqlCn;
+        ConsultasGenerales consultas;
 
         #region Metodo Page_Load
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            consultas = new ConsultasGenerales();
+
             if (Session["usuario"] == null)
             {
                 //Redirecciona a la pagina de login en caso de que el usuario no se halla autenticado
@@ -113,12 +116,28 @@ namespace PortalTrabajadores.Portal
         /// </summary>
         /// <param name="sender">objeto sender</param>
         /// <param name="e">evento e</param>
+        protected void BtnCrear_Click(object sender, EventArgs e)
+        {
+            BtnEditar.Text = "Guardar";
+
+            txtAno.Enabled = true;
+            ddlMin.Enabled = true;
+            ddlMax.Enabled = true;
+            ddlSeguimiento.Enabled = true;   
+            Container_UpdatePanel2.Visible = true;
+            UpdatePanel1.Update();
+        }
+
+        /// <summary>
+        /// Busca los datos del usuario
+        /// </summary>
+        /// <param name="sender">objeto sender</param>
+        /// <param name="e">evento e</param>
         protected void BtnBuscar_Click(object sender, EventArgs e)
         {
             ddlMin.Enabled = true;
             ddlMax.Enabled = true;
-            ddlSeguimiento.Enabled = true;
-            BtnEditar.Text = "Guardar";
+            ddlSeguimiento.Enabled = true;            
 
             LblMsj.Text = string.Empty;
             LblMsj.Visible = false;
@@ -142,11 +161,13 @@ namespace PortalTrabajadores.Portal
                 {
                     if (rd.Read())
                     {
+                        txtAno.Text = ddlAnio.SelectedValue;
                         ddlMin.SelectedValue = rd["Min_Objetivos"].ToString();
                         ddlMax.SelectedValue = rd["Max_Objetivos"].ToString();
                         ddlSeguimiento.SelectedValue = rd["Periodo_Seguimiento"].ToString();
                         cbActivo.Checked = rd["Activo"].ToString().Equals("1");
 
+                        txtAno.Enabled = false;
                         ddlMin.Enabled = false;
                         ddlMax.Enabled = false;
                         ddlSeguimiento.Enabled = false;
@@ -184,6 +205,8 @@ namespace PortalTrabajadores.Portal
         {
             CnMysql Conexion = new CnMysql(CnMysql);
             int res = 0;
+            string anoActivo = string.Empty;
+            bool ejecutar = true;
 
             try
             {
@@ -192,6 +215,15 @@ namespace PortalTrabajadores.Portal
 
                 if (BtnEditar.Text == "Guardar")
                 {
+                    bool valido = consultas.ConsultarAnoValido(Session["proyecto"].ToString(),
+                                                                 Session["idEmpresa"].ToString(),
+                                                                 Convert.ToInt32(txtAno.Text));
+
+                    if (valido)
+                    {
+                        ejecutar = false;
+                    }
+                    
                     cmd = new MySqlCommand("sp_CrearParametrosGenerales", Conexion.ObtenerCnMysql());
                     cmd.CommandType = CommandType.StoredProcedure;                    
                 }
@@ -201,40 +233,68 @@ namespace PortalTrabajadores.Portal
                     cmd.CommandType = CommandType.StoredProcedure;
                 }
 
-                cmd.Parameters.AddWithValue("@idTercero", Session["usuario"]);
-                cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
-                cmd.Parameters.AddWithValue("@Empresas_idEmpresa", Session["idEmpresa"]);
-                cmd.Parameters.AddWithValue("@Max_Objetivos", ddlMax.SelectedValue);
-                cmd.Parameters.AddWithValue("@Min_Objetivos", ddlMin.SelectedValue);
-                cmd.Parameters.AddWithValue("@Periodo_Seguimiento", ddlSeguimiento.SelectedValue);
-                cmd.Parameters.AddWithValue("@Activo", cbActivo.Checked);
-                cmd.Parameters.AddWithValue("@Ano", ddlAnio.SelectedValue);
-
-                // Crea un parametro de salida para el SP
-                MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                if (ejecutar)
                 {
-                    Direction = ParameterDirection.Output
-                };
+                    cmd.Parameters.AddWithValue("@idTercero", Session["usuario"]);
+                    cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
+                    cmd.Parameters.AddWithValue("@Empresas_idEmpresa", Session["idEmpresa"]);
+                    cmd.Parameters.AddWithValue("@Max_Objetivos", ddlMax.SelectedValue);
+                    cmd.Parameters.AddWithValue("@Min_Objetivos", ddlMin.SelectedValue);
+                    cmd.Parameters.AddWithValue("@Periodo_Seguimiento", ddlSeguimiento.SelectedValue);                    
+                    cmd.Parameters.AddWithValue("@Ano", txtAno.Text);
 
-                cmd.Parameters.Add(outputIdParam);
-                cmd.ExecuteNonQuery();
+                    if (cbActivo.Checked)
+                    {
+                        string valido = consultas.ConsultarAnoActivo(Session["proyecto"].ToString(),
+                                                                     Session["idEmpresa"].ToString());
 
-                //Almacena la respuesta de la variable de retorno del SP
-                res = int.Parse(outputIdParam.Value.ToString());
+                        if (valido == "0")
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", cbActivo.Checked);
+                        }
+                        else 
+                        {
+                            cmd.Parameters.AddWithValue("@Activo", false);
+                            anoActivo = "No se activo ya que el año " + valido + " está activo. Desactivelo primero";
+                        }
+                    }
+                    else 
+                    {
+                        cmd.Parameters.AddWithValue("@Activo", cbActivo.Checked);
+                    }
 
-                if (res == 1)
+                    // Crea un parametro de salida para el SP
+                    MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+
+                    cmd.Parameters.Add(outputIdParam);
+                    cmd.ExecuteNonQuery();
+
+                    //Almacena la respuesta de la variable de retorno del SP
+                    res = int.Parse(outputIdParam.Value.ToString());
+
+                    if (res == 1)
+                    {
+                        Container_UpdatePanel2.Visible = false;
+                        UpdatePanel1.Update();
+
+                        if (BtnEditar.Text == "Guardar")
+                        {
+                            MensajeError("Parametros creados correctamente. " + anoActivo);
+                        }
+                        else
+                        {
+                            MensajeError("Parametros actualizados correctamente. " + anoActivo);
+                        }
+
+                        this.CargarAnio();
+                    }
+                }
+                else 
                 {
-                    Container_UpdatePanel2.Visible = false;
-                    UpdatePanel1.Update();
-
-                    if (BtnEditar.Text == "Guardar")
-                    {
-                        MensajeError("Parametros creados correctamente");
-                    }
-                    else
-                    {
-                        MensajeError("Parametros actualizados correctamente");
-                    }
+                    MensajeError("El año digitado ya existe");
                 }
             }
             catch (Exception E)

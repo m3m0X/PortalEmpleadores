@@ -117,6 +117,7 @@
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Img\fondo_body.jpg" />
     <Content Include="Img\off.png" />
+    <Content Include="Img\ok.gif" />
     <Content Include="Img\on.png" />
     <Content Include="Img\pdf.gif" />
     <Content Include="Img\printButton.png" />
@@ -135,6 +136,7 @@
     <Content Include="Js\jquery-ui.js" />
     <Content Include="Portal\Actualizadatos.aspx" />
     <Content Include="Portal\Areas.aspx" />
+    <Content Include="Portal\AsignarCompetencias.aspx" />
     <Content Include="Portal\BusquedaRetencion.aspx" />
     <Content Include="Portal\CambioContrasena.aspx" />
     <Content Include="Portal\Cargos.aspx" />
@@ -247,6 +249,13 @@
     </Compile>
     <Compile Include="Portal\Areas.aspx.designer.cs">
       <DependentUpon>Areas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\AsignarCompetencias.aspx.cs">
+      <DependentUpon>AsignarCompetencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\AsignarCompetencias.aspx.designer.cs">
+      <DependentUpon>AsignarCompetencias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\BusquedaRetencion.aspx.cs">
       <DependentUpon>BusquedaRetencion.aspx</DependentUpon>

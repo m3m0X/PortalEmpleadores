@@ -67,6 +67,15 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.WebControls.DropDownList ddlAnio;
         
         /// <summary>
+        /// Control BtnCrear.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnCrear;
+        
+        /// <summary>
         /// Control BtnBuscar.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,24 @@ namespace PortalTrabajadores.Portal {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Container_UpdatePanel2;
+        
+        /// <summary>
+        /// Control lblAño.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAño;
+        
+        /// <summary>
+        /// Control txtAno.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAno;
         
         /// <summary>
         /// Control lblMin.

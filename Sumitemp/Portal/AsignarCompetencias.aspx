@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Portal/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="Competencias.aspx.cs" Inherits="PortalTrabajadores.Portal.Competencias" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Portal/PaginaMaestra.Master" AutoEventWireup="true" CodeBehind="AsignarCompetencias.aspx.cs" Inherits="PortalTrabajadores.Portal.AsignarCompetencias" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <!-- Css para la fecha -->
     <link href="../CSS/CSSCallapsePanel.css" rel="stylesheet" type="text/css" />
@@ -24,61 +25,63 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
             <div id="Container_UpdatePanel1">
+                <asp:GridView ID="gvCargosCreados" runat="server" 
+                    OnRowDataBound="gvCargosCreados_RowDataBound" 
+                    OnRowCommand="gvCargosCreados_RowCommand" 
+                    OnPageIndexChanging="gvCargosCreados_PageIndexChanging" 
+                    AutoGenerateColumns="False" AllowPaging="true" PageSize="10" >
+                    <AlternatingRowStyle CssClass="ColorOscuro" />
+                    <Columns>
+                        <asp:BoundField DataField="Cargo" HeaderText="Cargos" />
+                        <asp:BoundField DataField="NCompetencias" HeaderText="# Competecias" />
+                        <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
+                            <ItemTemplate>
+                                <asp:ImageButton ID="btnUpdate" runat="server" ImageUrl="~/Img/edit.gif" CommandArgument='<%#Eval("IdCargos")%>' CommandName="Crear" />
+                                <asp:ImageButton ID="btnON" runat="server" ImageUrl="~/Img/ok.gif" Enabled="false" />
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+            <div id="Container_UpdatePanel2" runat="server" visible="false">
                 <asp:GridView ID="gvCompetenciasCreadas" runat="server" 
-                    OnRowDataBound="gvCompetenciasCreadas_RowDataBound"
                     OnRowCommand="gvCompetenciasCreadas_RowCommand" 
                     OnPageIndexChanging="gvCompetenciasCreadas_PageIndexChanging" 
                     AutoGenerateColumns="False" AllowPaging="true" PageSize="10" >
                     <AlternatingRowStyle CssClass="ColorOscuro" />
                     <Columns>
                         <asp:BoundField DataField="competencia" HeaderText="Competencia" />
-                        <asp:BoundField DataField="nivelCompetencia" HeaderText="Nivel"/>
-                        <asp:BoundField DataField="activo" HeaderText="activo" SortExpression="Estado" Visible="false" />
                         <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:ImageButton ID="btnUpdate" runat="server" ImageUrl="~/Img/edit.gif" CommandArgument='<%#Eval("idCompetencia")%>' CommandName="Editar" />
-                                <asp:ImageButton ID="btnON" runat="server" ImageUrl="~/Img/on.png" CommandArgument='<%#Eval("idCompetencia")%>' CommandName="On" />
-                                <asp:ImageButton ID="btnOFF" runat="server" ImageUrl="~/Img/off.png" CommandArgument='<%#Eval("idCompetencia")%>' CommandName="Off" />
+                                <asp:ImageButton ID="btnOFF" runat="server" ImageUrl="~/Img/delete.gif" CommandArgument='<%#Eval("idCompetencia")%>' CommandName="Eliminar" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
                     </Columns>
-                </asp:GridView>
-                <br />
-                <asp:Button ID="BtnCompetencias" runat="server" Text="Crear Competencia" OnClick="BtnCompetencias_Click"  />
-            </div>
-            <div id="Container_UpdatePanel2" runat="server" visible="false">
+                </asp:GridView>            
+                <br />    
                 <table id="TablaDatos">
                     <tr>
-                        <th colspan="2">Seleccione el año a parametrizar</th>
+                        <th colspan="2">Asignar Competencia al cargo <asp:Label ID="lblCargoSelected" runat="server"></asp:Label></th>
                     </tr>
                     <tr>
                         <td class="CeldaTablaDatos">
-                            <asp:Label ID="lblCompetencia" runat="server" Text="Competencia:" />
+                            Seleccione la competencia
                         </td>
                         <td class="BotonTablaDatos">
-                            <asp:TextBox ID="txtCompetencia" runat="server"></asp:TextBox>
+                            <asp:DropDownList ID="ddlCompetencias" runat="server"></asp:DropDownList>                            
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="CeldaTablaDatos">
-                            <asp:Label ID="lblNivelCompetencia" runat="server" Text="Nivel Competencia:" />
-                        </td>
-                        <td class="BotonTablaDatos">
-                            <asp:DropDownList ID="ddlNivel" runat="server"></asp:DropDownList>                            
-                        </td>
-                    </tr>
+                    </tr>                    
                     <tr class="ColorOscuro">
-                        <td class="BotonTablaDatos">
-                            <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" OnClick="BtnGuardar_Click" /></td>
-                        <td class="BotonTablaDatos">
-                            <asp:Button ID="BtnCancelar" runat="server" Text="Regresar" OnClick="BtnCancelar_Click" /></td>
+                        <td class="BotonTablaDatos"><asp:Button ID="BtnGuardar" runat="server" Text="Guardar" OnClick="BtnGuardar_Click" /></td>
+                        <td class="BotonTablaDatos"><asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" /></td>
                     </tr>
                 </table>
             </div>
         </ContentTemplate>
         <Triggers>
-            <asp:AsyncPostBackTrigger ControlID="BtnCompetencias" />
+            <asp:AsyncPostBackTrigger ControlID="gvCargosCreados" />
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>
@@ -90,3 +93,4 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 </asp:Content>
+

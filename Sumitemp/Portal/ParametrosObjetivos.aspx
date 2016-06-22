@@ -33,7 +33,7 @@
                     </tr>
                     <tr>
                         <td class="CeldaTablaDatos">
-                            <asp:Label ID="lblAnio" runat="server" Text="Año:" />
+                            <asp:Label ID="lblAnio" runat="server" Text="Año:"/>
                         </td>
                         <td class="BotonTablaDatos">
                             <asp:DropDownList ID="ddlAnio" runat="server"></asp:DropDownList>
@@ -41,15 +41,25 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="BotonTablaDatos">
-                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+                            <asp:Button ID="BtnCrear" runat="server" Text="Crear" OnClick="BtnCrear_Click" />
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Consultar" OnClick="BtnBuscar_Click" />
                         </td>
                     </tr>
                 </table>
             </div>
             <div id="Container_UpdatePanel2" runat="server" visible="false">
                 <table id="TablaDatos2">
-                    <tr>
+                    <tr class="ColorOscuro">
                         <th colspan="2">Parametros Objetivos</th>
+                    </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblAño" runat="server" Text="Año:" />
+                        </td>
+                        <td class="CeldaTablaDatos">
+                            <asp:TextBox ID="txtAno" runat="server"
+                                MaxLength="4" onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
+                        </td>                        
                     </tr>
                     <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos">
@@ -130,7 +140,7 @@
                         <td class="BotonTablaDatos">
                             <asp:Button ID="BtnEditar" runat="server" Text="Guardar" ValidationGroup="objForm" OnClick="BtnEditar_Click" /></td>
                         <td class="BotonTablaDatos">
-                            <asp:Button ID="BtnCancel" runat="server" Text="Regresar" OnClick="BtnCancel_Click" /></td>
+                            <asp:Button ID="BtnCancel" runat="server" Text="Cerrar" OnClick="BtnCancel_Click" /></td>
                     </tr>
                 </table>
             </div>
