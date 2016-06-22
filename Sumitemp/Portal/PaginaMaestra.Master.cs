@@ -205,8 +205,7 @@ namespace PortalTrabajadores.Portal
                                 {
                                     if (drDataRow[1].ToString().Contains("Parametros Objetivos") ||
                                         drDataRow[1].ToString().Contains("Reportes") ||
-                                        drDataRow[1].ToString().Contains("Areas") ||
-                                        drDataRow[1].ToString().Contains("Cargos"))
+                                        drDataRow[1].ToString().Contains("Parametros Generales"))
                                     {
                                         if (objetivos)
                                         {
