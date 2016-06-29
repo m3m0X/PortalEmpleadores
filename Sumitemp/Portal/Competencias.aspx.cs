@@ -40,8 +40,6 @@ namespace PortalTrabajadores.Portal
             {
                 if (!IsPostBack)
                 {
-                    this.CargarGrid();
-
                     try
                     {
                         MySqlCn = new MySqlConnection(Cnbasica);
@@ -59,8 +57,7 @@ namespace PortalTrabajadores.Portal
                             this.lblTitulo.Text = dtDataTable.Rows[0].ItemArray[0].ToString();
                         }
 
-                        this.CargarGrid();
-                        this.CargarNivelCompetencias();
+                        this.CargarAnio();
                     }
                     catch (Exception E)
                     {
@@ -100,28 +97,68 @@ namespace PortalTrabajadores.Portal
 
         #endregion
 
+        #region Funciones
+
+        /// <summary>
+        /// Carga el año actual y el pasado
+        /// </summary>
+        public void CargarAnio()
+        {
+            try
+            {
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                DataTable datos = consultas.ConsultarAnos(Session["proyecto"].ToString(),
+                                                          Session["idEmpresa"].ToString());
+
+                if (datos != null)
+                {
+                    ddlAnio.DataTextField = "Ano";
+                    ddlAnio.DataValueField = "Ano";
+                    ddlAnio.DataSource = datos;
+                    ddlAnio.DataBind();
+                }
+                else
+                {
+                    DateTime fechaAnioActual = DateTime.Now;
+                    ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeError(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Carga la grilla actualizada
         /// </summary>
-        private void CargarGrid()
+        private void CargarGrid(string ano)
         {
             this.LimpiarMensajes();
-            
+
             try
             {
+                Session.Add("anoVigente", ano);
+
                 DataTable dtDataTable = consultas.ConsultarCompetencias(Session["usuario"].ToString(),
                                                                         Session["proyecto"].ToString(),
-                                                                        Session["idEmpresa"].ToString());
+                                                                        Session["idEmpresa"].ToString(),
+                                                                        Session["anoVigente"].ToString());
 
                 Session.Add("DataNivel", dtDataTable);
 
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
                     gvCompetenciasCreadas.DataSource = dtDataTable;
-                    gvCompetenciasCreadas.DataBind();
-                    Container_UpdatePanel2.Visible = false;
-                    UpdatePanel1.Update();
                 }
+                else 
+                {
+                    gvCompetenciasCreadas.DataSource = null;
+                }
+
+                gvCompetenciasCreadas.DataBind();
+                Container_UpdatePanel2.Visible = false;
+                UpdatePanel1.Update();
             }
             catch (Exception E)
             {
@@ -129,40 +166,44 @@ namespace PortalTrabajadores.Portal
             }
         }
 
+        #endregion
+
+        #region Eventos
+
         /// <summary>
-        /// Devuelve el resultado de nivel competencias
+        /// Busca los datos del usuario
         /// </summary>
-        /// <param name="anio">ddl nivel competencias</param>
-        public void CargarNivelCompetencias()
+        /// <param name="sender">objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void BtnBuscar_Click(object sender, EventArgs e)
         {
-            BtnCompetencias.Visible = true;
+            LimpiarMensajes();
+            Container_UpdatePanelAnio.Visible = false;
+            Container_UpdatePanel1.Visible = true;
+            UpdatePanel1.Update();
 
             try
             {
-                DataTable dtCompetencias = consultas.ConsultarNivelCompetencias(Session["usuario"].ToString(),
-                                                                                Session["proyecto"].ToString(),
-                                                                                Session["idEmpresa"].ToString());
-
-                if (dtCompetencias == null)
-                {
-                    this.MensajeError("No se han establecido niveles de competencias, definalos primero antes de continuar");
-                    ddlNivel.DataSource = null;
-                    BtnCompetencias.Visible = false;                    
-                }
-                else
-                {
-                    ddlNivel.DataTextField = "nombre";
-                    ddlNivel.DataValueField = "idNivelCompetencias";
-                    ddlNivel.DataSource = dtCompetencias;
-                }
-
-                ddlNivel.DataBind();
-                UpdatePanel1.Update();
+                CargarGrid(ddlAnio.SelectedValue);
             }
             catch (Exception ex)
             {
-                throw ex;
+                MensajeError("Ha ocurrido el siguiente error: " + ex.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
             }
+        }
+
+        /// <summary>
+        /// Regresa a la seleccion de año
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Evento e</param>
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            LimpiarMensajes();
+            Container_UpdatePanelAnio.Visible = true;
+            Container_UpdatePanel1.Visible = false;
+            Container_UpdatePanel2.Visible = false;
+            UpdatePanel1.Update();
         }
 
         /// <summary>
@@ -177,7 +218,6 @@ namespace PortalTrabajadores.Portal
                 this.LimpiarMensajes();
                 BtnGuardar.Text = "Guardar";
                 txtCompetencia.Text = string.Empty;
-                ddlNivel.SelectedIndex = 0;
                 Container_UpdatePanel2.Visible = true;
                 UpdatePanel1.Update();
             }
@@ -210,6 +250,7 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@idTercero", Session["usuario"]);
                     cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
                     cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
+                    cmd.Parameters.AddWithValue("@ano", Session["anoVigente"]);
                 }
                 else
                 {
@@ -219,7 +260,6 @@ namespace PortalTrabajadores.Portal
                 }
 
                 cmd.Parameters.AddWithValue("@competencia", txtCompetencia.Text);
-                cmd.Parameters.AddWithValue("@idNivelCompetencia", ddlNivel.SelectedValue);
 
                 // Crea un parametro de salida para el SP
                 MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
@@ -235,7 +275,7 @@ namespace PortalTrabajadores.Portal
 
                 if (res == 1)
                 {
-                    this.CargarGrid();
+                    this.CargarGrid(Session["anoVigente"].ToString());
                 }
             }
             catch (Exception E)
@@ -257,8 +297,7 @@ namespace PortalTrabajadores.Portal
         {
             this.LimpiarMensajes();
             txtCompetencia.Text = string.Empty;
-            ddlNivel.SelectedIndex = 0;
-            this.CargarGrid();
+            this.CargarGrid(Session["anoVigente"].ToString());
         }
 
         /// <summary>
@@ -310,7 +349,7 @@ namespace PortalTrabajadores.Portal
 
                     if (res == 1)
                     {
-                        this.CargarGrid();
+                        this.CargarGrid(Session["anoVigente"].ToString());
                     }
                     else if (res == 2)
                     {
@@ -338,7 +377,7 @@ namespace PortalTrabajadores.Portal
 
                     if (res == 1)
                     {
-                        this.CargarGrid();
+                        this.CargarGrid(Session["anoVigente"].ToString());
                     }
                 }
             }
@@ -399,5 +438,7 @@ namespace PortalTrabajadores.Portal
                 }
             }
         }
+
+        #endregion
     }
 }

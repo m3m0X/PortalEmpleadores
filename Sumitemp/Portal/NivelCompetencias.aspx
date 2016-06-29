@@ -23,9 +23,31 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <div id="Container_UpdatePanel1">
+            <div id="Container_UpdatePanelAnio" runat="server">
+                <table id="TablaDatos">
+                    <tr>
+                        <th colspan="2">Seleccione el año</th>
+                    </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblAnio" runat="server" Text="Año:" />
+                        </td>
+                        <td class="BotonTablaDatos">
+                            <asp:DropDownList ID="ddlAnio" runat="server"></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="BotonTablaDatos">
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="Container_UpdatePanel1" runat="server" visible="false">
                 <asp:GridView ID="gvNivelesCreados" runat="server" OnRowCommand="gvNivelesCreados_RowCommand" 
-                    OnPageIndexChanging="gvNivelesCreados_PageIndexChanging" AutoGenerateColumns="False" 
+                    OnRowDataBound="gvNivelesCreados_RowDataBound"
+                    OnPageIndexChanging="gvNivelesCreados_PageIndexChanging" 
+                    AutoGenerateColumns="False" 
                     AllowPaging="true" PageSize="10" >
                     <AlternatingRowStyle CssClass="ColorOscuro" />
                     <Columns>
@@ -35,6 +57,8 @@
                         <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:ImageButton ID="btnUpdate" runat="server" ImageUrl="~/Img/edit.gif" CommandArgument='<%#Eval("idNivelCompetencias")%>' CommandName="Editar" />
+                                <asp:ImageButton ID="btnON" runat="server" ImageUrl="~/Img/on.png" CommandArgument='<%#Eval("idNivelCompetencias")%>' CommandName="On" />
+                                <asp:ImageButton ID="btnOFF" runat="server" ImageUrl="~/Img/off.png" CommandArgument='<%#Eval("idNivelCompetencias")%>' CommandName="Off" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
@@ -42,8 +66,10 @@
                 </asp:GridView>
                 <br />
                 <asp:Button ID="btnNivel" runat="server" Text="Crear Nivel" OnClick="btnNivel_Click"  />
+                <asp:Button ID="btnRegresar" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
             </div>
             <div id="Container_UpdatePanel2" runat="server" visible="false">
+                <br />
                 <table id="TablaDatos2">
                     <tr>
                         <th colspan="2">Nivel de Competencia</th>
@@ -61,8 +87,28 @@
                             <asp:Label ID="lblMin" runat="server" Text="Rango Min" />
                         </td>
                         <td class="CeldaTablaDatos">
+                            <asp:TextBox ID="txtCien" runat="server" Text="100" Style="display: none" />
                             <asp:TextBox ID="txtMin" runat="server"
                                 MaxLength="3" onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
+                            <asp:CompareValidator ID="cValidator"
+                                runat="server"
+                                ErrorMessage="CompareValidator"
+                                ControlToValidate="txtMin"
+                                ControlToCompare="txtCien"
+                                CssClass="MensajeError"
+                                Display="Dynamic"
+                                Operator="LessThanEqual"
+                                Type="Integer"
+                                Text="Error: La Meta no puede ser mayor a 100"
+                                ValidationGroup="objForm">
+                            </asp:CompareValidator>
+                            <asp:RequiredFieldValidator ID="rfvMeta"
+                                runat="server"
+                                ErrorMessage="Debe digitar valor"
+                                CssClass="MensajeError"
+                                Display="Dynamic"
+                                ControlToValidate="txtMin"
+                                ValidationGroup="objForm"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr class="ColorOscuro">
@@ -72,12 +118,29 @@
                         <td class="CeldaTablaDatos">
                             <asp:TextBox ID="txtMax" runat="server" 
                                 MaxLength="3" onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
+                            <asp:CompareValidator ID="CompareValidator2"
+                                runat="server"
+                                ErrorMessage="CompareValidator"
+                                ControlToValidate="txtMax"
+                                ControlToCompare="txtCien"
+                                CssClass="MensajeError"
+                                Display="Dynamic"
+                                Operator="LessThanEqual"
+                                Type="Integer"
+                                Text="Error: La Meta no puede ser mayor a 100"
+                                ValidationGroup="objForm">
+                            </asp:CompareValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
+                                runat="server"
+                                ErrorMessage="Debe digitar valor"
+                                CssClass="MensajeError"
+                                Display="Dynamic"
+                                ControlToValidate="txtMax"
+                                ValidationGroup="objForm"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr class="ColorOscuro">
-                        <td class="CeldaTablaDatos">
-                        </td>
-                        <td class="CeldaTablaDatos">
+                        <td class="CeldaTablaDatos" colspan="2">
                             <asp:CompareValidator ID="CompareValidator1" 
                                 runat="server" 
                                 ErrorMessage="CompareValidator"

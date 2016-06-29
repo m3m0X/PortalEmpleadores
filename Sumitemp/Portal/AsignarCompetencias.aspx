@@ -24,7 +24,27 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <div id="Container_UpdatePanel1">
+            <div id="Container_UpdatePanelAnio" runat="server">
+                <table id="TablaDatos">
+                    <tr>
+                        <th colspan="2">Seleccione el año</th>
+                    </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblAnio" runat="server" Text="Año:" />
+                        </td>
+                        <td class="BotonTablaDatos">
+                            <asp:DropDownList ID="ddlAnio" runat="server"></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="BotonTablaDatos">
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="Container_UpdatePanel1" runat="server" visible="false">
                 <asp:GridView ID="gvCargosCreados" runat="server" 
                     OnRowDataBound="gvCargosCreados_RowDataBound" 
                     OnRowCommand="gvCargosCreados_RowCommand" 
@@ -43,10 +63,14 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+                <br />
+                <asp:Button ID="btnRegresar" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
             </div>
             <div id="Container_UpdatePanel2" runat="server" visible="false">
+                <br />
                 <asp:GridView ID="gvCompetenciasCreadas" runat="server" 
                     OnRowCommand="gvCompetenciasCreadas_RowCommand" 
+                    OnRowDataBound="gvCompetenciasCreadas_RowDataBound"
                     OnPageIndexChanging="gvCompetenciasCreadas_PageIndexChanging" 
                     AutoGenerateColumns="False" AllowPaging="true" PageSize="10" >
                     <AlternatingRowStyle CssClass="ColorOscuro" />
@@ -54,7 +78,8 @@
                         <asp:BoundField DataField="competencia" HeaderText="Competencia" />
                         <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
-                                <asp:ImageButton ID="btnOFF" runat="server" ImageUrl="~/Img/delete.gif" CommandArgument='<%#Eval("idCompetencia")%>' CommandName="Eliminar" />
+                                <asp:ImageButton ID="btnON" runat="server" ImageUrl="~/Img/on.png" CommandArgument='<%#Eval("idCompetencia")%>' CommandName="On" />
+                                <asp:ImageButton ID="btnOFF" runat="server" ImageUrl="~/Img/off.png" CommandArgument='<%#Eval("idCompetencia")%>' CommandName="Off" />
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
@@ -75,7 +100,7 @@
                     </tr>                    
                     <tr class="ColorOscuro">
                         <td class="BotonTablaDatos"><asp:Button ID="BtnGuardar" runat="server" Text="Guardar" OnClick="BtnGuardar_Click" /></td>
-                        <td class="BotonTablaDatos"><asp:Button ID="BtnCancelar" runat="server" Text="Cancelar" OnClick="BtnCancelar_Click" /></td>
+                        <td class="BotonTablaDatos"><asp:Button ID="BtnCancelar" runat="server" Text="Cerrar" OnClick="BtnCancelar_Click" /></td>
                     </tr>
                 </table>
             </div>

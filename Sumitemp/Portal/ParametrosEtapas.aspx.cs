@@ -31,8 +31,7 @@ namespace PortalTrabajadores.Portal
                 if (!IsPostBack)
                 {
                     try
-                    {
-                        
+                    {                        
                         MySqlCn = new MySqlConnection(Cn);
 
                         MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'ParametrosEtapas.aspx' AND idEmpresa = '" + Session["idEmpresa"] + "'", MySqlCn);

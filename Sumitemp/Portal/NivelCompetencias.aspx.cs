@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 namespace PortalTrabajadores.Portal
 {
     public partial class NivelCompetencias : System.Web.UI.Page
-    {        
+    {
         string Cnbasica = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
         string Cntrabajadores = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
         string Cncompetencias = ConfigurationManager.ConnectionStrings["CadenaConexioMySql4"].ConnectionString.ToString();
@@ -37,8 +37,6 @@ namespace PortalTrabajadores.Portal
             {
                 if (!IsPostBack)
                 {
-                    this.CargarGrid();
-
                     try
                     {
                         MySqlCn = new MySqlConnection(Cnbasica);
@@ -56,7 +54,7 @@ namespace PortalTrabajadores.Portal
                             this.lblTitulo.Text = dtDataTable.Rows[0].ItemArray[0].ToString();
                         }
 
-                        this.CargarGrid();
+                        this.CargarAnio();
                     }
                     catch (Exception E)
                     {
@@ -96,32 +94,72 @@ namespace PortalTrabajadores.Portal
 
         #endregion
 
+        #region Funciones
+
+        /// <summary>
+        /// Carga el año actual y el pasado
+        /// </summary>
+        public void CargarAnio()
+        {
+            try
+            {
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                DataTable datos = consultas.ConsultarAnos(Session["proyecto"].ToString(),
+                                                          Session["idEmpresa"].ToString());
+
+                if (datos != null)
+                {
+                    ddlAnio.DataTextField = "Ano";
+                    ddlAnio.DataValueField = "Ano";
+                    ddlAnio.DataSource = datos;
+                    ddlAnio.DataBind();
+                }
+                else
+                {
+                    DateTime fechaAnioActual = DateTime.Now;
+                    ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeError(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Carga la grilla actualizada
         /// </summary>
-        private void CargarGrid()
+        private void CargarGrid(string ano)
         {
             this.LimpiarMensajes();
             CnMysql MysqlCn = new CnMysql(Cncompetencias);
 
             try
             {
+                Session.Add("anoVigente", ano);
+
                 DataTable dtDataTable = null;
                 MysqlCn.AbrirCnMysql();
                 dtDataTable = MysqlCn.ConsultarRegistros("SELECT * FROM " + bdCompetencias + ".nivelcompetencias"
                                                          + " where idTercero = " + Session["usuario"]
                                                          + " and idCompania = '" + Session["proyecto"]
+                                                         + "' and ano = '" + Session["anoVigente"]
                                                          + "' and idEmpresa = '" + Session["idEmpresa"] + "';");
 
                 Session.Add("DataNivel", dtDataTable);
 
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
-                    gvNivelesCreados.DataSource = dtDataTable;
-                    gvNivelesCreados.DataBind();
-                    Container_UpdatePanel2.Visible = false;
-                    UpdatePanel1.Update();
+                    gvNivelesCreados.DataSource = dtDataTable;                    
                 }
+                else 
+                {
+                    gvNivelesCreados.DataSource = null;
+                }
+
+                gvNivelesCreados.DataBind();
+                Container_UpdatePanel2.Visible = false;
+                UpdatePanel1.Update();
             }
             catch (Exception E)
             {
@@ -131,6 +169,46 @@ namespace PortalTrabajadores.Portal
             {
                 MysqlCn.CerrarCnMysql();
             }
+        }
+
+        #endregion
+
+        #region Eventos
+
+        /// <summary>
+        /// Busca los datos del usuario
+        /// </summary>
+        /// <param name="sender">objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            LimpiarMensajes();
+            Container_UpdatePanelAnio.Visible = false;
+            Container_UpdatePanel1.Visible = true;
+            UpdatePanel1.Update();
+
+            try
+            {
+                CargarGrid(ddlAnio.SelectedValue);
+            }
+            catch (Exception ex)
+            {
+                MensajeError("Ha ocurrido el siguiente error: " + ex.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        /// <summary>
+        /// Regresa a la seleccion de año
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Evento e</param>
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            LimpiarMensajes();
+            Container_UpdatePanelAnio.Visible = true;
+            Container_UpdatePanel1.Visible = false;
+            Container_UpdatePanel2.Visible = false;
+            UpdatePanel1.Update();
         }
 
         /// <summary>
@@ -177,7 +255,9 @@ namespace PortalTrabajadores.Portal
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@idTercero", Session["usuario"]);
                     cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
-                    cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);                    
+                    cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
+                    cmd.Parameters.AddWithValue("@estadoNivel", true);
+                    cmd.Parameters.AddWithValue("@ano", Session["anoVigente"]);
                 }
                 else
                 {
@@ -188,7 +268,7 @@ namespace PortalTrabajadores.Portal
 
                 cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
                 cmd.Parameters.AddWithValue("@rangoMin", txtMin.Text);
-                cmd.Parameters.AddWithValue("@rangoMax", txtMax.Text);                
+                cmd.Parameters.AddWithValue("@rangoMax", txtMax.Text);
 
                 // Crea un parametro de salida para el SP
                 MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
@@ -204,7 +284,7 @@ namespace PortalTrabajadores.Portal
 
                 if (res == 1)
                 {
-                    this.CargarGrid();
+                    this.CargarGrid(Session["anoVigente"].ToString());
                 }
             }
             catch (Exception E)
@@ -228,7 +308,7 @@ namespace PortalTrabajadores.Portal
             txtNombre.Text = string.Empty;
             txtMax.Text = string.Empty;
             txtMin.Text = string.Empty;
-            this.CargarGrid();
+            this.CargarGrid(Session["anoVigente"].ToString());
         }
 
         /// <summary>
@@ -239,9 +319,14 @@ namespace PortalTrabajadores.Portal
         protected void gvNivelesCreados_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             this.LimpiarMensajes();
+            CnMysql Conexion = new CnMysql(Cncompetencias);
+            int res = 0;
 
             try
             {
+                Conexion.AbrirCnMysql();
+                MySqlCommand cmd;
+
                 if (e.CommandName == "Editar")
                 {
                     GridViewRow gvr = (GridViewRow)(((ImageButton)e.CommandSource).NamingContainer);
@@ -256,10 +341,91 @@ namespace PortalTrabajadores.Portal
                     UpdatePanel1.Update();
                     Session.Add("idNivelCompetencias", e.CommandArgument);
                 }
+                else if (e.CommandName == "On")
+                {
+                    cmd = new MySqlCommand("sp_EstadoNivelCompetencia", Conexion.ObtenerCnMysql());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idNivelCompetencia", Convert.ToInt32(e.CommandArgument));
+                    cmd.Parameters.AddWithValue("@activo", false);
+
+                    // Crea un parametro de salida para el SP
+                    MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+
+                    cmd.Parameters.Add(outputIdParam);
+                    cmd.ExecuteNonQuery();
+
+                    //Almacena la respuesta de la variable de retorno del SP
+                    res = int.Parse(outputIdParam.Value.ToString());
+
+                    if (res == 1)
+                    {
+                        this.CargarGrid(Session["anoVigente"].ToString());
+                    }
+                    else if (res == 2)
+                    {
+                        ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarMensaje('No se puede desactivar porque esta asociado a uno o más empleados.'); ", true);
+                    }
+                }
+                else if (e.CommandName == "Off")
+                {
+                    cmd = new MySqlCommand("sp_EstadoNivelCompetencia", Conexion.ObtenerCnMysql());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idNivelCompetencia", Convert.ToInt32(e.CommandArgument));
+                    cmd.Parameters.AddWithValue("@activo", true);
+
+                    // Crea un parametro de salida para el SP
+                    MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+
+                    cmd.Parameters.Add(outputIdParam);
+                    cmd.ExecuteNonQuery();
+
+                    //Almacena la respuesta de la variable de retorno del SP
+                    res = int.Parse(outputIdParam.Value.ToString());
+
+                    if (res == 1)
+                    {
+                        this.CargarGrid(Session["anoVigente"].ToString());
+                    }
+                }
             }
             catch (Exception E)
             {
                 MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        /// <summary>
+        /// Al cargar la grilla modifica el valor de las imagenes
+        /// </summary>
+        /// <param name="sender">Sender objeto</param>
+        /// <param name="e">evento e</param>
+        protected void gvNivelesCreados_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            this.LimpiarMensajes();
+
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                ImageButton imgbtnON = (ImageButton)e.Row.FindControl("btnON");
+                ImageButton imgbtnOFF = (ImageButton)e.Row.FindControl("btnOFF");
+
+                string estado = DataBinder.Eval(e.Row.DataItem, "estadoNivel").ToString();
+
+                if (estado == "1")
+                {
+                    imgbtnON.Visible = true;
+                    imgbtnOFF.Visible = false;
+                }
+                else
+                {
+                    imgbtnON.Visible = false;
+                    imgbtnOFF.Visible = true;
+                }
             }
         }
 
@@ -281,5 +447,7 @@ namespace PortalTrabajadores.Portal
                 gv.DataBind();
             }
         }
+
+        #endregion        
     }
 }

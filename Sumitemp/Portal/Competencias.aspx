@@ -23,7 +23,27 @@
     </asp:UpdateProgress>
     <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
         <ContentTemplate>
-            <div id="Container_UpdatePanel1">
+            <div id="Container_UpdatePanelAnio" runat="server">
+                <table id="TablaDatos">
+                    <tr>
+                        <th colspan="2">Seleccione el año</th>
+                    </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblAnio" runat="server" Text="Año:" />
+                        </td>
+                        <td class="BotonTablaDatos">
+                            <asp:DropDownList ID="ddlAnio" runat="server"></asp:DropDownList>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="BotonTablaDatos">
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="Container_UpdatePanel1" runat="server" visible="false">
                 <asp:GridView ID="gvCompetenciasCreadas" runat="server" 
                     OnRowDataBound="gvCompetenciasCreadas_RowDataBound"
                     OnRowCommand="gvCompetenciasCreadas_RowCommand" 
@@ -32,7 +52,6 @@
                     <AlternatingRowStyle CssClass="ColorOscuro" />
                     <Columns>
                         <asp:BoundField DataField="competencia" HeaderText="Competencia" />
-                        <asp:BoundField DataField="nivelCompetencia" HeaderText="Nivel"/>
                         <asp:BoundField DataField="activo" HeaderText="activo" SortExpression="Estado" Visible="false" />
                         <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
@@ -46,8 +65,10 @@
                 </asp:GridView>
                 <br />
                 <asp:Button ID="BtnCompetencias" runat="server" Text="Crear Competencia" OnClick="BtnCompetencias_Click"  />
+                <asp:Button ID="btnRegresar" runat="server" Text="Regresar" OnClick="btnRegresar_Click" />
             </div>
             <div id="Container_UpdatePanel2" runat="server" visible="false">
+                <br />
                 <table id="TablaDatos">
                     <tr>
                         <th colspan="2">Seleccione el año a parametrizar</th>
@@ -58,14 +79,6 @@
                         </td>
                         <td class="BotonTablaDatos">
                             <asp:TextBox ID="txtCompetencia" runat="server"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="CeldaTablaDatos">
-                            <asp:Label ID="lblNivelCompetencia" runat="server" Text="Nivel Competencia:" />
-                        </td>
-                        <td class="BotonTablaDatos">
-                            <asp:DropDownList ID="ddlNivel" runat="server"></asp:DropDownList>                            
                         </td>
                     </tr>
                     <tr class="ColorOscuro">

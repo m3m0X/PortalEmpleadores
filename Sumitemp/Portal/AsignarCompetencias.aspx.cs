@@ -40,8 +40,6 @@ namespace PortalTrabajadores.Portal
             {
                 if (!IsPostBack)
                 {
-                    this.CargarGrid();
-
                     try
                     {
                         MySqlCn = new MySqlConnection(CnBasica);
@@ -59,7 +57,7 @@ namespace PortalTrabajadores.Portal
                             this.lblTitulo.Text = dtDataTable.Rows[0].ItemArray[0].ToString();
                         }
 
-                        this.CargarGrid();
+                        this.CargarAnio();
                     }
                     catch (Exception E)
                     {
@@ -99,28 +97,67 @@ namespace PortalTrabajadores.Portal
 
         #endregion
 
+        #region Funciones
+
+        /// <summary>
+        /// Carga el año actual y el pasado
+        /// </summary>
+        public void CargarAnio()
+        {
+            try
+            {
+                ConsultasGenerales consultas = new ConsultasGenerales();
+                DataTable datos = consultas.ConsultarAnos(Session["proyecto"].ToString(),
+                                                          Session["idEmpresa"].ToString());
+
+                if (datos != null)
+                {
+                    ddlAnio.DataTextField = "Ano";
+                    ddlAnio.DataValueField = "Ano";
+                    ddlAnio.DataSource = datos;
+                    ddlAnio.DataBind();
+                }
+                else
+                {
+                    DateTime fechaAnioActual = DateTime.Now;
+                    ddlAnio.Items.Add(new ListItem(fechaAnioActual.Year.ToString(), fechaAnioActual.Year.ToString()));
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeError(ex.Message);
+            }
+        }
+
         /// <summary>
         /// Carga la grilla actualizada
         /// </summary>
-        private void CargarGrid()
+        private void CargarGrid(string ano)
         {
             this.LimpiarMensajes();
 
             try
             {
+                Session.Add("anoVigente", ano);
+
                 DataTable dtDataTable = consultas.ConsultarCargos(Session["usuario"].ToString(),
                                                                   Session["proyecto"].ToString(),
-                                                                  Session["idEmpresa"].ToString());
+                                                                  Session["idEmpresa"].ToString(),
+                                                                  Session["anoVigente"].ToString());
 
                 Session.Add("DataCargos", dtDataTable);
 
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
-                    gvCargosCreados.DataSource = dtDataTable;
-                    gvCargosCreados.DataBind();
-                    Container_UpdatePanel2.Visible = false;
-                    UpdatePanel1.Update();
+                    gvCargosCreados.DataSource = dtDataTable;                    
                 }
+                else 
+                {
+                    gvCargosCreados.DataSource = null;
+                }
+
+                gvCargosCreados.DataBind();
+                UpdatePanel1.Update();
             }
             catch (Exception E)
             {
@@ -139,24 +176,22 @@ namespace PortalTrabajadores.Portal
             {
                 DataTable dtDataTable = consultas.ConsultarCompetenciasXCargo(Session["proyecto"].ToString(),
                                                                               Session["idEmpresa"].ToString(),
-                                                                              Convert.ToInt32(Session["idCargos"].ToString()));
+                                                                              Convert.ToInt32(Session["idCargos"].ToString()),
+                                                                              Session["anoVigente"].ToString());
 
                 Session.Add("DataCompetencias", dtDataTable);
 
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
                     gvCompetenciasCreadas.DataSource = dtDataTable;
-                    gvCompetenciasCreadas.DataBind();
-                    Container_UpdatePanel2.Visible = false;
-                    UpdatePanel1.Update();
                 }
                 else 
                 {
-                    gvCompetenciasCreadas.DataSource = null;
-                    gvCompetenciasCreadas.DataBind();
-                    Container_UpdatePanel2.Visible = false;
-                    UpdatePanel1.Update();
+                    gvCompetenciasCreadas.DataSource = null;                    
                 }
+
+                gvCompetenciasCreadas.DataBind();
+                UpdatePanel1.Update();
             }
             catch (Exception E)
             {
@@ -174,7 +209,8 @@ namespace PortalTrabajadores.Portal
             {
                 DataTable dtCompetencias = consultas.ConsultarCompetencias(Session["usuario"].ToString(),
                                                                            Session["proyecto"].ToString(),
-                                                                           Session["idEmpresa"].ToString());
+                                                                           Session["idEmpresa"].ToString(),
+                                                                           Session["anoVigente"].ToString());
 
                 if (dtCompetencias == null)
                 {
@@ -197,6 +233,47 @@ namespace PortalTrabajadores.Portal
             }
         }
 
+        #endregion 
+
+        #region Eventos
+
+        /// <summary>
+        /// Busca los datos del usuario
+        /// </summary>
+        /// <param name="sender">objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void BtnBuscar_Click(object sender, EventArgs e)
+        {
+            LimpiarMensajes();
+            Container_UpdatePanelAnio.Visible = false;
+            Container_UpdatePanel1.Visible = true;
+            UpdatePanel1.Update();
+
+            try
+            {
+                Container_UpdatePanel2.Visible = false;
+                CargarGrid(ddlAnio.SelectedValue);
+            }
+            catch (Exception ex)
+            {
+                MensajeError("Ha ocurrido el siguiente error: " + ex.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+        }
+
+        /// <summary>
+        /// Regresa a la seleccion de año
+        /// </summary>
+        /// <param name="sender">Objeto Sender</param>
+        /// <param name="e">Evento e</param>
+        protected void btnRegresar_Click(object sender, EventArgs e)
+        {
+            LimpiarMensajes();
+            Container_UpdatePanelAnio.Visible = true;
+            Container_UpdatePanel1.Visible = false;
+            Container_UpdatePanel2.Visible = false;
+            UpdatePanel1.Update();
+        }
+
         /// <summary>
         /// Guarda un area creada
         /// </summary>
@@ -213,7 +290,8 @@ namespace PortalTrabajadores.Portal
                 bool valido = consultas.ConsultarCargoCompetencia(Session["proyecto"].ToString(),
                                                                   Session["idEmpresa"].ToString(),
                                                                   Convert.ToInt32(Session["idCargos"].ToString()),
-                                                                  Convert.ToInt32(ddlCompetencias.SelectedValue));
+                                                                  Convert.ToInt32(ddlCompetencias.SelectedValue),
+                                                                  Session["anoVigente"].ToString());
 
                 if (!valido)
                 {
@@ -227,6 +305,8 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@idTercero", Session["usuario"]);
                     cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
                     cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
+                    cmd.Parameters.AddWithValue("@estado", true);
+                    cmd.Parameters.AddWithValue("@ano", Session["anoVigente"]);
 
                     // Crea un parametro de salida para el SP
                     MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
@@ -242,12 +322,14 @@ namespace PortalTrabajadores.Portal
 
                     if (res == 1)
                     {
-                        this.CargarGrid();
+                        this.CargarCompetenciasGrid();
+                        this.CargarGrid(Session["anoVigente"].ToString());
                     }
                 }
                 else 
                 {
-                    this.CargarGrid();
+                    Container_UpdatePanel2.Visible = false;
+                    this.CargarGrid(Session["anoVigente"].ToString());
                     this.MensajeError("La competencia ya ha sido asignada.");
                 }
             }
@@ -269,7 +351,8 @@ namespace PortalTrabajadores.Portal
         protected void BtnCancelar_Click(object sender, EventArgs e)
         {
             this.LimpiarMensajes();
-            this.CargarGrid();
+            Container_UpdatePanel2.Visible = false;
+            this.CargarGrid(Session["anoVigente"].ToString());
         }
 
         /// <summary>
@@ -366,14 +449,15 @@ namespace PortalTrabajadores.Portal
                 Conexion.AbrirCnMysql();
                 MySqlCommand cmd;
 
-                if (e.CommandName == "Eliminar")
+                if (e.CommandName == "On")
                 {
-                    cmd = new MySqlCommand("sp_EliminarCargoCompetencia", Conexion.ObtenerCnMysql());
+                    cmd = new MySqlCommand("sp_EstadoCargoCompetencia", Conexion.ObtenerCnMysql());
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@idCargo", Session["idCargos"]);
                     cmd.Parameters.AddWithValue("@idCompetencia", e.CommandArgument);
                     cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
                     cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
+                    cmd.Parameters.AddWithValue("@estado", false);
 
                     // Crea un parametro de salida para el SP
                     MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
@@ -390,11 +474,35 @@ namespace PortalTrabajadores.Portal
                     if (res == 1)
                     {
                         this.CargarCompetenciasGrid();
-                        this.CargarGrid();
+                        this.CargarGrid(Session["anoVigente"].ToString());
                     }
-                    else if (res == 2)
+                }
+                else if (e.CommandName == "Off")
+                {
+                    cmd = new MySqlCommand("sp_EstadoCargoCompetencia", Conexion.ObtenerCnMysql());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idCargo", Session["idCargos"]);
+                    cmd.Parameters.AddWithValue("@idCompetencia", e.CommandArgument);
+                    cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
+                    cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
+                    cmd.Parameters.AddWithValue("@estado", true);
+
+                    // Crea un parametro de salida para el SP
+                    MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
                     {
-                        ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarMensaje('No se puede desactivar porque esta asociado a uno o más empleados.'); ", true);
+                        Direction = ParameterDirection.Output
+                    };
+
+                    cmd.Parameters.Add(outputIdParam);
+                    cmd.ExecuteNonQuery();
+
+                    //Almacena la respuesta de la variable de retorno del SP
+                    res = int.Parse(outputIdParam.Value.ToString());
+
+                    if (res == 1)
+                    {
+                        this.CargarCompetenciasGrid();
+                        this.CargarGrid(Session["anoVigente"].ToString());
                     }
                 }
             }
@@ -405,6 +513,33 @@ namespace PortalTrabajadores.Portal
             finally
             {
                 Conexion.CerrarCnMysql();
+            }
+        }
+
+        /// <summary>
+        /// Al cargar la grilla modifica el valor de las imagenes
+        /// </summary>
+        /// <param name="sender">Sender objeto</param>
+        /// <param name="e">evento e</param>
+        protected void gvCompetenciasCreadas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                ImageButton imgbtnON = (ImageButton)e.Row.FindControl("btnON");
+                ImageButton imgbtnOFF = (ImageButton)e.Row.FindControl("btnOFF");
+
+                string estado = DataBinder.Eval(e.Row.DataItem, "estado").ToString();
+
+                if (estado == "1")
+                {
+                    imgbtnON.Visible = true;
+                    imgbtnOFF.Visible = false;
+                }
+                else
+                {
+                    imgbtnON.Visible = false;
+                    imgbtnOFF.Visible = true;
+                }
             }
         }
 
@@ -426,5 +561,7 @@ namespace PortalTrabajadores.Portal
                 gv.DataBind();
             }
         }
+
+        #endregion        
     }
 }

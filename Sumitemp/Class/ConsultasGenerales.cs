@@ -20,7 +20,7 @@ namespace PortalTrabajadores.Portal
         string bdTrabajadores = ConfigurationManager.AppSettings["BD2"].ToString();
         string bdModobjetivos = ConfigurationManager.AppSettings["BD3"].ToString();
         string bdModCompetencias = ConfigurationManager.AppSettings["BD4"].ToString();
-        
+
         /// <summary>
         /// Comprueba si la compania tiene el modulo de objetivos activos
         /// </summary>
@@ -32,8 +32,8 @@ namespace PortalTrabajadores.Portal
             try
             {
                 MySqlCommand rolCommand = new MySqlCommand("SELECT * FROM " +
-                                                            bdBasica + ".matriz_modulostercero where idModulo = 1 and idCompania = '" + 
-                                                            idCompania + "' and idEmpresa = '" + 
+                                                            bdBasica + ".matriz_modulostercero where idModulo = 1 and idCompania = '" +
+                                                            idCompania + "' and idEmpresa = '" +
                                                             idEmpresa + "'", Conexion.ObtenerCnMysql());
 
                 MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);
@@ -108,7 +108,7 @@ namespace PortalTrabajadores.Portal
                 }
             }
         }
-        
+
         /// <summary>
         /// Consulta el periodo seleccionado (semestre trimestre)
         /// </summary>
@@ -124,7 +124,7 @@ namespace PortalTrabajadores.Portal
                 Conexion.AbrirCnMysql();
                 MySqlCommand cmd = new MySqlCommand("SELECT Periodo_Seguimiento FROM " + bdModobjetivos +
                                                     ".parametrosgenerales where idCompania = '" + idCompania +
-                                                    "' AND Empresas_idEmpresa = '" + idEmpresa + 
+                                                    "' AND Empresas_idEmpresa = '" + idEmpresa +
                                                     "' AND Ano = '" + ano + "'", Conexion.ObtenerCnMysql());
                 MySqlDataReader rd = cmd.ExecuteReader();
 
@@ -152,7 +152,7 @@ namespace PortalTrabajadores.Portal
         /// </summary>
         /// <param name="idJefeEmpleado">Id jefe empleado</param>
         /// <returns>Devuelve true si cumple los 100</returns>
-        public string ComprobarPesoObjetivos(string idJefeEmpleado) 
+        public string ComprobarPesoObjetivos(string idJefeEmpleado)
         {
             CnMysql Conexion = new CnMysql(CnTrabajadores);
 
@@ -176,7 +176,7 @@ namespace PortalTrabajadores.Portal
             {
                 throw ex;
             }
-            finally 
+            finally
             {
                 Conexion.CerrarCnMysql();
             }
@@ -196,30 +196,30 @@ namespace PortalTrabajadores.Portal
                 Conexion.AbrirCnMysql();
                 string consulta;
 
-                if (periodo == "1") 
+                if (periodo == "1")
                 {
                     consulta = "SELECT idEtapas, Etapa FROM " + bdModobjetivos + ".etapas WHERE idEtapas = 1 or idEtapas = 4";
                 }
-                else if (periodo == "2") 
+                else if (periodo == "2")
                 {
                     consulta = "SELECT idEtapas, Etapa FROM " + bdModobjetivos + ".etapas WHERE idEtapas != 3";
                 }
-                else 
+                else
                 {
                     consulta = "SELECT idEtapas, Etapa FROM " + bdModobjetivos + ".etapas";
                 }
-                
+
                 MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
                 DataSet dsDataSet = new DataSet();
                 DataTable dtDataTable = null;
-                
+
                 sdaSqlDataAdapter.Fill(dsDataSet);
                 dtDataTable = dsDataSet.Tables[0];
 
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
-                    return dtDataTable;   
+                    return dtDataTable;
                 }
                 else
                 {
@@ -370,7 +370,7 @@ namespace PortalTrabajadores.Portal
         /// Consulta los cargos en el sistema
         /// </summary>
         /// <returns>Datos de competencias</returns>
-        public DataTable ConsultarCargos(string idTercero, string idCompania, string idEmpresa)
+        public DataTable ConsultarCargos(string idTercero, string idCompania, string idEmpresa, string ano)
         {
             CnMysql Conexion = new CnMysql(CnCompetencias);
 
@@ -381,7 +381,8 @@ namespace PortalTrabajadores.Portal
 
                 consulta = "SELECT cargos.IdCargos, cargos.Cargo, " +
                            "(Select Count(*) from " + bdModCompetencias + ".cargocompetencias " +
-                           "where cargocompetencias.idCargo = cargos.IdCargos) as NCompetencias " +
+                           "where cargocompetencias.idCargo = cargos.IdCargos and cargocompetencias.ano = '" +
+                           ano + "') as NCompetencias " +
                            "FROM " + bdTrabajadores + ".cargos " +
                            "where nittercero = " + idTercero +
                            " and idCompania = '" + idCompania + "'" +
@@ -423,7 +424,7 @@ namespace PortalTrabajadores.Portal
         /// Consulta el nivel de competencias
         /// </summary>
         /// <returns>Datos de competencias</returns>
-        public DataTable ConsultarCompetencias(string idTercero, string idCompania, string idEmpresa)
+        public DataTable ConsultarCompetencias(string idTercero, string idCompania, string idEmpresa, string ano)
         {
             CnMysql Conexion = new CnMysql(CnCompetencias);
 
@@ -432,11 +433,10 @@ namespace PortalTrabajadores.Portal
                 Conexion.AbrirCnMysql();
                 string consulta;
 
-                consulta = "SELECT idCompetencia, competencia, idNivelCompetencia as idNivel," +
-                           "(SELECT nombre from " + bdModCompetencias + ".nivelcompetencias " +
-                           "where idNivelCompetencias = idNivel) as nivelCompetencia, activo FROM " + bdModCompetencias + 
-                           ".competencias where idTercero = " + idTercero +  " and idCompania = '" + 
-                           idCompania+ "' and idEmpresa = '" + idEmpresa + "';";
+                consulta = "SELECT idCompetencia, competencia," +
+                           " activo FROM " + bdModCompetencias +
+                           ".competencias where idTercero = " + idTercero + " and idCompania = '" +
+                           idCompania + "' and idEmpresa = '" + idEmpresa + "' and ano = '" + ano + "';";
 
                 MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
@@ -469,7 +469,7 @@ namespace PortalTrabajadores.Portal
         /// Consulta el nivel de competencias
         /// </summary>
         /// <returns>Datos de competencias</returns>
-        public DataTable ConsultarCompetenciasXCargo(string idCompania, string idEmpresa, int idCargo)
+        public DataTable ConsultarCompetenciasXCargo(string idCompania, string idEmpresa, int idCargo, string ano)
         {
             CnMysql Conexion = new CnMysql(CnCompetencias);
 
@@ -478,13 +478,14 @@ namespace PortalTrabajadores.Portal
                 Conexion.AbrirCnMysql();
                 string consulta;
 
-                consulta = "SELECT cargocompetencias.idCompetencia, competencias.competencia " + 
+                consulta = "SELECT cargocompetencias.idCompetencia, competencias.competencia, cargocompetencias.estado " +
                            "FROM " + bdModCompetencias + ".cargocompetencias " +
-                           "INNER JOIN " + bdModCompetencias + ".competencias ON " + 
+                           "INNER JOIN " + bdModCompetencias + ".competencias ON " +
                            "cargocompetencias.idCompetencia = competencias.idCompetencia " +
                            "WHERE cargocompetencias.idCargo = " + idCargo +
                            " AND cargocompetencias.idCompania = '" + idCompania + "'" +
-                           " AND cargocompetencias.idEmpresa = '" + idEmpresa + "';";
+                           " AND cargocompetencias.idEmpresa = '" + idEmpresa + "'" +
+                           " AND cargocompetencias.ano = '" + ano + "';";
 
                 MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
@@ -517,7 +518,7 @@ namespace PortalTrabajadores.Portal
         /// Devuelve el cargo ya existe
         /// </summary>
         /// <returns>true o false</returns>
-        public bool ConsultarCargoCompetencia(string idCompania, string idEmpresa, int idCargo, int idCompetencia)
+        public bool ConsultarCargoCompetencia(string idCompania, string idEmpresa, int idCargo, int idCompetencia, string ano)
         {
             CnMysql Conexion = new CnMysql(CnObjetivos);
 
@@ -530,8 +531,9 @@ namespace PortalTrabajadores.Portal
                            "WHERE idCargo = " + idCargo +
                            " AND idCompetencia = " + idCompetencia +
                            " AND idCompania = '" + idCompania + "'" +
-                           " AND idEmpresa = '" + idEmpresa + "';";
-                    
+                           " AND idEmpresa = '" + idEmpresa + "'" +
+                           " AND ano = '" + ano + "';";
+
                 MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
                 DataSet dsDataSet = new DataSet();
