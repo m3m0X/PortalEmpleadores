@@ -433,7 +433,7 @@ namespace PortalTrabajadores.Portal
                 Conexion.AbrirCnMysql();
                 string consulta;
 
-                consulta = "SELECT idCompetencia, competencia," +
+                consulta = "SELECT idCompetencia, competencia, descripcion," +
                            " activo FROM " + bdModCompetencias +
                            ".competencias where idTercero = " + idTercero + " and idCompania = '" +
                            idCompania + "' and idEmpresa = '" + idEmpresa + "' and ano = '" + ano + "';";

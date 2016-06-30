@@ -218,6 +218,7 @@ namespace PortalTrabajadores.Portal
                 this.LimpiarMensajes();
                 BtnGuardar.Text = "Guardar";
                 txtCompetencia.Text = string.Empty;
+                txtDescripcion.Text = string.Empty;
                 Container_UpdatePanel2.Visible = true;
                 UpdatePanel1.Update();
             }
@@ -260,6 +261,7 @@ namespace PortalTrabajadores.Portal
                 }
 
                 cmd.Parameters.AddWithValue("@competencia", txtCompetencia.Text);
+                cmd.Parameters.AddWithValue("@descripcion", txtDescripcion.Text);
 
                 // Crea un parametro de salida para el SP
                 MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
@@ -297,6 +299,7 @@ namespace PortalTrabajadores.Portal
         {
             this.LimpiarMensajes();
             txtCompetencia.Text = string.Empty;
+            txtDescripcion.Text = string.Empty;
             this.CargarGrid(Session["anoVigente"].ToString());
         }
 
@@ -322,6 +325,7 @@ namespace PortalTrabajadores.Portal
                     int RowIndex = gvr.RowIndex;
 
                     txtCompetencia.Text = gvCompetenciasCreadas.Rows[RowIndex].Cells[0].Text;
+                    txtDescripcion.Text = HttpUtility.HtmlDecode(gvCompetenciasCreadas.Rows[RowIndex].Cells[1].Text);
 
                     BtnGuardar.Text = "Editar";
                     Container_UpdatePanel2.Visible = true;

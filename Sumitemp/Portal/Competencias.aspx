@@ -52,6 +52,7 @@
                     <AlternatingRowStyle CssClass="ColorOscuro" />
                     <Columns>
                         <asp:BoundField DataField="competencia" HeaderText="Competencia" />
+                        <asp:BoundField DataField="descripcion" HeaderText="Descripción" />
                         <asp:BoundField DataField="activo" HeaderText="activo" SortExpression="Estado" Visible="false" />
                         <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
@@ -73,17 +74,48 @@
                     <tr>
                         <th colspan="2">Seleccione el año a parametrizar</th>
                     </tr>
-                    <tr>
+                    <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblCompetencia" runat="server" Text="Competencia:" />
                         </td>
                         <td class="BotonTablaDatos">
-                            <asp:TextBox ID="txtCompetencia" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtCompetencia" runat="server"></asp:TextBox>                            
+                        </td>
+                    </tr>
+                    <tr class="ColorOscuro">
+                        <td colspan="2">
+                            <asp:RequiredFieldValidator ID="rfvCompetencia"
+                                runat="server"
+                                ErrorMessage="Debe digitar una competencia"
+                                CssClass="MensajeError"
+                                Display="Dynamic"
+                                ControlToValidate="txtCompetencia"
+                                ValidationGroup="objForm"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblDescripcion" runat="server" Text="Descripción:" />
+                        </td>
+                        <td class="BotonTablaDatos">
+                            <asp:TextBox ID="txtDescripcion" runat="server" 
+                                TextMode="MultiLine" MaxLength="500" Height="60px" Width="180px" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <asp:RequiredFieldValidator ID="rfvObservacion"
+                                runat="server"
+                                ErrorMessage="Debe digitar una Descripcion"
+                                CssClass="MensajeError"
+                                Display="Dynamic"
+                                ControlToValidate="txtDescripcion"
+                                ValidationGroup="objForm"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr class="ColorOscuro">
                         <td class="BotonTablaDatos">
-                            <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" OnClick="BtnGuardar_Click" /></td>
+                            <asp:Button ID="BtnGuardar" runat="server" Text="Guardar" ValidationGroup="objForm" OnClick="BtnGuardar_Click" /></td>
                         <td class="BotonTablaDatos">
                             <asp:Button ID="BtnCancelar" runat="server" Text="Regresar" OnClick="BtnCancelar_Click" /></td>
                     </tr>

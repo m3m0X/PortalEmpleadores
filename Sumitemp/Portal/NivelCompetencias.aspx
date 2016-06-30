@@ -82,6 +82,17 @@
                             <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
                         </td>
                     </tr>    
+                    <tr>
+                        <td colspan="2">
+                            <asp:RequiredFieldValidator ID="rfvNombre"
+                                runat="server"
+                                ErrorMessage="Debe digitar un nombre"
+                                CssClass="MensajeError"
+                                Display="Dynamic"
+                                ControlToValidate="txtNombre"
+                                ValidationGroup="objForm"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
                     <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblMin" runat="server" Text="Rango Min" />
@@ -89,7 +100,11 @@
                         <td class="CeldaTablaDatos">
                             <asp:TextBox ID="txtCien" runat="server" Text="100" Style="display: none" />
                             <asp:TextBox ID="txtMin" runat="server"
-                                MaxLength="3" onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
+                                MaxLength="3" onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>                            
+                        </td>
+                    </tr>
+                    <tr class="ColorOscuro">
+                        <td colspan="2">
                             <asp:CompareValidator ID="cValidator"
                                 runat="server"
                                 ErrorMessage="CompareValidator"
@@ -99,7 +114,7 @@
                                 Display="Dynamic"
                                 Operator="LessThanEqual"
                                 Type="Integer"
-                                Text="Error: La Meta no puede ser mayor a 100"
+                                Text="Error: El rango no puede ser mayor a 100"
                                 ValidationGroup="objForm">
                             </asp:CompareValidator>
                             <asp:RequiredFieldValidator ID="rfvMeta"
@@ -111,13 +126,17 @@
                                 ValidationGroup="objForm"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
-                    <tr class="ColorOscuro">
+                    <tr>
                         <td class="CeldaTablaDatos">
                             <asp:Label ID="lblMax" runat="server" Text="Rango Max" />
                         </td>
                         <td class="CeldaTablaDatos">
                             <asp:TextBox ID="txtMax" runat="server" 
-                                MaxLength="3" onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
+                                MaxLength="3" onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="CeldaTablaDatos" colspan="2">
                             <asp:CompareValidator ID="CompareValidator2"
                                 runat="server"
                                 ErrorMessage="CompareValidator"
@@ -127,7 +146,7 @@
                                 Display="Dynamic"
                                 Operator="LessThanEqual"
                                 Type="Integer"
-                                Text="Error: La Meta no puede ser mayor a 100"
+                                Text="Error: El rango no puede ser mayor a 100"
                                 ValidationGroup="objForm">
                             </asp:CompareValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1"
@@ -137,10 +156,6 @@
                                 Display="Dynamic"
                                 ControlToValidate="txtMax"
                                 ValidationGroup="objForm"></asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
-                    <tr class="ColorOscuro">
-                        <td class="CeldaTablaDatos" colspan="2">
                             <asp:CompareValidator ID="CompareValidator1" 
                                 runat="server" 
                                 ErrorMessage="CompareValidator"
