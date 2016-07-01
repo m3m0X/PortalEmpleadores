@@ -269,6 +269,7 @@ namespace PortalTrabajadores.Portal
                 cmd.Parameters.AddWithValue("@nombre", txtNombre.Text);
                 cmd.Parameters.AddWithValue("@rangoMin", txtMin.Text);
                 cmd.Parameters.AddWithValue("@rangoMax", txtMax.Text);
+                cmd.Parameters.AddWithValue("@planDesarrollo", cbPlan.Checked);
 
                 // Crea un parametro de salida para el SP
                 MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
@@ -335,6 +336,7 @@ namespace PortalTrabajadores.Portal
                     txtNombre.Text = gvNivelesCreados.Rows[RowIndex].Cells[0].Text;
                     txtMin.Text = gvNivelesCreados.Rows[RowIndex].Cells[1].Text;
                     txtMax.Text = gvNivelesCreados.Rows[RowIndex].Cells[2].Text;
+                    cbPlan.Checked = (gvNivelesCreados.Rows[RowIndex].Cells[3].Text == "1") ? true : false;
 
                     BtnEditar.Text = "Editar";
                     Container_UpdatePanel2.Visible = true;

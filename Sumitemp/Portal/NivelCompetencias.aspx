@@ -54,6 +54,7 @@
                         <asp:BoundField DataField="nombre" HeaderText="Nivel" />
                         <asp:BoundField DataField="rangoMin" HeaderText="Minimo" />
                         <asp:BoundField DataField="rangoMax" HeaderText="Máximo" />
+                        <asp:BoundField DataField="planDesarrollo" HeaderText="Plan" />
                         <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:ImageButton ID="btnUpdate" runat="server" ImageUrl="~/Img/edit.gif" CommandArgument='<%#Eval("idNivelCompetencias")%>' CommandName="Editar" />
@@ -171,6 +172,14 @@
                         </td>
                     </tr>
                     <tr class="ColorOscuro">
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="lblPlan" runat="server" Text="Debe realizar plan?" />
+                        </td>
+                        <td class="CeldaTablaDatos">
+                            <asp:CheckBox ID="cbPlan" runat="server" />          
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="BotonTablaDatos">
                             <asp:Button ID="BtnEditar" runat="server" Text="Guardar" ValidationGroup="objForm" OnClick="BtnEditar_Click" /></td>
                         <td class="BotonTablaDatos">
