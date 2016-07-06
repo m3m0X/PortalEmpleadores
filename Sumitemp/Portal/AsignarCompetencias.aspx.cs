@@ -149,9 +149,9 @@ namespace PortalTrabajadores.Portal
 
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
-                    gvCargosCreados.DataSource = dtDataTable;                    
+                    gvCargosCreados.DataSource = dtDataTable;
                 }
-                else 
+                else
                 {
                     gvCargosCreados.DataSource = null;
                 }
@@ -185,9 +185,9 @@ namespace PortalTrabajadores.Portal
                 {
                     gvCompetenciasCreadas.DataSource = dtDataTable;
                 }
-                else 
+                else
                 {
-                    gvCompetenciasCreadas.DataSource = null;                    
+                    gvCompetenciasCreadas.DataSource = null;
                 }
 
                 gvCompetenciasCreadas.DataBind();
@@ -233,7 +233,41 @@ namespace PortalTrabajadores.Portal
             }
         }
 
-        #endregion 
+        /// <summary>
+        /// Devuelve el resultado de nivel competencias
+        /// </summary>
+        private void CargarNivelCompetencias()
+        {
+            try
+            {
+                DataTable dtCompetencias = consultas.ConsultarNivelCompetencias(Session["usuario"].ToString(),
+                                                                                Session["proyecto"].ToString(),
+                                                                                Session["idEmpresa"].ToString(),
+                                                                                Session["anoVigente"].ToString());
+
+                if (dtCompetencias == null)
+                {
+                    this.MensajeError("No se han establecido niveles de competencias, definalos primero antes de continuar");
+                    ddlNivelCompetencia.DataSource = null;
+                }
+                else
+                {
+                    ddlNivelCompetencia.DataTextField = "nombre";
+                    ddlNivelCompetencia.DataValueField = "idNivelCompetencias";
+                    ddlNivelCompetencia.DataSource = dtCompetencias;
+                }
+
+                ddlNivelCompetencia.DataBind();
+                UpdatePanel1.Update();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        #endregion
 
         #region Eventos
 
@@ -287,50 +321,43 @@ namespace PortalTrabajadores.Portal
 
             try
             {
-                bool valido = consultas.ConsultarCargoCompetencia(Session["proyecto"].ToString(),
-                                                                  Session["idEmpresa"].ToString(),
-                                                                  Convert.ToInt32(Session["idCargos"].ToString()),
-                                                                  Convert.ToInt32(ddlCompetencias.SelectedValue),
-                                                                  Session["anoVigente"].ToString());
+                Conexion.AbrirCnMysql();
+                MySqlCommand cmd;
 
-                if (!valido)
+                cmd = new MySqlCommand("sp_AsignarCompetencias", Conexion.ObtenerCnMysql());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idCargo", Session["idCargos"]);
+                cmd.Parameters.AddWithValue("@idCompetencia", ddlCompetencias.SelectedValue);
+                cmd.Parameters.AddWithValue("@idNivelCompetencias", ddlNivelCompetencia.SelectedValue);
+                cmd.Parameters.AddWithValue("@idTercero", Session["usuario"]);
+                cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
+                cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
+                cmd.Parameters.AddWithValue("@estado", true);
+                cmd.Parameters.AddWithValue("@ano", Session["anoVigente"]);
+
+                // Crea un parametro de salida para el SP
+                MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
                 {
-                    Conexion.AbrirCnMysql();
-                    MySqlCommand cmd;
+                    Direction = ParameterDirection.Output
+                };
 
-                    cmd = new MySqlCommand("sp_AsignarCompetencias", Conexion.ObtenerCnMysql());
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@idCargo", Session["idCargos"]);
-                    cmd.Parameters.AddWithValue("@idCompetencia", ddlCompetencias.SelectedValue);
-                    cmd.Parameters.AddWithValue("@idTercero", Session["usuario"]);
-                    cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
-                    cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
-                    cmd.Parameters.AddWithValue("@estado", true);
-                    cmd.Parameters.AddWithValue("@ano", Session["anoVigente"]);
+                cmd.Parameters.Add(outputIdParam);
+                cmd.ExecuteNonQuery();
 
-                    // Crea un parametro de salida para el SP
-                    MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
-                    {
-                        Direction = ParameterDirection.Output
-                    };
+                //Almacena la respuesta de la variable de retorno del SP
+                res = int.Parse(outputIdParam.Value.ToString());
 
-                    cmd.Parameters.Add(outputIdParam);
-                    cmd.ExecuteNonQuery();
-
-                    //Almacena la respuesta de la variable de retorno del SP
-                    res = int.Parse(outputIdParam.Value.ToString());
-
-                    if (res == 1)
-                    {
-                        this.CargarCompetenciasGrid();
-                        this.CargarGrid(Session["anoVigente"].ToString());
-                    }
-                }
-                else 
+                if (res == 1)
                 {
-                    Container_UpdatePanel2.Visible = false;
+                    this.CargarCompetenciasGrid();
                     this.CargarGrid(Session["anoVigente"].ToString());
-                    this.MensajeError("La competencia ya ha sido asignada.");
+                    this.MensajeError("La competencia fue guardada correctamente.");
+                }
+                if (res == 2)
+                {
+                    this.CargarCompetenciasGrid();
+                    this.CargarGrid(Session["anoVigente"].ToString());
+                    this.MensajeError("La competencia fue actualizada.");
                 }
             }
             catch (Exception E)
@@ -376,9 +403,10 @@ namespace PortalTrabajadores.Portal
 
                     Session.Add("idCargos", e.CommandArgument);
                     this.CargarCompetenciasDll();
+                    this.CargarNivelCompetencias();
                     this.CargarCompetenciasGrid();
                     Container_UpdatePanel2.Visible = true;
-                    UpdatePanel1.Update();                    
+                    UpdatePanel1.Update();
                 }
             }
             catch (Exception E)
@@ -562,6 +590,6 @@ namespace PortalTrabajadores.Portal
             }
         }
 
-        #endregion        
+        #endregion
     }
 }

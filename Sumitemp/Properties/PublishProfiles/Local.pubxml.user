@@ -94,7 +94,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>07/01/2016 00:49:58</publishTime>
+      <publishTime>07/03/2016 13:09:55</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -328,7 +328,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/16/2016 15:23:27</publishTime>
     </File>
     <File Include="Portal/AsignarCompetencias.aspx">
-      <publishTime>06/28/2016 01:08:01</publishTime>
+      <publishTime>07/03/2016 12:32:12</publishTime>
     </File>
     <File Include="Portal/BusquedaRetencion.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>
@@ -403,7 +403,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
     <File Include="Portal/NivelCompetencias.aspx">
-      <publishTime>07/01/2016 00:42:00</publishTime>
+      <publishTime>07/03/2016 12:42:05</publishTime>
     </File>
     <File Include="Portal/Nomina.aspx">
       <publishTime>03/06/2016 14:56:45</publishTime>

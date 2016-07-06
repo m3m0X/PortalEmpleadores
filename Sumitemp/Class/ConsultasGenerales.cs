@@ -478,7 +478,10 @@ namespace PortalTrabajadores.Portal
                 Conexion.AbrirCnMysql();
                 string consulta;
 
-                consulta = "SELECT cargocompetencias.idCompetencia, competencias.competencia, cargocompetencias.estado " +
+                consulta = "SELECT cargocompetencias.idCompetencia," +
+                           "(Select nombre from " + bdModCompetencias + ".nivelcompetencias as nc " +
+                           "where nc.idNivelCompetencias = cargocompetencias.idNivelCompetencias) as nivelCompetencia," +
+                           "competencias.competencia, cargocompetencias.estado " +
                            "FROM " + bdModCompetencias + ".cargocompetencias " +
                            "INNER JOIN " + bdModCompetencias + ".competencias ON " +
                            "cargocompetencias.idCompetencia = competencias.idCompetencia " +
@@ -569,7 +572,7 @@ namespace PortalTrabajadores.Portal
         /// Consulta el nivel de competencias
         /// </summary>
         /// <returns>Datos de competencias</returns>
-        public DataTable ConsultarNivelCompetencias(string idTercero, string idCompania, string idEmpresa)
+        public DataTable ConsultarNivelCompetencias(string idTercero, string idCompania, string idEmpresa, string ano)
         {
             CnMysql Conexion = new CnMysql(CnCompetencias);
 
@@ -581,7 +584,8 @@ namespace PortalTrabajadores.Portal
                 consulta = "SELECT * FROM " + bdModCompetencias + ".nivelcompetencias"
                             + " where idTercero = " + idTercero
                             + " and idCompania = '" + idCompania
-                            + "' and idEmpresa = '" + idEmpresa + "';";
+                            + "' and idEmpresa = '" + idEmpresa 
+                            + "' and ano = '" + ano + "';";
 
                 MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);

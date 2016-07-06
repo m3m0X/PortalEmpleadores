@@ -76,6 +76,7 @@
                     <AlternatingRowStyle CssClass="ColorOscuro" />
                     <Columns>
                         <asp:BoundField DataField="competencia" HeaderText="Competencia" />
+                        <asp:BoundField DataField="nivelCompetencia" HeaderText="Nivel" />
                         <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
                             <ItemTemplate>
                                 <asp:ImageButton ID="btnON" runat="server" ImageUrl="~/Img/on.png" CommandArgument='<%#Eval("idCompetencia")%>' CommandName="On" />
@@ -90,12 +91,20 @@
                     <tr>
                         <th colspan="2">Asignar Competencia al cargo <asp:Label ID="lblCargoSelected" runat="server"></asp:Label></th>
                     </tr>
-                    <tr>
+                    <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos">
                             Seleccione la competencia
                         </td>
                         <td class="BotonTablaDatos">
                             <asp:DropDownList ID="ddlCompetencias" runat="server"></asp:DropDownList>                            
+                        </td>
+                    </tr>    
+                    <tr>
+                        <td class="CeldaTablaDatos">
+                            Seleccione el nivel de la competencia
+                        </td>
+                        <td class="BotonTablaDatos">
+                            <asp:DropDownList ID="ddlNivelCompetencia" runat="server"></asp:DropDownList>                            
                         </td>
                     </tr>                    
                     <tr class="ColorOscuro">

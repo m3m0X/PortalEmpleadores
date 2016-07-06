@@ -144,16 +144,3 @@ D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.cache
 D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.compiled
 D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.dll
 D:\SUMI\ProyectoGIT\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.pdb
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\PortalTrabajadores.dll.config
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\PortalTrabajadores.dll
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\PortalTrabajadores.pdb
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\ClosedXML.dll
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\itextsharp.dll
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\Microsoft.QualityTools.Testing.Fakes.dll
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\ClosedXML.xml
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\itextsharp.xml
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
-D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.cache
-D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\RdlCompile.compiled
-D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.dll
-D:\Sumi\PortalEmpleadores\Sumitemp\obj\Debug\PortalTrabajadores.pdb

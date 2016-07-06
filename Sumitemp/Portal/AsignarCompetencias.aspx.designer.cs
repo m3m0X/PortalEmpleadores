@@ -148,6 +148,15 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.WebControls.DropDownList ddlCompetencias;
         
         /// <summary>
+        /// Control ddlNivelCompetencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlNivelCompetencia;
+        
+        /// <summary>
         /// Control BtnGuardar.
         /// </summary>
         /// <remarks>
