@@ -38,7 +38,15 @@ namespace PortalTrabajadores.Portal
             Page.Validate();
             try
             {
-                MySqlCommand scSqlCommand = new MySqlCommand("SELECT Nit_Tercero, Id_Rol, Razon_social, Empresas_idempresa FROM " + bd2 + ".terceros JOIN " + bd2 + ".companias ON " + bd2 + ".terceros.Nit_Tercero = " + bd2 + ".companias.Terceros_Nit_Tercero where Nit_Tercero = '" + this.txtuser.Text + "' and Contrasena_tercero = '" + this.txtPass.Text + "' and activo_tercero = '1' and (Empresas_idEmpresa = 'ST' OR Empresas_idEmpresa = 'SB') and Activo_Compania = 1", MySqlCn);
+                MySqlCommand scSqlCommand = new MySqlCommand(
+                                                    "SELECT Nit_Tercero, Id_Rol, Razon_social, Empresas_idempresa FROM " + 
+                                                    bd2 + ".terceros JOIN " + bd2 + ".companias ON " + 
+                                                    bd2 + ".terceros.Nit_Tercero = " + 
+                                                    bd2 + ".companias.Terceros_Nit_Tercero where Nit_Tercero = '" + this.txtuser.Text + 
+                                                    "' and Contrasena_tercero = '" + this.txtPass.Text + 
+                                                    "' and activo_tercero = '1' and (Empresas_idEmpresa = 'ST' OR Empresas_idEmpresa = 'SB') " +
+                                                    " and Activo_Compania = 1", MySqlCn);
+
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                 DataSet dsDataSet = new DataSet();
                 DataTable dtDataTable = null;

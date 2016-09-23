@@ -34,7 +34,7 @@ namespace PortalTrabajadores.Portal
                     {
                         MySqlCn = new MySqlConnection(Cn);
 
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'PeriodoExtra.aspx' AND idEmpresa = '" + Session["idEmpresa"] + "'", MySqlCn);
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'PeriodoExtra.aspx'", MySqlCn);
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;

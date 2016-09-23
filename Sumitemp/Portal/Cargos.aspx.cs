@@ -43,7 +43,7 @@ namespace PortalTrabajadores.Portal
                     {
                         MySqlCn = new MySqlConnection(Cn);
 
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'Cargos.aspx' AND idEmpresa = '" + Session["idEmpresa"].ToString() + "'", MySqlCn);
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'Cargos.aspx'", MySqlCn);
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;

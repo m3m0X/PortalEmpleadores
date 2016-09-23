@@ -44,7 +44,7 @@ namespace PortalTrabajadores.Portal
                         CargarInfoEmpleado(Session["usuario"].ToString());
                         Session.Add("cambiaContrasena", false);
 
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'Actualizadatos.aspx' AND idEmpresa = 'ST'", MySqlCn);
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'Actualizadatos.aspx'", MySqlCn);
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;
