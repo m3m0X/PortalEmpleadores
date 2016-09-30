@@ -100,7 +100,11 @@
     <Content Include="CSS\VentanaModal.css" />
     <Content Include="CSS\main_style.css" />
     <Content Include="Html\Aliados.html" />
+    <Content Include="Img\add.gif" />
     <Content Include="Img\Aliados.jpg" />
+    <Content Include="Img\calendar.gif" />
+    <Content Include="Img\delete.gif" />
+    <Content Include="Img\edit.gif" />
     <Content Include="Img\excel.gif" />
     <Content Include="Img\Firma.png" />
     <Content Include="Img\loader.gif" />
@@ -110,20 +114,39 @@
     <Content Include="Img\Nombre.png" />
     <Content Include="fonts\icomoon.svg" />
     <Content Include="Img\fondo_body.jpg" />
+    <Content Include="Img\off.png" />
+    <Content Include="Img\ok.gif" />
+    <Content Include="Img\on.png" />
     <Content Include="Img\pdf.gif" />
     <Content Include="Img\printButton.png" />
     <Content Include="Js\funciones.js" />
+    <Content Include="Js\images\calendar.gif" />
+    <Content Include="Js\images\ui-icons_444444_256x240.png" />
+    <Content Include="Js\images\ui-icons_555555_256x240.png" />
+    <Content Include="Js\images\ui-icons_777620_256x240.png" />
+    <Content Include="Js\images\ui-icons_777777_256x240.png" />
+    <Content Include="Js\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Js\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Js\jquery-1.10.2.js" />
+    <Content Include="Js\jquery-ui.css" />
+    <Content Include="Js\jquery-ui.js" />
     <Content Include="lib\ClosedXML.dll" />
     <Content Include="lib\ClosedXML.XML" />
     <Content Include="lib\DocumentFormat.OpenXml.dll" />
     <Content Include="Portal\Actualizadatos.aspx" />
+    <Content Include="Portal\Areas.aspx" />
+    <Content Include="Portal\AsignarCompetencias.aspx" />
     <Content Include="Portal\BusquedaRetencion.aspx" />
     <Content Include="Portal\CambioContrasena.aspx" />
+    <Content Include="Portal\Cargos.aspx" />
     <Content Include="Portal\Certificado.aspx" />
+    <Content Include="Portal\Competencias.aspx" />
     <Content Include="Portal\ComprobanteNomina.aspx" />
     <Content Include="Portal\Comprobantes.aspx" />
     <Content Include="Portal\Contactenos.aspx" />
     <Content Include="Portal\Cesantias.aspx" />
+    <Content Include="Portal\CrearEmpleado.aspx" />
+    <Content Include="Portal\CrearUsuario.aspx" />
     <Content Include="Portal\EmpleadosActivos.aspx" />
     <Content Include="Portal\EmpleadosInactivos.aspx" />
     <Content Include="Portal\EstadoFondo.aspx" />
@@ -131,6 +154,10 @@
     <Content Include="Portal\Laboral.aspx" />
     <Content Include="Portal\ModificarDatos.aspx" />
     <Content Include="Portal\ModificarTercero.aspx" />
+    <Content Include="Portal\NivelCompetencias.aspx" />
+    <Content Include="Portal\ParametrosEtapas.aspx" />
+    <Content Include="Portal\ParametrosObjetivos.aspx" />
+    <Content Include="Portal\PeriodoExtra.aspx" />
     <Content Include="Portal\PrimeraContrasena.aspx" />
     <Content Include="Portal\Principal.aspx" />
     <Content Include="Portal\Nomina.aspx" />
@@ -163,6 +190,9 @@
     </Content>
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\PublishProfiles\PerfilTrabajador.pubxml" />
+    <Content Include="Portal\RepEmpleadosSinJefe.aspx" />
+    <Content Include="Portal\RepEmpXEtapa.aspx" />
+    <Content Include="Portal\RepJefeXEtapa.aspx" />
     <Content Include="Portal\Retenciones.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -182,11 +212,14 @@
     <Content Include="RecuperarContrasena.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\CifrarContrasena.cs" />
     <Compile Include="Class\CnMysql.cs" />
+    <Compile Include="Class\ConsultasGenerales.cs" />
     <Compile Include="Class\LlenadoDropBox.cs" />
     <Compile Include="Class\ManejoLog.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Class\SqlServer.cs" />
     <Compile Include="DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -211,6 +244,20 @@
     <Compile Include="Portal\Actualizadatos.aspx.designer.cs">
       <DependentUpon>Actualizadatos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Portal\Areas.aspx.cs">
+      <DependentUpon>Areas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Areas.aspx.designer.cs">
+      <DependentUpon>Areas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\AsignarCompetencias.aspx.cs">
+      <DependentUpon>AsignarCompetencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\AsignarCompetencias.aspx.designer.cs">
+      <DependentUpon>AsignarCompetencias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Portal\BusquedaRetencion.aspx.cs">
       <DependentUpon>BusquedaRetencion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,12 +272,26 @@
     <Compile Include="Portal\CambioContrasena.aspx.designer.cs">
       <DependentUpon>CambioContrasena.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Portal\Cargos.aspx.cs">
+      <DependentUpon>Cargos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Cargos.aspx.designer.cs">
+      <DependentUpon>Cargos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Portal\Certificado.aspx.cs">
       <DependentUpon>Certificado.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Portal\Certificado.aspx.designer.cs">
       <DependentUpon>Certificado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\Competencias.aspx.cs">
+      <DependentUpon>Competencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Competencias.aspx.designer.cs">
+      <DependentUpon>Competencias.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\ComprobanteNomina.aspx.cs">
       <DependentUpon>ComprobanteNomina.aspx</DependentUpon>
@@ -259,6 +320,20 @@
     </Compile>
     <Compile Include="Portal\Cesantias.aspx.designer.cs">
       <DependentUpon>Cesantias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\CrearEmpleado.aspx.cs">
+      <DependentUpon>CrearEmpleado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\CrearEmpleado.aspx.designer.cs">
+      <DependentUpon>CrearEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\CrearUsuario.aspx.cs">
+      <DependentUpon>CrearUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\CrearUsuario.aspx.designer.cs">
+      <DependentUpon>CrearUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\EmpleadosActivos.aspx.cs">
       <DependentUpon>EmpleadosActivos.aspx</DependentUpon>
@@ -309,12 +384,40 @@
     <Compile Include="Portal\ModificarTercero.aspx.designer.cs">
       <DependentUpon>ModificarTercero.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Portal\NivelCompetencias.aspx.cs">
+      <DependentUpon>NivelCompetencias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\NivelCompetencias.aspx.designer.cs">
+      <DependentUpon>NivelCompetencias.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Portal\PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Portal\PaginaMaestra.Master.designer.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\ParametrosEtapas.aspx.cs">
+      <DependentUpon>ParametrosEtapas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\ParametrosEtapas.aspx.designer.cs">
+      <DependentUpon>ParametrosEtapas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\ParametrosObjetivos.aspx.cs">
+      <DependentUpon>ParametrosObjetivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\ParametrosObjetivos.aspx.designer.cs">
+      <DependentUpon>ParametrosObjetivos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\PeriodoExtra.aspx.cs">
+      <DependentUpon>PeriodoExtra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\PeriodoExtra.aspx.designer.cs">
+      <DependentUpon>PeriodoExtra.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\PrimeraContrasena.aspx.cs">
       <DependentUpon>PrimeraContrasena.aspx</DependentUpon>
@@ -343,6 +446,27 @@
     </Compile>
     <Compile Include="Portal\Nomina.aspx.designer.cs">
       <DependentUpon>Nomina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\RepEmpleadosSinJefe.aspx.cs">
+      <DependentUpon>RepEmpleadosSinJefe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\RepEmpleadosSinJefe.aspx.designer.cs">
+      <DependentUpon>RepEmpleadosSinJefe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\RepEmpXEtapa.aspx.cs">
+      <DependentUpon>RepEmpXEtapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\RepEmpXEtapa.aspx.designer.cs">
+      <DependentUpon>RepEmpXEtapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\RepJefeXEtapa.aspx.cs">
+      <DependentUpon>RepJefeXEtapa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\RepJefeXEtapa.aspx.designer.cs">
+      <DependentUpon>RepJefeXEtapa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\Retenciones.aspx.cs">
       <DependentUpon>Retenciones.aspx</DependentUpon>

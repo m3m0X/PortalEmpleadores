@@ -26,6 +26,12 @@ namespace PortalTrabajadores.Portal
             conexion.Open();
         }
 
+        // Metodo para Obtener el estado de la Conexion
+        public ConnectionState EstadoConexion()
+        {
+            return conexion.State;
+        }
+
         //Obtiene la cadena de conexion actual
         public MySqlConnection ObtenerCnMysql()
         {
@@ -108,8 +114,6 @@ namespace PortalTrabajadores.Portal
             _comando.CommandType = CommandType.Text;
             return _comando;
         }
-
-
     }
 }
 

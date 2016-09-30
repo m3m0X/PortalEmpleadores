@@ -6,8 +6,7 @@
 <html lang="es">
 <head runat="server">
     <meta charset="utf-8" />
-    <title>Servicio en línea empleadores</title>
-    <asp:ContentPlaceHolder ID="head" runat="server" />
+    <title>Servicio en línea empleadores</title>    
     <!-- Hoja de estilos para normalizar los estilos -->
 	<link type='text/css' rel='stylesheet' href='../CSS/normalize.css'>
 
@@ -16,9 +15,13 @@
     
 	<!-- Hoja de estilos propia -->
 	<link type='text/css' rel='stylesheet' href='../CSS/main_style.css'>
+    
+    <!-- Hoja de estilos propia -->
+	<link type='text/css' rel='stylesheet' href='../CSS/Loading.css'>
 
     <!-- Libreria jQuery -->
     <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server" />
 
     <style type="text/css">
         .overlay  
