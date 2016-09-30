@@ -38,23 +38,26 @@ namespace PortalTrabajadores.Portal
             Page.Validate();
             try
             {
-                MySqlCommand scSqlCommand = new MySqlCommand("SELECT Nit_Tercero, Id_Rol, Razon_social FROM " + bd2 + ".terceros JOIN " + bd2 + ".companias as a ON Nit_Tercero = a.Terceros_Nit_Tercero where Nit_Tercero = '" + this.txtuser.Text + "' and Contrasena_tercero = '" + this.txtPass.Text + "' and activo_tercero = '1' and Activo_Compania = 1 and Empresas_idEmpresa = 'SS' limit 1", MySqlCn);
-                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
-                DataSet dsDataSet = new DataSet();
+                ConsultasGenerales consulta = new ConsultasGenerales();
                 DataTable dtDataTable = null;
+
                 //Asegura que los controles de la pagina hayan sido validados
                 if (Page.IsValid)
                 {
-                    MySqlCn.Open();
-                    sdaSqlDataAdapter.Fill(dsDataSet);
-                    dtDataTable = dsDataSet.Tables[0];
+                    dtDataTable = consulta.InicioSesion(this.txtuser.Text, this.txtPass.Text, cboxUsuario.Checked);
 
                     if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                     {
                         //Creo las Variables de Sesion de la Pagina
-                        Session.Add("usuario", txtuser.Text);
+                        Session.Add("usuario", dtDataTable.Rows[0].ItemArray[0].ToString());
                         Session.Add("rol", dtDataTable.Rows[0].ItemArray[1].ToString());
                         Session.Add("nombre", dtDataTable.Rows[0].ItemArray[2].ToString());
+                        Session.Add("idEmpresa", dtDataTable.Rows[0].ItemArray[3].ToString());
+
+                        if (cboxUsuario.Checked)
+                        {
+                            Session.Add("contrasenaActiva", dtDataTable.Rows[0].ItemArray[4].ToString());
+                        }
 
                         //redirecciona al usuario a la pagina principal del Portal
                         Response.Redirect("~/Portal/index.aspx");
@@ -68,10 +71,6 @@ namespace PortalTrabajadores.Portal
             catch
             {
                 MensajeError("El sistema no se encuentra disponible en este momento. Intente más tarde.");
-            }
-            finally
-            {
-                MySqlCn.Close();
             }
         }
         #endregion

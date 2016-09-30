@@ -16,10 +16,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/05/2014 05:47:06</publishTime>
+      <publishTime>05/09/2014 05:47:06</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/05/2014 05:47:06</publishTime>
+      <publishTime>05/09/2014 05:47:06</publishTime>
     </File>
     <File Include="bin/ar/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -85,7 +85,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>03/22/2016 22:45:46</publishTime>
+      <publishTime>09/29/2016 23:28:50</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -112,10 +112,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="CSS/CSSLogin.css">
-      <publishTime>04/03/2014 16:26:08</publishTime>
+      <publishTime>03/04/2014 16:26:08</publishTime>
     </File>
     <File Include="CSS/CSSPrincipal.css">
-      <publishTime>03/06/2016 14:56:42</publishTime>
+      <publishTime>06/03/2016 14:56:42</publishTime>
     </File>
     <File Include="CSS/font.css">
       <publishTime>03/06/2016 14:56:42</publishTime>
@@ -124,7 +124,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
     <File Include="CSS/login.css">
-      <publishTime>03/06/2016 14:56:42</publishTime>
+      <publishTime>09/29/2016 23:15:11</publishTime>
     </File>
     <File Include="CSS/main_style.css">
       <publishTime>03/06/2016 14:56:42</publishTime>
@@ -207,8 +207,23 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Html/SumiServis.html">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
+    <File Include="Img/add.gif">
+      <publishTime>09/29/2016 22:45:32</publishTime>
+    </File>
     <File Include="Img/Bienvenido SURA Sumiservis.JPG">
       <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Img/calendar.gif">
+      <publishTime>09/29/2016 22:45:32</publishTime>
+    </File>
+    <File Include="Img/delete.gif">
+      <publishTime>09/29/2016 22:45:32</publishTime>
+    </File>
+    <File Include="Img/edit.gif">
+      <publishTime>09/29/2016 22:45:32</publishTime>
+    </File>
+    <File Include="Img/excel.gif">
+      <publishTime>09/29/2016 22:45:34</publishTime>
     </File>
     <File Include="Img/Firma.png">
       <publishTime>03/06/2016 14:56:42</publishTime>
@@ -219,6 +234,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Img/Footer.png">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
+    <File Include="Img/loader.gif">
+      <publishTime>09/29/2016 22:45:35</publishTime>
+    </File>
+    <File Include="Img/loader_Red.gif">
+      <publishTime>09/29/2016 22:45:35</publishTime>
+    </File>
     <File Include="Img/Logo.png">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
@@ -227,6 +248,15 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Img/Nombre.png">
       <publishTime>03/06/2016 14:56:42</publishTime>
+    </File>
+    <File Include="Img/off.png">
+      <publishTime>09/29/2016 22:45:35</publishTime>
+    </File>
+    <File Include="Img/ok.gif">
+      <publishTime>09/29/2016 22:45:35</publishTime>
+    </File>
+    <File Include="Img/on.png">
+      <publishTime>09/29/2016 22:45:35</publishTime>
     </File>
     <File Include="Img/pdf.gif">
       <publishTime>03/06/2016 14:56:42</publishTime>
@@ -240,6 +270,36 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Js/funciones.js">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
+    <File Include="Js/images/calendar.gif">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_444444_256x240.png">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_555555_256x240.png">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_777620_256x240.png">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_777777_256x240.png">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_cc0000_256x240.png">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
+    <File Include="Js/images/ui-icons_ffffff_256x240.png">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
+    <File Include="Js/jquery-1.10.2.js">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
+    <File Include="Js/jquery-ui.css">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
+    <File Include="Js/jquery-ui.js">
+      <publishTime>09/29/2016 22:51:12</publishTime>
+    </File>
     <File Include="lib/ClosedXML.dll">
       <publishTime>03/22/2016 19:50:30</publishTime>
     </File>
@@ -247,7 +307,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/22/2016 19:50:30</publishTime>
     </File>
     <File Include="login.aspx">
-      <publishTime>03/06/2016 14:56:42</publishTime>
+      <publishTime>09/29/2016 23:21:35</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>03/06/2016 14:56:44</publishTime>
@@ -255,11 +315,20 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Portal/Actualizadatos.aspx">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
+    <File Include="Portal/Areas.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
+    </File>
+    <File Include="Portal/AsignarCompetencias.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
+    </File>
     <File Include="Portal/BusquedaRetencion.aspx">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
     <File Include="Portal/CambioContrasena.aspx">
       <publishTime>03/06/2016 14:56:42</publishTime>
+    </File>
+    <File Include="Portal/Cargos.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
     </File>
     <File Include="Portal/CargueArchivos.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -276,6 +345,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Portal/Cesantias.aspx">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
+    <File Include="Portal/Competencias.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
+    </File>
     <File Include="Portal/ComprobanteNomina.aspx">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
@@ -284,6 +356,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Portal/Contactenos.aspx">
       <publishTime>03/06/2016 14:56:42</publishTime>
+    </File>
+    <File Include="Portal/CrearEmpleado.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
+    </File>
+    <File Include="Portal/CrearUsuario.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
     </File>
     <File Include="Portal/default.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -315,11 +393,23 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Portal/ModificarTercero.aspx">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
+    <File Include="Portal/NivelCompetencias.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
+    </File>
     <File Include="Portal/Nomina.aspx">
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
     <File Include="Portal/PaginaMaestra.Master">
-      <publishTime>03/06/2016 14:56:42</publishTime>
+      <publishTime>09/29/2016 22:58:31</publishTime>
+    </File>
+    <File Include="Portal/ParametrosEtapas.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
+    </File>
+    <File Include="Portal/ParametrosObjetivos.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
+    </File>
+    <File Include="Portal/PeriodoExtra.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
     </File>
     <File Include="Portal/PrimeraContrasena.aspx">
       <publishTime>03/06/2016 14:56:42</publishTime>
@@ -329,6 +419,15 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Portal/prueba.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="Portal/RepEmpleadosSinJefe.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
+    </File>
+    <File Include="Portal/RepEmpXEtapa.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
+    </File>
+    <File Include="Portal/RepJefeXEtapa.aspx">
+      <publishTime>09/29/2016 22:48:56</publishTime>
     </File>
     <File Include="Portal/Retefuente.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -340,7 +439,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/05/2014 05:47:04</publishTime>
+      <publishTime>05/09/2014 05:47:04</publishTime>
     </File>
     <File Include="prueba.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -358,10 +457,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="RepositorioPDF/Cesantias/37899866.pdf">
-      <publishTime>01/05/2014 09:47:46</publishTime>
+      <publishTime>05/01/2014 09:47:46</publishTime>
     </File>
     <File Include="RepositorioPDF/Fondo/123.pdf">
-      <publishTime>05/01/2014 09:47:45</publishTime>
+      <publishTime>01/05/2014 09:47:45</publishTime>
     </File>
     <File Include="RepositorioPDF/Fondo/37899866.pdf">
       <publishTime>05/05/2014 00:08:24</publishTime>
@@ -373,16 +472,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>05/05/2014 00:08:28</publishTime>
     </File>
     <File Include="RepositorioPDF/Sumiservis/Cesantias/123.pdf">
-      <publishTime>05/01/2014 09:47:45</publishTime>
+      <publishTime>01/05/2014 09:47:45</publishTime>
     </File>
     <File Include="RepositorioPDF/Sumiservis/Cesantias/StyleSheet1.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="RepositorioPDF/Sumiservis/IngRet/123.pdf">
-      <publishTime>05/01/2014 09:47:45</publishTime>
+      <publishTime>01/05/2014 09:47:45</publishTime>
     </File>
     <File Include="RepositorioPDF/Sumiservis/SegSocial/123.pdf">
-      <publishTime>05/01/2014 09:47:45</publishTime>
+      <publishTime>01/05/2014 09:47:45</publishTime>
     </File>
     <File Include="RepositorioPDF/Sumitemp/Cesantias/123.pdf">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -394,7 +493,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/22/2016 19:54:33</publishTime>
+      <publishTime>09/29/2016 23:28:50</publishTime>
     </File>
   </ItemGroup>
 </Project>

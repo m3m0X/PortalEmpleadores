@@ -35,7 +35,7 @@ namespace PortalTrabajadores.Portal
                     try
                     {
                         MySqlCn = new MySqlConnection(Cn);
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'ComprobanteNomina.aspx' AND idEmpresa = 'SS'", MySqlCn);
+                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT descripcion FROM Options_Menu WHERE url = 'ComprobanteNomina.aspx'", MySqlCn);
                         MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                         DataSet dsDataSet = new DataSet();
                         DataTable dtDataTable = null;

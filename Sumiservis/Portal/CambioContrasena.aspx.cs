@@ -39,7 +39,7 @@ namespace PortalTrabajadores.Portal
                     {
                         DataTable dtDataTable = null;
                         MysqlCn.AbrirCnMysql();
-                        dtDataTable = MysqlCn.ConsultarRegistros("SELECT descripcion FROM Options_Menu WHERE url = 'CambioContrasena.aspx' AND idEmpresa = 'SS'");
+                        dtDataTable = MysqlCn.ConsultarRegistros("SELECT descripcion FROM Options_Menu WHERE url = 'CambioContrasena.aspx'");
                         if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                         {
                             this.lblTitulo.Text = dtDataTable.Rows[0].ItemArray[0].ToString();

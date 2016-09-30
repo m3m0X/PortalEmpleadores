@@ -19,7 +19,7 @@ header h1{
     border-radius: 15px;
     color: white;
     width: 401px;
-    height: 339px;
+    height: 369px;
     padding: 0;
     -moz-box-shadow: 0 0 5px 5px #888;
     -webkit-box-shadow: 0 0 5px 5px#888;
@@ -97,4 +97,16 @@ header h1{
     position: relative;
     left: 200px;
     top: 20px;
+}
+
+.ckBox {
+    color: #000000;
+    float: right;
+    width: 230px;
+}
+
+.ckBox input {
+    height: 15px !important;
+    text-align: left;
+    width: 15px !important;
 }

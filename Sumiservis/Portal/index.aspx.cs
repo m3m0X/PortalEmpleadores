@@ -35,27 +35,47 @@ namespace PortalTrabajadores.Portal
             {
                 if (!IsPostBack)
                 {
-                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_Activo FROM " + bd2 + ".terceros where nit_tercero = '" + this.Session["usuario"].ToString() + "'", MySqlCn);
-                    MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
-                    DataSet dsDataSet = new DataSet();
-                    DataTable dtDataTable = null;
-
                     try
                     {
-                        MySqlCn.Open();
-                        sdaSqlDataAdapter.Fill(dsDataSet);
-                        dtDataTable = dsDataSet.Tables[0];
-
-                        if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                        if (Session["contrasenaActiva"] == null)
                         {
-                            if (dtDataTable.Rows[0].ItemArray[0].ToString() == "1")
+                            MySqlCommand scSqlCommand = new MySqlCommand("SELECT Contrasena_Activo FROM " + bd2 + ".terceros where nit_tercero = '" + this.Session["usuario"].ToString() + "'", MySqlCn);
+                            MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
+                            DataSet dsDataSet = new DataSet();
+                            DataTable dtDataTable = null;
+
+                            MySqlCn.Open();
+                            sdaSqlDataAdapter.Fill(dsDataSet);
+                            dtDataTable = dsDataSet.Tables[0];
+
+                            if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                            {
+                                if (dtDataTable.Rows[0].ItemArray[0].ToString() == "1")
+                                {
+                                    Response.Redirect("PrimeraContrasena.aspx");
+                                }
+                                else
+                                {
+                                    LlenadoDropBox utilLlenar = new LlenadoDropBox();
+                                    string command = "SELECT idCompania, Descripcion_compania FROM " + bd2 + ".companias where Empresas_idempresa = '" + Session["idEmpresa"].ToString() + "' and activo_compania = 1 and Terceros_Nit_Tercero =" + Session["usuario"];
+                                    DropListProyecto.Items.Clear();
+                                    DropListProyecto.DataSource = utilLlenar.LoadTipoID(command);
+                                    DropListProyecto.DataTextField = "Descripcion_compania";
+                                    DropListProyecto.DataValueField = "idCompania";
+                                    DropListProyecto.DataBind();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (Session["contrasenaActiva"].ToString() == "0")
                             {
                                 Response.Redirect("PrimeraContrasena.aspx");
                             }
                             else
                             {
                                 LlenadoDropBox utilLlenar = new LlenadoDropBox();
-                                string command = "SELECT idCompania, Descripcion_compania FROM " + bd2 + ".companias where Empresas_idEmpresa = 'SS' and activo_compania = 1 and Terceros_Nit_Tercero =" + Session["usuario"];
+                                string command = "SELECT idCompania, Descripcion_compania FROM " + bd2 + ".companias where Empresas_idempresa = '" + Session["idEmpresa"].ToString() + "' and activo_compania = 1 and Terceros_Nit_Tercero =" + Session["usuario"];
                                 DropListProyecto.Items.Clear();
                                 DropListProyecto.DataSource = utilLlenar.LoadTipoID(command);
                                 DropListProyecto.DataTextField = "Descripcion_compania";
@@ -108,7 +128,5 @@ namespace PortalTrabajadores.Portal
         }
 
         #endregion
-
-
     }
 }
