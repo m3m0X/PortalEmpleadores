@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using PortalTrabajadores.Class;
 using PortalTrabajadores.Portal;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,68 @@ namespace PortalTrabajadores.Portal
         string bdTrabajadores = ConfigurationManager.AppSettings["BD2"].ToString();
         string bdModobjetivos = ConfigurationManager.AppSettings["BD3"].ToString();
         string bdModCompetencias = ConfigurationManager.AppSettings["BD4"].ToString();
+
+        /// <summary>
+        /// Devuelve el inicio de sesion
+        /// </summary>
+        /// "(Activo_Empleado = 'A' OR Activo_Empleado = '1') and " +
+        public DataTable InicioSesion(string usuario, string pass, bool tercero)
+        {
+            CnMysql Conexion = new CnMysql(CnObjetivos);
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                string consulta;
+
+                if (tercero)
+                {
+                    string cifradaPass = CifrarContrasena.HashSHA1(pass);
+
+                    consulta = "SELECT Ter.Nit_Tercero, usTer.id_Rol, usTer.nombreUsuario, comp.Empresas_idempresa, usTer.contrasenaActiva FROM " +
+                               bdTrabajadores + ".usuariotercero AS usTer JOIN " +
+                               bdTrabajadores + ".terceros AS ter ON usTer.Terceros_Nit_Tercero = ter.Nit_Tercero JOIN " +
+                               bdTrabajadores + ".companias AS comp ON Ter.Nit_Tercero = comp.Terceros_Nit_Tercero " +
+                               "WHERE nombreUsuario = '" + usuario + "' AND contrasena = '" + cifradaPass + "' AND activo = 1 " +
+                               "and comp.Activo_Compania = '1' and (comp.Empresas_idEmpresa = 'ST' OR comp.Empresas_idEmpresa = 'SB') ;";
+                }
+                else
+                {
+                    consulta = "SELECT Nit_Tercero, Id_Rol, Razon_social, Empresas_idempresa FROM " +
+                            bdTrabajadores + ".terceros JOIN " + bdTrabajadores + ".companias ON " +
+                            bdTrabajadores + ".terceros.Nit_Tercero = " +
+                            bdTrabajadores + ".companias.Terceros_Nit_Tercero where Nit_Tercero = '" + usuario +
+                            "' and Contrasena_tercero = '" + pass +
+                            "' and activo_tercero = '1' and (Empresas_idEmpresa = 'ST' OR Empresas_idEmpresa = 'SB') " +
+                            " and Activo_Compania = 1";
+                }
+                
+                MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
+
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    return dtDataTable;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
 
         /// <summary>
         /// Comprueba si la compania tiene el modulo de objetivos activos

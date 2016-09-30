@@ -24,11 +24,17 @@
             </div>
             <div id="Capa2">
                 <asp:TextBox ID="txtuser" runat="server" MaxLength="20" CssClass="MarcaAgua"
-                     ToolTip="Usuario" placeholder="Número de Identificación"  onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
+                     ToolTip="Usuario" placeholder="Número de Identificación"></asp:TextBox>
                 <br />
                 <br />
                 <asp:TextBox ID="txtPass" runat="server" MaxLength="20" CssClass="MarcaAgua" onkeypress="hideOnKeyPress(); return true;"
                     placeholder="Introduzca Contraseña" TextMode="Password" ToolTip="Contraseña"></asp:TextBox>
+                <br />
+                <br />
+                <div class="ckBox">
+                    <asp:CheckBox ID="cboxUsuario" runat="server" />
+                    <asp:Label ID="lbluser" runat="server" Text="Usuario Autorizado"></asp:Label>
+                </div>
                 <br />
                 <br />
                 <div id="BotonPantalla">

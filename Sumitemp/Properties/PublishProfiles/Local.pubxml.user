@@ -94,7 +94,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>09/22/2016 23:18:07</publishTime>
+      <publishTime>09/29/2016 22:18:10</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -133,10 +133,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/16/2016 15:21:06</publishTime>
     </File>
     <File Include="CSS/login.css">
-      <publishTime>03/06/2016 14:56:45</publishTime>
+      <publishTime>09/28/2016 01:52:38</publishTime>
     </File>
     <File Include="CSS/main_style.css">
-      <publishTime>03/06/2016 14:56:45</publishTime>
+      <publishTime>09/27/2016 00:33:51</publishTime>
     </File>
     <File Include="CSS/normalize.css">
       <publishTime>03/06/2016 14:56:45</publishTime>
@@ -316,7 +316,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>04/02/2016 18:48:41</publishTime>
     </File>
     <File Include="login.aspx">
-      <publishTime>03/06/2016 14:56:45</publishTime>
+      <publishTime>09/27/2016 00:32:47</publishTime>
     </File>
     <File Include="packages.config">
       <publishTime>03/08/2016 19:58:57</publishTime>
@@ -371,6 +371,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="Portal/CrearEmpleado.aspx">
       <publishTime>06/08/2016 22:49:58</publishTime>
+    </File>
+    <File Include="Portal/CrearUsuario.aspx">
+      <publishTime>09/28/2016 01:41:38</publishTime>
     </File>
     <File Include="Portal/default.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>

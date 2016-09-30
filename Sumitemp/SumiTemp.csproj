@@ -147,6 +147,7 @@
     <Content Include="Portal\Contactenos.aspx" />
     <Content Include="Portal\Cesantias.aspx" />
     <Content Include="Portal\CrearEmpleado.aspx" />
+    <Content Include="Portal\CrearUsuario.aspx" />
     <Content Include="Portal\EmpleadosActivos.aspx" />
     <Content Include="Portal\EmpleadosInactivos.aspx" />
     <Content Include="Portal\EstadoFondo.aspx" />
@@ -212,6 +213,7 @@
     <Content Include="RecuperarContrasena.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\CifrarContrasena.cs" />
     <Compile Include="Class\CnMysql.cs" />
     <Compile Include="Class\ConsultasGenerales.cs" />
     <Compile Include="Class\LlenadoDropBox.cs" />
@@ -326,6 +328,13 @@
     </Compile>
     <Compile Include="Portal\CrearEmpleado.aspx.designer.cs">
       <DependentUpon>CrearEmpleado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\CrearUsuario.aspx.cs">
+      <DependentUpon>CrearUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\CrearUsuario.aspx.designer.cs">
+      <DependentUpon>CrearUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\EmpleadosActivos.aspx.cs">
       <DependentUpon>EmpleadosActivos.aspx</DependentUpon>

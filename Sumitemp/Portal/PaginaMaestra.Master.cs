@@ -9,10 +9,10 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Data;
 
-
 namespace PortalTrabajadores.Portal
 {
     #region Definicion de la Clase Pagina Maestra
+
     public partial class PaginaMaestra : System.Web.UI.MasterPage
     {
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
@@ -33,7 +33,7 @@ namespace PortalTrabajadores.Portal
                 {
                     //Redirecciona a la pagina de login en caso de que el usuario no se halla autenticado
                     Response.Redirect("~/Login.aspx");
-                }                      
+                }
                 else
                 {
                     //Valida que la pagina ya fue enviada al servidor para que no se cargue otra vez el control menu
@@ -52,7 +52,7 @@ namespace PortalTrabajadores.Portal
                         {
                             bindMenuControl2();
                         }
-                        else 
+                        else
                         {
                             bindMenuControl(false);
                         }
@@ -80,7 +80,7 @@ namespace PortalTrabajadores.Portal
                             //Lo trae de la Variable session
                             bindMenuControl(false);
                         }
-                            
+
                     }
                 }
             }
@@ -119,8 +119,8 @@ namespace PortalTrabajadores.Portal
         /* ****************************************************************************/
         protected void bindMenuControl(Boolean valor)
         {
-            ConsultasGenerales consultaGeneral = new ConsultasGenerales();            
-            
+            ConsultasGenerales consultaGeneral = new ConsultasGenerales();
+
             if (valor)
             {
                 CnMysql Conexion = new CnMysql(Cn);
@@ -220,9 +220,16 @@ namespace PortalTrabajadores.Portal
                                             MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
                                             this.MenuPrincipal.Items.Add(miMenuItem);
                                             AddChildItem(ref miMenuItem, dtDataTable);
-                                        }                                        
+                                        }
+                                        else if (competencias && drDataRow[1].ToString().Contains("Parametros Generales"))
+                                        {
+                                            /*Se eliminan todos los items del menu porque se esstan sumando */
+                                            MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
+                                            this.MenuPrincipal.Items.Add(miMenuItem);
+                                            AddChildItem(ref miMenuItem, dtDataTable);
+                                        }
                                     }
-                                    else if (drDataRow[1].ToString().Contains("Parametros Competencias")) 
+                                    else if (drDataRow[1].ToString().Contains("Parametros Competencias"))
                                     {
                                         if (competencias)
                                         {
@@ -230,9 +237,9 @@ namespace PortalTrabajadores.Portal
                                             MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
                                             this.MenuPrincipal.Items.Add(miMenuItem);
                                             AddChildItem(ref miMenuItem, dtDataTable);
-                                        }   
+                                        }
                                     }
-                                    else 
+                                    else
                                     {
                                         /*Se eliminan todos los items del menu porque se esstan sumando */
                                         MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
