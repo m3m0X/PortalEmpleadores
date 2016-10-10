@@ -133,3 +133,4 @@ D:\Sumi\PortalEmpleadores\Sumitemp\obj\Release\RdlCompile.cache
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Release\RdlCompile.compiled
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Release\PortalTrabajadores.dll
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Release\PortalTrabajadores.pdb
+D:\Sumi\PortalEmpleadores\Sumitemp\bin\DocumentFormat.OpenXml.dll

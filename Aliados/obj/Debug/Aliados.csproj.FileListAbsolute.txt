@@ -130,6 +130,7 @@ D:\Sumi\PortalEmpleadores\Aliados\bin\PortalTrabajadores.dll.config
 D:\Sumi\PortalEmpleadores\Aliados\bin\PortalTrabajadores.dll
 D:\Sumi\PortalEmpleadores\Aliados\bin\PortalTrabajadores.pdb
 D:\Sumi\PortalEmpleadores\Aliados\bin\ClosedXML.dll
+D:\Sumi\PortalEmpleadores\Aliados\bin\DocumentFormat.OpenXml.dll
 D:\Sumi\PortalEmpleadores\Aliados\bin\HtmlAgilityPack.dll
 D:\Sumi\PortalEmpleadores\Aliados\bin\itextsharp.dll
 D:\Sumi\PortalEmpleadores\Aliados\bin\Microsoft.QualityTools.Testing.Fakes.dll

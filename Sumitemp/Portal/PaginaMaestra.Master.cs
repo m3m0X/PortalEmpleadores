@@ -239,6 +239,16 @@ namespace PortalTrabajadores.Portal
                                             AddChildItem(ref miMenuItem, dtDataTable);
                                         }
                                     }
+                                    else if (drDataRow[1].ToString().Contains("Crear Empleados"))
+                                    {
+                                        if (objetivos || competencias)
+                                        {
+                                            /*Se eliminan todos los items del menu porque se esstan sumando */
+                                            MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
+                                            this.MenuPrincipal.Items.Add(miMenuItem);
+                                            AddChildItem(ref miMenuItem, dtDataTable);
+                                        }
+                                    }   
                                     else
                                     {
                                         /*Se eliminan todos los items del menu porque se esstan sumando */

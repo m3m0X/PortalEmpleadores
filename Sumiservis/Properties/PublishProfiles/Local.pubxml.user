@@ -33,6 +33,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="bin/de/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="bin/DocumentFormat.OpenXml.dll">
+      <publishTime>03/22/2016 19:50:30</publishTime>
+    </File>
     <File Include="bin/es/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
@@ -85,7 +88,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>10/09/2016 15:26:32</publishTime>
+      <publishTime>10/09/2016 21:32:15</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
