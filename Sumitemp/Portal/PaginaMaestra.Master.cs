@@ -183,8 +183,8 @@ namespace PortalTrabajadores.Portal
             }
             else
             {
-                bool objetivos = consultaGeneral.ComprobarModuloObjetivos(Session["proyecto"].ToString(), Session["idEmpresa"].ToString());
-                bool competencias = consultaGeneral.ComprobarModuloCompetencias(Session["proyecto"].ToString(), Session["idEmpresa"].ToString());
+                bool objetivos = consultaGeneral.ComprobarModuloObjetivos(Session["usuario"].ToString(), Session["idEmpresa"].ToString());
+                bool competencias = consultaGeneral.ComprobarModuloCompetencias(Session["usuario"].ToString(), Session["idEmpresa"].ToString());
 
                 DataSet dsDataSet = new DataSet();
                 DataTable dtDataTable = null;
@@ -246,7 +246,7 @@ namespace PortalTrabajadores.Portal
                                             /*Se eliminan todos los items del menu porque se esstan sumando */
                                             MenuItem miMenuItem = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
                                             this.MenuPrincipal.Items.Add(miMenuItem);
-                                            AddChildItem(ref miMenuItem, dtDataTable);
+                                            AddChildItem(ref miMenuItem, dtDataTable, this.Session["rol"].ToString());
                                         }
                                     }   
                                     else
@@ -351,6 +351,27 @@ namespace PortalTrabajadores.Portal
                 }
             }
         }
+
+        /* ****************************************************************************/
+        /* Metodo que agrega Los valores a los MenuItems
+        /* ****************************************************************************/
+       protected void AddChildItem(ref MenuItem miMenuItem, DataTable dtDataTable, string idRol)
+        {
+            foreach (DataRow drDataRow in dtDataTable.Rows)
+            {
+                if (Convert.ToInt32(drDataRow[2]) == Convert.ToInt32(miMenuItem.Value) && Convert.ToInt32(drDataRow[0]) != Convert.ToInt32(drDataRow[2]))
+                {
+                    MenuItem miMenuItemChild = new MenuItem(Convert.ToString(drDataRow[1]), Convert.ToString(drDataRow[0]), String.Empty, Convert.ToString(drDataRow[3]));
+
+                    if (!(idRol == "5" && miMenuItemChild.Text == "Crear Usuario Autorizado"))
+                    {
+                        miMenuItem.ChildItems.Add(miMenuItemChild);
+                        AddChildItem(ref miMenuItemChild, dtDataTable);
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region Metodo MensajeError

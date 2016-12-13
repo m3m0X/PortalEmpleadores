@@ -144,6 +144,7 @@
     <Content Include="Portal\Competencias.aspx" />
     <Content Include="Portal\ComprobanteNomina.aspx" />
     <Content Include="Portal\Comprobantes.aspx" />
+    <Content Include="Portal\Conductas.aspx" />
     <Content Include="Portal\Contactenos.aspx" />
     <Content Include="Portal\Cesantias.aspx" />
     <Content Include="Portal\CrearEmpleado.aspx" />
@@ -307,6 +308,13 @@
     </Compile>
     <Compile Include="Portal\Comprobantes.aspx.designer.cs">
       <DependentUpon>Comprobantes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\Conductas.aspx.cs">
+      <DependentUpon>Conductas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\Conductas.aspx.designer.cs">
+      <DependentUpon>Conductas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\Contactenos.aspx.cs">
       <DependentUpon>Contactenos.aspx</DependentUpon>

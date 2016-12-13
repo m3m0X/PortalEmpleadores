@@ -141,7 +141,6 @@ namespace PortalTrabajadores.Portal
                 Session.Add("anoVigente", ano);
 
                 DataTable dtDataTable = consultas.ConsultarCargos(Session["usuario"].ToString(),
-                                                                  Session["proyecto"].ToString(),
                                                                   Session["idEmpresa"].ToString(),
                                                                   Session["anoVigente"].ToString());
 
@@ -266,6 +265,62 @@ namespace PortalTrabajadores.Portal
             }
         }
 
+        /// <summary>
+        /// Carga las grillas de conductas disponibles
+        /// </summary>
+        /// <param name="idCargo">id Cargo.</param>
+        /// <param name="idCompetencia">id competencia.</param>
+        /// <param name="idCompania">id compañia.</param>
+        /// <param name="idEmpresa">id empresa.</param>
+        private void CargarGrillasConductas(string idCargo, string idCompetencia, string idCompania, string idEmpresa)
+        {
+            try
+            {
+                DataTable dtCargoConductas = consultas.ConsultarCargosConductas(idCargo,
+                                                                                idCompetencia,
+                                                                                idCompania,
+                                                                                idEmpresa,
+                                                                                Session["anoVigente"].ToString());
+
+                Session.Add("dtCargoConductas", dtCargoConductas);
+                
+                DataTable dtConductasDisponibles = consultas.ConsultaConductasActivas(dtCargoConductas,
+                                                                                      Session["usuario"].ToString(),
+                                                                                      idCompania,
+                                                                                      idEmpresa,
+                                                                                      Session["anoVigente"].ToString());
+
+                Session.Add("dtConductasDisponibles", dtConductasDisponibles);
+
+                if (dtCargoConductas == null)
+                {
+                    gvConductas.DataSource = null;
+                }
+                else
+                {
+                    gvConductas.DataSource = dtCargoConductas;
+                }
+
+                gvConductas.DataBind();
+
+                if (dtConductasDisponibles == null)
+                {
+                    gvAgregarConducta.DataSource = null;
+                }
+                else
+                {
+                    gvAgregarConducta.DataSource = dtConductasDisponibles;
+                }
+
+                gvAgregarConducta.DataBind();
+
+                UpdatePanel1.Update();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         #endregion
 
@@ -381,6 +436,24 @@ namespace PortalTrabajadores.Portal
             Container_UpdatePanel2.Visible = false;
             this.CargarGrid(Session["anoVigente"].ToString());
         }
+        
+        /// <summary>
+        /// Boton regresar
+        /// </summary>
+        /// <param name="sender">objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void BtnRegresarCargo_Click(object sender, EventArgs e)
+        {
+            this.lblTitulo.Text = "Asignar Competencias a Cargos";
+            this.CargarCompetenciasDll();
+            this.CargarNivelCompetencias();
+            this.CargarCompetenciasGrid();
+
+            Container_UpdatePanel1.Visible = true;
+            Container_UpdatePanel2.Visible = true;
+            Container_UpdatePanel3.Visible = false;
+            UpdatePanel1.Update();
+        }
 
         /// <summary>
         /// Acciones que ejecuta la grilla
@@ -474,6 +547,8 @@ namespace PortalTrabajadores.Portal
 
             try
             {
+                Session.Add("idCompetencia", e.CommandArgument.ToString());
+
                 Conexion.AbrirCnMysql();
                 MySqlCommand cmd;
 
@@ -533,6 +608,20 @@ namespace PortalTrabajadores.Portal
                         this.CargarGrid(Session["anoVigente"].ToString());
                     }
                 }
+                else if (e.CommandName == "Conducta")
+                {
+                    this.lblTitulo.Text = "Asignar Conductas";
+
+                    Container_UpdatePanel1.Visible = false;
+                    Container_UpdatePanel2.Visible = false;
+                    Container_UpdatePanel3.Visible = true;
+                    UpdatePanel1.Update();
+
+                    this.CargarGrillasConductas(Session["idCargos"].ToString(),
+                                                Session["idCompetencia"].ToString(),
+                                                Session["proyecto"].ToString(),
+                                                Session["idEmpresa"].ToString());
+                }
             }
             catch (Exception E)
             {
@@ -580,6 +669,193 @@ namespace PortalTrabajadores.Portal
         {
             this.LimpiarMensajes();
             DataTable datos = (DataTable)Session["DataCompetencias"];
+            GridView gv = (GridView)sender;
+            gv.PageIndex = e.NewPageIndex;
+
+            if (datos != null)
+            {
+                gv.DataSource = datos;
+                gv.DataBind();
+            }
+        }
+        
+        /// <summary>
+        /// Comandos de la grilla conducta
+        /// </summary>
+        /// <param name="sender">objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void gvConductas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            this.LimpiarMensajes();
+            CnMysql Conexion = new CnMysql(CnCompetencias);
+            int res = 0;
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                MySqlCommand cmd;
+
+                if (e.CommandName == "Off")
+                {
+                    cmd = new MySqlCommand("sp_ActualizarEstadoCargoConducta", Conexion.ObtenerCnMysql());
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@idCarConCom", e.CommandArgument);
+                    cmd.Parameters.AddWithValue("@estado", false);
+
+                    // Crea un parametro de salida para el SP
+                    MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+
+                    cmd.Parameters.Add(outputIdParam);
+                    cmd.ExecuteNonQuery();
+
+                    //Almacena la respuesta de la variable de retorno del SP
+                    res = int.Parse(outputIdParam.Value.ToString());
+
+                    if (res == 1)
+                    {
+                        this.CargarGrillasConductas(Session["idCargos"].ToString(),
+                                                Session["idCompetencia"].ToString(),
+                                                Session["proyecto"].ToString(),
+                                                Session["idEmpresa"].ToString());
+                    }
+                }
+            }
+            catch (Exception E)
+            {
+                MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
+
+        /// <summary>
+        /// Paginacion de las conductas
+        /// </summary>
+        /// <param name="sender">objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void gvConductas_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            this.LimpiarMensajes();
+            DataTable datos = (DataTable)Session["dtCargoConductas"];
+            GridView gv = (GridView)sender;
+            gv.PageIndex = e.NewPageIndex;
+
+            if (datos != null)
+            {
+                gv.DataSource = datos;
+                gv.DataBind();
+            }
+        }
+
+        /// <summary>
+        /// Comandos de la grilla agregar conducta
+        /// </summary>
+        /// <param name="sender">objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void gvAgregarConducta_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            this.LimpiarMensajes();
+            CnMysql Conexion = new CnMysql(CnCompetencias);
+            int res = 0;
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                MySqlCommand cmd;
+
+                if (e.CommandName == "On")
+                {
+                    bool existe = consultas.ExisteCargoConducta(e.CommandArgument.ToString(),
+                                                                Session["proyecto"].ToString(),
+                                                                Session["idEmpresa"].ToString(),
+                                                                Session["idCargos"].ToString(),
+                                                                Session["idCompetencia"].ToString(),
+                                                                Session["anoVigente"].ToString());
+
+                    if (!existe)
+                    {
+                        cmd = new MySqlCommand("sp_CrearCargoConducta", Conexion.ObtenerCnMysql());
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idCargo", Session["idCargos"]);
+                        cmd.Parameters.AddWithValue("@idCompetencia", Session["idCompetencia"]);
+                        cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
+                        cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
+                        cmd.Parameters.AddWithValue("@idConducta", e.CommandArgument);
+                        cmd.Parameters.AddWithValue("@ano", Session["anoVigente"]);
+
+                        // Crea un parametro de salida para el SP
+                        MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+
+                        cmd.Parameters.Add(outputIdParam);
+                        cmd.ExecuteNonQuery();
+
+                        //Almacena la respuesta de la variable de retorno del SP
+                        res = int.Parse(outputIdParam.Value.ToString());
+                    }
+                    else
+                    {
+                        cmd = new MySqlCommand("sp_ActualizarEstadoCargoConducta", Conexion.ObtenerCnMysql());
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idCarConCom", e.CommandArgument);
+                        cmd.Parameters.AddWithValue("@estado", true);
+
+                        // Crea un parametro de salida para el SP
+                        MySqlParameter outputIdParam = new MySqlParameter("@respuesta", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+
+                        cmd.Parameters.Add(outputIdParam);
+                        cmd.ExecuteNonQuery();
+
+                        //Almacena la respuesta de la variable de retorno del SP
+                        res = int.Parse(outputIdParam.Value.ToString());
+
+                        if (res == 1)
+                        {
+                            this.CargarGrillasConductas(Session["idCargos"].ToString(),
+                                                    Session["idCompetencia"].ToString(),
+                                                    Session["proyecto"].ToString(),
+                                                    Session["idEmpresa"].ToString());
+                        }
+                    }
+
+                    if (res == 1)
+                    {
+                        this.CargarGrillasConductas(Session["idCargos"].ToString(),
+                                                    Session["idCompetencia"].ToString(),
+                                                    Session["proyecto"].ToString(),
+                                                    Session["idEmpresa"].ToString());
+                    }
+                }
+            }
+            catch (Exception E)
+            {
+                MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
+
+        /// <summary>
+        /// Paginacion agregar conducta
+        /// </summary>
+        /// <param name="sender">objeto sender</param>
+        /// <param name="e">evento e</param>
+        protected void gvAgregarConducta_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            this.LimpiarMensajes();
+            DataTable datos = (DataTable)Session["dtConductasDisponibles"];
             GridView gv = (GridView)sender;
             gv.PageIndex = e.NewPageIndex;
 

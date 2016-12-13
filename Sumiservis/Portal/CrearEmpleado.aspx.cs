@@ -136,7 +136,7 @@ namespace PortalTrabajadores.Portal
                 else
                 {
                     BtnEditar.Text = "Guardar Información";
-                    txtUser2.Text = Session["cedula"].ToString();                    
+                    txtUser2.Text = Session["cedula"].ToString();
                 }
 
                 ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarCalendario(); ", true);
@@ -224,7 +224,7 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@EPS_Empleado", txtEPS.Text);
                     cmd.Parameters.AddWithValue("@AFP_Empleado", txtAFP.Text);
                     cmd.Parameters.AddWithValue("@Cesantias_Empleado", txtCesantias.Text);
-                    cmd.Parameters.AddWithValue("@Fecha_nacimiento_Empleado", txtFechaNacimiento.Text.Replace("/", string.Empty));                    
+                    cmd.Parameters.AddWithValue("@Fecha_nacimiento_Empleado", txtFechaNacimiento.Text.Replace("/", string.Empty));
                 }
 
                 if (ddlArea.SelectedValue == "0")
@@ -240,7 +240,7 @@ namespace PortalTrabajadores.Portal
                 {
                     cmd.Parameters.AddWithValue("@IdCargos", null);
                 }
-                else 
+                else
                 {
                     cmd.Parameters.AddWithValue("@IdCargos", ddlCargo.SelectedValue);
                 }
@@ -275,7 +275,7 @@ namespace PortalTrabajadores.Portal
                     {
                         MensajeError("Usuario creado correctamente");
                     }
-                    else 
+                    else
                     {
                         MensajeError("Se realizo la actualización correctamente");
                     }
@@ -300,7 +300,7 @@ namespace PortalTrabajadores.Portal
         {
             try
             {
-                
+
             }
             catch (Exception ex)
             {
@@ -423,7 +423,6 @@ namespace PortalTrabajadores.Portal
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@nitTercero", Session["usuario"]);
                 cmd.Parameters.AddWithValue("@idEmpresa", "SS");
-                cmd.Parameters.AddWithValue("@id_Compania", Session["proyecto"]);
                 cmd.Parameters.AddWithValue("@estado", true);
 
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
@@ -447,7 +446,6 @@ namespace PortalTrabajadores.Portal
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@nitTercero", Session["usuario"]);
                 cmd.Parameters.AddWithValue("@idEmpresa", "SS");
-                cmd.Parameters.AddWithValue("@id_Compania", Session["proyecto"]);
                 cmd.Parameters.AddWithValue("@estado", true);
 
                 sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
@@ -479,7 +477,7 @@ namespace PortalTrabajadores.Portal
         /// <summary>
         /// Activa los campos
         /// </summary>
-        public void LimpiarActivarCampos() 
+        public void LimpiarActivarCampos()
         {
             this.LimpiarMensajes();
 

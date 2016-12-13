@@ -1,4 +1,15 @@
-﻿// A $( document ).ready() block.
+﻿$(document).ready(function () {
+    $("input[id$='cboxUsuario']").change(function () {
+
+        if ($("input[id$='cboxUsuario']").prop("checked")) {
+            $("#usuarioAuto").css('display', 'block');            
+        }
+        else {
+            $("#usuarioAuto").css('display', 'none');
+        }
+    });
+});
+
 function CargarCalendario() {
     $(".jqCalendar").datepicker({
         showOn: "button",

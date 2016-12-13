@@ -86,7 +86,7 @@
                     </tr>
                     <tr>
                         <td class="CeldaTablaDatos">
-                            <asp:Label ID="lblSubarea" runat="server" Text="Sub-Área::" /></td>
+                            <asp:Label ID="lblSubarea" runat="server" Text="Sub-Área:" /></td>
                         <td class="CeldaTablaDatos">
                             <asp:TextBox ID="txtSubarea" runat="server" />
                             <asp:RequiredFieldValidator ID="rfvSubarea" ControlToValidate="txtSubarea" CssClass="MensajeError" Display="Dynamic" ValidationGroup="subareaForm" runat="server" ErrorMessage="Digite sub-área"></asp:RequiredFieldValidator>

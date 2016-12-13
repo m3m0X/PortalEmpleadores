@@ -17,8 +17,6 @@ namespace PortalTrabajadores.Portal
         string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
         MySqlConnection MySqlCn;
 
-        #region Definicion de los Metodos de la Clase
-
         #region Metodo Page Load
 
         /// <summary>
@@ -94,6 +92,8 @@ namespace PortalTrabajadores.Portal
 
         #endregion
 
+        #region Eventos
+
         /// <summary>
         /// Habilita el menu de crear un cargo
         /// </summary>
@@ -136,7 +136,6 @@ namespace PortalTrabajadores.Portal
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@nitTercero", Session["usuario"]);
                     cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
-                    cmd.Parameters.AddWithValue("@id_Compania", Session["proyecto"]);
                     cmd.Parameters.AddWithValue("@cargo", TxtCargo.Text);
                     cmd.Parameters.AddWithValue("@estado", true);
                 }
@@ -304,6 +303,10 @@ namespace PortalTrabajadores.Portal
             }
         }
 
+        #endregion
+
+        #region funciones
+
         /// <summary>
         /// Carga la grilla actualizada
         /// </summary>
@@ -318,8 +321,7 @@ namespace PortalTrabajadores.Portal
                 MysqlCn.AbrirCnMysql();
                 dtDataTable = MysqlCn.ConsultarRegistros("SELECT IdCargos, Cargo, Estado FROM " + bd2 + ".cargos"
                                                          + " where nittercero = " + Session["usuario"]
-                                                         + " and idCompania = '" + Session["proyecto"]
-                                                         + "' and Empresas_idEmpresa = '" + Session["idEmpresa"] + "';");
+                                                         + " and Empresas_idEmpresa = '" + Session["idEmpresa"] + "';");
 
                 Session.Add("DataCargos", dtDataTable);
 

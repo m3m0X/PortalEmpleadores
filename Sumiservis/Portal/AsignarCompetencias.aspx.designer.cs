@@ -175,6 +175,42 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.WebControls.Button BtnCancelar;
         
         /// <summary>
+        /// Control Container_UpdatePanel3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Container_UpdatePanel3;
+        
+        /// <summary>
+        /// Control gvConductas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvConductas;
+        
+        /// <summary>
+        /// Control gvAgregarConducta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvAgregarConducta;
+        
+        /// <summary>
+        /// Control BtnRegresarCargo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnRegresarCargo;
+        
+        /// <summary>
         /// Control UpdatePanel3.
         /// </summary>
         /// <remarks>

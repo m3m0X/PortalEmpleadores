@@ -423,7 +423,6 @@ namespace PortalTrabajadores.Portal
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@nitTercero", Session["usuario"]);
                 cmd.Parameters.AddWithValue("@idEmpresa", "ST");
-                cmd.Parameters.AddWithValue("@id_Compania", Session["proyecto"]);
                 cmd.Parameters.AddWithValue("@estado", true);
 
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
@@ -447,7 +446,6 @@ namespace PortalTrabajadores.Portal
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@nitTercero", Session["usuario"]);
                 cmd.Parameters.AddWithValue("@idEmpresa", "ST");
-                cmd.Parameters.AddWithValue("@id_Compania", Session["proyecto"]);
                 cmd.Parameters.AddWithValue("@estado", true);
 
                 sdaSqlDataAdapter = new MySqlDataAdapter(cmd);

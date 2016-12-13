@@ -9,7 +9,8 @@
     <title>Servicio en línea empleadores</title>
     <link href="CSS/login.css" rel="stylesheet" type="text/css" />
     <!-- Js De Los campos de Textos -->
-    <script src="Js/funciones.js" type="text/javascript"></script>
+    <script src="Js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="Js/funciones.js" type="text/javascript"></script>    
 </head>
 <body>
     <form id="form1" runat="server">
@@ -24,9 +25,15 @@
             </div>
             <div id="Capa2">
                 <asp:TextBox ID="txtuser" runat="server" MaxLength="20" CssClass="MarcaAgua"
-                     ToolTip="Usuario" placeholder="Número de Identificación"></asp:TextBox>
+                     ToolTip="Usuario" placeholder="Número de Identificación" onkeypress="return ValidaSoloNumeros(event)"></asp:TextBox>
                 <br />
                 <br />
+                <div id="usuarioAuto" style="display:none;">
+                    <asp:TextBox ID="txtUserTer" runat="server" MaxLength="20" CssClass="MarcaAgua"
+                     ToolTip="Usuario" placeholder="Usuario"></asp:TextBox>
+                    <br />
+                    <br />
+                </div>
                 <asp:TextBox ID="txtPass" runat="server" MaxLength="20" CssClass="MarcaAgua" onkeypress="hideOnKeyPress(); return true;"
                     placeholder="Introduzca Contraseña" TextMode="Password" ToolTip="Contraseña"></asp:TextBox>
                 <br />

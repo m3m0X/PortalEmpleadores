@@ -72,7 +72,7 @@
                 <br />
                 <table id="TablaDatos">
                     <tr>
-                        <th colspan="2">Seleccione el año a parametrizar</th>
+                        <th colspan="2">Digite la competencia</th>
                     </tr>
                     <tr class="ColorOscuro">
                         <td class="CeldaTablaDatos">

@@ -44,7 +44,17 @@ namespace PortalTrabajadores.Portal
                 //Asegura que los controles de la pagina hayan sido validados
                 if (Page.IsValid)
                 {
-                    dtDataTable = consulta.InicioSesion(this.txtuser.Text, this.txtPass.Text, cboxUsuario.Checked);
+                    if (cboxUsuario.Checked)
+                    {
+                        dtDataTable = consulta.InicioSesion(this.txtuser.Text,
+                                                            this.txtPass.Text,
+                                                            this.txtUserTer.Text,
+                                                            cboxUsuario.Checked);
+                    }
+                    else
+                    {
+                        dtDataTable = consulta.InicioSesion(this.txtuser.Text, this.txtPass.Text, "", cboxUsuario.Checked);
+                    }
 
                     if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                     {

@@ -26,7 +26,7 @@ namespace PortalTrabajadores.Portal
         /// Devuelve el inicio de sesion
         /// </summary>
         /// "(Activo_Empleado = 'A' OR Activo_Empleado = '1') and " +
-        public DataTable InicioSesion(string usuario, string pass, bool tercero)
+        public DataTable InicioSesion(string usuario, string pass, string userter, bool tercero)
         {
             CnMysql Conexion = new CnMysql(CnObjetivos);
 
@@ -43,7 +43,8 @@ namespace PortalTrabajadores.Portal
                                bdTrabajadores + ".usuariotercero AS usTer JOIN " +
                                bdTrabajadores + ".terceros AS ter ON usTer.Terceros_Nit_Tercero = ter.Nit_Tercero JOIN " +
                                bdTrabajadores + ".companias AS comp ON Ter.Nit_Tercero = comp.Terceros_Nit_Tercero " +
-                               "WHERE nombreUsuario = '" + usuario + "' AND contrasena = '" + cifradaPass + "' AND activo = 1 " +
+                               "WHERE nombreUsuario = '" + userter + "' AND usTer.Terceros_Nit_Tercero = '" + usuario + "'" +
+                               " AND contrasena = '" + cifradaPass + "' AND activo = 1 " +
                                "and comp.Activo_Compania = '1' and comp.Empresas_idEmpresa = 'AE' ;";
                 }
                 else
@@ -56,7 +57,8 @@ namespace PortalTrabajadores.Portal
                             "' and activo_tercero = '1' and Empresas_idEmpresa = 'AE' " +
                             " and Activo_Compania = 1";
                 }
-                
+
+
                 MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
                 DataSet dsDataSet = new DataSet();
@@ -88,15 +90,15 @@ namespace PortalTrabajadores.Portal
         /// Comprueba si la compania tiene el modulo de objetivos activos
         /// </summary>
         /// <returns>True si esta activo</returns>
-        public bool ComprobarModuloObjetivos(string idCompania, string idEmpresa)
+        public bool ComprobarModuloObjetivos(string idTercero, string idEmpresa)
         {
             CnMysql Conexion = new CnMysql(CnTrabajadores);
 
             try
             {
                 MySqlCommand rolCommand = new MySqlCommand("SELECT * FROM " +
-                                                            bdBasica + ".matriz_modulostercero where idModulo = 1 and idCompania = '" +
-                                                            idCompania + "' and idEmpresa = '" +
+                                                            bdBasica + ".matriz_modulostercero where idModulo = 1 and idTercero = '" +
+                                                            idTercero + "' and idEmpresa = '" +
                                                             idEmpresa + "'", Conexion.ObtenerCnMysql());
 
                 MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);
@@ -132,15 +134,15 @@ namespace PortalTrabajadores.Portal
         /// Comprueba si la compania tiene el modulo de competencias activos
         /// </summary>
         /// <returns>True si esta activo</returns>
-        public bool ComprobarModuloCompetencias(string idCompania, string idEmpresa)
+        public bool ComprobarModuloCompetencias(string idTercero, string idEmpresa)
         {
             CnMysql Conexion = new CnMysql(CnTrabajadores);
 
             try
             {
                 MySqlCommand rolCommand = new MySqlCommand("SELECT * FROM " +
-                                                            bdBasica + ".matriz_modulostercero where idModulo = 2 and idCompania = '" +
-                                                            idCompania + "' and idEmpresa = '" +
+                                                            bdBasica + ".matriz_modulostercero where idModulo = 2 and idTercero = '" +
+                                                            idTercero + "' and idEmpresa = '" +
                                                             idEmpresa + "'", Conexion.ObtenerCnMysql());
 
                 MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);
@@ -425,6 +427,50 @@ namespace PortalTrabajadores.Portal
             }
         }
 
+        #region Areas
+
+        public DataTable ConsultarAreas(string nit, string idEmpresa)
+        {
+            CnMysql Conexion = new CnMysql(CnTrabajadores);
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                string consulta = "SELECT areas.IdAreas, areas.IdAreas AS IdArea, " +
+                    "IF((SELECT COUNT(subareas.Subarea) FROM subareas WHERE subareas.IdAreas = IdArea), " +
+                    "(SELECT COUNT(subareas.Subarea) FROM subareas WHERE subareas.IdAreas = IdArea), 0) AS SubAreas, " +
+                    "areas.Area, areas.Estado FROM " + bdTrabajadores + ".areas " +
+                    "WHERE nittercero = " + nit + " AND Empresas_idEmpresa = '" + idEmpresa + "';";
+
+                MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
+
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    return dtDataTable;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
+
+        #endregion
+
         #region ModCompetencias
 
         #region Cargos
@@ -433,7 +479,7 @@ namespace PortalTrabajadores.Portal
         /// Consulta los cargos en el sistema
         /// </summary>
         /// <returns>Datos de competencias</returns>
-        public DataTable ConsultarCargos(string idTercero, string idCompania, string idEmpresa, string ano)
+        public DataTable ConsultarCargos(string idTercero, string idEmpresa, string ano)
         {
             CnMysql Conexion = new CnMysql(CnCompetencias);
 
@@ -448,7 +494,6 @@ namespace PortalTrabajadores.Portal
                            ano + "') as NCompetencias " +
                            "FROM " + bdTrabajadores + ".cargos " +
                            "where nittercero = " + idTercero +
-                           " and idCompania = '" + idCompania + "'" +
                            " and Empresas_idEmpresa = '" + idEmpresa + "'" +
                            " and Estado = 1;";
 
@@ -545,6 +590,9 @@ namespace PortalTrabajadores.Portal
                            "(Select nombre from " + bdModCompetencias + ".nivelcompetencias as nc " +
                            "where nc.idNivelCompetencias = cargocompetencias.idNivelCompetencias) as nivelCompetencia," +
                            "competencias.competencia, cargocompetencias.estado " +
+                           "(SELECT Count(*) FROM " + bdModCompetencias + ".cargocompconductas AS ccc " +
+                           "WHERE ccc.idCompetencia = cargocompetencias.idCompetencia " +
+                           "AND ccc.idCargo = " + idCargo + " AND ccc.estado = 1) AS conductas " +
                            "FROM " + bdModCompetencias + ".cargocompetencias " +
                            "INNER JOIN " + bdModCompetencias + ".competencias ON " +
                            "cargocompetencias.idCompetencia = competencias.idCompetencia " +
@@ -629,6 +677,217 @@ namespace PortalTrabajadores.Portal
 
         #endregion
 
+        #region Conductas
+
+        /// <summary>
+        /// Consulta las conductas.
+        /// </summary>
+        /// <returns>Datos de conductas.</returns>
+        public DataTable ConsultarConductas(string idTercero, string idCompania, string idEmpresa, string ano)
+        {
+            CnMysql Conexion = new CnMysql(CnCompetencias);
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                string consulta;
+
+                consulta = "SELECT idConducta, conducta, " +
+                           " activo FROM " + bdModCompetencias +
+                           ".conductas where idTercero = " + idTercero + " and idCompania = '" +
+                           idCompania + "' and idEmpresa = '" + idEmpresa + "' and ano = '" + ano + "';";
+
+                MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
+
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    return dtDataTable;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
+
+        /// <summary>
+        /// Consulta los cargos con conductas
+        /// </summary>
+        /// <param name="idCargo">id cargos</param>
+        /// <param name="idCompetencia">id competencia</param>
+        /// <param name="idCompania">id compañia</param>
+        /// <param name="idEmpresa">id empresa</param>
+        /// <param name="ano">ano consulta</param>
+        /// <returns>Conductas con cargos</returns>
+        public DataTable ConsultarCargosConductas(string idCargo, string idCompetencia, string idCompania, string idEmpresa, string ano)
+        {
+            CnMysql Conexion = new CnMysql(CnCompetencias);
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                string consulta;
+
+                consulta = "SELECT ccc.idCarConCom, ccc.idConducta, " +
+                           "cond.conducta FROM " + bdModCompetencias +
+                           ".cargocompconductas ccc INNER JOIN " + bdModCompetencias +
+                           ".conductas cond ON ccc.idConducta = cond.idConducta WHERE " +
+                           "ccc.idCargo = " + idCargo + " AND ccc.idCompetencia = " + idCompetencia +
+                           " AND ccc.idCompania = '" + idCompania + "' AND ccc.idEmpresa = '" + idEmpresa + "'" +
+                           " AND ccc.ano = " + ano + " AND estado = 1;";
+
+                MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
+
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    return dtDataTable;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
+
+        /// <summary>
+        /// Consulta las conductas disponibles
+        /// </summary>
+        /// <param name="dtCargoConductas">conductas cargadas en el cargo</param>
+        /// <param name="idTercero">id tercero</param>
+        /// <param name="idCompania">id compañia</param>
+        /// <param name="idEmpresa">id empresa</param>
+        /// <param name="ano">año seleccionado</param>
+        /// <returns>Conductas disponibles</returns>
+        public DataTable ConsultaConductasActivas(DataTable dtCargoConductas, string idTercero, string idCompania, string idEmpresa, string ano)
+        {
+            CnMysql Conexion = new CnMysql(CnCompetencias);
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                string consulta;
+
+                consulta = "SELECT idConducta, conducta FROM " + bdModCompetencias +
+                           ".conductas WHERE idTercero = " + idTercero + " AND idCompania = '" + idCompania + "' " +
+                           "AND idEmpresa = '" + idEmpresa + "' AND ano = " + ano + " AND activo = 1;";
+
+                MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
+
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    if (dtCargoConductas != null)
+                    {
+                        foreach (DataRow row in dtCargoConductas.Rows)
+                        {
+                            string idConducta = row["idConducta"].ToString();
+
+                            for (int i = 0; i < dtDataTable.Rows.Count; i++)
+                            {
+                                DataRow dato = dtDataTable.Rows[i];
+
+                                if (dato["idConducta"].ToString() == idConducta)
+                                {
+                                    dtDataTable.Rows.Remove(dato);
+                                }
+                            }
+                        }
+                    }
+
+                    return dtDataTable;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
+
+        public bool ExisteCargoConducta(string idConducta, string idCompania, string idEmpresa, string idCargo, string idCompetencia, string ano)
+        {
+            CnMysql Conexion = new CnMysql(CnObjetivos);
+
+            try
+            {
+                Conexion.AbrirCnMysql();
+                string consulta;
+
+                consulta = "SELECT idCarConCom, idConducta " +
+                           "FROM " + bdModCompetencias + ".cargocompconductas WHERE " +
+                           "idCargo = " + idCargo + " AND idCompetencia = " + idCompetencia +
+                           " AND idCompania = '" + idCompania + "' AND idEmpresa = '" + idEmpresa + "'" +
+                           " AND ano = " + ano + " AND idConducta = " + idConducta + ";";
+
+                MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
+
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                Conexion.CerrarCnMysql();
+            }
+        }
+
+        #endregion
+
         #region NivelCompetencias
 
         /// <summary>
@@ -647,7 +906,7 @@ namespace PortalTrabajadores.Portal
                 consulta = "SELECT * FROM " + bdModCompetencias + ".nivelcompetencias"
                             + " where idTercero = " + idTercero
                             + " and idCompania = '" + idCompania
-                            + "' and idEmpresa = '" + idEmpresa 
+                            + "' and idEmpresa = '" + idEmpresa
                             + "' and ano = '" + ano + "';";
 
                 MySqlCommand cmd = new MySqlCommand(consulta, Conexion.ObtenerCnMysql());

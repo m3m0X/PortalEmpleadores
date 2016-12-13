@@ -15,9 +15,8 @@ namespace PortalTrabajadores.Portal
         string CnMysql = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql"].ConnectionString.ToString();
         string bd2 = ConfigurationManager.AppSettings["BD2"].ToString();
+        ConsultasGenerales consultas;
         MySqlConnection MySqlCn;
-
-        #region Definicion de los Metodos de la Clase
 
         #region Metodo Page Load
 
@@ -35,6 +34,8 @@ namespace PortalTrabajadores.Portal
             }
             else
             {
+                consultas = new ConsultasGenerales();
+
                 if (!IsPostBack)
                 {
                     this.CargarGrid();
@@ -94,6 +95,8 @@ namespace PortalTrabajadores.Portal
 
         #endregion
 
+        #region Definicion de los Metodos de la Clase
+
         /// <summary>
         /// Habilita el menu de crear un area
         /// </summary>
@@ -136,7 +139,6 @@ namespace PortalTrabajadores.Portal
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@nitTercero", Session["usuario"]);
                     cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
-                    cmd.Parameters.AddWithValue("@id_Compania", Session["proyecto"]);
                     cmd.Parameters.AddWithValue("@area", TxtArea.Text);
                     cmd.Parameters.AddWithValue("@estado", true);
                 }
@@ -320,10 +322,10 @@ namespace PortalTrabajadores.Portal
                     {
                         this.CargarGrid();
                     }
-                    else if (res == 2) 
+                    else if (res == 2)
                     {
                         ScriptManager.RegisterStartupScript(Page, GetType(), "Javascript", "javascript:CargarMensaje('No se puede desactivar porque esta asociado a uno o más empleados.'); ", true);
-                    }                    
+                    }
                 }
                 else if (e.CommandName == "Off")
                 {
@@ -453,6 +455,10 @@ namespace PortalTrabajadores.Portal
             }
         }
 
+        #endregion
+
+        #region funciones
+
         /// <summary>
         /// Carga la grilla actualizada
         /// </summary>
@@ -460,25 +466,15 @@ namespace PortalTrabajadores.Portal
         {
             this.LimpiarMensajes();
 
-            CnMysql MysqlCn = new CnMysql(CnMysql);
-
             try
             {
-                DataTable dtDataTable = null;
-                MysqlCn.AbrirCnMysql();
-                dtDataTable = MysqlCn.ConsultarRegistros("SELECT areas.IdAreas, areas.IdAreas AS IdArea, " +
-                    "IF((SELECT COUNT(subareas.Subarea) FROM subareas WHERE subareas.IdAreas = IdArea), " +
-                    "(SELECT COUNT(subareas.Subarea) FROM subareas WHERE subareas.IdAreas = IdArea), 0) AS SubAreas, " +
-                    "areas.Area, areas.Estado FROM " + bd2 +".areas " +
-                    "WHERE nittercero = " + Session["usuario"] + " AND Empresas_idEmpresa = '" + Session["idEmpresa"] + "'");
-
+                DataTable dtDataTable = consultas.ConsultarAreas(Session["usuario"].ToString(), Session["idEmpresa"].ToString());
 
                 Session.Add("DataAreas", dtDataTable);
 
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
                     gvAreasCreadas.DataSource = dtDataTable;
-                    
                 }
                 else
                 {
@@ -492,10 +488,6 @@ namespace PortalTrabajadores.Portal
             catch (Exception E)
             {
                 MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name + " Sin RED");
-            }
-            finally
-            {
-                MysqlCn.CerrarCnMysql();
             }
         }
 
@@ -519,7 +511,7 @@ namespace PortalTrabajadores.Portal
                 {
                     gvSubAreasCreadas.DataSource = dtDataTable;
                 }
-                else 
+                else
                 {
                     gvSubAreasCreadas.DataSource = null;
                 }
