@@ -166,7 +166,9 @@ namespace PortalTrabajadores.Portal
                 MySqlCn = new MySqlConnection(CnMysql);
                 MySqlCommand scSqlCommand;
                 string consulta = "SELECT * FROM " + bd3 + ".fechasetapas where Ano = '" + ddlAnio.SelectedValue
-                                + "' AND Etapas_idEtapas = " + ddlEtapas.SelectedValue + ";";
+                                + "' AND Etapas_idEtapas = " + ddlEtapas.SelectedValue
+                                + " AND Emp_idEmpresa = '" + Session["idEmpresa"].ToString()
+                                + "' AND idTercero = " + Session["usuario"].ToString() + ";";
 
                 scSqlCommand = new MySqlCommand(consulta, MySqlCn);
 
@@ -240,6 +242,8 @@ namespace PortalTrabajadores.Portal
                 }
 
                 cmd.Parameters.AddWithValue("@Etapas_idEtapas", ddlEtapas.SelectedValue);
+                cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"].ToString());
+                cmd.Parameters.AddWithValue("@idTercero", Session["usuario"].ToString());
                 cmd.Parameters.AddWithValue("@Fecha_Inicio", DateTime.Parse(txtFechaInicio.Text));
                 cmd.Parameters.AddWithValue("@Fecha_Fin", DateTime.Parse(txtFechaFin.Text));
                 cmd.Parameters.AddWithValue("@Corte_Inicio", DateTime.Parse(txtCorteInicio.Text));

@@ -88,7 +88,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>02/17/2014 13:47:36</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>12/13/2016 00:16:18</publishTime>
+      <publishTime>12/14/2016 01:10:01</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>02/17/2014 13:47:36</publishTime>

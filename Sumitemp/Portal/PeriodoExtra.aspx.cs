@@ -183,8 +183,8 @@ namespace PortalTrabajadores.Portal
                                   "jefeempleado.idCompania, " +
                                   "jefeempleado.Cedula_Empleado, " +
                                   "empleados.Nombres_Completos_Empleado " +
-                                  "FROM pru_modobjetivos.jefeempleado " +
-                                  "INNER JOIN pru_trabajadores.empleados ON jefeempleado.Cedula_Empleado = empleados.Id_Empleado " +
+                                  "FROM " + bd3 + ".jefeempleado " +
+                                  "INNER JOIN " + bd3 + ".empleados ON jefeempleado.Cedula_Empleado = empleados.Id_Empleado " +
                                   "where idCompania = '" + Session["proyecto"] +
                                   "' AND Cedula_Jefe = " + txtJefe.Text +
                                   " AND Cedula_Empleado = " + txtUser.Text +
@@ -266,7 +266,7 @@ namespace PortalTrabajadores.Portal
 
                 MySqlCn = new MySqlConnection(Cn);
                 MySqlCommand scSqlCommand;
-                string consulta = "SELECT * FROM pru_modobjetivos.fechasetapas" + 
+                string consulta = "SELECT * FROM " + bd3 + ".fechasetapas" + 
                                   " where ('" + txtFechaInicio.Text + "' > fechasetapas.Fecha_Limite" +
                                   " or '" + txtFechaFin.Text + "' > fechasetapas.Fecha_Limite)" +
                                   " and fechasetapas.Etapas_idEtapas = " + ddlEtapas.SelectedValue + 
