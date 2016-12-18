@@ -104,7 +104,9 @@ namespace PortalTrabajadores.Portal
 
                 MySqlCn = new MySqlConnection(CnMysql);
                 MySqlCommand scSqlCommand;
-                string consulta = "SELECT * FROM " + bd2 + ".empleados where Id_Empleado = " + Session["cedula"] + ";";
+                string consulta = "SELECT * FROM " + bd2 + ".empleados WHERE Id_Empleado = " + Session["cedula"] +
+                                  " AND Activo_Empleado = 'A' AND (Companias_idEmpresa = '" + Session["idEmpresa"] +
+                                  "' OR Companias_idCompania = '" + Session["proyecto"] + "');"; 
 
                 scSqlCommand = new MySqlCommand(consulta, MySqlCn);
 
@@ -436,11 +438,15 @@ namespace PortalTrabajadores.Portal
                 {
                     ddlArea.DataSource = dtDataTable;
                     ddlArea.DataTextField = "Area";
-                    ddlArea.DataValueField = "IdAreas";
-                    ddlArea.DataBind();
-
-                    ddlArea.Items.Insert(0, new ListItem("---Seleccione---", "0", true));
+                    ddlArea.DataValueField = "IdAreas";                    
                 }
+                else
+                {
+                    ddlArea.DataSource = null;
+                }
+
+                ddlArea.DataBind();
+                ddlArea.Items.Insert(0, new ListItem("---Seleccione---", "0", true));
 
                 cmd = new MySqlCommand(bd2 + ".sp_ConsultaCargos", Conexion.ObtenerCnMysql());
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -459,10 +465,14 @@ namespace PortalTrabajadores.Portal
                     ddlCargo.DataSource = dtDataTableCargos;
                     ddlCargo.DataTextField = "Cargo";
                     ddlCargo.DataValueField = "IdCargos";
-                    ddlCargo.DataBind();
-
-                    ddlCargo.Items.Insert(0, new ListItem("---Seleccione---", "0", true));
                 }
+                else
+                {
+                    ddlCargo.DataSource = null;
+                }
+
+                ddlCargo.DataBind();
+                ddlCargo.Items.Insert(0, new ListItem("---Seleccione---", "0", true));
             }
             catch (Exception E)
             {

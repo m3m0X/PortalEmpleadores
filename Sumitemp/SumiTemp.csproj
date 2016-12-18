@@ -101,7 +101,9 @@
     <Content Include="CSS\VentanaModal.css" />
     <Content Include="CSS\main_style.css" />
     <Content Include="dll\ClosedXML.dll" />
-    <Content Include="dll\ClosedXML.XML" />
+    <Content Include="dll\ClosedXML.XML">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="dll\DocumentFormat.OpenXml.dll" />
     <Content Include="Html\SumiTemp.html" />
     <Content Include="Img\add.gif" />
@@ -195,6 +197,7 @@
     <None Include="Properties\PublishProfiles\PerfilTrabajador.pubxml" />
     <Content Include="Portal\RepEmpleadosSinJefe.aspx" />
     <Content Include="Portal\RepEmpXEtapa.aspx" />
+    <Content Include="Portal\RepJefeXComp.aspx" />
     <Content Include="Portal\RepJefeXEtapa.aspx" />
     <Content Include="Portal\Retenciones.aspx" />
     <Content Include="Web.config">
@@ -470,6 +473,13 @@
     </Compile>
     <Compile Include="Portal\RepEmpXEtapa.aspx.designer.cs">
       <DependentUpon>RepEmpXEtapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\RepJefeXComp.aspx.cs">
+      <DependentUpon>RepJefeXComp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\RepJefeXComp.aspx.designer.cs">
+      <DependentUpon>RepJefeXComp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\RepJefeXEtapa.aspx.cs">
       <DependentUpon>RepJefeXEtapa.aspx</DependentUpon>

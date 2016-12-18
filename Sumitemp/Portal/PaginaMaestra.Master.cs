@@ -200,7 +200,7 @@ namespace PortalTrabajadores.Portal
                             if (Convert.ToInt32(drDataRow[0]) == Convert.ToInt32(drDataRow[2]))
                             {
                                 MySqlConnection MySqlCn = new MySqlConnection(Cn);
-                                MySqlCommand rolCommand = new MySqlCommand("SELECT Id_Menu FROM roles_menu WHERE Id_Rol = " + this.Session["rol"].ToString() + " AND Id_Menu = " + drDataRow[2], MySqlCn);
+                                MySqlCommand rolCommand = new MySqlCommand("SELECT Id_Menu FROM " + bd1 + ".roles_menu WHERE Id_Rol = " + this.Session["rol"].ToString() + " AND Id_Menu = " + drDataRow[2], MySqlCn);
                                 MySqlDataAdapter rolDataAdapter = new MySqlDataAdapter(rolCommand);
                                 DataSet rolDataSet = new DataSet();
                                 DataTable rolDataTable = null;

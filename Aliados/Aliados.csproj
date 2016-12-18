@@ -194,6 +194,7 @@
     <None Include="Properties\PublishProfiles\PerfilTrabajador.pubxml" />
     <Content Include="Portal\RepEmpleadosSinJefe.aspx" />
     <Content Include="Portal\RepEmpXEtapa.aspx" />
+    <Content Include="Portal\RepJefeXComp.aspx" />
     <Content Include="Portal\RepJefeXEtapa.aspx" />
     <Content Include="Portal\Retenciones.aspx" />
     <Content Include="Web.config">
@@ -469,6 +470,13 @@
     </Compile>
     <Compile Include="Portal\RepEmpXEtapa.aspx.designer.cs">
       <DependentUpon>RepEmpXEtapa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Portal\RepJefeXComp.aspx.cs">
+      <DependentUpon>RepJefeXComp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portal\RepJefeXComp.aspx.designer.cs">
+      <DependentUpon>RepJefeXComp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Portal\RepJefeXEtapa.aspx.cs">
       <DependentUpon>RepJefeXEtapa.aspx</DependentUpon>

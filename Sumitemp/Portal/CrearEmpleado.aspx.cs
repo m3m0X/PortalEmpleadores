@@ -104,7 +104,9 @@ namespace PortalTrabajadores.Portal
 
                 MySqlCn = new MySqlConnection(CnMysql);
                 MySqlCommand scSqlCommand;
-                string consulta = "SELECT * FROM " + bd2 + ".empleados where Id_Empleado = " + Session["cedula"] + ";";
+                string consulta = "SELECT * FROM " + bd2 + ".empleados WHERE Id_Empleado = " + Session["cedula"] +
+                                  " AND Activo_Empleado = 'A' AND (Companias_idEmpresa = '" + Session["idEmpresa"] +
+                                  "' OR Companias_idCompania = '" + Session["proyecto"] + "');";
 
                 scSqlCommand = new MySqlCommand(consulta, MySqlCn);
 
@@ -178,11 +180,11 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@idContrato", txtUser2.Text + "_EXT");
                     cmd.Parameters.AddWithValue("@Companias_idEmpresa", Session["idEmpresa"]);
                     cmd.Parameters.AddWithValue("@Companias_idCompania", Session["proyecto"]);
-                    cmd.Parameters.AddWithValue("@Lugar_expediccion_IdEmpleado", txtExpedicion.Text);
-                    cmd.Parameters.AddWithValue("@Nombres_Empleado", txtNombres.Text);
-                    cmd.Parameters.AddWithValue("@Primer_Apellido_empleado", txtPrimerApellido.Text);
-                    cmd.Parameters.AddWithValue("@Segundo_Apellido_Empleado", txtSegundoApellido.Text);
-                    cmd.Parameters.AddWithValue("@Nombres_Completos_Empleado", txtNombres.Text + " " + txtPrimerApellido.Text + " " + txtSegundoApellido.Text);
+                    cmd.Parameters.AddWithValue("@Lugar_expediccion_IdEmpleado", txtExpedicion.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Nombres_Empleado", txtNombres.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Primer_Apellido_empleado", txtPrimerApellido.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Segundo_Apellido_Empleado", txtSegundoApellido.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Nombres_Completos_Empleado", txtNombres.Text.ToUpper() + " " + txtPrimerApellido.Text.ToUpper() + " " + txtSegundoApellido.Text.ToUpper());
                     cmd.Parameters.AddWithValue("@Sexo_Empleado", ddlSexo.SelectedValue);
                     cmd.Parameters.AddWithValue("@Nombre_Cargo_Empleado", ddlCargo.SelectedItem);
                     cmd.Parameters.AddWithValue("@Correo_Empleado", txtCorreo.Text);
@@ -209,10 +211,10 @@ namespace PortalTrabajadores.Portal
                     cmd.Parameters.AddWithValue("@Id_Empleado", txtUser2.Text);
                     cmd.Parameters.AddWithValue("@Companias_idEmpresa", Session["idEmpresa"]);
                     cmd.Parameters.AddWithValue("@Companias_idCompania", Session["proyecto"]);
-                    cmd.Parameters.AddWithValue("@Nombres_Empleado", txtNombres.Text);
-                    cmd.Parameters.AddWithValue("@Primer_Apellido_empleado", txtPrimerApellido.Text);
-                    cmd.Parameters.AddWithValue("@Segundo_Apellido_Empleado", txtSegundoApellido.Text);
-                    cmd.Parameters.AddWithValue("@Nombres_Completos_Empleado", txtNombres.Text + " " + txtPrimerApellido.Text + " " + txtSegundoApellido.Text);
+                    cmd.Parameters.AddWithValue("@Nombres_Empleado", txtNombres.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Primer_Apellido_empleado", txtPrimerApellido.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Segundo_Apellido_Empleado", txtSegundoApellido.Text.ToUpper());
+                    cmd.Parameters.AddWithValue("@Nombres_Completos_Empleado", txtNombres.Text.ToUpper() + " " + txtPrimerApellido.Text.ToUpper() + " " + txtSegundoApellido.Text.ToUpper());
                     cmd.Parameters.AddWithValue("@Sexo_Empleado", ddlSexo.SelectedValue);
                     cmd.Parameters.AddWithValue("@Nombre_Cargo_Empleado", ddlCargo.SelectedItem);
                     cmd.Parameters.AddWithValue("@Correo_Empleado", txtCorreo.Text);
@@ -437,10 +439,14 @@ namespace PortalTrabajadores.Portal
                     ddlArea.DataSource = dtDataTable;
                     ddlArea.DataTextField = "Area";
                     ddlArea.DataValueField = "IdAreas";
-                    ddlArea.DataBind();
-
-                    ddlArea.Items.Insert(0, new ListItem("---Seleccione---", "0", true));
                 }
+                else
+                {
+                    ddlArea.DataSource = null;
+                }
+
+                ddlArea.DataBind();
+                ddlArea.Items.Insert(0, new ListItem("---Seleccione---", "0", true));
 
                 cmd = new MySqlCommand(bd2 + ".sp_ConsultaCargos", Conexion.ObtenerCnMysql());
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -458,11 +464,15 @@ namespace PortalTrabajadores.Portal
                 {
                     ddlCargo.DataSource = dtDataTableCargos;
                     ddlCargo.DataTextField = "Cargo";
-                    ddlCargo.DataValueField = "IdCargos";
-                    ddlCargo.DataBind();
-
-                    ddlCargo.Items.Insert(0, new ListItem("---Seleccione---", "0", true));
+                    ddlCargo.DataValueField = "IdCargos";                    
                 }
+                else
+                {
+                    ddlCargo.DataSource = null;
+                }
+
+                ddlCargo.DataBind();
+                ddlCargo.Items.Insert(0, new ListItem("---Seleccione---", "0", true));
             }
             catch (Exception E)
             {

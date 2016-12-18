@@ -321,7 +321,7 @@ namespace PortalTrabajadores.Portal
                 MysqlCn.AbrirCnMysql();
                 dtDataTable = MysqlCn.ConsultarRegistros("SELECT IdCargos, Cargo, Estado FROM " + bd2 + ".cargos"
                                                          + " where nittercero = " + Session["usuario"]
-                                                         + "' and Empresas_idEmpresa = '" + Session["idEmpresa"] + "';");
+                                                         + " and Empresas_idEmpresa = '" + Session["idEmpresa"] + "';");
 
                 Session.Add("DataCargos", dtDataTable);
 

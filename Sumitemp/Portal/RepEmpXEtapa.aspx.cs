@@ -182,6 +182,7 @@ namespace PortalTrabajadores.Portal
                 scSqlCommand.Parameters.AddWithValue("@etapa", ddlEtapas.SelectedValue);
                 scSqlCommand.Parameters.AddWithValue("@idCompania", Session["proyecto"]);
                 scSqlCommand.Parameters.AddWithValue("@ano", ddlAnio.SelectedValue);
+                scSqlCommand.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"]);
 
                 MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
                 DataTable dtDataTable = new DataTable();
@@ -217,7 +218,8 @@ namespace PortalTrabajadores.Portal
                         memoryStream.Close();
                     }
 
-                    httpResponse.End();
+                    Response.Flush();
+                    Response.Close();
                 }
             }
             catch (Exception E)
