@@ -348,8 +348,15 @@ namespace PortalTrabajadores.Portal
                     txtAFP.Text = rd["AFP_Empleado"].ToString();
                     txtCesantias.Text = rd["Cesantias_Empleado"].ToString();
 
-                    DateTime d = DateTime.ParseExact(rd["Fecha_nacimiento_Empleado"].ToString(), "yyyyMMdd", CultureInfo.InvariantCulture);
-                    txtFechaNacimiento.Text = d.ToString("yyyy/MM/dd");
+                    if (rd["Fecha_nacimiento_Empleado"] != "")
+                    {
+                        DateTime d = DateTime.ParseExact(rd["Fecha_nacimiento_Empleado"].ToString(), "yyyyMMdd", CultureInfo.InvariantCulture);
+                        txtFechaNacimiento.Text = d.ToString("yyyy/MM/dd");
+                    }
+                    else
+                    {
+                        txtFechaNacimiento.Text = string.Empty;
+                    }
 
                     if (rd["Id_Rol"].ToString() != "")
                     {

@@ -157,6 +157,10 @@
                                 ValidationExpression="\d{4}(?:/\d{1,2}){2}" Display="Dynamic"
                                 CssClass="MensajeError" ErrorMessage="Formato Invalido." 
                                 ValidationGroup="userForm" />
+                            <asp:RequiredFieldValidator ID="rfvFechaNacimiento" 
+                                ControlToValidate="txtFechaNacimiento" CssClass="MensajeError" 
+                                Display="Dynamic" ValidationGroup="userForm" 
+                                runat="server" ErrorMessage="Digite Una fecha"></asp:RequiredFieldValidator>
                         </td>
                     </tr> 
                     <tr class="ColorOscuro">
