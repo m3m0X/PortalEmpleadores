@@ -88,7 +88,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>12/19/2016 22:05:48</publishTime>
+      <publishTime>12/21/2016 23:39:33</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -364,7 +364,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 14:56:42</publishTime>
     </File>
     <File Include="Portal/CrearEmpleado.aspx">
-      <publishTime>12/19/2016 22:05:37</publishTime>
+      <publishTime>12/21/2016 23:39:14</publishTime>
     </File>
     <File Include="Portal/CrearUsuario.aspx">
       <publishTime>09/29/2016 22:48:56</publishTime>

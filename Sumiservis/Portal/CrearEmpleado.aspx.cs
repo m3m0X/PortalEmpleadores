@@ -395,7 +395,6 @@ namespace PortalTrabajadores.Portal
                     txtPrimerApellido.Enabled = false;
                     txtSegundoApellido.Enabled = false;
                     ddlSexo.Enabled = false;
-                    txtCorreo.Enabled = false;
                     txtDireccion.Enabled = false;
                     txtBarrio.Enabled = false;
                     txtCelular.Enabled = false;
