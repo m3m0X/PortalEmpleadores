@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -7,6 +8,9 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
 using MySql.Data.MySqlClient;
+using System.Net;
+using Ionic.Zip;
+using System.Text;
 
 namespace PortalTrabajadores.Portal
 {
@@ -170,6 +174,96 @@ namespace PortalTrabajadores.Portal
                 if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                 {
                     SqlDataSource1.SelectCommand = consulta;
+                }
+                else
+                {
+                    //Muestra un Mensaje en la aplicacion indicando al usuario que se abrio una nueva ventana
+                    MensajeError("El usuario no existe.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MensajeError("Ha ocurrido el siguiente error: " + ex.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+            }
+            finally
+            {
+                MySqlCn.Close();
+            }
+        }
+
+        protected void BtnTodos_Click(object sender, EventArgs e)
+        {
+            LblMsj.Text = string.Empty;
+            LblMsj.Visible = false;
+            UpdatePanel3.Update();
+
+            string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
+
+            try
+            {
+                MySqlCn = new MySqlConnection(Cn);
+                MySqlCommand scSqlCommand;
+                string consulta = "SELECT distinct idParafiscal, Anio_Parafiscal, Mes_Parafiscal, Ruta_archivo_Parafiscal as ruta, " +
+                                                    "Nombre_archivo_parafiscal as nombre " +
+                                                    "FROM " + bd2 + ".parafiscales, " + bd2 + ".empleados " +
+                                                    "where " + bd2 + ".empleados.Companias_idCompania = '" + Session["proyecto"].ToString() + "' and " +
+                                                    bd2 + ".parafiscales.Empleados_Id_Empleado = " + bd2 + ".empleados.Id_Empleado and " +
+                                                    "Empleados_idEmpresa = 'ST'";
+
+                scSqlCommand = new MySqlCommand(consulta, MySqlCn);
+
+                MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
+                DataSet dsDataSet = new DataSet();
+                DataTable dtDataTable = null;
+                MySqlCn.Open();
+                sdaSqlDataAdapter.Fill(dsDataSet);
+                dtDataTable = dsDataSet.Tables[0];
+
+                if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                {
+                    string archivoZip = Session["usuario"].ToString() + ".zip";
+                    string rutaArchivo = dtDataTable.Rows[0].ItemArray[3].ToString();
+                    string rutazip = System.IO.Path.Combine(ruta, rutaArchivo, Session["usuario"].ToString());
+                    string zipArchivo = System.IO.Path.Combine(ruta, rutaArchivo, archivoZip);
+
+                    if (System.IO.File.Exists(zipArchivo))
+                    {
+                        System.IO.File.Delete(zipArchivo);
+                    }
+
+                    Response.Clear();
+                    Response.ContentType = "application/zip";
+                    Response.AddHeader("content-disposition", "filename=" + archivoZip);
+
+                    // Zip the contents of the selected files
+                    using (ZipFile zip = new ZipFile())
+                    {
+                        for (int x = 0; x < dtDataTable.Rows.Count; x++)
+                        {
+                            string archivo = dtDataTable.Rows[x].ItemArray[4].ToString();
+                            string filename = System.IO.Path.Combine(ruta, rutaArchivo, archivo);
+
+                            if (System.IO.File.Exists(filename))
+                            {
+                                zip.AddFile(filename, "SegSocial");
+                            }                            
+                        }
+
+                        //zip.Save(Response.OutputStream);
+                        zip.Save(zipArchivo);
+                    }
+
+                    //Response.Close();
+
+                    Response.ClearContent();
+                    Response.ClearHeaders();
+                    Response.Clear();
+                    Response.Buffer = true;
+                    Response.ContentType = "application/pdf";
+                    Response.AddHeader("Content-Disposition", "attachment; filename=" + archivoZip);
+                    Response.WriteFile(zipArchivo);
+                    Response.Flush();
+                    Response.End();
                 }
                 else
                 {

@@ -64,27 +64,17 @@ namespace PortalTrabajadores.Portal
                     {                        
                         string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
 
-                        MySqlCn = new MySqlConnection(Cn);
-                        MySqlCommand scSqlCommand = new MySqlCommand("SELECT " + bd2 + ".empleados.Id_Empleado AS Cedula, " +
-                                                                        bd2 + ".empleados.Nombres_Completos_Empleado As Nombre, " +
-                                                                        bd2 + ".empleados.Sexo_Empleado As Sexo, " +
-                                                                        bd2 + ".empleados.Nombre_Cargo_Empleado As Cargo, " +
-                                                                        bd2 + ".empleados.Fecha_nacimiento_Empleado AS 'Fecha de Nacimiento', " +
-                                                                        bd2 + ".empleados.Correo_Empleado As Correo, " +
-                                                                        bd2 + ".empleados.Fecha_Ingreso_Empleado As Ingreso, " +
-                                                                        bd2 + ".empleados.Fecha_terminacion_Empleado As Terminacion, " +
-                                                                        bd2 + ".empleados.Outsourcing As 'Centro de costos' " +
-                                                                        "FROM " + bd2 + ".empleados " +
-                                                                        "JOIN " + bd2 + ".companias ON " +
-                                                                        bd2 + ".empleados.companias_idcompania = " + bd2 + ".companias.idCompania AND " +
-                                                                        bd2 + ".empleados.Companias_idEmpresa = " + bd2 + ".companias.Empresas_idEmpresa " +
-                                                                        "where " + bd2 + ".empleados.Companias_idEmpresa = '" + Session["idEmpresa"].ToString() + "' AND " +
-                                                                        bd2 + ".companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
-                                                                        bd2 + ".companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " +
-                                                                        "(DATE_FORMAT(fecha_terminacion_Empleado,'%Y%m%d') > DATE_FORMAT('" + DateTime.Now.ToShortDateString() +
-                                                                        "','%Y%m%d') OR Estado_Contrato_Empleado = 'A')", MySqlCn);
+                        CnMysql Conexion = new CnMysql(Cn);
+                        
+                        Conexion.AbrirCnMysql();
+                        MySqlCommand cmd = new MySqlCommand("rep_EmpleadoActivo", Conexion.ObtenerCnMysql());
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"].ToString());
+                        cmd.Parameters.AddWithValue("@tercero", Session["usuario"].ToString());
+                        cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"].ToString());
+                        cmd.Parameters.AddWithValue("@fecha", DateTime.Now.ToShortDateString());
 
-                        MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
+                        MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
                         DataTable dtDataTable = new DataTable();
                         MySqlCn.Open();
                         sdaSqlDataAdapter.Fill(dtDataTable);

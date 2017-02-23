@@ -70,7 +70,7 @@ namespace PortalTrabajadores.Portal
                         }
 
                         //redirecciona al usuario a la pagina principal del Portal
-                        Response.Redirect("~/Portal/index.aspx");
+                        Response.Redirect("~/Portal/index.aspx", false);
                     }
                     else
                     {
@@ -78,7 +78,7 @@ namespace PortalTrabajadores.Portal
                     }
                 }
             }
-            catch 
+            catch(Exception ex)
             {
                 MensajeError("El sistema no se encuentra disponible en este momento. Intente más tarde.");
             }

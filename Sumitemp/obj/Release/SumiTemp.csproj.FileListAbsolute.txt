@@ -124,13 +124,12 @@ D:\Sumi\PortalEmpleadores\Sumitemp\bin\PortalTrabajadores.dll
 D:\Sumi\PortalEmpleadores\Sumitemp\bin\PortalTrabajadores.pdb
 D:\Sumi\PortalEmpleadores\Sumitemp\bin\ClosedXML.dll
 D:\Sumi\PortalEmpleadores\Sumitemp\bin\itextsharp.dll
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\Microsoft.QualityTools.Testing.Fakes.dll
 D:\Sumi\PortalEmpleadores\Sumitemp\bin\ClosedXML.xml
 D:\Sumi\PortalEmpleadores\Sumitemp\bin\itextsharp.xml
-D:\Sumi\PortalEmpleadores\Sumitemp\bin\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Release\SumiTemp.csprojResolveAssemblyReference.cache
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Release\RdlCompile.cache
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Release\RdlCompile.compiled
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Release\PortalTrabajadores.dll
 D:\Sumi\PortalEmpleadores\Sumitemp\obj\Release\PortalTrabajadores.pdb
 D:\Sumi\PortalEmpleadores\Sumitemp\bin\DocumentFormat.OpenXml.dll
+D:\Sumi\PortalEmpleadores\Sumitemp\bin\Ionic.Zip.dll
