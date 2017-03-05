@@ -100,7 +100,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>02/23/2017 13:52:08</publishTime>
+      <publishTime>03/05/2017 09:07:22</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -418,7 +418,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/03/2016 12:42:05</publishTime>
     </File>
     <File Include="Portal/Nomina.aspx">
-      <publishTime>02/04/2017 15:05:03</publishTime>
+      <publishTime>03/04/2017 15:47:57</publishTime>
     </File>
     <File Include="Portal/PaginaMaestra.Master">
       <publishTime>04/16/2016 14:26:17</publishTime>
@@ -460,7 +460,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>03/06/2016 14:56:45</publishTime>
     </File>
     <File Include="Portal/Segsocial.aspx">
-      <publishTime>02/23/2017 11:45:30</publishTime>
+      <publishTime>03/04/2017 15:15:33</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
       <publishTime>09/05/2014 10:15:32</publishTime>

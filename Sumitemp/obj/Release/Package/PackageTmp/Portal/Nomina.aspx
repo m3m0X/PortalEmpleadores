@@ -53,14 +53,16 @@
                         <td class="BotonTablaDatos">
                             <asp:DropDownList ID="ddlTipo" runat="server">
                                 <asp:ListItem Value="1">Codigo</asp:ListItem>
-                                <asp:ListItem Value="2">Centro de Costo</asp:ListItem>
-                                <asp:ListItem Value="3">Concepto</asp:ListItem>
+                                <asp:ListItem Value="2">Codigo Consolidado</asp:ListItem>
+                                <asp:ListItem Value="3">Centro de Costo</asp:ListItem>
+                                <asp:ListItem Value="4">Concepto</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="BotonTablaDatos">
-                                <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click"  />
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click"  />
+                            <asp:Button ID="BtnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiar_Click"  />
                         </td>
                     </tr>
                 </table>         

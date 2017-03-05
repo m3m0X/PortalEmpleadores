@@ -108,21 +108,34 @@ namespace PortalTrabajadores.Portal
                     }
                     else if (ddlTipo.SelectedValue == "2")
                     {
+                        cmd = new MySqlCommand("rep_ExcelNominaCodCons", Conexion.ObtenerCnMysql());
+                        cmd.Parameters.AddWithValue("@mes", ddlMes.SelectedValue);
+                        cmd.Parameters.AddWithValue("@anio", txtAnio.Text);
+                    }
+                    else if (ddlTipo.SelectedValue == "3")
+                    {
+                        string mes = ddlMes.SelectedValue;
+
                         cmd = new MySqlCommand("rep_ExcelNominaCen", Conexion.ObtenerCnMysql());
-                        cmd.Parameters.AddWithValue("@Centro", GridView1.Rows[index].Cells[1].Text);
-                        cmd.Parameters.AddWithValue("@Fecha", GridView1.Rows[index].Cells[2].Text);
+
+                        if (Convert.ToInt32(ddlMes.SelectedValue) < 10) 
+                        {
+                            mes = '0' + mes;
+                        }
+
+                        cmd.Parameters.AddWithValue("@fecha", txtAnio.Text + mes + "%");
                     }
                     else
                     {
                         cmd = new MySqlCommand("rep_ExcelNominaCon", Conexion.ObtenerCnMysql());
-                        cmd.Parameters.AddWithValue("@Concepto", GridView1.Rows[index].Cells[1].Text);
-                        cmd.Parameters.AddWithValue("@Fecha", GridView1.Rows[index].Cells[2].Text);
+                        cmd.Parameters.AddWithValue("@mes", ddlMes.SelectedValue);
+                        cmd.Parameters.AddWithValue("@anio", txtAnio.Text);
                     }
 
                     cmd.Parameters.AddWithValue("@TipoEmpresa", Session["idEmpresa"].ToString());
                     cmd.Parameters.AddWithValue("@Proyecto", Session["proyecto"].ToString());
                     cmd.CommandType = CommandType.StoredProcedure;                    
-                    cmd.CommandTimeout = 500;
+                    cmd.CommandTimeout = 2000;
 
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     DataTable datos = new DataTable();
@@ -182,13 +195,9 @@ namespace PortalTrabajadores.Portal
                 {
                     cmd = new MySqlCommand("rep_nominaCodigo", Conexion.ObtenerCnMysql());
                 }
-                else if (ddlTipo.SelectedValue == "2")
+                else 
                 {
-                    cmd = new MySqlCommand("rep_nominaCentro", Conexion.ObtenerCnMysql());
-                }
-                else
-                {
-                    cmd = new MySqlCommand("rep_nominaConcepto", Conexion.ObtenerCnMysql());
+                    cmd = new MySqlCommand("rep_nominaConsolidado", Conexion.ObtenerCnMysql());
                 }
                 
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -202,6 +211,11 @@ namespace PortalTrabajadores.Portal
                 DataTable datos = new DataTable();
 
                 da.Fill(datos);
+
+                txtAnio.Enabled = false;
+                ddlMes.Enabled = false;
+                ddlTipo.Enabled = false;
+                BtnBuscar.Visible = false;
 
                 if (datos.Rows.Count > 0)
                 {
@@ -220,6 +234,17 @@ namespace PortalTrabajadores.Portal
             {
                 MensajeError(ex.Message);
             }
+        }
+
+        protected void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtAnio.Enabled = true;
+            ddlMes.Enabled = true;
+            ddlTipo.Enabled = true;
+            BtnBuscar.Visible = true;
+
+            GridView1.DataSource = null;
+            GridView1.DataBind();
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -246,6 +271,6 @@ namespace PortalTrabajadores.Portal
             return Regex.Replace(txt, r, "", RegexOptions.Compiled);
         }
 
-        #endregion
+        #endregion        
     }
 }
