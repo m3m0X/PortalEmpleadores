@@ -104,7 +104,7 @@ namespace PortalTrabajadores.Portal
                     if (ddlTipo.SelectedValue == "1")
                     {
                         cmd = new MySqlCommand("rep_ExcelNominaCod", Conexion.ObtenerCnMysql());
-                        cmd.Parameters.AddWithValue("@DocNomina", GridView1.Rows[index].Cells[1].Text);                        
+                        cmd.Parameters.AddWithValue("@DocNomina", GridView1.Rows[index].Cells[1].Text);
                     }
                     else if (ddlTipo.SelectedValue == "2")
                     {
@@ -117,6 +117,7 @@ namespace PortalTrabajadores.Portal
                         string mes = ddlMes.SelectedValue;
 
                         cmd = new MySqlCommand("rep_ExcelNominaCen", Conexion.ObtenerCnMysql());
+                        cmd.Parameters.AddWithValue("@Centro", GridView1.Rows[index].Cells[1].Text);
 
                         if (Convert.ToInt32(ddlMes.SelectedValue) < 10) 
                         {
@@ -194,6 +195,10 @@ namespace PortalTrabajadores.Portal
                 if (ddlTipo.SelectedValue == "1")
                 {
                     cmd = new MySqlCommand("rep_nominaCodigo", Conexion.ObtenerCnMysql());
+                }
+                else if (ddlTipo.SelectedValue == "3")
+                {
+                    cmd = new MySqlCommand("rep_nominaCentro", Conexion.ObtenerCnMysql());
                 }
                 else 
                 {

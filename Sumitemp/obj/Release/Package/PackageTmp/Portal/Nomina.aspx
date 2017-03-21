@@ -52,12 +52,12 @@
                             <asp:Label ID="LblTipo" runat="server" Text="Seleccione el tipo de reporte:" /></td>
                         <td class="BotonTablaDatos">
                             <asp:DropDownList ID="ddlTipo" runat="server">
-                                <asp:ListItem Value="1">Codigo</asp:ListItem>
-                                <asp:ListItem Value="2">Codigo Consolidado</asp:ListItem>
+                                <asp:ListItem Value="1">Nomina</asp:ListItem>
+                                <asp:ListItem Value="2">Nomina Consolidado</asp:ListItem>
                                 <asp:ListItem Value="3">Centro de Costo</asp:ListItem>
                                 <asp:ListItem Value="4">Concepto</asp:ListItem>
                             </asp:DropDownList>
-                        </td>
+                        </td>   
                     </tr>
                     <tr>
                         <td colspan="2" class="BotonTablaDatos">

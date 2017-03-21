@@ -52,12 +52,12 @@
                             <asp:Label ID="LblTipo" runat="server" Text="Seleccione el tipo de reporte:" /></td>
                         <td class="BotonTablaDatos">
                             <asp:DropDownList ID="ddlTipo" runat="server">
-                                <asp:ListItem Value="1">Codigo</asp:ListItem>
-                                <asp:ListItem Value="2">Codigo Consolidado</asp:ListItem>
+                                <asp:ListItem Value="1">Nomina</asp:ListItem>
+                                <asp:ListItem Value="2">Nomina Consolidado</asp:ListItem>
                                 <asp:ListItem Value="3">Centro de Costo</asp:ListItem>
                                 <asp:ListItem Value="4">Concepto</asp:ListItem>
                             </asp:DropDownList>
-                        </td>
+                        </td>   
                     </tr>
                     <tr>
                         <td colspan="2" class="BotonTablaDatos">
@@ -70,9 +70,6 @@
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                 <AlternatingRowStyle CssClass="ColorOscuro" />
                 <Columns>
-                    <%--<asp:BoundField DataField="Nomina" HeaderText="No Nomina" SortExpression="Nomina" />
-                    <asp:BoundField DataField="Fecha Generación" HeaderText="Fecha" SortExpression="Fecha Generación" />
-                    <asp:BoundField DataField="Doc Nomina" HeaderText="" SortExpression="Doc Nomina" Visible="false"/>--%>
                     <asp:TemplateField HeaderText="Generar" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:ImageButton ID="Imgpdf" runat="server" ImageUrl="~/Img/excel.gif" CommandName="Excel" />
