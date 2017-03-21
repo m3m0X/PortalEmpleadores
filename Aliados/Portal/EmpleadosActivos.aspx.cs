@@ -59,73 +59,64 @@ namespace PortalTrabajadores.Portal
                     {
                         MySqlCn.Close();
                     }
-                }
 
-                try
-                {
-                    string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
 
-                    MySqlCn = new MySqlConnection(Cn);
-                    MySqlCommand scSqlCommand = new MySqlCommand("SELECT " + bd2 + ".empleados.Id_Empleado AS Cedula, " +
-                                                                    bd2 + ".empleados.Nombres_Completos_Empleado As Nombre, " +
-                                                                    bd2 + ".empleados.Sexo_Empleado As Sexo, " +
-                                                                    bd2 + ".empleados.Nombre_Cargo_Empleado As Cargo, " +
-                                                                    bd2 + ".empleados.Fecha_nacimiento_Empleado AS 'Fecha de Nacimiento', " +
-                                                                    bd2 + ".empleados.Correo_Empleado As Correo, " +
-                                                                    bd2 + ".empleados.Fecha_Ingreso_Empleado As Ingreso, " +
-                                                                    bd2 + ".empleados.Fecha_terminacion_Empleado As Terminacion, " +
-                                                                    bd2 + ".empleados.Outsourcing As 'Centro de costos' " +
-                                                                    "FROM " + bd2 + ".empleados " +
-                                                                    "JOIN " + bd2 + ".companias ON " +
-                                                                    bd2 + ".empleados.companias_idcompania = " + bd2 + ".companias.idCompania AND " +
-                                                                    bd2 + ".empleados.Companias_idEmpresa = " + bd2 + ".companias.Empresas_idEmpresa " +
-                                                                    "where Companias_idEmpresa = 'AE' AND  " +
-                                                                    bd2 + ".companias.Terceros_Nit_Tercero = " + Session["usuario"].ToString() + " AND " +
-                                                                    bd2 + ".companias.idCompania = '" + Session["proyecto"].ToString() + "' AND " +
-                                                                    "(DATE_FORMAT(fecha_terminacion_Empleado,'%Y%m%d') > DATE_FORMAT('" + DateTime.Now.ToShortDateString() +
-                                                                    "','%Y%m%d') OR Estado_Contrato_Empleado = 'A')", MySqlCn);
 
-                    MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(scSqlCommand);
-                    DataTable dtDataTable = new DataTable();
-                    MySqlCn.Open();
-                    sdaSqlDataAdapter.Fill(dtDataTable);
-
-                    if (dtDataTable != null && dtDataTable.Rows.Count > 0)
+                    try
                     {
-                        foreach (DataRow row in dtDataTable.Rows)
+                        string Cn = ConfigurationManager.ConnectionStrings["CadenaConexioMySql2"].ConnectionString.ToString();
+
+                        CnMysql Conexion = new CnMysql(Cn);
+
+                        Conexion.AbrirCnMysql();
+                        MySqlCommand cmd = new MySqlCommand("rep_EmpleadoActivo", Conexion.ObtenerCnMysql());
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@idEmpresa", Session["idEmpresa"].ToString());
+                        cmd.Parameters.AddWithValue("@tercero", Session["usuario"].ToString());
+                        cmd.Parameters.AddWithValue("@idCompania", Session["proyecto"].ToString());
+                        cmd.Parameters.AddWithValue("@fecha", DateTime.Now.ToShortDateString());
+
+                        MySqlDataAdapter sdaSqlDataAdapter = new MySqlDataAdapter(cmd);
+                        DataTable dtDataTable = new DataTable();
+                        MySqlCn.Open();
+                        sdaSqlDataAdapter.Fill(dtDataTable);
+                        if (dtDataTable != null && dtDataTable.Rows.Count > 0)
                         {
-                            for (int i = 0; i < dtDataTable.Columns.Count; i++)
+                            foreach (DataRow row in dtDataTable.Rows)
                             {
-                                if (dtDataTable.Columns[i].DataType == typeof(string))
-                                    row[i] = ReplaceHexadecimalSymbols((string)row[i]);
+                                for (int i = 0; i < dtDataTable.Columns.Count; i++)
+                                {
+                                    if (dtDataTable.Columns[i].DataType == typeof(string))
+                                        row[i] = ReplaceHexadecimalSymbols((string)row[i]);
+                                }
                             }
+
+                            // Create the workbook
+                            XLWorkbook workbook = new XLWorkbook();
+                            workbook.Worksheets.Add(dtDataTable, "EmpleadosActivos");
+
+                            // Prepare the response
+                            HttpResponse httpResponse = Response;
+                            httpResponse.Clear();
+                            httpResponse.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                            httpResponse.AddHeader("content-disposition", "attachment;filename=\"EmpleadosActivos.xlsx\"");
+
+                            // Flush the workbook to the Response.OutputStream
+                            using (MemoryStream memoryStream = new MemoryStream())
+                            {
+                                workbook.SaveAs(memoryStream);
+                                memoryStream.WriteTo(httpResponse.OutputStream);
+                                memoryStream.Close();
+                            }
+
+                            httpResponse.End();
                         }
-
-                        // Create the workbook
-                        XLWorkbook workbook = new XLWorkbook();
-                        workbook.Worksheets.Add(dtDataTable, "EmpleadosActivos");
-
-                        // Prepare the response
-                        HttpResponse httpResponse = Response;
-                        httpResponse.Clear();
-                        httpResponse.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                        httpResponse.AddHeader("content-disposition", "attachment;filename=\"EmpleadosActivos.xlsx\"");
-
-                        // Flush the workbook to the Response.OutputStream
-                        using (MemoryStream memoryStream = new MemoryStream())
-                        {
-                            workbook.SaveAs(memoryStream);
-                            memoryStream.WriteTo(httpResponse.OutputStream);
-                            memoryStream.Close();
-                        }
-
-                        httpResponse.End();
                     }
-                }
-                catch (Exception E)
-                {
-                    MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
-                }
+                    catch (Exception E)
+                    {
+                        MensajeError("Ha ocurrido el siguiente error: " + E.Message + " _Metodo: " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+                    }
+                }                
             }
         }
         #endregion

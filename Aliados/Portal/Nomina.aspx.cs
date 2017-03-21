@@ -93,17 +93,50 @@ namespace PortalTrabajadores.Portal
             {
                 if (e.CommandName == "Excel")
                 {
+                    int index = ((GridViewRow)(((ImageButton)e.CommandSource).NamingContainer)).RowIndex;
+
                     string Cn = ConfigurationManager.ConnectionStrings["trabajadoresConnectionString"].ConnectionString.ToString();
                     CnMysql Conexion = new CnMysql(Cn);
                     MySqlCommand cmd = new MySqlCommand();
-                    
+
                     Conexion.AbrirCnMysql();
-                    cmd = new MySqlCommand("sp_ExcelNomina", Conexion.ObtenerCnMysql());
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@DocNomina", e.CommandArgument.ToString());
-                    cmd.Parameters.AddWithValue("@TipoEmpresa", "AE");
+
+                    if (ddlTipo.SelectedValue == "1")
+                    {
+                        cmd = new MySqlCommand("rep_ExcelNominaCod", Conexion.ObtenerCnMysql());
+                        cmd.Parameters.AddWithValue("@DocNomina", GridView1.Rows[index].Cells[1].Text);
+                    }
+                    else if (ddlTipo.SelectedValue == "2")
+                    {
+                        cmd = new MySqlCommand("rep_ExcelNominaCodCons", Conexion.ObtenerCnMysql());
+                        cmd.Parameters.AddWithValue("@mes", ddlMes.SelectedValue);
+                        cmd.Parameters.AddWithValue("@anio", txtAnio.Text);
+                    }
+                    else if (ddlTipo.SelectedValue == "3")
+                    {
+                        string mes = ddlMes.SelectedValue;
+
+                        cmd = new MySqlCommand("rep_ExcelNominaCen", Conexion.ObtenerCnMysql());
+                        cmd.Parameters.AddWithValue("@Centro", GridView1.Rows[index].Cells[1].Text);
+
+                        if (Convert.ToInt32(ddlMes.SelectedValue) < 10)
+                        {
+                            mes = '0' + mes;
+                        }
+
+                        cmd.Parameters.AddWithValue("@fecha", txtAnio.Text + mes + "%");
+                    }
+                    else
+                    {
+                        cmd = new MySqlCommand("rep_ExcelNominaCon", Conexion.ObtenerCnMysql());
+                        cmd.Parameters.AddWithValue("@mes", ddlMes.SelectedValue);
+                        cmd.Parameters.AddWithValue("@anio", txtAnio.Text);
+                    }
+
+                    cmd.Parameters.AddWithValue("@TipoEmpresa", Session["idEmpresa"].ToString());
                     cmd.Parameters.AddWithValue("@Proyecto", Session["proyecto"].ToString());
-                    cmd.CommandTimeout = 500;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandTimeout = 2000;
 
                     MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     DataTable datos = new DataTable();
@@ -140,7 +173,7 @@ namespace PortalTrabajadores.Portal
                         }
 
                         httpResponse.End();
-                    }               
+                    }
                 }
             }
             catch (Exception E)
@@ -158,18 +191,36 @@ namespace PortalTrabajadores.Portal
             try
             {
                 Conexion.AbrirCnMysql();
-                cmd = new MySqlCommand("sp_nominaEmpleados", Conexion.ObtenerCnMysql());
+
+                if (ddlTipo.SelectedValue == "1")
+                {
+                    cmd = new MySqlCommand("rep_nominaCodigo", Conexion.ObtenerCnMysql());
+                }
+                else if (ddlTipo.SelectedValue == "3")
+                {
+                    cmd = new MySqlCommand("rep_nominaCentro", Conexion.ObtenerCnMysql());
+                }
+                else
+                {
+                    cmd = new MySqlCommand("rep_nominaConsolidado", Conexion.ObtenerCnMysql());
+                }
+
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@NumNit", Session["usuario"].ToString());
-                cmd.Parameters.AddWithValue("@IdEmpresa", "AE");
+                cmd.Parameters.AddWithValue("@IdEmpresa", Session["idEmpresa"].ToString());
                 cmd.Parameters.AddWithValue("@mes", ddlMes.SelectedValue);
                 cmd.Parameters.AddWithValue("@anio", txtAnio.Text);
-                cmd.Parameters.AddWithValue("@Proyecto", Session["proyecto"].ToString());                        
+                cmd.Parameters.AddWithValue("@Proyecto", Session["proyecto"].ToString());
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                 DataTable datos = new DataTable();
 
                 da.Fill(datos);
+
+                txtAnio.Enabled = false;
+                ddlMes.Enabled = false;
+                ddlTipo.Enabled = false;
+                BtnBuscar.Visible = false;
 
                 if (datos.Rows.Count > 0)
                 {
@@ -188,6 +239,17 @@ namespace PortalTrabajadores.Portal
             {
                 MensajeError(ex.Message);
             }
+        }
+
+        protected void BtnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtAnio.Enabled = true;
+            ddlMes.Enabled = true;
+            ddlTipo.Enabled = true;
+            BtnBuscar.Visible = true;
+
+            GridView1.DataSource = null;
+            GridView1.DataBind();
         }
 
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)

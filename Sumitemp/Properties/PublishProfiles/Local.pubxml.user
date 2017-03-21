@@ -100,7 +100,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>03/10/2017 17:31:22</publishTime>
+      <publishTime>03/21/2017 11:42:39</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -167,6 +167,9 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     </File>
     <File Include="dll/DocumentFormat.OpenXml.dll">
       <publishTime>03/17/2016 19:54:48</publishTime>
+    </File>
+    <File Include="dll/Ionic.Zip.dll">
+      <publishTime>08/06/2011 20:59:58</publishTime>
     </File>
     <File Include="Estilos/SumiServis/CSS/login_style.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -418,7 +421,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/03/2016 12:42:05</publishTime>
     </File>
     <File Include="Portal/Nomina.aspx">
-      <publishTime>03/10/2017 16:29:38</publishTime>
+      <publishTime>03/21/2017 10:22:11</publishTime>
     </File>
     <File Include="Portal/PaginaMaestra.Master">
       <publishTime>04/16/2016 14:26:17</publishTime>

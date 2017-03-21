@@ -48,21 +48,31 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="CeldaTablaDatos">
+                            <asp:Label ID="LblTipo" runat="server" Text="Seleccione el tipo de reporte:" /></td>
+                        <td class="BotonTablaDatos">
+                            <asp:DropDownList ID="ddlTipo" runat="server">
+                                <asp:ListItem Value="1">Nomina</asp:ListItem>
+                                <asp:ListItem Value="2">Nomina Consolidado</asp:ListItem>
+                                <asp:ListItem Value="3">Centro de Costo</asp:ListItem>
+                                <asp:ListItem Value="4">Concepto</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>   
+                    </tr>
+                    <tr>
                         <td colspan="2" class="BotonTablaDatos">
-                                <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click"  />
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click"  />
+                            <asp:Button ID="BtnLimpiar" runat="server" Text="Limpiar" OnClick="BtnLimpiar_Click"  />
                         </td>
                     </tr>
                 </table>             
             </div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                 <AlternatingRowStyle CssClass="ColorOscuro" />
                 <Columns>
-                    <asp:BoundField DataField="Numero_Nomina" HeaderText="No Nomina" SortExpression="Numero_Nomina" />
-                    <asp:BoundField DataField="Fecha_Generacion_Nomina" HeaderText="Fecha" SortExpression="Fecha_Generacion_Nomina" />
-                    <asp:BoundField DataField="Id_Doc_Nomina" HeaderText="" SortExpression="Id_Doc_Nomina" Visible="false"/>
                     <asp:TemplateField HeaderText="Generar" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
-                            <asp:ImageButton ID="Imgpdf" runat="server" ImageUrl="~/Img/excel.gif" CommandArgument='<%#Eval("Id_Doc_Nomina")%>' CommandName="Excel" />
+                            <asp:ImageButton ID="Imgpdf" runat="server" ImageUrl="~/Img/excel.gif" CommandName="Excel" />
                         </ItemTemplate>
                         <ItemStyle HorizontalAlign="Center" />
                     </asp:TemplateField>

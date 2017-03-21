@@ -76,6 +76,24 @@ namespace PortalTrabajadores.Portal {
         protected global::System.Web.UI.WebControls.DropDownList ddlMes;
         
         /// <summary>
+        /// Control LblTipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblTipo;
+        
+        /// <summary>
+        /// Control ddlTipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipo;
+        
+        /// <summary>
         /// Control BtnBuscar.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,15 @@ namespace PortalTrabajadores.Portal {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnBuscar;
+        
+        /// <summary>
+        /// Control BtnLimpiar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnLimpiar;
         
         /// <summary>
         /// Control GridView1.

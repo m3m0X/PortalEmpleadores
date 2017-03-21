@@ -27,7 +27,8 @@
                     </tr>
                     <tr>
                         <td colspan="2" class="BotonTablaDatos">
-                                <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+                            <asp:Button ID="BtnBuscar" runat="server" Text="Buscar" OnClick="BtnBuscar_Click" />
+                            <asp:Button ID="BtnTodos" runat="server" Text="Descarga masiva de soportes" OnClick="BtnTodos_Click" />
                         </td>
                     </tr>
                 </table>
@@ -55,6 +56,7 @@
         <Triggers>
             <asp:PostBackTrigger ControlID="GridView1" />
             <asp:AsyncPostBackTrigger ControlID="BtnBuscar"/>
+            <asp:PostBackTrigger ControlID="BtnTodos"/>
         </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

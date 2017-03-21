@@ -70,9 +70,6 @@
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
                 <AlternatingRowStyle CssClass="ColorOscuro" />
                 <Columns>
-                    <%--<asp:BoundField DataField="Nomina" HeaderText="No Nomina" SortExpression="Nomina" />
-                    <asp:BoundField DataField="Fecha Generación" HeaderText="Fecha" SortExpression="Fecha Generación" />
-                    <asp:BoundField DataField="Doc Nomina" HeaderText="" SortExpression="Doc Nomina" Visible="false"/>--%>
                     <asp:TemplateField HeaderText="Generar" ItemStyle-HorizontalAlign="Center">
                         <ItemTemplate>
                             <asp:ImageButton ID="Imgpdf" runat="server" ImageUrl="~/Img/excel.gif" CommandName="Excel" />
