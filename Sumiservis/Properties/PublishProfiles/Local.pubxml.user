@@ -91,7 +91,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>03/21/2017 11:44:43</publishTime>
+      <publishTime>10/02/2017 22:03:14</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -508,7 +508,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/29/2016 23:28:50</publishTime>
+      <publishTime>10/02/2017 22:03:15</publishTime>
     </File>
   </ItemGroup>
 </Project>

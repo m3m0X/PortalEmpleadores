@@ -15,7 +15,7 @@
             <div id="Container_UpdatePanel1">
                 <table id="TablaDatos">
                     <tr>
-                        <th colspan="2">Reporte Estado Jefe por etapas</th>
+                        <th colspan="2">Reporte Competencias</th>
                     </tr>
                     <tr>
                         <td class="CeldaTablaDatos">

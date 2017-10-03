@@ -100,7 +100,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/PortalTrabajadores.dll">
-      <publishTime>03/21/2017 11:42:39</publishTime>
+      <publishTime>10/02/2017 21:59:07</publishTime>
     </File>
     <File Include="bin/pt/AjaxControlToolkit.resources.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -451,7 +451,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>12/18/2016 14:47:02</publishTime>
     </File>
     <File Include="Portal/RepJefeXComp.aspx">
-      <publishTime>12/18/2016 17:46:46</publishTime>
+      <publishTime>10/02/2017 21:52:08</publishTime>
     </File>
     <File Include="Portal/RepJefeXEtapa.aspx">
       <publishTime>12/18/2016 14:46:42</publishTime>
@@ -529,7 +529,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/23/2017 10:59:11</publishTime>
+      <publishTime>10/02/2017 21:59:08</publishTime>
     </File>
   </ItemGroup>
 </Project>

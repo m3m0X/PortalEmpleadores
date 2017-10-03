@@ -370,7 +370,21 @@ namespace PortalTrabajadores.Portal
 
                     if (rd["IdCargos"].ToString() != "")
                     {
-                        ddlCargo.SelectedValue = rd["IdCargos"].ToString();
+                        try
+                        {
+                            ddlCargo.SelectedValue = rd["IdCargos"].ToString();
+                        }
+                        catch (Exception E)
+                        {
+                            if (E.Message.Contains("SelectedValue"))
+                            {
+                                MensajeError("El usuario tiene un cargo que no tiene competencias, para habilitarlo debe asignarle una competencia o seleccionar otro cargo.");
+                            }
+                            else
+                            {
+                                throw;
+                            }
+                        }            
                     }
 
                     BtnEditar.Text = "Editar Información";
